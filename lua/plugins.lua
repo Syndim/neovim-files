@@ -14,37 +14,49 @@ vim.cmd [[packadd packer.nvim]]
 return require('packer').startup(
     {
         function(use)
-            -- Packer can manage itself as an optional plugin
-            use 'wbthomason/packer.nvim'
+            -- Package menagement
 
-            -- Neovim plugin that allows you to easily write your .vimrc in lua or any lua based language
-            use 'svermeulen/vimpeccable'
+                -- Packer can manage itself as an optional plugin
+                use 'wbthomason/packer.nvim'
 
-            -- Clean, vibrant and pleasing color schemes for Vim, Sublime Text, iTerm, gnome-terminal and more. 
-            use {'sonph/onehalf', rtp = 'vim', config = require('plugins._color').config }
+            -- Helper for lua config
+                -- Neovim plugin that allows you to easily write your .vimrc in lua or any lua based language
+                use 'svermeulen/vimpeccable'
 
-            -- A snazzy bufferline for Neovim
-            use {'akinsho/nvim-bufferline.lua', requires = 'kyazdani42/nvim-web-devicons', config = require('plugins._bufferline').config }
+            -- Editor related
+                -- Clean, vibrant and pleasing color schemes for Vim, Sublime Text, iTerm, gnome-terminal and more. 
+                use {'sonph/onehalf', rtp = 'vim', config = require('plugins._color').config }
 
-            -- A blazing fast and easy to configure neovim statusline written in pure lua.
-            use {'hoob3rt/lualine.nvim', requires = 'kyazdani42/nvim-web-devicons', config = require('plugins._lualine').config }
+                -- A snazzy bufferline for Neovim
+                use {'akinsho/nvim-bufferline.lua', requires = 'kyazdani42/nvim-web-devicons', config = require('plugins._bufferline').config }
 
-            -- Find, Filter, Preview, Pick. All lua, all the time.
-            use { 'nvim-telescope/telescope.nvim', requires = {{'nvim-lua/popup.nvim'}, {'nvim-lua/plenary.nvim'}}, config = require('plugins._telescope').config }
+                -- A blazing fast and easy to configure neovim statusline written in pure lua.
+                use {'hoob3rt/lualine.nvim', requires = 'kyazdani42/nvim-web-devicons', config = require('plugins._lualine').config }
 
-            -- A file explorer tree for neovim written in lua
-            use { 'kyazdani42/nvim-tree.lua', requires = 'kyazdani42/nvim-web-devicons', config = require('plugins._nvimtree').config }
+                -- Find, Filter, Preview, Pick. All lua, all the time.
+                use { 'nvim-telescope/telescope.nvim', requires = {{'nvim-lua/popup.nvim'}, {'nvim-lua/plenary.nvim'}}, config = require('plugins._telescope').config }
 
-            -- Vim plugin, insert or delete brackets, parens, quotes in pair 
-            use 'jiangmiao/auto-pairs'
+                -- A file explorer tree for neovim written in lua
+                use { 'kyazdani42/nvim-tree.lua', requires = 'kyazdani42/nvim-web-devicons', config = require('plugins._nvimtree').config }
 
-            -- endwise.vim: wisely add "end" in ruby, endfunction/endif/more in vim script, etc 
-            use 'tpope/vim-endwise'
+                -- Vim plugin, insert or delete brackets, parens, quotes in pair 
+                use 'jiangmiao/auto-pairs'
 
-            -- A solid language pack for Vim.
-            use 'sheerun/vim-polyglot'
+                -- endwise.vim: wisely add "end" in ruby, endfunction/endif/more in vim script, etc 
+                use 'tpope/vim-endwise'
 
-            use { 'neoclide/coc.nvim', branch = 'release' }
+                -- Vim motions on speed!
+                use 'easymotion/vim-easymotion'
+
+                -- Better Rainbow Parentheses
+                use 'kien/rainbow_parentheses.vim'
+
+            -- Language support
+                -- A solid language pack for Vim.
+                use 'sheerun/vim-polyglot'
+
+                -- Nodejs extension host for vim & neovim, load extensions like VSCode and host language servers.
+                use { 'neoclide/coc.nvim', branch = 'release' }
         end,
         config = {
             display = {
