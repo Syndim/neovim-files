@@ -1,4 +1,5 @@
 local o = vim.o
+local wo = vim.wo
 local g = vim.g
 local cmd = vim.cmd
 
@@ -19,8 +20,10 @@ o.expandtab = true
 
 -- Line number
 o.number = true
+wo.number = true
 o.ruler = true
 o.relativenumber = true
+wo.relativenumber = true
 
 -- Encoding
 o.encoding = 'utf-8'

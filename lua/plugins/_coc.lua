@@ -21,6 +21,7 @@ g.coc_global_extensions = {
     'coc-sh',
     'coc-xml',
     'coc-cmake',
+    'coc-lua',
 }
 
 -- Remap keys for gotos
