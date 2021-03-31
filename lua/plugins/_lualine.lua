@@ -9,7 +9,7 @@ function M.config()
             },
             sections = {
                 lualine_a = {
-                    { 'mode', upper = true, color = {gui = 'bold'} }
+                    { 'mode', upper = true, color = { gui = 'bold' } }
                 },
                 lualine_b = {
                     { 'branch' },
@@ -17,13 +17,13 @@ function M.config()
                 },
                 lualine_c = {
                     { 'filename', full_path = true, file_status = true },
-                    { 'diagnostics', sources = {'coc'} },
+                    { 'diagnostics', sources = { 'coc' } },
                     { 'g:coc_status' }
                 },
                 lualine_x = { 'filetype', 'encoding', 'fileformat' },
                 lualine_y = { 'progress' },
                 lualine_z = {
-                    { 'location', color = {gui = 'bold'} }
+                    { 'location', color = { gui = 'bold' } }
                 }
             },
             extensions = {}
