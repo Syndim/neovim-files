@@ -55,6 +55,9 @@ return require('packer').startup(
                 -- A Vim plugin which shows git diff markers in the sign column and stages/previews/undoes hunks and partial hunks. 
                 use 'airblade/vim-gitgutter'
 
+                -- Helps you win at grep.
+                use 'mhinz/vim-grepper'
+
             -- Language support
                 -- Generic
                     -- A solid language pack for Vim.
