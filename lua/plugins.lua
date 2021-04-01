@@ -25,16 +25,13 @@ return require('packer').startup(
 
             -- Editor interface
                 -- Clean, vibrant and pleasing color schemes for Vim, Sublime Text, iTerm, gnome-terminal and more. 
-                use {'sonph/onehalf', rtp = 'vim', config = require('plugins._color').config }
+                use { 'sonph/onehalf', rtp = 'vim', config = require('plugins._color').config }
 
                 -- A snazzy bufferline for Neovim
-                use {'akinsho/nvim-bufferline.lua', requires = 'kyazdani42/nvim-web-devicons', config = require('plugins._bufferline').config }
+                use { 'akinsho/nvim-bufferline.lua', requires = 'kyazdani42/nvim-web-devicons', config = require('plugins._bufferline').config }
 
                 -- A blazing fast and easy to configure neovim statusline written in pure lua.
-                use {'hoob3rt/lualine.nvim', requires = 'kyazdani42/nvim-web-devicons', config = require('plugins._lualine').config }
-
-                -- Better Rainbow Parentheses
-                use 'kien/rainbow_parentheses.vim'
+                use { 'hoob3rt/lualine.nvim', requires = 'kyazdani42/nvim-web-devicons', config = require('plugins._lualine').config }
 
             -- Editor functionality
                 -- Find, Filter, Preview, Pick. All lua, all the time.
