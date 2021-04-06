@@ -1,0 +1,27 @@
+{
+  "coc.preferences.colorSupport": true,
+  "coc.preferences.formatOnSaveFiletypes": [
+    "javascript",
+    "typescript",
+    "typescriptreact",
+    "json",
+    "javascriptreact",
+    "typescript.tsx",
+    "rust",
+    "ruby",
+    "cpp",
+    "c"
+
+  ],
+  "python.jediEnabled": false,
+  "rust-analyzer.server.path": "rust-analyzer",
+  "rust-analyzer.cargo.loadOutDirsFromCheck": true,
+  "codeLens.enable": true,
+  "solargraph.hover": true,
+  "solargraph.diagnostics": true,
+  "solargraph.formatting": true,
+  "solargraph.useBundler": true,
+  "yaml.format.enable": true,
+  "prettier.tabWidth": 4,
+  "prettier.singleQuote": true
+}
