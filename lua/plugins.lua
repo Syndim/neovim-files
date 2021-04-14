@@ -35,7 +35,7 @@ return require('packer').startup(
 
             -- Editor functionality
                 -- Find, Filter, Preview, Pick. All lua, all the time.
-                use { 'nvim-telescope/telescope.nvim', requires = {{'nvim-lua/popup.nvim'}, {'nvim-lua/plenary.nvim'}}, config = require('plugins._telescope').config }
+                -- use { 'nvim-telescope/telescope.nvim', requires = {{'nvim-lua/popup.nvim'}, {'nvim-lua/plenary.nvim'}}, config = require('plugins._telescope').config }
 
                 -- A tree explorer plugin for vim.
                 use { 'preservim/nerdtree', requires = 'ryanoasis/vim-devicons' }
@@ -53,7 +53,12 @@ return require('packer').startup(
                 use 'airblade/vim-gitgutter'
 
                 -- Helps you win at grep.
-                use 'mhinz/vim-grepper'
+                -- use 'mhinz/vim-grepper'
+
+                -- A command-line fuzzy finder
+                use { 'junegunn/fzf', run = function() vim.fn['fzf#install']() end }
+                -- fzf ❤️ vim
+                use 'junegunn/fzf.vim'
 
             -- Language support
                 -- Generic
