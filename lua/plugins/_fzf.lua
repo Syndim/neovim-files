@@ -3,6 +3,9 @@ local cmd = vim.cmd
 local fn = vim.fn
 
 cmd('nnoremap <C-p> :FZF<CR>')
+cmd('nnoremap <leader>fb :Buffers<CR>')
+cmd('nnoremap <leader>fg :GFiles?<CR>')
+cmd('nnoremap <leader>fl :BLines<CR>')
 
 if fn.executable('rg') then
     cmd("let $FZF_DEFAULT_COMMAND='rg --files'")
