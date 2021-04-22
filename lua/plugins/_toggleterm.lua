@@ -1,7 +1,7 @@
 local M = {}
 
 function M.config()
-    require"toggleterm".setup{
+    require("toggleterm").setup{
         size = 20,
         open_mapping = [[<F12>]],
         hide_numbers = true, -- hide the number column in toggleterm buffers
