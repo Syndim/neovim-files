@@ -60,6 +60,9 @@ return require('packer').startup(
                 -- fzf ❤️ vim
                 use 'junegunn/fzf.vim'
 
+                -- 🔥 No-nonsense floating terminal written in lua 🔥
+                use { "akinsho/nvim-toggleterm.lua", config = require('plugins._toggleterm').config }
+
             -- Language support
                 -- Generic
                     -- A solid language pack for Vim.
