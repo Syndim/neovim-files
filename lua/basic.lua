@@ -46,6 +46,11 @@ o.termguicolors = true
 -- o.hidden = true
 
 -- Fonts
-o.guifont = 'Fira Code:h14'
+if g.neovide then
+    o.guifont = 'FiraCode NF:h18'
+else
+    o.guifont = 'Fira Code:h14'
+end
 
 g.mapleader = ','
+
