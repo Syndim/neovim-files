@@ -59,3 +59,6 @@ end
 
 cmd('inoremap <silent><expr> <TAB> pumvisible() ? coc#_select_confirm() : v:lua.check_back_space() ? "<TAB>" : coc#refresh()')
 cmd('inoremap <silent><expr> <S-TAB> pumvisible() ? "<C-P>" : "<C-H>"')
+
+-- Use <c-space> to trigger completion.
+cmd('inoremap <silent><expr> <C-Space> coc#refresh()')
