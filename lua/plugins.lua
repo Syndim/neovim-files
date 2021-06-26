@@ -9,7 +9,7 @@ if fn.empty(fn.glob(install_path)) > 0 then
 end
 
 -- Only required if you have packer configured as `opt`
-vim.cmd [[packadd packer.nvim]]
+-- vim.cmd [[packadd packer.nvim]]
 
 return require('packer').startup(
     {
