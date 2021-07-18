@@ -20,13 +20,13 @@ function M.config()
                     { 'diagnostics', sources = { 'coc' } },
                     { 'g:coc_status' }
                 },
-                lualine_x = { 'filetype', 'encoding', 'fileformat' },
+                lualine_x = { { 'filetype', colored = true }, 'encoding', 'fileformat' },
                 lualine_y = { 'progress' },
                 lualine_z = {
                     { 'location', color = { gui = 'bold' } }
                 }
             },
-            extensions = {}
+            extensions = { 'quickfix', 'fzf', 'nerdtree' }
         })
 end
 

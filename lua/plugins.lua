@@ -31,7 +31,7 @@ return require('packer').startup(
                 use { 'akinsho/nvim-bufferline.lua', requires = 'kyazdani42/nvim-web-devicons', config = require('plugins._bufferline').config }
 
                 -- A blazing fast and easy to configure neovim statusline written in pure lua.
-                use { 'hoob3rt/lualine.nvim', requires = 'kyazdani42/nvim-web-devicons', config = require('plugins._lualine').config }
+                use { 'hoob3rt/lualine.nvim', requires = { 'kyazdani42/nvim-web-devicons', opt = true }, config = require('plugins._lualine').config }
 
             -- Editor functionality
                 -- Find, Filter, Preview, Pick. All lua, all the time.
@@ -66,7 +66,7 @@ return require('packer').startup(
             -- Language support
                 -- Generic
                     -- A solid language pack for Vim.
-                    use 'sheerun/vim-polyglot'
+                    -- use 'sheerun/vim-polyglot'
 
                     -- Vim plugin, insert or delete brackets, parens, quotes in pair 
                     use 'jiangmiao/auto-pairs'
@@ -88,6 +88,9 @@ return require('packer').startup(
 
                     -- Nodejs extension host for vim & neovim, load extensions like VSCode and host language servers.
                     use { 'neoclide/coc.nvim', branch = 'release' }
+
+                    -- Nvim Treesitter configurations and abstraction layer 
+                    use {'nvim-treesitter/nvim-treesitter', run = ':TSUpdate', config = require('plugins._treesitter').config }
 
                 -- C/C++
                     -- Alternate Files quickly (.c --> .h etc) 
