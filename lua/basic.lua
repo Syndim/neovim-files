@@ -54,3 +54,5 @@ end
 
 g.mapleader = ','
 
+o.signcolumn = 'number'
+wo.signcolumn = 'number'

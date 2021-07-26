@@ -57,8 +57,37 @@ function _G.check_back_space()
     end
 end
 
+function _G.show_documentation()
+    if fn.index({'vim', 'help'}, g.filetype) >= 0 then
+        cmd('h ' .. fn.expand('<cword>'))
+    elseif fn['coc#rpc#ready']() then
+        fn.CocActionAsync('doHover')
+    else
+        cmd('!' .. g.keywordprg .. ' ' .. fn.expand('<cword>'))
+    end
+end
+
 cmd('inoremap <silent><expr> <TAB> pumvisible() ? coc#_select_confirm() : v:lua.check_back_space() ? "<TAB>" : coc#refresh()')
 cmd('inoremap <silent><expr> <S-TAB> pumvisible() ? "<C-P>" : "<C-H>"')
+cmd('nnoremap <silent> K :call v:lua.show_documentation()<CR>')
 
 -- Use <c-space> to trigger completion.
 cmd('inoremap <silent><expr> <C-Space> coc#refresh()')
+
+-- Mappings for CoCList
+-- Show all diagnostics.
+cmd('nnoremap <silent><nowait> <space>a  :<C-u>CocList diagnostics<cr>')
+-- Manage extensions.
+cmd('nnoremap <silent><nowait> <space>e  :<C-u>CocList extensions<cr>')
+-- Show commands.
+cmd('nnoremap <silent><nowait> <space>c  :<C-u>CocList commands<cr>')
+-- Find symbol of current document.
+cmd('nnoremap <silent><nowait> <space>o  :<C-u>CocList outline<cr>')
+-- Search workspace symbols.
+cmd('nnoremap <silent><nowait> <space>s  :<C-u>CocList -I symbols<cr>')
+-- Do default action for next item.
+cmd('nnoremap <silent><nowait> <space>j  :<C-u>CocNext<CR>')
+-- Do default action for previous item.
+cmd('nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>')
+-- Resume latest coc list.
+cmd('nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>')
