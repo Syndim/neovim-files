@@ -38,7 +38,10 @@ return require('packer').startup(
                 -- use { 'nvim-telescope/telescope.nvim', requires = {{'nvim-lua/popup.nvim'}, {'nvim-lua/plenary.nvim'}}, config = require('plugins._telescope').config }
 
                 -- A tree explorer plugin for vim.
-                use { 'preservim/nerdtree', requires = 'ryanoasis/vim-devicons' }
+                -- use { 'preservim/nerdtree', requires = 'ryanoasis/vim-devicons' }
+
+                -- A file explorer tree for neovim written in lua
+                use { 'kyazdani42/nvim-tree.lua', requires = 'kyazdani42/nvim-web-devicons' }
 
                 -- Vim motions on speed!
                 use 'easymotion/vim-easymotion'
