@@ -26,7 +26,7 @@ function M.config()
                     { 'location', color = { gui = 'bold' } }
                 }
             },
-            extensions = { 'quickfix', 'fzf', 'nerdtree' }
+            extensions = { 'quickfix', 'fzf', 'nvim-tree' }
         })
 end
 
