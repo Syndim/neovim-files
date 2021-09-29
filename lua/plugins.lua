@@ -41,7 +41,7 @@ return require('packer').startup(
                 -- use { 'preservim/nerdtree', requires = 'ryanoasis/vim-devicons' }
 
                 -- A file explorer tree for neovim written in lua
-                use { 'kyazdani42/nvim-tree.lua', requires = 'kyazdani42/nvim-web-devicons' }
+                use { 'kyazdani42/nvim-tree.lua', requires = 'kyazdani42/nvim-web-devicons', config = require('plugins._nvimtree').config }
 
                 -- Vim motions on speed!
                 use 'easymotion/vim-easymotion'
