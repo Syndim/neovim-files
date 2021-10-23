@@ -47,10 +47,13 @@ return require('packer').startup(
                 use 'mg979/vim-visual-multi'
 
                 -- A very simple plugin that makes hlsearch more useful.
-                use 'romainl/vim-cool'
+                -- use 'romainl/vim-cool'
 
                 -- A Vim plugin which shows git diff markers in the sign column and stages/previews/undoes hunks and partial hunks. 
                 use 'airblade/vim-gitgutter'
+
+                -- Hlsearch Lens for Neovim
+                use { 'kevinhwang91/nvim-hlslens', config = require('plugins._nvim_hlslens').config }
 
                 -- Helps you win at grep.
                 -- use 'mhinz/vim-grepper'
@@ -96,10 +99,11 @@ return require('packer').startup(
                         -- Show code context
                         use { 'romgrk/nvim-treesitter-context', requires = 'nvim-treesitter/nvim-treesitter', config = require('plugins._treesitter_context').config }
                         -- 🌅 Twilight is a Lua plugin for Neovim 0.5 that dims inactive portions of the code you're editing using TreeSitter.
-                        use { 'folke/twilight.nvim', requires = 'nvim-treesitter/nvim-treesitter', config = require('plugins._twilight').config }
-
+                        -- use { 'folke/twilight.nvim', requires = 'nvim-treesitter/nvim-treesitter', config = require('plugins._twilight').config }
                         -- Use treesitter to auto close and auto rename html tag
                         use { 'windwp/nvim-ts-autotag', requires = 'nvim-treesitter/nvim-treesitter', config = require('plugins._nvim_ts_autotag').config }
+                        -- Treesitter playground integrated into Neovim
+                        use { 'nvim-treesitter/playground', requires = 'nvim-treesitter/nvim-treesitter' }
 
                 -- C/C++
                     -- Alternate Files quickly (.c --> .h etc) 

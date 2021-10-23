@@ -19,7 +19,9 @@ function M.config()
                 "function",
                 "method",
                 "table",
-                "if_statement",
+                -- "if_statement",
+                "method_definition",
+                "function_item",
             },
             exclude = {}, -- exclude these filetypes
         }
