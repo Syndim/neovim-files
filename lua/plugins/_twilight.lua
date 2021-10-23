@@ -1,5 +1,7 @@
 local M = {}
 
+local cmd = vim.cmd
+
 function M.config() 
     require("twilight").setup {
         {
@@ -14,14 +16,15 @@ function M.config()
             -- treesitter is used to automatically expand the visible text,
             -- but you can further control the types of nodes that should always be fully expanded
             expand = { -- for treesitter, we we always try to expand to the top-most ancestor with these types
-            "function",
-            "method",
-            "table",
-            "if_statement",
-        },
-        exclude = {}, -- exclude these filetypes
+                "function",
+                "method",
+                "table",
+                "if_statement",
+            },
+            exclude = {}, -- exclude these filetypes
+        }
     }
-}
 end
 
+cmd('autocmd BufEnter * TwilightEnable')
 return M

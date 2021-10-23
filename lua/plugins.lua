@@ -37,9 +37,6 @@ return require('packer').startup(
                 -- Find, Filter, Preview, Pick. All lua, all the time.
                 -- use { 'nvim-telescope/telescope.nvim', requires = {{'nvim-lua/popup.nvim'}, {'nvim-lua/plenary.nvim'}}, config = require('plugins._telescope').config }
 
-                -- 🧘 Distraction-free coding for Neovim
-                use { "folke/zen-mode.nvim", config = require('plugins._zenmode').config }
-
                 -- A file explorer tree for neovim written in lua
                 use { 'kyazdani42/nvim-tree.lua', requires = 'kyazdani42/nvim-web-devicons', config = require('plugins._nvimtree').config }
 
