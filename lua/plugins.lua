@@ -34,8 +34,17 @@ return require('packer').startup(
                 use { 'hoob3rt/lualine.nvim', requires = { 'kyazdani42/nvim-web-devicons', opt = true }, config = require('plugins._lualine').config }
 
             -- Editor functionality
-                -- Find, Filter, Preview, Pick. All lua, all the time.
-                -- use { 'nvim-telescope/telescope.nvim', requires = {{'nvim-lua/popup.nvim'}, {'nvim-lua/plenary.nvim'}}, config = require('plugins._telescope').config }
+                -- A small automated session manager for Neovim
+                use { 'rmagatti/auto-session', config = require('plugins._auto_session').config }
+                
+                -- Peek lines just when you intend
+                use { 'nacro90/numb.nvim', config = require('plugins._numb').config }
+
+                -- Auto-Focusing and Auto-Resizing Splits/Windows for Neovim written in Lua. A full suite of window management enhancements. Vim splits on steroids!
+                -- use { "beauwilliams/focus.nvim", config = function() require("focus").setup() end }
+
+                -- Easily jump between NeoVim windows.
+                use { 'https://gitlab.com/yorickpeterse/nvim-window.git', config = require('plugins._nvim_window').config }
 
                 -- A file explorer tree for neovim written in lua
                 use { 'kyazdani42/nvim-tree.lua', requires = 'kyazdani42/nvim-web-devicons', config = require('plugins._nvimtree').config }
