@@ -37,8 +37,8 @@ return require('packer').startup(
                 -- Find, Filter, Preview, Pick. All lua, all the time.
                 -- use { 'nvim-telescope/telescope.nvim', requires = {{'nvim-lua/popup.nvim'}, {'nvim-lua/plenary.nvim'}}, config = require('plugins._telescope').config }
 
-                -- A tree explorer plugin for vim.
-                -- use { 'preservim/nerdtree', requires = 'ryanoasis/vim-devicons' }
+                -- 🧘 Distraction-free coding for Neovim
+                use { "folke/zen-mode.nvim", config = require('plugins._zenmode').config }
 
                 -- A file explorer tree for neovim written in lua
                 use { 'kyazdani42/nvim-tree.lua', requires = 'kyazdani42/nvim-web-devicons', config = require('plugins._nvimtree').config }
@@ -94,13 +94,10 @@ return require('packer').startup(
 
                     -- Nvim Treesitter configurations and abstraction layer 
                     use {'nvim-treesitter/nvim-treesitter', run = ':TSUpdate', config = require('plugins._treesitter').config }
-
                         -- 🌈 Rainbow parentheses for neovim using tree-sitter 🌈
                         use { 'p00f/nvim-ts-rainbow', requires = 'nvim-treesitter/nvim-treesitter' }
-
                         -- Show code context
                         use { 'romgrk/nvim-treesitter-context', requires = 'nvim-treesitter/nvim-treesitter', config = require('plugins._treesitter_context').config }
-
                         -- 🌅 Twilight is a Lua plugin for Neovim 0.5 that dims inactive portions of the code you're editing using TreeSitter.
                         use { 'folke/twilight.nvim', requires = 'nvim-treesitter/nvim-treesitter', config = require('plugins._twilight').config }
 
