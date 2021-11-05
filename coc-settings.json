@@ -12,8 +12,9 @@
         "cpp",
         "c"
     ],
+    "signature.target": "float",
+    "hover.target": "float",
     "suggest.echodocSupport": true,
-    "python.jediEnabled": false,
     "rust-analyzer.server.path": "rust-analyzer",
     "codeLens.enable": true,
     "solargraph.hover": true,
