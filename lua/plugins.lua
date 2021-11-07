@@ -11,6 +11,13 @@ end
 -- Only required if you have packer configured as `opt`
 -- vim.cmd [[packadd packer.nvim]]
 
+vim.cmd([[
+  augroup packer_user_config
+    autocmd!
+    autocmd BufWritePost plugins.lua source <afile> | PackerCompile
+  augroup end
+]])
+
 return require('packer').startup(
     {
         function(use)
@@ -44,7 +51,7 @@ return require('packer').startup(
                 -- use { "beauwilliams/focus.nvim", config = function() require("focus").setup() end }
 
                 -- Easily jump between NeoVim windows.
-                use { 'https://gitlab.com/yorickpeterse/nvim-window.git', config = require('plugins._nvim_window').config }
+                use { 'https://gitlab.com/yorickpeterse/nvim-window.git', as = "nvim-window", config = require('plugins._nvim_window').config }
 
                 -- A file explorer tree for neovim written in lua
                 use { 'kyazdani42/nvim-tree.lua', requires = 'kyazdani42/nvim-web-devicons', config = require('plugins._nvimtree').config }
@@ -165,10 +172,17 @@ return require('packer').startup(
                 -- Markdown
                     -- Markdown Vim Mode 
                     use 'plasticboy/vim-markdown'
+
+              if packer_bootstrap then
+                require('packer').sync()
+              end
         end,
         config = {
             display = {
                 open_fn = require('packer.util').float
+            },
+            log = {
+                level = 'info'
             }
         }
     }
