@@ -87,6 +87,9 @@ return require('packer').startup(
                     -- A solid language pack for Vim.
                     -- use 'sheerun/vim-polyglot'
 
+                    -- Check syntax in Vim asynchronously and fix files, with Language Server Protocol (LSP) support 
+                    use 'dense-analysis/ale'
+
                     -- Vim plugin, insert or delete brackets, parens, quotes in pair 
                     use 'jiangmiao/auto-pairs'
 

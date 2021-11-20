@@ -3,7 +3,7 @@ local cmd = vim.cmd
 local fn = vim.fn
 
 g.coc_global_extensions = {
-    'coc-omnisharp',
+    -- 'coc-omnisharp',
     'coc-snippets',
     'coc-rust-analyzer',
     'coc-tsserver',
