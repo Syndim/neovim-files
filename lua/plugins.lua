@@ -184,6 +184,10 @@ return require('packer').startup(
             display = {
                 open_fn = require('packer.util').float
             },
+            git = {
+                clone_timeout = 600,
+                default_url_format = 'https://ghproxy.com/https://github.com/%s'
+            },
             log = {
                 level = 'info'
             }
