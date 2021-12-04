@@ -132,7 +132,7 @@ return require('packer').startup(
                     use 'vim-jp/vim-cpp'
 
                 -- C#
-                    use { 'OmniSharp/omnisharp-vim', run = ':OmniSharpInstall' }
+                    use { 'OmniSharp/omnisharp-vim', run = ':OmniSharpInstall', rtp = '' }
 
                 -- Rust
                     -- Vim configuration for Rust. 

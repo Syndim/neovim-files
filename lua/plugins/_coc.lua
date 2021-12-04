@@ -2,6 +2,8 @@ local g = vim.g
 local cmd = vim.cmd
 local fn = vim.fn
 
+-- g.coc_node_args = {'--nolazy', '--inspect=6045'}
+
 g.coc_global_extensions = {
     -- 'coc-omnisharp',
     'coc-snippets',

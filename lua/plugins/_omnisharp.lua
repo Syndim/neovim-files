@@ -4,6 +4,7 @@ local fn = vim.fn
 
 g.OmniSharp_selector_ui = 'fzf'
 g.OmniSharp_selector_findusages = 'fzf'
+g.OmniSharp_highlighting = 0
 
 function _G.format_callback()
     cmd('noautocmd write')
