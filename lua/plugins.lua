@@ -103,7 +103,7 @@ return require('packer').startup(
                     use 'preservim/tagbar'
 
                     -- vim-snipmate default snippets (Previously snipmate-snippets) 
-                    use 'honza/vim-snippets'
+                    use { 'honza/vim-snippets', rtp = '' }
 
                     -- Vim plugin, provides insert mode auto-completion for quotes, parens, brackets, etc. 
                     use 'Raimondi/delimitMate'
