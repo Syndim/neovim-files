@@ -76,6 +76,7 @@ return require('packer').startup(
 
                 -- A command-line fuzzy finder
                 use { 'junegunn/fzf', run = function() vim.fn['fzf#install']() end }
+
                 -- fzf ❤️ vim
                 use 'junegunn/fzf.vim'
 
