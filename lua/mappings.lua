@@ -9,7 +9,7 @@ cmd('noremap <C-i> :bp<CR>')
 cmd('noremap <C-o> :bn<CR>')
 
 -- Close buffer
-cmd('noremap <Leader>c :bd<CR>')
+cmd('noremap <Leader>c :Bdelete<CR>')
 
 -- Vmap for maintain Visual Mode after shifting > and <   
 cmd('vmap < <gv')

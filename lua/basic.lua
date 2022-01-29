@@ -50,5 +50,5 @@ o.guifont = 'FiraCode NF:h14'
 
 g.mapleader = ','
 
-o.signcolumn = 'number'
-wo.signcolumn = 'number'
+-- o.signcolumn = 'number'
+-- wo.signcolumn = 'number'

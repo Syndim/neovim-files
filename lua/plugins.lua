@@ -66,7 +66,10 @@ return require('packer').startup(
                 -- use 'romainl/vim-cool'
 
                 -- A Vim plugin which shows git diff markers in the sign column and stages/previews/undoes hunks and partial hunks. 
-                use 'airblade/vim-gitgutter'
+                -- use 'airblade/vim-gitgutter'
+
+                -- Git integration for buffers
+                use { 'lewis6991/gitsigns.nvim', requires = { 'nvim-lua/plenary.nvim' }, tag = 'release', config = require('plugins._gitsigns').config }
 
                 -- Hlsearch Lens for Neovim
                 use { 'kevinhwang91/nvim-hlslens', config = require('plugins._nvim_hlslens').config }
@@ -80,8 +83,14 @@ return require('packer').startup(
                 -- fzf ❤️ vim
                 use 'junegunn/fzf.vim'
 
+                -- Perform search in files easily
+                use 'eugen0329/vim-esearch'
+
                 -- 🔥 No-nonsense floating terminal written in lua 🔥
                 use { "akinsho/nvim-toggleterm.lua", config = require('plugins._toggleterm').config }
+
+                -- Delete Neovim buffers without losing window layout
+                use 'famiu/bufdelete.nvim'
 
             -- Language support
                 -- Generic
