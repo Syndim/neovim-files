@@ -1,5 +1,4 @@
 {
-    "coc.preferences.colorSupport": true,
     "coc.preferences.formatOnSaveFiletypes": [
         "javascript",
         "typescript",
@@ -10,13 +9,14 @@
         "rust",
         "ruby",
         "cpp",
-        "c"
+        "c",
+        "dart"
     ],
     "signature.target": "float",
     "hover.target": "float",
     "suggest.echodocSupport": true,
     "rust-analyzer.server.path": "rust-analyzer",
-    "codeLens.enable": true,
+    "codeLens.enable": false,
     "solargraph.hover": true,
     "solargraph.diagnostics": true,
     "solargraph.formatting": true,
