@@ -19,4 +19,5 @@ local esarch_config = {
 
 g.esearch = esarch_config
 
-cmd('nmap <Leader>ff <plug>(operator-esearch-prefill)')
+cmd('nmap <Leader>fp <plug>(operator-esearch-prefill)')
+cmd('nmap <Leader>ff <plug>(esearch)')
