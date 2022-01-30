@@ -21,6 +21,7 @@ function M.config()
             "cpp",
             "c_sharp",
             "css",
+            "dart",
             "java",
             "javascript",
             "json",
