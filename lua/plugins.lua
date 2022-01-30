@@ -186,6 +186,9 @@ return require('packer').startup(
                     -- Markdown Vim Mode 
                     use 'plasticboy/vim-markdown'
 
+                    -- Syntax highlighting for Dart in Vim
+                    use 'dart-lang/dart-vim-plugin'
+
               if packer_bootstrap then
                 require('packer').sync()
               end
