@@ -1,3 +1,5 @@
+local global = require('global')
+
 local o = vim.o
 local wo = vim.wo
 local g = vim.g
@@ -49,6 +51,12 @@ o.termguicolors = true
 o.guifont = 'FiraCode NF:h14'
 
 g.mapleader = ','
+
+if global.is_windows then
+    o.shell = "cmd.exe"
+elseif global.is_linux or global.is_mac then
+    o.shell = "zsh"
+end
 
 -- o.signcolumn = 'number'
 -- wo.signcolumn = 'number'
