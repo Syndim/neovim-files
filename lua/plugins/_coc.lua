@@ -24,7 +24,8 @@ g.coc_global_extensions = {
     'coc-xml',
     'coc-cmake',
     'coc-lua',
-    'coc-flutter-tools'
+    -- 'coc-flutter-tools'
+    'coc-flutter'
 }
 
 -- Remap keys for gotos
