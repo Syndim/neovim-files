@@ -1,6 +1,6 @@
 local M = {}
 
-vim.o.sessionoptions='blank,buffers,curdir,folds,help,options,tabpages,winsize,winpos,terminal'
+vim.o.sessionoptions='blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal'
 
 function M.config()
     require('auto-session').setup({

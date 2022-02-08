@@ -23,5 +23,6 @@
     "solargraph.useBundler": false,
     "yaml.format.enable": true,
     "prettier.tabWidth": 4,
-    "prettier.singleQuote": true
+    "prettier.singleQuote": true,
+    "flutter.provider.enableSnippet": true
 }
