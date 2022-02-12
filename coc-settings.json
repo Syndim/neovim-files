@@ -24,5 +24,8 @@
     "yaml.format.enable": true,
     "prettier.tabWidth": 4,
     "prettier.singleQuote": true,
-    "flutter.provider.enableSnippet": true
+    "flutter.trace.server": "message",
+    "flutter.provider.enableSnippet": true,
+    "flutter.openDevLogSplitCommand": "botright 10split",
+    "flutter.lsp.initialization.suggestFromUnimportedLibraries": false
 }
