@@ -183,6 +183,7 @@ return require('packer').startup(
                     -- Markdown Vim Mode 
                     use 'plasticboy/vim-markdown'
 
+                -- Dart
                     -- Syntax highlighting for Dart in Vim
                     use 'dart-lang/dart-vim-plugin'
 
