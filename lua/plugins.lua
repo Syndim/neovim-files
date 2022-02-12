@@ -31,18 +31,18 @@ return require('packer').startup(
                 use 'svermeulen/vimpeccable'
 
             -- Editor interface
-                -- Clean, vibrant and pleasing color schemes for Vim, Sublime Text, iTerm, gnome-terminal and more. 
-                use { 'sonph/onehalf', rtp = 'vim', config = require('plugins._color').config, event = 'VimEnter' }
-
                 -- A snazzy bufferline for Neovim
                 use { 'akinsho/nvim-bufferline.lua', requires = 'kyazdani42/nvim-web-devicons', config = require('plugins._bufferline').config }
 
                 -- A blazing fast and easy to configure neovim statusline written in pure lua.
                 use { 'hoob3rt/lualine.nvim', requires = { 'kyazdani42/nvim-web-devicons', opt = true }, config = require('plugins._lualine').config }
 
+                -- Clean, vibrant and pleasing color schemes for Vim, Sublime Text, iTerm, gnome-terminal and more. 
+                use { 'sonph/onehalf', rtp = 'vim', config = require('plugins._color').config }
+
             -- Editor functionality
                 -- A small automated session manager for Neovim
-                use { 'rmagatti/auto-session', config = require('plugins._auto_session').config }
+                -- use { 'rmagatti/auto-session', config = require('plugins._auto_session').config }
                 
                 -- Peek lines just when you intend
                 use { 'nacro90/numb.nvim', config = require('plugins._numb').config }
