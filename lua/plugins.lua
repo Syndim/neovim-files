@@ -83,9 +83,6 @@ return require('packer').startup(
                 -- fzf ❤️ vim
                 use 'junegunn/fzf.vim'
 
-                -- Perform search in files easily
-                use 'eugen0329/vim-esearch'
-
                 -- 🔥 No-nonsense floating terminal written in lua 🔥
                 use { "akinsho/nvim-toggleterm.lua", config = require('plugins._toggleterm').config }
 
