@@ -32,7 +32,7 @@ return require('packer').startup(
 
             -- Editor interface
                 -- Clean, vibrant and pleasing color schemes for Vim, Sublime Text, iTerm, gnome-terminal and more. 
-                use { 'sonph/onehalf', rtp = 'vim', config = require('plugins._color').config }
+                use { 'sonph/onehalf', rtp = 'vim', config = require('plugins._color').config, event = 'VimEnter' }
 
                 -- A snazzy bufferline for Neovim
                 use { 'akinsho/nvim-bufferline.lua', requires = 'kyazdani42/nvim-web-devicons', config = require('plugins._bufferline').config }
