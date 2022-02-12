@@ -22,7 +22,6 @@ return require('packer').startup(
     {
         function(use)
             -- Package menagement
-
                 -- Packer can manage itself as an optional plugin
                 use 'wbthomason/packer.nvim'
 
@@ -42,7 +41,7 @@ return require('packer').startup(
 
             -- Editor functionality
                 -- A small automated session manager for Neovim
-                -- use { 'rmagatti/auto-session', config = require('plugins._auto_session').config }
+                use { 'rmagatti/auto-session', config = require('plugins._auto_session').config }
                 
                 -- Peek lines just when you intend
                 use { 'nacro90/numb.nvim', config = require('plugins._numb').config }
