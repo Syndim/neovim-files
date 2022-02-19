@@ -17,8 +17,8 @@ function M.config()
                 },
                 lualine_c = {
                     { 'filename', path = 1, file_status = true },
-                    { 'diagnostics', sources = { 'coc' } },
-                    { 'g:coc_status' }
+                    "require'lsp-status'.status()"
+                    -- { 'diagnostics', sources = { 'nvim_lsp' } },
                 },
                 lualine_x = { { 'filetype', colored = true }, 'encoding', 'fileformat' },
                 lualine_y = { 'progress' },

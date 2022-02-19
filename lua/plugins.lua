@@ -34,7 +34,7 @@ return require('packer').startup(
                 use { 'akinsho/nvim-bufferline.lua', requires = 'kyazdani42/nvim-web-devicons', config = require('plugins._bufferline').config }
 
                 -- A blazing fast and easy to configure neovim statusline written in pure lua.
-                use { 'hoob3rt/lualine.nvim', requires = { 'kyazdani42/nvim-web-devicons', opt = true }, config = require('plugins._lualine').config }
+                use { 'nvim-lualine/lualine.nvim', requires = { 'kyazdani42/nvim-web-devicons', opt = true }, config = require('plugins._lualine').config }
 
                 -- Clean, vibrant and pleasing color schemes for Vim, Sublime Text, iTerm, gnome-terminal and more. 
                 use { 'sonph/onehalf', rtp = 'vim', config = require('plugins._color').config }
@@ -109,13 +109,10 @@ return require('packer').startup(
                     use 'preservim/tagbar'
 
                     -- vim-snipmate default snippets (Previously snipmate-snippets) 
-                    use { 'honza/vim-snippets', rtp = '' }
+                    -- use { 'honza/vim-snippets', rtp = '' }
 
                     -- Vim plugin, provides insert mode auto-completion for quotes, parens, brackets, etc. 
                     use 'Raimondi/delimitMate'
-
-                    -- Nodejs extension host for vim & neovim, load extensions like VSCode and host language servers.
-                    use { 'neoclide/coc.nvim', branch = 'release' }
 
                     -- Nvim Treesitter configurations and abstraction layer 
                     use {'nvim-treesitter/nvim-treesitter', run = ':TSUpdate', config = require('plugins._treesitter').config }
@@ -130,6 +127,33 @@ return require('packer').startup(
                         -- Treesitter playground integrated into Neovim
                         use { 'nvim-treesitter/playground', requires = 'nvim-treesitter/nvim-treesitter' }
 
+                -- LSP and auto completion
+                    -- Quickstart configurations for the Nvim LSP client
+                    use { 'neovim/nvim-lspconfig', config = require('plugins._lsp').config }
+
+                    -- A completion plugin for neovim coded in Lua.
+                    use 'hrsh7th/nvim-cmp'
+
+                    -- nvim-cmp source for neovim builtin LSP client
+                    use 'hrsh7th/cmp-nvim-lsp'
+
+                    -- nvim-cmp source for path
+                    use 'hrsh7th/cmp-path'
+
+                    -- nvim-cmp source for vim-vsnip
+                    use 'hrsh7th/cmp-vsnip'
+
+                    -- Snippet plugin for vim/nvim that supports LSP/VSCode's snippet format.
+                    use 'hrsh7th/vim-vsnip'
+
+                    -- Set of preconfigured snippets for different languages.
+                    use 'rafamadriz/friendly-snippets'
+
+                    -- Utility functions for getting diagnostic status and progress messages from LSP servers, for use in the Neovim statusline
+                    use 'nvim-lua/lsp-status.nvim'
+
+                    -- Nodejs extension host for vim & neovim, load extensions like VSCode and host language servers.
+                    -- use { 'neoclide/coc.nvim', branch = 'release' }
                 -- C/C++
                     -- Alternate Files quickly (.c --> .h etc) 
                     use 'vim-scripts/a.vim'
@@ -143,6 +167,9 @@ return require('packer').startup(
                 -- Rust
                     -- Vim configuration for Rust. 
                     use 'rust-lang/rust.vim'
+
+                    -- Tools for better development in rust using neovim's builtin lsp
+                    use { 'simrat39/rust-tools.nvim', config = function() require('rust-tools').setup({}) end }
 
                 -- Python
                     --  A vim plugin to display the indention levels with thin vertical lines 
@@ -182,9 +209,12 @@ return require('packer').startup(
                     -- Markdown Vim Mode 
                     use 'plasticboy/vim-markdown'
 
-                -- Dart
+                -- Dart & Flutter
                     -- Syntax highlighting for Dart in Vim
                     use 'dart-lang/dart-vim-plugin'
+
+                    -- Tools to help create flutter apps in neovim using the native lsp
+                    use { 'akinsho/flutter-tools.nvim', requires = 'nvim-lua/plenary.nvim', config = function() require("flutter-tools").setup() end }
 
               if packer_bootstrap then
                 require('packer').sync()
