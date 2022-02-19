@@ -146,6 +146,18 @@ return require('packer').startup(
                     -- Snippet plugin for vim/nvim that supports LSP/VSCode's snippet format.
                     use 'hrsh7th/vim-vsnip'
 
+                    -- nvim-cmp source for buffer words
+                    use 'hrsh7th/cmp-buffer'
+
+                    -- nvim-cmp source for nvim lua
+                    use 'hrsh7th/cmp-nvim-lua'
+
+                    -- nvim-cmp source for vim's cmdline
+                    use 'hrsh7th/cmp-cmdline'
+
+                    -- cmp-nvim-lsp-signature-help
+                    use 'hrsh7th/cmp-nvim-lsp-signature-help'
+
                     -- Set of preconfigured snippets for different languages.
                     use 'rafamadriz/friendly-snippets'
 
@@ -170,6 +182,9 @@ return require('packer').startup(
 
                     -- Tools for better development in rust using neovim's builtin lsp
                     use { 'simrat39/rust-tools.nvim', config = function() require('rust-tools').setup({}) end }
+
+                    -- A neovim plugin that helps managing crates.io dependencies
+                    use { 'saecki/crates.nvim', requires = { 'nvim-lua/plenary.nvim' }, config = function() require('crates').setup() end }
 
                 -- Python
                     --  A vim plugin to display the indention levels with thin vertical lines 

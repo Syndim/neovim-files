@@ -91,10 +91,11 @@ function M.config()
             -- show completion source in menu
             format = function(entry, vim_item)
                 vim_item.menu = ({
-                    buffer = "[buf]",
-                    nvim_lsp = "[LSP]",
-                    nvim_lua = "[Lua]",
-                    path = "[path]",
+                    buffer = '[BUF]',
+                    nvim_lsp = '[LSP]',
+                    path = '[PATH]',
+                    crates = '[CRATES]',
+                    nvim_lua = '[NVIM]'
                 })[entry.source.name]
 
                 return vim_item
@@ -134,8 +135,23 @@ function M.config()
             { name = 'nvim_lsp' },
             { name = 'path' },
             { name = 'vsnip' },
+            { name = "crates" },
+            { name = 'buffer' },
+            { name = 'nvim_lua' },
+            { name = 'nvim_lsp_signature_help' },
         }),
     }
+
+    require('cmp').setup.cmdline('/', {
+        sources = {
+            { name = 'buffer' }
+        }
+    })
+    require('cmp').setup.cmdline(':', {
+        sources = {
+            { name = 'cmdline' }
+        }
+    })
 end
 
 return M
