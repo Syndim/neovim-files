@@ -1,5 +1,41 @@
 local M = {}
 
+servers = {
+    clangd = {},
+    pyright = {
+        install = 'npm install -g pyright'
+    },
+    rust_analyzer = {},
+    tsserver = {
+        install = 'npm install -g typescript typescript-language-server'
+    },
+    dartls = {
+        config = {
+            cmd = { 'dart', 'language-server' }
+        }
+    },
+    solargraph = {
+        install = 'gem install --user-install solargraph'
+    },
+    sumneko_lua = {},
+    html = {
+        install = 'npm i -g vscode-langservers-extracted'
+    }
+}
+
+function execute(table, index)
+    local Terminal  = require('toggleterm.terminal').Terminal
+    local next_index = next(table, index)
+    local cmd = table[next_index].install
+    if cmd then
+        Terminal:new({ cmd = 'echo Installing LSP ' .. next_index .. ' & ' .. cmd, close_on_exit = true, on_close = function() execute(table, next_index) end }):toggle()
+    end
+end
+
+function M.install()
+    execute(servers, nil)
+end
+
 function M.config()
     -- Mappings.
     -- See `:help vim.diagnostic.*` for documentation on any of the below functions
@@ -53,21 +89,11 @@ function M.config()
 
     -- Use a loop to conveniently call 'setup' on multiple servers and
     -- map buffer local keybindings when the language server attaches
-    local servers = {
-        clangd = {},
-        pyright = {},
-        rust_analyzer = {},
-        tsserver = {},
-        dartls = {
-            cmd = { 'dart', 'language-server' } 
-        },
-        solargraph = {},
-        sumneko_lua = {},
-        html = {}
-    }
-
-    for lsp, cfg in pairs(servers) do
-        local config = vim.tbl_extend('force', base_config, cfg)
+    for lsp, server in pairs(servers) do
+        local config = base_config
+        if server.config then
+            config = vim.tbl_extend('force', base_config, server.config)
+        end
         lspconfig[lsp].setup(config)
     end
 
