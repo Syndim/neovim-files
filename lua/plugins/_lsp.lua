@@ -56,25 +56,22 @@ servers = {
 }
 
 function exec_install(table, index)
-    local Terminal   = require('toggleterm.terminal').Terminal
     local next_index = next(table, index)
-    local cmd        = table[next_index].install
+    local cmd = table[next_index].install
     if cmd then
-        Terminal:new({
-            cmd = 'echo Installing LSP ' .. next_index .. ' & ' .. cmd,
-            close_on_exit = true,
-            on_close = function() exec_install(table, next_index) end
-        }):toggle()
+        print('Installing LSP ' .. next_index)
+        local os = require('os')
+        local global = require('global')
+        local suffix = global.is_windows and ' >nul 2>nul' or ' &> /dev/null'
+        os.execute(cmd .. suffix)
+        exec_install(table, next_index)
+    else
+        print('Done')
     end
 end
 
 function M.install()
     exec_install(servers, nil)
-end
-
-function M.packer_install()
-    vim.cmd [[autocmd User PackerCompileDone LSPInstall]]
-    require('packer').compile()
 end
 
 function M.config()

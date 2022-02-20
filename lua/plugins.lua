@@ -114,7 +114,7 @@ return require('packer').startup(
             use { 'neovim/nvim-lspconfig', config = require('plugins._lsp').config }
 
             -- A completion plugin for neovim coded in Lua.
-            use { 'hrsh7th/nvim-cmp', requires = { 'akinsho/toggleterm.nvim' }, run = function() require('plugins._lsp').packer_install() end }
+            use { 'hrsh7th/nvim-cmp', run = function() require('plugins._lsp').install() end }
 
             -- nvim-cmp source for neovim builtin LSP client
             use 'hrsh7th/cmp-nvim-lsp'
