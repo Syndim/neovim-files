@@ -1,5 +1,9 @@
 local cmd = vim.cmd
 
+-- Split
+cmd([[noremap <Leader>h :split<CR>]])
+cmd([[noremap <Leader>v :vsplit<CR>]])
+
 -- Buffer navigation
 cmd([[noremap <C-left> <C-O>]])
 cmd([[noremap <C-right> <C-I>]])
