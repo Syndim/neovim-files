@@ -103,7 +103,11 @@ function M.config()
 
     -- nvim-cmp setup
     local cmp = require('cmp')
+    local global = require('global')
     cmp.setup {
+        view = {
+            entries = global.is_windows and 'native' or 'custom',
+        },
         snippet = {
             expand = function(args)
                 vim.fn["vsnip#anonymous"](args.body)
