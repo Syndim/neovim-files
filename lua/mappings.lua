@@ -11,6 +11,9 @@ cmd('noremap <C-o> :bn<CR>')
 -- Close buffer
 cmd('nnoremap <silent><nowait> <Leader>x :Bdelete<CR>')
 
--- Vmap for maintain Visual Mode after shifting > and <   
+-- Clear CRLF
+cmd('nmap <leader>r :%s/\r//g<CR>')
+
+-- Vmap for maintain Visual Mode after shifting > and <
 cmd('vmap < <gv')
 cmd('vmap > >gv')
