@@ -58,7 +58,7 @@ servers = {
 function exec_install(table, index)
     local next_index = next(table, index)
     local cfg = table[next_index]
-    
+
     if cfg then
         local cmd = cfg.install
         if cmd then
@@ -148,11 +148,11 @@ function M.config()
 
     -- nvim-cmp setup
     local cmp = require('cmp')
-    local global = require('global')
+    -- local global = require('global')
     cmp.setup {
-        view = {
-            entries = global.is_windows and 'native' or 'custom',
-        },
+        -- view = {
+        -- entries = global.is_windows and 'native' or 'custom',
+        -- },
         snippet = {
             expand = function(args)
                 vim.fn["vsnip#anonymous"](args.body)

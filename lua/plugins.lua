@@ -147,17 +147,17 @@ return require('packer').startup(
             use 'nvim-lua/lsp-status.nvim'
 
             -- C/C++
-            -- Alternate Files quickly (.c --> .h etc) 
-            use 'vim-scripts/a.vim'
+            -- Alternate Files quickly (.c --> .h etc)
+            use { 'https://github.com/vim-scripts/a.vim', as = 'a.vim' }
 
-            -- c or cpp syntax files 
+            -- c or cpp syntax files
             use 'vim-jp/vim-cpp'
 
             -- C#
             use { 'OmniSharp/omnisharp-vim', run = ':OmniSharpInstall', rtp = '' }
 
             -- Rust
-            -- Vim configuration for Rust. 
+            -- Vim configuration for Rust.
             use 'rust-lang/rust.vim'
 
             -- Tools for better development in rust using neovim's builtin lsp
@@ -167,41 +167,41 @@ return require('packer').startup(
             use { 'saecki/crates.nvim', requires = { 'nvim-lua/plenary.nvim' }, config = function() require('crates').setup() end }
 
             -- Python
-            --  A vim plugin to display the indention levels with thin vertical lines 
+            --  A vim plugin to display the indention levels with thin vertical lines
             use 'Yggdroot/indentLine'
 
             -- Ruby
-            -- Vim/Ruby Configuration Files 
+            -- Vim/Ruby Configuration Files
             use 'vim-ruby/vim-ruby'
 
-            -- rails.vim: Ruby on Rails power tools 
+            -- rails.vim: Ruby on Rails power tools
             use 'tpope/vim-rails'
 
-            -- rake.vim: it's like rails.vim without the rails 
+            -- rake.vim: it's like rails.vim without the rails
             use 'tpope/vim-rake'
 
             -- Typescript
-            -- Typescript syntax files for Vim 
+            -- Typescript syntax files for Vim
             use 'leafgarland/typescript-vim'
 
-            -- React JSX syntax highlighting for vim and Typescript 
+            -- React JSX syntax highlighting for vim and Typescript
             use 'peitalin/vim-jsx-typescript'
 
             -- HTML/CSS
-            -- Automatically closes HTML tags once you finish typing them. 
-            use 'vim-scripts/HTML-AutoCloseTag'
+            -- Automatically closes HTML tags once you finish typing them.
+            use { 'https://github.com/vim-scripts/HTML-AutoCloseTag', as = 'HTML-AutoCloseTag' }
 
-            -- CSS3 syntax (and syntax defined in some foreign specifications) support for Vim's built-in syntax/css.vim 
+            -- CSS3 syntax (and syntax defined in some foreign specifications) support for Vim's built-in syntax/css.vim
             use 'hail2u/vim-css3-syntax'
 
-            -- emmet for vim: http://emmet.io/ 
+            -- emmet for vim: http://emmet.io/
             use 'mattn/emmet-vim'
 
-            -- extended % matching for HTML, LaTeX, and many other languages 
-            use 'vim-scripts/matchit.zip'
+            -- extended % matching for HTML, LaTeX, and many other languages
+            use { 'https://github.com/vim-scripts/matchit.zip', as = 'matchit.zip' }
 
             -- Markdown
-            -- Markdown Vim Mode 
+            -- Markdown Vim Mode
             use 'plasticboy/vim-markdown'
 
             -- Dart & Flutter
