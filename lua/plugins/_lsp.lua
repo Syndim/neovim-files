@@ -57,14 +57,21 @@ servers = {
 
 function exec_install(table, index)
     local next_index = next(table, index)
-    local cmd = table[next_index].install
-    if cmd then
-        print('Installing LSP ' .. next_index)
-        local os = require('os')
-        local global = require('global')
-        local suffix = global.is_windows and ' >nul 2>nul' or ' &> /dev/null'
-        os.execute(cmd .. suffix)
-        exec_install(table, next_index)
+    local cfg = table[next_index]
+    
+    if cfg then
+        local cmd = cfg.install
+        if cmd then
+            print('Installing LSP ' .. next_index)
+            local os = require('os')
+            local global = require('global')
+            local suffix = global.is_windows and ' >nul 2>nul' or ' &> /dev/null'
+            os.execute(cmd .. suffix)
+            exec_install(table, next_index)
+        else
+            print('Skip install LSP ' .. next_index)
+            exec_install(table, next_index)
+        end
     else
         print('Done')
     end
