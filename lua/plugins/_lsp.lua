@@ -1,5 +1,7 @@
 local M = {}
 
+local global = require('global')
+
 servers = {
     clangd = {},
     pyright = {
@@ -17,7 +19,9 @@ servers = {
     solargraph = {
         install = 'gem install --user-install solargraph'
     },
-    sumneko_lua = {},
+    sumneko_lua = {
+        install = global.is_windows and 'scoop install lua-language-server' or 'brew install lua-language-server'
+    },
     html = {
         install = 'npm i -g vscode-langservers-extracted'
     }
