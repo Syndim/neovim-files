@@ -209,7 +209,7 @@ return require('packer').startup(
             use 'dart-lang/dart-vim-plugin'
 
             -- Tools to help create flutter apps in neovim using the native lsp
-            use { 'akinsho/flutter-tools.nvim', requires = 'nvim-lua/plenary.nvim', config = function() require("flutter-tools").setup() end }
+            use { 'akinsho/flutter-tools.nvim', requires = 'nvim-lua/plenary.nvim', config = require('plugins._flutter').config }
 
             if packer_bootstrap then
                 require('packer').sync()

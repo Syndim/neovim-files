@@ -30,11 +30,12 @@ servers = {
     tsserver = {
         install = npm('typescript typescript-language-server')
     },
-    dartls = {
+    -- No need to setup for dart bucause it's managed by flutter-tools.nvim
+    --[[dartls = {
         config = {
-            cmd = { 'dart', 'language-server' }
+            cmd = { 'dart', 'language-server', '--client-id', 'neovim' }
         }
-    },
+    },]]
     solargraph = {
         install = 'gem install --user-install solargraph'
     },
@@ -77,19 +78,8 @@ function exec_install(table, index)
     end
 end
 
-function M.install()
-    exec_install(servers, nil)
-end
-
-function M.config()
-    -- Mappings.
-    -- See `:help vim.diagnostic.*` for documentation on any of the below functions
+function create_on_attach()
     local opts = { noremap = true, silent = true }
-    vim.api.nvim_set_keymap('n', '<space>e', '<cmd>lua vim.diagnostic.open_float()<CR>', opts)
-    vim.api.nvim_set_keymap('n', '[d', '<cmd>lua vim.diagnostic.goto_prev()<CR>', opts)
-    vim.api.nvim_set_keymap('n', ']d', '<cmd>lua vim.diagnostic.goto_next()<CR>', opts)
-    vim.api.nvim_set_keymap('n', '<space>q', '<cmd>lua vim.diagnostic.setloclist()<CR>', opts)
-
     -- Use an on_attach function to only map the following keys
     -- after the language server attaches to the current buffer
     local on_attach = function(client, bufnr)
@@ -113,15 +103,41 @@ function M.config()
         vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>f', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
     end
 
+    return on_attach
+end
 
+function get_capabilities()
     local lsp_status = require('lsp-status')
     lsp_status.register_progress()
-
     local capabilities = vim.lsp.protocol.make_client_capabilities()
     capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
     capabilities = vim.tbl_extend('keep', capabilities, lsp_status.capabilities)
+    return capabilities
+end
 
-    local lspconfig = require('lspconfig')
+function M.install()
+    exec_install(servers, nil)
+end
+
+function M.create_on_attach()
+    return create_on_attach()
+end
+
+function M.get_capabilities()
+    return get_capabilities()
+end
+
+function M.config()
+    -- Mappings.
+    -- See `:help vim.diagnostic.*` for documentation on any of the below functions
+    local opts = { noremap = true, silent = true }
+    vim.api.nvim_set_keymap('n', '<space>e', '<cmd>lua vim.diagnostic.open_float()<CR>', opts)
+    vim.api.nvim_set_keymap('n', '[d', '<cmd>lua vim.diagnostic.goto_prev()<CR>', opts)
+    vim.api.nvim_set_keymap('n', ']d', '<cmd>lua vim.diagnostic.goto_next()<CR>', opts)
+    vim.api.nvim_set_keymap('n', '<space>q', '<cmd>lua vim.diagnostic.setloclist()<CR>', opts)
+
+    local on_attach = create_on_attach()
+    local capabilities = get_capabilities()
 
     base_config = {
         on_attach = on_attach,
@@ -134,6 +150,7 @@ function M.config()
 
     -- Use a loop to conveniently call 'setup' on multiple servers and
     -- map buffer local keybindings when the language server attaches
+    local lspconfig = require('lspconfig')
     for lsp, server in pairs(servers) do
         local config = base_config
         if server.config then
