@@ -56,11 +56,7 @@ function M.config()
     local servers = {
         clangd = {},
         pyright = {},
-        rust_analyzer = {
-            settings = {
-                ['rust-analyzer.completion.postfix.enable'] = false
-            }
-        },
+        rust_analyzer = {},
         tsserver = {},
         dartls = {
             cmd = { 'dart', 'language-server' } 
@@ -102,8 +98,8 @@ function M.config()
             end,
         },
         mapping = {
-            ['<C-p>'] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Select }),
-            ['<C-n>'] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Select }),
+            ['<C-p>'] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }),
+            ['<C-n>'] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }),
             ['<C-u>'] = cmp.mapping.scroll_docs(-4),
             ['<C-d>'] = cmp.mapping.scroll_docs(4),
             ['<C-Space>'] = cmp.mapping.complete(),
@@ -114,7 +110,7 @@ function M.config()
             },
             ['<Tab>'] = function(fallback)
                 if cmp.visible() then
-                    cmp.select_next_item({ behavior = cmp.SelectBehavior.Select })
+                    cmp.select_next_item({ behavior = cmp.SelectBehavior.Insert })
                 elseif vim.fn["vsnip#available"](1) == 1 then
                     feedkey("<Plug>(vsnip-expand-or-jump)", "")
                 else
@@ -123,7 +119,7 @@ function M.config()
             end,
             ['<S-Tab>'] = function(fallback)
                 if cmp.visible() then
-                    cmp.select_prev_item({ behavior = cmp.SelectBehavior.Select })
+                    cmp.select_prev_item({ behavior = cmp.SelectBehavior.Insert })
                 elseif vim.fn["vsnip#jumpable"](-1) == 1 then
                     feedkey("<Plug>(vsnip-jump-prev)", "")
                 else

@@ -46,9 +46,6 @@ return require('packer').startup(
                 -- Peek lines just when you intend
                 use { 'nacro90/numb.nvim', config = require('plugins._numb').config }
 
-                -- Auto-Focusing and Auto-Resizing Splits/Windows for Neovim written in Lua. A full suite of window management enhancements. Vim splits on steroids!
-                -- use { "beauwilliams/focus.nvim", config = function() require("focus").setup() end }
-
                 -- Easily jump between NeoVim windows.
                 use { 'https://gitlab.com/yorickpeterse/nvim-window.git', as = "nvim-window", config = require('plugins._nvim_window').config }
 
@@ -61,20 +58,11 @@ return require('packer').startup(
                 -- Multiple cursors plugin for vim/neovim
                 use 'mg979/vim-visual-multi'
 
-                -- A very simple plugin that makes hlsearch more useful.
-                -- use 'romainl/vim-cool'
-
-                -- A Vim plugin which shows git diff markers in the sign column and stages/previews/undoes hunks and partial hunks. 
-                -- use 'airblade/vim-gitgutter'
-
                 -- Git integration for buffers
                 use { 'lewis6991/gitsigns.nvim', requires = { 'nvim-lua/plenary.nvim' }, tag = 'release', config = require('plugins._gitsigns').config }
 
                 -- Hlsearch Lens for Neovim
                 use { 'kevinhwang91/nvim-hlslens', config = require('plugins._nvim_hlslens').config }
-
-                -- Helps you win at grep.
-                -- use 'mhinz/vim-grepper'
 
                 -- A command-line fuzzy finder
                 use { 'junegunn/fzf', run = function() vim.fn['fzf#install']() end }
@@ -82,17 +70,14 @@ return require('packer').startup(
                 -- fzf ❤️ vim
                 use 'junegunn/fzf.vim'
 
-                -- 🔥 No-nonsense floating terminal written in lua 🔥
-                use { "akinsho/nvim-toggleterm.lua", config = require('plugins._toggleterm').config }
+                -- A neovim lua plugin to help easily manage multiple terminal windows
+                use { 'akinsho/toggleterm.nvim', config = require('plugins._toggleterm').config }
 
                 -- Delete Neovim buffers without losing window layout
                 use 'famiu/bufdelete.nvim'
 
             -- Language support
                 -- Generic
-                    -- A solid language pack for Vim.
-                    -- use 'sheerun/vim-polyglot'
-
                     -- Check syntax in Vim asynchronously and fix files, with Language Server Protocol (LSP) support 
                     use 'dense-analysis/ale'
 
@@ -107,9 +92,6 @@ return require('packer').startup(
 
                     -- Vim plugin that displays tags in a window, ordered by scope 
                     use 'preservim/tagbar'
-
-                    -- vim-snipmate default snippets (Previously snipmate-snippets) 
-                    -- use { 'honza/vim-snippets', rtp = '' }
 
                     -- Vim plugin, provides insert mode auto-completion for quotes, parens, brackets, etc. 
                     use 'Raimondi/delimitMate'
@@ -132,7 +114,7 @@ return require('packer').startup(
                     use { 'neovim/nvim-lspconfig', config = require('plugins._lsp').config }
 
                     -- A completion plugin for neovim coded in Lua.
-                    use 'hrsh7th/nvim-cmp'
+                    use { 'hrsh7th/nvim-cmp', requires = { 'akinsho/toggleterm.nvim' }, run = function() require('lsp').install() end }
 
                     -- nvim-cmp source for neovim builtin LSP client
                     use 'hrsh7th/cmp-nvim-lsp'
@@ -164,8 +146,6 @@ return require('packer').startup(
                     -- Utility functions for getting diagnostic status and progress messages from LSP servers, for use in the Neovim statusline
                     use 'nvim-lua/lsp-status.nvim'
 
-                    -- Nodejs extension host for vim & neovim, load extensions like VSCode and host language servers.
-                    -- use { 'neoclide/coc.nvim', branch = 'release' }
                 -- C/C++
                     -- Alternate Files quickly (.c --> .h etc) 
                     use 'vim-scripts/a.vim'
