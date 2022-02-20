@@ -1,15 +1,34 @@
 local M = {}
 
-local global = require('global')
+function brew_or_scoop(package_win, package_non_win)
+    local global = require('global')
+    if not package_non_win then
+        package_non_win = package_win
+    end
+
+    if global.is_windows then
+        return 'scoop install ' .. package_win
+    else
+        return 'brew install ' .. package_non_win
+    end
+end
+
+function npm(package)
+    return 'npm install -g ' .. package
+end
 
 servers = {
-    clangd = {},
-    pyright = {
-        install = 'npm install -g pyright'
+    clangd = {
+        install = brew_or_scoop('llvm')
     },
-    rust_analyzer = {},
+    pyright = {
+        install = npm('pyright')
+    },
+    rust_analyzer = {
+        install = brew_or_scoop('rust-analyzer')
+    },
     tsserver = {
-        install = 'npm install -g typescript typescript-language-server'
+        install = npm('typescript typescript-language-server')
     },
     dartls = {
         config = {
@@ -20,30 +39,48 @@ servers = {
         install = 'gem install --user-install solargraph'
     },
     sumneko_lua = {
-        install = global.is_windows and 'scoop install lua-language-server' or 'brew install lua-language-server'
+        install = brew_or_scoop('lua-language-server')
     },
     html = {
-        install = 'npm i -g vscode-langservers-extracted'
+        install = npm('vscode-langservers-extracted')
+    },
+    cssls = {
+        install = npm('vscode-langservers-extracted')
+    },
+    dockerls = {
+        install = npm('dockerfile-language-server-nodejs')
+    },
+    jsonls = {
+        install = npm('vscode-langservers-extracted')
     }
 }
 
-function execute(table, index)
-    local Terminal  = require('toggleterm.terminal').Terminal
+function exec_install(table, index)
+    local Terminal   = require('toggleterm.terminal').Terminal
     local next_index = next(table, index)
-    local cmd = table[next_index].install
+    local cmd        = table[next_index].install
     if cmd then
-        Terminal:new({ cmd = 'echo Installing LSP ' .. next_index .. ' & ' .. cmd, close_on_exit = true, on_close = function() execute(table, next_index) end }):toggle()
+        Terminal:new({
+            cmd = 'echo Installing LSP ' .. next_index .. ' & ' .. cmd,
+            close_on_exit = true,
+            on_close = function() exec_install(table, next_index) end
+        }):toggle()
     end
 end
 
 function M.install()
-    execute(servers, nil)
+    exec_install(servers, nil)
+end
+
+function M.packer_install()
+    vim.cmd [[autocmd User PackerCompileDone LSPInstall]]
+    require('packer').compile()
 end
 
 function M.config()
     -- Mappings.
     -- See `:help vim.diagnostic.*` for documentation on any of the below functions
-    local opts = { noremap=true, silent=true }
+    local opts = { noremap = true, silent = true }
     vim.api.nvim_set_keymap('n', '<space>e', '<cmd>lua vim.diagnostic.open_float()<CR>', opts)
     vim.api.nvim_set_keymap('n', '[d', '<cmd>lua vim.diagnostic.goto_prev()<CR>', opts)
     vim.api.nvim_set_keymap('n', ']d', '<cmd>lua vim.diagnostic.goto_next()<CR>', opts)

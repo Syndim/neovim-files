@@ -1,6 +1,7 @@
 require('basic')
 require('plugins')
 require('mappings')
+require('commands')
 
 -- require('plugins._coc')
 require('plugins._nvimtree')
