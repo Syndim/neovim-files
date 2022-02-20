@@ -4,6 +4,11 @@ local M = {}
 function M.config()
     local lsp = require('plugins._lsp')
     require("flutter-tools").setup({
+        ui = {
+            -- the border type to use for all floating windows, the same options/formats
+            -- used for ":h nvim_open_win" e.g. "single" | "shadow" | {<table-of-eight-chars>}
+            border = 'single',
+        },
         decorations = {
             statusline = {
                 -- set to true to be able use the 'flutter_tools_decorations.app_version' in your statusline

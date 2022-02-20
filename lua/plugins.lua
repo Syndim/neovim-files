@@ -111,10 +111,13 @@ return require('packer').startup(
 
             -- LSP and auto completion
             -- Quickstart configurations for the Nvim LSP client
-            use { 'neovim/nvim-lspconfig', config = require('plugins._lsp').config }
+            use 'neovim/nvim-lspconfig'
+
+            -- Neovim plugin that allows you to seamlessly manage LSP servers with :LspInstall. With full Windows support!
+            use { 'williamboman/nvim-lsp-installer', config = require('plugins._lsp_installer').config }
 
             -- A completion plugin for neovim coded in Lua.
-            use { 'hrsh7th/nvim-cmp', run = function() require('plugins._lsp').install() end }
+            use { 'hrsh7th/nvim-cmp', config = require('plugins._cmp').config }
 
             -- nvim-cmp source for neovim builtin LSP client
             use 'hrsh7th/cmp-nvim-lsp'
@@ -161,7 +164,7 @@ return require('packer').startup(
             use 'rust-lang/rust.vim'
 
             -- Tools for better development in rust using neovim's builtin lsp
-            use { 'simrat39/rust-tools.nvim', config = function() require('rust-tools').setup({}) end }
+            use { 'simrat39/rust-tools.nvim', config = require('plugins._rust').config }
 
             -- A neovim plugin that helps managing crates.io dependencies
             use { 'saecki/crates.nvim', requires = { 'nvim-lua/plenary.nvim' }, config = function() require('crates').setup() end }

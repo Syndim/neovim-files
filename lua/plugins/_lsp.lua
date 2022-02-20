@@ -1,88 +1,11 @@
 local M = {}
 
-function brew_or_scoop(package_win, package_non_win)
-    local global = require('global')
-    if not package_non_win then
-        package_non_win = package_win
-    end
-
-    if global.is_windows then
-        return 'scoop install ' .. package_win
-    else
-        return 'brew install ' .. package_non_win
-    end
-end
-
-function npm(package)
-    return 'npm install -g ' .. package
-end
-
-servers = {
-    clangd = {
-        install = brew_or_scoop('llvm')
-    },
-    pyright = {
-        install = npm('pyright')
-    },
-    rust_analyzer = {
-        install = brew_or_scoop('rust-analyzer')
-    },
-    tsserver = {
-        install = npm('typescript typescript-language-server')
-    },
-    -- No need to setup for dart bucause it's managed by flutter-tools.nvim
-    --[[dartls = {
-        config = {
-            cmd = { 'dart', 'language-server', '--client-id', 'neovim' }
-        }
-    },]]
-    solargraph = {
-        install = 'gem install --user-install solargraph'
-    },
-    sumneko_lua = {
-        install = brew_or_scoop('lua-language-server')
-    },
-    html = {
-        install = npm('vscode-langservers-extracted')
-    },
-    cssls = {
-        install = npm('vscode-langservers-extracted')
-    },
-    dockerls = {
-        install = npm('dockerfile-language-server-nodejs')
-    },
-    jsonls = {
-        install = npm('vscode-langservers-extracted')
-    }
-}
-
-function exec_install(table, index)
-    local next_index = next(table, index)
-    local cfg = table[next_index]
-
-    if cfg then
-        local cmd = cfg.install
-        if cmd then
-            print('Installing LSP ' .. next_index)
-            local os = require('os')
-            local global = require('global')
-            local suffix = global.is_windows and ' >nul 2>nul' or ' &> /dev/null'
-            os.execute(cmd .. suffix)
-            exec_install(table, next_index)
-        else
-            print('Skip install LSP ' .. next_index)
-            exec_install(table, next_index)
-        end
-    else
-        print('Done')
-    end
-end
-
 function create_on_attach()
-    local opts = { noremap = true, silent = true }
     -- Use an on_attach function to only map the following keys
     -- after the language server attaches to the current buffer
     local on_attach = function(client, bufnr)
+        local opts = { noremap = true, silent = true }
+        print('LSP ' .. client.name .. ' attached, setting up key bindings')
         -- Enable completion triggered by <c-x><c-o>
         -- vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
 
@@ -115,10 +38,6 @@ function get_capabilities()
     return capabilities
 end
 
-function M.install()
-    exec_install(servers, nil)
-end
-
 function M.create_on_attach()
     return create_on_attach()
 end
@@ -127,7 +46,7 @@ function M.get_capabilities()
     return get_capabilities()
 end
 
-function M.config()
+function M.create_config()
     -- Mappings.
     -- See `:help vim.diagnostic.*` for documentation on any of the below functions
     local opts = { noremap = true, silent = true }
@@ -139,7 +58,7 @@ function M.config()
     local on_attach = create_on_attach()
     local capabilities = get_capabilities()
 
-    base_config = {
+    local config = {
         on_attach = on_attach,
         capabilities = capabilities,
         flags = {
@@ -148,98 +67,7 @@ function M.config()
         }
     }
 
-    -- Use a loop to conveniently call 'setup' on multiple servers and
-    -- map buffer local keybindings when the language server attaches
-    local lspconfig = require('lspconfig')
-    for lsp, server in pairs(servers) do
-        local config = base_config
-        if server.config then
-            config = vim.tbl_extend('force', base_config, server.config)
-        end
-        lspconfig[lsp].setup(config)
-    end
-
-    local feedkey = function(key, mode)
-        vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes(key, true, true, true), mode, true)
-    end
-
-    -- nvim-cmp setup
-    local cmp = require('cmp')
-    -- local global = require('global')
-    cmp.setup {
-        -- view = {
-        -- entries = global.is_windows and 'native' or 'custom',
-        -- },
-        snippet = {
-            expand = function(args)
-                vim.fn["vsnip#anonymous"](args.body)
-            end,
-        },
-        formatting = {
-            -- show completion source in menu
-            format = function(entry, vim_item)
-                vim_item.menu = ({
-                    buffer = '[BUF]',
-                    nvim_lsp = '[LSP]',
-                    path = '[PATH]',
-                    crates = '[CRATES]',
-                    nvim_lua = '[NVIM]'
-                })[entry.source.name]
-
-                return vim_item
-            end,
-        },
-        mapping = {
-            ['<C-p>'] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }),
-            ['<C-n>'] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }),
-            ['<C-u>'] = cmp.mapping.scroll_docs(-4),
-            ['<C-d>'] = cmp.mapping.scroll_docs(4),
-            ['<C-Space>'] = cmp.mapping.complete(),
-            ['<C-e>'] = cmp.mapping.close(),
-            ['<CR>'] = cmp.mapping.confirm {
-                behavior = cmp.ConfirmBehavior.Replace,
-                select = true,
-            },
-            ['<Tab>'] = function(fallback)
-                if cmp.visible() then
-                    cmp.select_next_item({ behavior = cmp.SelectBehavior.Insert })
-                elseif vim.fn["vsnip#available"](1) == 1 then
-                    feedkey("<Plug>(vsnip-expand-or-jump)", "")
-                else
-                    fallback()
-                end
-            end,
-            ['<S-Tab>'] = function(fallback)
-                if cmp.visible() then
-                    cmp.select_prev_item({ behavior = cmp.SelectBehavior.Insert })
-                elseif vim.fn["vsnip#jumpable"](-1) == 1 then
-                    feedkey("<Plug>(vsnip-jump-prev)", "")
-                else
-                    fallback()
-                end
-            end,
-        },
-        sources = cmp.config.sources({
-            { name = 'nvim_lsp' },
-            { name = 'path' },
-            { name = 'vsnip' },
-            { name = "crates" },
-            { name = 'buffer' },
-            { name = 'nvim_lua' },
-            { name = 'nvim_lsp_signature_help' },
-        }),
-    }
-
-    require('cmp').setup.cmdline('/', {
-        sources = {
-            { name = 'buffer' }
-        }
-    })
-    require('cmp').setup.cmdline(':', {
-        sources = {
-            { name = 'cmdline' }
-        }
-    })
+    return config
 end
 
 return M
