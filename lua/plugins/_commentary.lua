@@ -1,3 +1,7 @@
-local cmd = vim.cmd
+local M = {}
 
-cmd('map <C-h> gcc')
+function M.setup()
+    vim.cmd('map <C-h> gcc')
+end
+
+return M

@@ -1,3 +1,7 @@
-local g = vim.g
+local M = {}
 
-g.dart_style_guide = 2
+function M.setup()
+    vim.g.dart_style_guide = 2
+end
+
+return M

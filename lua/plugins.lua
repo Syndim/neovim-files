@@ -50,7 +50,8 @@ return require('packer').startup(
             use { 'https://gitlab.com/yorickpeterse/nvim-window.git', as = "nvim-window", config = require('plugins._nvim_window').config }
 
             -- A file explorer tree for neovim written in lua
-            use { 'kyazdani42/nvim-tree.lua', requires = 'kyazdani42/nvim-web-devicons', config = require('plugins._nvimtree').config }
+            local nvim_tree_config = require('plugins._nvimtree')
+            use { 'kyazdani42/nvim-tree.lua', requires = 'kyazdani42/nvim-web-devicons', setup = nvim_tree_config.setup, config = nvim_tree_config.config }
 
             -- Vim motions on speed!
             use 'easymotion/vim-easymotion'
@@ -64,11 +65,8 @@ return require('packer').startup(
             -- Hlsearch Lens for Neovim
             use { 'kevinhwang91/nvim-hlslens', config = require('plugins._nvim_hlslens').config }
 
-            -- A command-line fuzzy finder
-            use { 'junegunn/fzf', run = function() vim.fn['fzf#install']() end }
-
-            -- fzf ❤️ vim
-            use 'junegunn/fzf.vim'
+            -- Find, Filter, Preview, Pick. All lua, all the time.
+            use { 'nvim-telescope/telescope.nvim', config = require('plugins._telescope').config }
 
             -- A neovim lua plugin to help easily manage multiple terminal windows
             use { 'akinsho/toggleterm.nvim', config = require('plugins._toggleterm').config }
@@ -79,7 +77,7 @@ return require('packer').startup(
             -- Language support
             -- Generic
             -- Check syntax in Vim asynchronously and fix files, with Language Server Protocol (LSP) support 
-            use 'dense-analysis/ale'
+            use { 'dense-analysis/ale', setup = require('plugins._ale').setup }
 
             -- Vim plugin, insert or delete brackets, parens, quotes in pair 
             use 'jiangmiao/auto-pairs'
@@ -87,11 +85,11 @@ return require('packer').startup(
             -- endwise.vim: wisely add "end" in ruby, endfunction/endif/more in vim script, etc 
             use 'tpope/vim-endwise'
 
-            -- commentary.vim: comment stuff out 
-            use 'tpope/vim-commentary'
+            -- commentary.vim: comment stuff out
+            use { 'tpope/vim-commentary', setup = require('plugins._commentary').setup }
 
             -- Vim plugin that displays tags in a window, ordered by scope 
-            use 'preservim/tagbar'
+            use { 'preservim/tagbar', setup = require('plugins._tagbar').setup }
 
             -- Vim plugin, provides insert mode auto-completion for quotes, parens, brackets, etc. 
             use 'Raimondi/delimitMate'
@@ -157,7 +155,7 @@ return require('packer').startup(
             use { 'p00f/clangd_extensions.nvim', config = require('plugins._clangd').config }
 
             -- C#
-            use { 'OmniSharp/omnisharp-vim', run = ':OmniSharpInstall', rtp = '' }
+            use { 'OmniSharp/omnisharp-vim', run = ':OmniSharpInstall', rtp = '', setup = require('plugins._omnisharp').setup }
 
             -- Rust
             -- Vim configuration for Rust.
@@ -209,7 +207,7 @@ return require('packer').startup(
 
             -- Dart & Flutter
             -- Syntax highlighting for Dart in Vim
-            use 'dart-lang/dart-vim-plugin'
+            use { 'dart-lang/dart-vim-plugin', setup = require('plugins._dart').setup }
 
             -- Tools to help create flutter apps in neovim using the native lsp
             use { 'akinsho/flutter-tools.nvim', requires = 'nvim-lua/plenary.nvim', config = require('plugins._flutter').config }
