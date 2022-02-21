@@ -1,5 +1,13 @@
 local M = {}
 
+function setup_custom_server(ext_name, server, config)
+    require(ext_name).setup({
+        server = vim.tbl_deep_extend("force", server:get_default_options(), config)
+    })
+    server:attach_buffers()
+
+end
+
 function M.config()
     local lsp_installer = require('nvim-lsp-installer')
     local lsp = require('plugins._lsp')
@@ -32,10 +40,9 @@ function M.config()
         local config = lsp.create_config()
 
         if server.name == 'rust_analyzer' then
-            require("rust-tools").setup({
-                server = vim.tbl_deep_extend("force", server:get_default_options(), config)
-            })
-            server:attach_buffers()
+            setup_custom_server('rust-tools', server, config)
+        elseif server.name == 'clangd' then
+            setup_custom_server('clangd_extensions', server, config)
         elseif server.name == 'dartls' then
             -- Do nothing
         else

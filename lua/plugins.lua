@@ -150,11 +150,11 @@ return require('packer').startup(
             use 'nvim-lua/lsp-status.nvim'
 
             -- C/C++
-            -- Alternate Files quickly (.c --> .h etc)
-            use { 'https://github.com/vim-scripts/a.vim', as = 'a.vim' }
-
             -- c or cpp syntax files
             use 'vim-jp/vim-cpp'
+
+            -- Clangd's off-spec features for neovim's LSP client
+            use { 'p00f/clangd_extensions.nvim', config = require('plugins._clangd').config }
 
             -- C#
             use { 'OmniSharp/omnisharp-vim', run = ':OmniSharpInstall', rtp = '' }
