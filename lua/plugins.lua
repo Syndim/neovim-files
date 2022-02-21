@@ -164,7 +164,7 @@ return require('packer').startup(
             use 'rust-lang/rust.vim'
 
             -- Tools for better development in rust using neovim's builtin lsp
-            use { 'simrat39/rust-tools.nvim', config = require('plugins._rust').config }
+            use 'simrat39/rust-tools.nvim'
 
             -- A neovim plugin that helps managing crates.io dependencies
             use { 'saecki/crates.nvim', requires = { 'nvim-lua/plenary.nvim' }, config = function() require('crates').setup() end }
