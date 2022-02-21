@@ -68,6 +68,9 @@ return require('packer').startup(
             -- Find, Filter, Preview, Pick. All lua, all the time.
             use { 'nvim-telescope/telescope.nvim', config = require('plugins._telescope').config }
 
+            --  FZY style sorter that is compiled
+            use { 'nvim-telescope/telescope-fzy-native.nvim', requires = 'nvim-telescope/telescope.nvim', config = require('plugins._telescope_fzy_native').config }
+
             -- A neovim lua plugin to help easily manage multiple terminal windows
             use { 'akinsho/toggleterm.nvim', config = require('plugins._toggleterm').config }
 
@@ -76,25 +79,25 @@ return require('packer').startup(
 
             -- Language support
             -- Generic
-            -- Check syntax in Vim asynchronously and fix files, with Language Server Protocol (LSP) support 
+            -- Check syntax in Vim asynchronously and fix files, with Language Server Protocol (LSP) support
             use { 'dense-analysis/ale', setup = require('plugins._ale').setup }
 
-            -- Vim plugin, insert or delete brackets, parens, quotes in pair 
+            -- Vim plugin, insert or delete brackets, parens, quotes in pair
             use 'jiangmiao/auto-pairs'
 
-            -- endwise.vim: wisely add "end" in ruby, endfunction/endif/more in vim script, etc 
+            -- endwise.vim: wisely add "end" in ruby, endfunction/endif/more in vim script, etc
             use 'tpope/vim-endwise'
 
             -- commentary.vim: comment stuff out
             use { 'tpope/vim-commentary', setup = require('plugins._commentary').setup }
 
-            -- Vim plugin that displays tags in a window, ordered by scope 
+            -- Vim plugin that displays tags in a window, ordered by scope
             use { 'preservim/tagbar', setup = require('plugins._tagbar').setup }
 
-            -- Vim plugin, provides insert mode auto-completion for quotes, parens, brackets, etc. 
+            -- Vim plugin, provides insert mode auto-completion for quotes, parens, brackets, etc.
             use 'Raimondi/delimitMate'
 
-            -- Nvim Treesitter configurations and abstraction layer 
+            -- Nvim Treesitter configurations and abstraction layer
             use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate', config = require('plugins._treesitter').config }
             -- 🌈 Rainbow parentheses for neovim using tree-sitter 🌈
             use { 'p00f/nvim-ts-rainbow', requires = 'nvim-treesitter/nvim-treesitter' }
