@@ -3,6 +3,13 @@ local M = {}
 -- Remember to put flutter's bin folder to PATH
 function M.config()
     local lsp = require('plugins._lsp')
+
+    function on_attach(client, bufnr)
+        lsp.create_on_attach()(client, bufnr)
+        local opts = { noremap = true, silent = true }
+        vim.api.nvim_buf_set_keymap(bufnr, 'n', '<Leader>cm', '<cmd>Telescope flutter commands<CR>', opts)
+    end
+
     require("flutter-tools").setup({
         ui = {
             -- the border type to use for all floating windows, the same options/formats
@@ -21,10 +28,12 @@ function M.config()
             }
         },
         lsp = {
-            on_attach = lsp.create_on_attach(),
+            on_attach = on_attach,
             capabilities = lsp.get_capabilities()
         }
     })
+
+    require("telescope").load_extension("flutter")
 end
 
 return M
