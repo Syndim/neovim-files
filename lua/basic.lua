@@ -59,5 +59,6 @@ elseif global.is_linux or global.is_mac then
 end
 
 o.ffs = 'unix,dos,mac'
+
 -- o.signcolumn = 'number'
 -- wo.signcolumn = 'number'

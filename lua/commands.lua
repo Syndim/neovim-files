@@ -1,1 +1,7 @@
-vim.cmd [[autocmd BufWritePre * lua vim.lsp.buf.formatting_sync()]]
+function _G.format_on_save()
+    if vim.g.format_on_save_enabled then
+        vim.lsp.buf.formatting_sync()
+    end
+end
+
+vim.cmd [[autocmd BufWritePre * lua format_on_save()]]
