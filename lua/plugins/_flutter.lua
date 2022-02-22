@@ -7,7 +7,7 @@ function M.config()
     function on_attach(client, bufnr)
         lsp.create_on_attach()(client, bufnr)
         local opts = { noremap = true, silent = true }
-        vim.api.nvim_buf_set_keymap(bufnr, 'n', '<Leader>cm', '<cmd>Telescope flutter commands<CR>', opts)
+        vim.api.nvim_buf_set_keymap(bufnr, 'n', '<Leader>cl', '<cmd>Telescope flutter commands<CR>', opts)
     end
 
     require("flutter-tools").setup({
