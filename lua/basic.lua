@@ -58,7 +58,7 @@ elseif global.is_linux or global.is_mac then
     o.shell = "zsh"
 end
 
-o.ffs = 'unix,dos,mac'
+-- o.ffs = 'unix,dos,mac'
 
 -- o.signcolumn = 'number'
 -- wo.signcolumn = 'number'
