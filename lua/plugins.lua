@@ -31,7 +31,7 @@ return require('packer').startup(
 
             -- Editor interface
             -- A snazzy bufferline for Neovim
-            use { 'akinsho/nvim-bufferline.lua', requires = 'kyazdani42/nvim-web-devicons', config = require('plugins._bufferline').config }
+            use { 'akinsho/bufferline.nvim', requires = 'kyazdani42/nvim-web-devicons', config = require('plugins._bufferline').config }
 
             -- A blazing fast and easy to configure neovim statusline written in pure lua.
             use { 'nvim-lualine/lualine.nvim', requires = { 'kyazdani42/nvim-web-devicons', opt = true }, config = require('plugins._lualine').config }
