@@ -48,7 +48,7 @@ o.termguicolors = true
 -- o.hidden = true
 
 -- Fonts
-o.guifont = 'FiraCode NF:h14'
+o.guifont = 'FiraCode Nerd Font Mono:h18'
 
 g.mapleader = ','
 
