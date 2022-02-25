@@ -42,6 +42,26 @@ function M.config()
             setup_custom_server('rust-tools', server, config)
         elseif server.name == 'clangd' then
             setup_custom_server('clangd_extensions', server, config)
+        elseif server.name == 'sumneko_lua' then
+            local lua_config = vim.tbl_deep_extend('force', config, {
+                settings = {
+                    Lua = {
+                        diagnostics = {
+                            globals = {'vim', 'hs', 'spoon'},
+                        },
+                        workspace = {
+                            library = {
+                                os.getenv('HOME') .. '/.hammerspoon/Spoons/EmmyLua.spoon/annotations',
+                                vim.api.nvim_get_runtime_file("", true),
+                            }
+                        },
+                        telemetry = {
+                            enable = false,
+                        },
+                    }
+                }
+            })
+            server:setup(lua_config)
         elseif server.name == 'dartls' then
             -- Do nothing
         else
