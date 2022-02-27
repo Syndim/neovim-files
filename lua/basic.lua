@@ -48,7 +48,11 @@ o.termguicolors = true
 -- o.hidden = true
 
 -- Fonts
-o.guifont = 'FiraCode Nerd Font Mono:h18'
+if global.is_windows then
+    o.guifont = 'FiraCode NF:h14'
+else
+    o.guifont = 'FiraCode Nerd Font Mono:h18'
+end
 
 g.mapleader = ','
 
