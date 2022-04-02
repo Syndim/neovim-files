@@ -27,6 +27,7 @@ function M.config()
             "json",
             "kotlin",
             "lua",
+            "nu",
             "python",
             "regex",
             "ruby",
