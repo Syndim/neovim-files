@@ -194,7 +194,7 @@ return require('packer').startup(
 
             -- HTML/CSS
             -- Automatically closes HTML tags once you finish typing them.
-            use { 'https://github.com/vim-scripts/HTML-AutoCloseTag', as = 'HTML-AutoCloseTag' }
+            use { 'vim-scripts/HTML-AutoCloseTag', as = 'HTML-AutoCloseTag' }
 
             -- CSS3 syntax (and syntax defined in some foreign specifications) support for Vim's built-in syntax/css.vim
             use 'hail2u/vim-css3-syntax'
@@ -203,7 +203,7 @@ return require('packer').startup(
             use 'mattn/emmet-vim'
 
             -- extended % matching for HTML, LaTeX, and many other languages
-            use { 'https://github.com/vim-scripts/matchit.zip', as = 'matchit.zip' }
+            use { 'vim-scripts/matchit.zip', as = 'matchit.zip' }
 
             -- Markdown
             -- Markdown Vim Mode
@@ -216,6 +216,9 @@ return require('packer').startup(
             -- Tools to help create flutter apps in neovim using the native lsp
             use { 'akinsho/flutter-tools.nvim', requires = { 'nvim-lua/plenary.nvim', 'nvim-telescope/telescope.nvim' }, config = require('plugins._flutter').config }
 
+            -- nu-shell
+            use { 'LhKipp/nvim-nu', requires = { 'jose-elias-alvarez/null-ls.nvim' }, config = require('plugins._nvim_nu').config }
+
             if packer_bootstrap then
                 require('packer').sync()
             end
@@ -226,7 +229,6 @@ return require('packer').startup(
             },
             git = {
                 clone_timeout = 600,
-                default_url_format = 'https://ghproxy.com/https://github.com/%s'
             },
             log = {
                 level = 'info'
