@@ -4,7 +4,7 @@ local fn = vim.fn
 local install_path = fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim'
 
 if fn.empty(fn.glob(install_path)) > 0 then
-    execute('!git clone --depth=1 https://ghproxy.com/https://github.com/wbthomason/packer.nvim ' .. install_path)
+    execute('!git clone --depth=1 https://github.com/wbthomason/packer.nvim ' .. install_path)
     execute 'packadd packer.nvim'
 end
 
@@ -64,6 +64,9 @@ return require('packer').startup(
 
             -- Hlsearch Lens for Neovim
             use { 'kevinhwang91/nvim-hlslens', config = require('plugins._nvim_hlslens').config }
+
+            -- A command-line fuzzy finder
+            use { 'junegunn/fzf', run = function() vim.fn['fzf#install']() end, require = { 'junegunn/fzf' } }
 
             -- Find, Filter, Preview, Pick. All lua, all the time.
             use { 'nvim-telescope/telescope.nvim', config = require('plugins._telescope').config }
@@ -194,7 +197,7 @@ return require('packer').startup(
 
             -- HTML/CSS
             -- Automatically closes HTML tags once you finish typing them.
-            use { 'vim-scripts/HTML-AutoCloseTag', as = 'HTML-AutoCloseTag' }
+            use 'vim-scripts/HTML-AutoCloseTag'
 
             -- CSS3 syntax (and syntax defined in some foreign specifications) support for Vim's built-in syntax/css.vim
             use 'hail2u/vim-css3-syntax'
@@ -203,7 +206,7 @@ return require('packer').startup(
             use 'mattn/emmet-vim'
 
             -- extended % matching for HTML, LaTeX, and many other languages
-            use { 'vim-scripts/matchit.zip', as = 'matchit.zip' }
+            use 'vim-scripts/matchit.zip'
 
             -- Markdown
             -- Markdown Vim Mode
