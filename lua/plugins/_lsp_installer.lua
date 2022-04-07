@@ -23,7 +23,8 @@ function M.config()
         'pyright',
         'solargraph',
         'rust_analyzer',
-        'taplo'
+        'taplo',
+        'omnisharp'
     }
 
     for _, name in pairs(servers) do

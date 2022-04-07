@@ -83,7 +83,7 @@ return require('packer').startup(
             -- Language support
             -- Generic
             -- Check syntax in Vim asynchronously and fix files, with Language Server Protocol (LSP) support
-            use { 'dense-analysis/ale', setup = require('plugins._ale').setup }
+            -- use { 'dense-analysis/ale', setup = require('plugins._ale').setup }
 
             -- Vim plugin, insert or delete brackets, parens, quotes in pair
             use 'jiangmiao/auto-pairs'
@@ -162,7 +162,7 @@ return require('packer').startup(
             use { 'p00f/clangd_extensions.nvim', config = require('plugins._clangd').config }
 
             -- C#
-            use { 'OmniSharp/omnisharp-vim', run = ':OmniSharpInstall', rtp = '', setup = require('plugins._omnisharp').setup }
+            -- use { 'OmniSharp/omnisharp-vim', run = ':OmniSharpInstall', rtp = '', setup = require('plugins._omnisharp').setup }
 
             -- Rust
             -- Vim configuration for Rust.
