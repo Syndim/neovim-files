@@ -65,9 +65,6 @@ return require('packer').startup(
             -- Hlsearch Lens for Neovim
             use { 'kevinhwang91/nvim-hlslens', config = require('plugins._nvim_hlslens').config }
 
-            -- A command-line fuzzy finder
-            use { 'junegunn/fzf', run = function() vim.fn['fzf#install']() end, require = { 'junegunn/fzf' } }
-
             -- Find, Filter, Preview, Pick. All lua, all the time.
             use { 'nvim-telescope/telescope.nvim', config = require('plugins._telescope').config }
 
@@ -82,9 +79,6 @@ return require('packer').startup(
 
             -- Language support
             -- Generic
-            -- Check syntax in Vim asynchronously and fix files, with Language Server Protocol (LSP) support
-            -- use { 'dense-analysis/ale', setup = require('plugins._ale').setup }
-
             -- Vim plugin, insert or delete brackets, parens, quotes in pair
             use 'jiangmiao/auto-pairs'
 
@@ -160,9 +154,6 @@ return require('packer').startup(
 
             -- Clangd's off-spec features for neovim's LSP client
             use { 'p00f/clangd_extensions.nvim', config = require('plugins._clangd').config }
-
-            -- C#
-            -- use { 'OmniSharp/omnisharp-vim', run = ':OmniSharpInstall', rtp = '', setup = require('plugins._omnisharp').setup }
 
             -- Rust
             -- Vim configuration for Rust.
