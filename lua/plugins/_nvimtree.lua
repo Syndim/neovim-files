@@ -1,9 +1,14 @@
 local M = {}
 
 function M.setup()
-    vim.cmd('nnoremap <F3> :NvimTreeToggle<CR>')
-    vim.cmd('nnoremap <F2> :NvimTreeFindFile<CR>')
-    vim.cmd('nnoremap <F5> :NvimTreeRefresh<CR>')
+    local api = vim.api
+    local opts = {
+        noremap = true
+    }
+
+    api.nvim_set_keymap('n', '<F3>', ':NvimTreeToggle<CR>', opts)
+    api.nvim_set_keymap('n', '<F2>', ':NvimTreeFindFile<CR>', opts)
+    api.nvim_set_keymap('n', '<F5>', ':NvimTreeRefresh<CR>', opts)
 end
 
 function M.config()
@@ -22,7 +27,7 @@ function M.config()
         open_on_tab         = false,
         -- hijack the cursor in the tree to put it at the start of the filename
         hijack_cursor       = false,
-        -- updates the root directory of the tree on `DirChanged` (when your run `:cd` usually) 
+        -- updates the root directory of the tree on `DirChanged` (when your run `:cd` usually)
         update_cwd          = false,
         -- update the focused file on `BufEnter`, un-collapses the folders recursively until it finds the file
         update_focused_file = {

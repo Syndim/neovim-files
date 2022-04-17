@@ -19,11 +19,15 @@ function M.config()
         }
     })
 
-    local cmd = vim.cmd
-    cmd('nnoremap <C-p> <cmd>Telescope find_files<cr>')
-    cmd('nnoremap <leader>fg <cmd>Telescope live_grep<cr>')
-    cmd('nnoremap <leader>fb <cmd>Telescope buffers<cr>')
-    cmd('nnoremap <leader>fh <cmd>Telescope help_tags<cr>')
+    local api = vim.api
+    local opts = {
+        noremap = true
+    }
+
+    api.nvim_set_keymap('n', '<C-p>', '<cmd>Telescope find_files<cr>', opts)
+    api.nvim_set_keymap('n', '<Leader>fg', '<cmd>Telescope live_grep<cr>', opts)
+    api.nvim_set_keymap('n', '<Leader>fb', '<cmd>Telescope buffers<cr>', opts)
+    api.nvim_set_keymap('n', '<Leader>fh', '<cmd>Telescope help_tags<cr>', opts)
 end
 
 return M
