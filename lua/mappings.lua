@@ -1,38 +1,45 @@
-local cmd = vim.cmd
+local api = vim.api
+
+local opts = {
+    noremap = true
+}
 
 -- Split
-cmd([[noremap <Leader>h :split<CR>]])
-cmd([[noremap <Leader>v :vsplit<CR>]])
+api.nvim_set_keymap('n', '<Leader>h', ':split<CR>', opts)
+api.nvim_set_keymap('n', '<Leader>h', ':split<CR>', opts)
+api.nvim_set_keymap('n', '<Leader>v', ':vsplit<CR>', opts)
 
 -- Buffer navigation
-cmd([[noremap <C-left> <C-O>]])
-cmd([[noremap <C-right> <C-I>]])
-cmd([[noremap <Leader>b <C-O>]])
-cmd([[noremap <Leader>n <C-I>]])
-cmd([[noremap <C-i> :bp<CR>]])
-cmd([[noremap <C-o> :bn<CR>]])
+api.nvim_set_keymap('n', '<C-left>', '<C-O>', opts)
+api.nvim_set_keymap('n', '<C-right>', '<C-I>', opts)
+api.nvim_set_keymap('n', '<Leader>b', '<C-O>', opts)
+api.nvim_set_keymap('n', '<Leader>n', '<C-I>', opts)
+-- Neovim 0.7 separates tab and c-i so we need to map both
+api.nvim_set_keymap('n', '<Tab>', ':bp<CR>', opts)
+api.nvim_set_keymap('n', '<C-I>', ':bp<CR>', opts)
+api.nvim_set_keymap('n', '<C-O>', ':bn<CR>', opts)
 
 -- Close buffer
-cmd([[nnoremap <silent><nowait> <Leader>x :Bdelete<CR>]])
+api.nvim_set_keymap('n', '<Leader>x', ':Bdelete<CR>', { noremap = true, silent = true, nowait = true })
 
 -- Clear CRLF
-cmd([[nmap <leader>r :%s/\r//g<CR>]])
+api.nvim_set_keymap('n', '<Leader>r', ':%s/\\r//g<CR>', {})
 
 -- Copy/Paste/Cut
-cmd([[noremap YY "+y<CR>]])
-cmd([[noremap P "+gP<CR>]])
-cmd([[noremap XX "+x<CR>]])
+api.nvim_set_keymap('n', 'YY', '"+y<CR>', opts)
+api.nvim_set_keymap('n', 'P', '"+gP<CR>', opts)
+api.nvim_set_keymap('n', 'XX', '"+x<CR>', opts)
 
 -- Vmap for maintain Visual Mode after shifting > and <
-cmd([[vmap < <gv]])
-cmd([[vmap > >gv]])
+api.nvim_set_keymap('v', '<', '<gv', {})
+api.nvim_set_keymap('v', '>', '>gv', {})
 
 -- use alt+hjkl to move between split/vsplit panels
-cmd([[tnoremap <A-h> <C-\><C-n><C-w>h]])
-cmd([[tnoremap <A-j> <C-\><C-n><C-w>j]])
-cmd([[tnoremap <A-k> <C-\><C-n><C-w>k]])
-cmd([[tnoremap <A-l> <C-\><C-n><C-w>l]])
-cmd([[nnoremap <A-h> <C-w>h]])
-cmd([[nnoremap <A-j> <C-w>j]])
-cmd([[nnoremap <A-k> <C-w>k]])
-cmd([[nnoremap <A-l> <C-w>l]])
+api.nvim_set_keymap('t', '<A-h>', '<C-\\><C-n><C-w>h', opts)
+api.nvim_set_keymap('t', '<A-j>', '<C-\\><C-n><C-w>j', opts)
+api.nvim_set_keymap('t', '<A-k>', '<C-\\><C-n><C-w>k', opts)
+api.nvim_set_keymap('t', '<A-l>', '<C-\\><C-n><C-w>l', opts)
+api.nvim_set_keymap('n', '<A-h>', '<C-w>h', opts)
+api.nvim_set_keymap('n', '<A-j>', '<C-w>j', opts)
+api.nvim_set_keymap('n', '<A-k>', '<C-w>k', opts)
+api.nvim_set_keymap('n', '<A-l>', '<C-w>l', opts)

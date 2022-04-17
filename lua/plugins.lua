@@ -19,7 +19,7 @@ vim.cmd([[
 ]])
 
 return require('packer').startup(
-{
+    {
         function(use)
             -- Package menagement
             -- Packer can manage itself as an optional plugin
@@ -30,13 +30,16 @@ return require('packer').startup(
             use 'svermeulen/vimpeccable'
 
             -- Editor interface
+            -- 💥 Create key bindings that stick. WhichKey is a lua plugin for Neovim 0.5 that displays a popup with possible keybindings of the command you started typing.
+            use { 'folke/which-key.nvim', config = require('plugins._which_key').config }
+
             -- A snazzy bufferline for Neovim
             use { 'akinsho/bufferline.nvim', requires = 'kyazdani42/nvim-web-devicons', config = require('plugins._bufferline').config }
 
             -- A blazing fast and easy to configure neovim statusline written in pure lua.
             use { 'nvim-lualine/lualine.nvim', requires = { 'kyazdani42/nvim-web-devicons', opt = true }, config = require('plugins._lualine').config }
 
-            -- Clean, vibrant and pleasing color schemes for Vim, Sublime Text, iTerm, gnome-terminal and more. 
+            -- Clean, vibrant and pleasing color schemes for Vim, Sublime Text, iTerm, gnome-terminal and more.
             use { 'sonph/onehalf', rtp = 'vim', config = require('plugins._color').config }
 
             -- Editor functionality
@@ -228,5 +231,5 @@ return require('packer').startup(
                 level = 'info'
             }
         }
-}
+    }
 )
