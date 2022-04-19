@@ -143,7 +143,9 @@ return require('packer').startup(
             use 'hrsh7th/cmp-cmdline'
 
             -- cmp-nvim-lsp-signature-help
-            use 'hrsh7th/cmp-nvim-lsp-signature-help'
+            -- use 'hrsh7th/cmp-nvim-lsp-signature-help'
+            -- LSP signature hint as you type
+            use { 'ray-x/lsp_signature.nvim', config = require('plugins._lsp_signature').config }
 
             -- Set of preconfigured snippets for different languages.
             use 'rafamadriz/friendly-snippets'

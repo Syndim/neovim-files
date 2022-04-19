@@ -68,7 +68,7 @@ function M.config()
             { name = "crates" },
             { name = 'buffer' },
             { name = 'nvim_lua' },
-            { name = 'nvim_lsp_signature_help' },
+            -- { name = 'nvim_lsp_signature_help' },
         }),
     }
 
