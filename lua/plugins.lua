@@ -19,7 +19,7 @@ vim.cmd([[
 ]])
 
 return require('packer').startup(
-    {
+{
         function(use)
             -- Package menagement
             -- Packer can manage itself as an optional plugin
@@ -233,5 +233,5 @@ return require('packer').startup(
                 level = 'info'
             }
         }
-    }
+}
 )
