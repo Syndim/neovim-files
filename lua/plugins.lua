@@ -19,7 +19,7 @@ vim.cmd([[
 ]])
 
 return require('packer').startup(
-{
+    {
         function(use)
             -- Package menagement
             -- Packer can manage itself as an optional plugin
@@ -50,7 +50,7 @@ return require('packer').startup(
             use { 'nacro90/numb.nvim', config = require('plugins._numb').config }
 
             -- Easily jump between NeoVim windows.
-            use { 'https://gitlab.com/yorickpeterse/nvim-window.git', as = "nvim-window", config = require('plugins._nvim_window').config }
+            use { 'https://gitlab.com/yorickpeterse/nvim-window.git', as = 'nvim-window', config = require('plugins._nvim_window').config }
 
             -- A file explorer tree for neovim written in lua
             local nvim_tree_config = require('plugins._nvimtree')
@@ -79,6 +79,9 @@ return require('packer').startup(
 
             -- Delete Neovim buffers without losing window layout
             use 'famiu/bufdelete.nvim'
+
+            --  surround.vim: Delete/change/add parentheses/quotes/XML-tags/much more with ease
+            use 'tpope/vim-surround'
 
             -- Language support
             -- Generic
@@ -142,10 +145,25 @@ return require('packer').startup(
             -- nvim-cmp source for vim's cmdline
             use 'hrsh7th/cmp-cmdline'
 
+            -- nvim-cmp source for textDocument/documentSymbol via nvim-lsp
+            use 'hrsh7th/cmp-nvim-lsp-document-symbol'
+
             -- cmp-nvim-lsp-signature-help
-            -- use 'hrsh7th/cmp-nvim-lsp-signature-help'
+            use 'hrsh7th/cmp-nvim-lsp-signature-help'
             -- LSP signature hint as you type
-            use { 'ray-x/lsp_signature.nvim', config = require('plugins._lsp_signature').config }
+            -- use { 'ray-x/lsp_signature.nvim', config = require('plugins._lsp_signature').config }
+
+            -- ripgrep source for nvim-cmp
+            use 'lukas-reineke/cmp-rg'
+
+            --  An additional source for nvim-cmp to autocomplete packages and its versions
+            use { 'David-Kunz/cmp-npm', config = function() require('cmp-npm').setup({}) end }
+
+            --  tags sources for nvim-cmp
+            use 'quangnguyen30192/cmp-nvim-tags'
+
+            --  cmp source for treesitter
+            use 'ray-x/cmp-treesitter'
 
             -- Set of preconfigured snippets for different languages.
             use 'rafamadriz/friendly-snippets'
@@ -233,5 +251,5 @@ return require('packer').startup(
                 level = 'info'
             }
         }
-}
+    }
 )

@@ -68,13 +68,18 @@ function M.config()
             { name = "crates" },
             { name = 'buffer' },
             { name = 'nvim_lua' },
-            -- { name = 'nvim_lsp_signature_help' },
+            { name = 'nvim_lsp_signature_help' },
+            { name = 'rg' },
+            { name = 'npm' },
+            { name = 'tags' },
+            { name = 'treesitter' }
         }),
     }
 
     cmp.setup.cmdline('/', {
         sources = {
-            { name = 'buffer' }
+            { name = 'buffer' },
+            { name = 'nvim_lsp_document_symbol' }
         },
         mapping = cmp.mapping.preset.cmdline({})
     })
