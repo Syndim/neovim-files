@@ -204,7 +204,7 @@ return require('packer').startup(
 
             -- Just
             --  Treesitter grammar for Justfiles (casey/just)
-            use { 'IndianBoy42/tree-sitter-just', config = function() require('tree-sitter-just').setup({}) end }
+            use { 'IndianBoy42/tree-sitter-just', requires = { 'nvim-treesitter/nvim-treesitter' }, config = require('plugins._just').config }
 
             -- Typescript
             -- Typescript syntax files for Vim
@@ -238,7 +238,7 @@ return require('packer').startup(
             use { 'akinsho/flutter-tools.nvim', requires = { 'nvim-lua/plenary.nvim', 'nvim-telescope/telescope.nvim' }, config = require('plugins._flutter').config }
 
             -- nu-shell
-            use { 'LhKipp/nvim-nu', requires = { 'jose-elias-alvarez/null-ls.nvim' }, config = require('plugins._nvim_nu').config }
+            use { 'LhKipp/nvim-nu', requires = { 'jose-elias-alvarez/null-ls.nvim', 'nvim-treesitter/nvim-treesitter' }, config = require('plugins._nvim_nu').config }
 
             if packer_bootstrap then
                 require('packer').sync()
