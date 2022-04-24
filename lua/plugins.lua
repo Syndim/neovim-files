@@ -202,6 +202,10 @@ return require('packer').startup(
             -- rake.vim: it's like rails.vim without the rails
             use 'tpope/vim-rake'
 
+            -- Just
+            --  Treesitter grammar for Justfiles (casey/just)
+            use { 'IndianBoy42/tree-sitter-just', config = function() require('tree-sitter-just').setup({}) end }
+
             -- Typescript
             -- Typescript syntax files for Vim
             use 'leafgarland/typescript-vim'

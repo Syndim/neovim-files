@@ -36,6 +36,8 @@ function M.config()
             "tsx",
             "typescript",
             "yaml",
+            "just",
+            "nu"
         },
         incremental_selection = {
             enable = true,
