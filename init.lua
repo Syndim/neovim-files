@@ -1,6 +1,7 @@
 require('features')
 require('local_rc')
 require('basic')
+require('file_types')
 require('plugins')
 require('mappings')
 require('commands')
