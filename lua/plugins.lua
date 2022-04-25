@@ -190,7 +190,7 @@ return require('packer').startup(
 
             -- Python
             --  A vim plugin to display the indention levels with thin vertical lines
-            use 'Yggdroot/indentLine'
+            use { 'Yggdroot/indentLine', setup = require('plugins._indent_line').setup }
 
             -- Ruby
             -- Vim/Ruby Configuration Files

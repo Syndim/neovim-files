@@ -2,7 +2,7 @@ local M = {}
 
 function setup_custom_server(ext_name, server, config)
     require(ext_name).setup({
-        server = vim.tbl_deep_extend("force", server:get_default_options(), config)
+        server = vim.tbl_deep_extend('force', server:get_default_options(), config)
     })
     server:attach_buffers()
 end
@@ -30,7 +30,7 @@ function M.config()
     for _, name in pairs(servers) do
         local server_is_found, server = lsp_installer.get_server(name)
         if server_is_found and not server:is_installed() then
-            print("Installing " .. name)
+            print('Installing ' .. name)
             server:install()
         end
     end
@@ -48,12 +48,12 @@ function M.config()
                 settings = {
                     Lua = {
                         diagnostics = {
-                            globals = {'vim', 'hs', 'spoon'},
+                            globals = { 'vim', 'hs', 'spoon' },
                         },
                         workspace = {
                             library = {
                                 os.getenv('HOME') .. '/.hammerspoon/Spoons/EmmyLua.spoon/annotations',
-                                vim.api.nvim_get_runtime_file("", true),
+                                vim.api.nvim_get_runtime_file('', true),
                             }
                         },
                         telemetry = {

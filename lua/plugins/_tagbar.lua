@@ -1,7 +1,7 @@
 local M = {}
 
 function M.setup()
-    vim.cmd('nmap <silent> <F4> :TagbarToggle<CR>')
+    vim.api.nvim_set_keymap('n', '<F4>', ':TagbarToggle<CR>', { silent = true })
 end
 
 return M

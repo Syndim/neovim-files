@@ -18,37 +18,37 @@ function M.config()
             -- termcolors = {} -- table of colour name strings
         },
         ensure_installed = {
-            "cpp",
-            "c_sharp",
-            "css",
-            "dart",
-            "java",
-            "javascript",
-            "json",
-            "kotlin",
-            "lua",
-            "python",
-            "regex",
-            "ruby",
-            "rust",
-            "scss",
-            "toml",
-            "tsx",
-            "typescript",
-            "yaml",
+            'cpp',
+            'c_sharp',
+            'css',
+            'dart',
+            'java',
+            'javascript',
+            'json',
+            'kotlin',
+            'lua',
+            'python',
+            'regex',
+            'ruby',
+            'rust',
+            'scss',
+            'toml',
+            'tsx',
+            'typescript',
+            'yaml',
         },
         incremental_selection = {
             enable = true,
             keymaps = {
-                init_selection = "gnn",
-                node_incremental = "grn",
-                scope_incremental = "grc",
-                node_decremental = "grm",
+                init_selection = 'gnn',
+                node_incremental = 'grn',
+                scope_incremental = 'grc',
+                node_decremental = 'grm',
             },
         },
     }
 
-    local ft_to_parser = require "nvim-treesitter.parsers".filetype_to_parsername
+    local ft_to_parser = require 'nvim-treesitter.parsers'.filetype_to_parsername
     ft_to_parser.javascript = 'tsx'
     ft_to_parser['typescript.tsx'] = 'tsx'
 end
