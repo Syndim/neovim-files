@@ -29,7 +29,10 @@ function M.config()
         },
         lsp = {
             on_attach = on_attach,
-            capabilities = lsp.get_capabilities()
+            capabilities = lsp.get_capabilities(),
+            handlers = {
+                ["$/progress"] = function() end
+            }
         }
     })
 

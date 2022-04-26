@@ -1,6 +1,6 @@
 local M = {}
 
-function setup_custom_server(ext_name, server, config)
+local function setup_custom_server(ext_name, server, config)
     require(ext_name).setup({
         server = vim.tbl_deep_extend('force', server:get_default_options(), config)
     })
