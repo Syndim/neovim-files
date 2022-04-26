@@ -4,5 +4,5 @@ end
 
 local global = require('global')
 if global.is_wsl then
-    o.guifont = 'FiraCode NF:h14'
+    vim.o.guifont = 'FiraCode NF:h14'
 end
