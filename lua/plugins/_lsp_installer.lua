@@ -1,13 +1,13 @@
 local M = {}
 
-local function setup_custom_server(ext_name, server, config)
-    require(ext_name).setup({
-        server = vim.tbl_deep_extend('force', server:get_default_options(), config)
-    })
-    server:attach_buffers()
-end
-
 function M.config()
+    local function setup_custom_server(ext_name, server, config)
+        require(ext_name).setup({
+            server = vim.tbl_deep_extend('force', server:get_default_options(), config)
+        })
+        server:attach_buffers()
+    end
+
     local lsp_installer = require('nvim-lsp-installer')
     local lsp = require('plugins._lsp')
     local servers = {
