@@ -1,7 +1,8 @@
 local M = {}
 
 function M.config()
-    require("toggleterm").setup{
+    local global = require('global')
+    require('toggleterm').setup {
         size = 14,
         open_mapping = [[<F12>]],
         hide_numbers = true, -- hide the number column in toggleterm buffers
@@ -11,6 +12,7 @@ function M.config()
         start_in_insert = true,
         persist_size = true,
         direction = 'horizontal',
+        shell = global.is_windows and vim.o.shell or 'zsh'
     }
 end
 
