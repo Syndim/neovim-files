@@ -68,5 +68,8 @@ else
     o.ffs = 'unix,dos,mac'
 end
 
+g.do_filetype_lua = 1
+g.did_load_filetypes = 0
+
 -- o.signcolumn = 'number'
 -- wo.signcolumn = 'number'
