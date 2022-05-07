@@ -43,8 +43,7 @@ return require('packer').startup(
             use { 'sonph/onehalf', rtp = 'vim', config = require('plugins._color').config }
 
             -- Editor functionality
-            -- A small automated session manager for Neovim
-            use { 'rmagatti/auto-session', config = require('plugins._auto_session').config }
+            use { 'Shatur/neovim-session-manager', requires = 'nvim-lua/plenary.nvim', config = require('plugins._nvim_session_manager').config }
 
             -- Peek lines just when you intend
             use { 'nacro90/numb.nvim', config = require('plugins._numb').config }
