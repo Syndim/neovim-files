@@ -52,9 +52,8 @@ return require('packer').startup(
             -- Easily jump between NeoVim windows.
             use { 'https://gitlab.com/yorickpeterse/nvim-window.git', as = 'nvim-window', config = require('plugins._nvim_window').config }
 
-            -- A file explorer tree for neovim written in lua
-            local nvim_tree_config = require('plugins._nvimtree')
-            use { 'kyazdani42/nvim-tree.lua', requires = 'kyazdani42/nvim-web-devicons', setup = nvim_tree_config.setup, config = nvim_tree_config.config }
+            --  Neovim plugin to manage the file system and other tree like structures.
+            use { "nvim-neo-tree/neo-tree.nvim", branch = "v2.x", requires = { "nvim-lua/plenary.nvim", "kyazdani42/nvim-web-devicons", "MunifTanjim/nui.nvim", }, config = require('plugins._neo_tree').config }
 
             -- Vim motions on speed!
             use 'easymotion/vim-easymotion'
@@ -73,6 +72,8 @@ return require('packer').startup(
 
             --  FZY style sorter that is compiled
             use { 'nvim-telescope/telescope-fzy-native.nvim', requires = 'nvim-telescope/telescope.nvim', config = require('plugins._telescope_fzy_native').config }
+
+            use { 'nvim-telescope/telescope-rg.nvim', requires = 'nvim-telescope/telescope.nvim', config = require('plugins._telescope_rg').config }
 
             -- A neovim lua plugin to help easily manage multiple terminal windows
             use { 'akinsho/toggleterm.nvim', config = require('plugins._toggleterm').config }

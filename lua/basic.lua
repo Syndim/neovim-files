@@ -71,5 +71,6 @@ end
 g.do_filetype_lua = 1
 g.did_load_filetypes = 0
 
+g.grepprg = "grepprg=rg --vimgrep --no-heading"
 -- o.signcolumn = 'number'
 -- wo.signcolumn = 'number'
