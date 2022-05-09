@@ -74,6 +74,8 @@ return require('packer').startup(
 
             use { 'nvim-telescope/telescope-rg.nvim', requires = 'nvim-telescope/telescope.nvim', config = require('plugins._telescope_rg').config }
 
+            use { 'nvim-telescope/telescope-ui-select.nvim', requires = 'nvim-telescope/telescope.nvim', config = require('plugins._telescope_ui_select').config }
+
             -- A neovim lua plugin to help easily manage multiple terminal windows
             use { 'akinsho/toggleterm.nvim', config = require('plugins._toggleterm').config }
 
