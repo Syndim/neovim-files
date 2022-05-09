@@ -15,7 +15,8 @@ function M.config()
         window = {
             mappings = {
                 ["o"] = "open",
-            }
+            },
+            width = 30
         }
     })
 
