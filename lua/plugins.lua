@@ -37,7 +37,7 @@ return require('packer').startup(
             use { 'akinsho/bufferline.nvim', requires = 'kyazdani42/nvim-web-devicons', config = require('plugins._bufferline').config }
 
             -- A blazing fast and easy to configure neovim statusline written in pure lua.
-            use { 'nvim-lualine/lualine.nvim', requires = { 'kyazdani42/nvim-web-devicons', opt = true }, config = require('plugins._lualine').config }
+            use { 'nvim-lualine/lualine.nvim', requires = { 'kyazdani42/nvim-web-devicons', opt = true }, after = 'onedark.nvim', config = require('plugins._lualine').config }
 
             -- Clean, vibrant and pleasing color schemes for Vim, Sublime Text, iTerm, gnome-terminal and more.
             use { 'navarasu/onedark.nvim', config = require('plugins._color').config }
