@@ -242,6 +242,7 @@ return require('packer').startup(
             -- nu-shell
             use { 'LhKipp/nvim-nu', requires = { 'jose-elias-alvarez/null-ls.nvim', 'nvim-treesitter/nvim-treesitter' }, config = require('plugins._nvim_nu').config }
 
+            ---@diagnostic disable-next-line: undefined-global
             if packer_bootstrap then
                 require('packer').sync()
             end

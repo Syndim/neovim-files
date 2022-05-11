@@ -21,11 +21,17 @@ function M.config()
             -- show completion source in menu
             format = function(entry, vim_item)
                 vim_item.menu = ({
-                    buffer = '[BUF]',
                     nvim_lsp = '[LSP]',
+                    vsnip = '[SNIP]',
                     path = '[PATH]',
                     crates = '[CRATES]',
-                    nvim_lua = '[NVIM]'
+                    buffer = '[BUF]',
+                    nvim_lua = '[NVIM]',
+                    nvim_lsp_signature_help = '[SIG]',
+                    rg = '[RG]',
+                    npm = '[NPM]',
+                    tags = '[TAGS]',
+                    treesitter = '[TS]'
                 })[entry.source.name]
 
                 return vim_item

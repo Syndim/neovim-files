@@ -1,6 +1,6 @@
 local M = {}
 
-function create_on_attach()
+local function create_on_attach()
     -- Use an on_attach function to only map the following keys
     -- after the language server attaches to the current buffer
     local on_attach = function(client, bufnr)
@@ -25,7 +25,6 @@ function create_on_attach()
         vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opts)
         vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
         vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
-        -- vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
         vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
         vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>ff', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
         vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>ds', '<cmd>Telescope lsp_document_symbols<CR>', opts)
@@ -35,7 +34,7 @@ function create_on_attach()
     return on_attach
 end
 
-function get_capabilities()
+local function get_capabilities()
     local lsp_status = require('lsp-status')
     lsp_status.register_progress()
     local capabilities = vim.lsp.protocol.make_client_capabilities()

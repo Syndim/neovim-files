@@ -4,7 +4,7 @@ local M = {}
 function M.config()
     local lsp = require('plugins._lsp')
 
-    function on_attach(client, bufnr)
+    local function on_attach(client, bufnr)
         lsp.create_on_attach()(client, bufnr)
         local opts = { noremap = true, silent = true }
         vim.api.nvim_buf_set_keymap(bufnr, 'n', '<Leader>cl', '<cmd>Telescope flutter commands<CR>', opts)
@@ -32,6 +32,9 @@ function M.config()
             capabilities = lsp.get_capabilities(),
             handlers = {
                 ["$/progress"] = function() end
+            },
+            flags = {
+                debounce_text_changes = 300,
             }
         }
     })
