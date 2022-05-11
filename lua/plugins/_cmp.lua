@@ -69,8 +69,9 @@ function M.config()
         }),
         sources = cmp.config.sources({
             { name = 'nvim_lsp' },
-            { name = 'path' },
             { name = 'vsnip' },
+        }, {
+            { name = 'path' },
             { name = "crates" },
             { name = 'buffer' },
             { name = 'nvim_lua' },
