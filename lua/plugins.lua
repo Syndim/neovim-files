@@ -40,7 +40,7 @@ return require('packer').startup(
             use { 'nvim-lualine/lualine.nvim', requires = { 'kyazdani42/nvim-web-devicons', opt = true }, config = require('plugins._lualine').config }
 
             -- Clean, vibrant and pleasing color schemes for Vim, Sublime Text, iTerm, gnome-terminal and more.
-            use { 'sonph/onehalf', rtp = 'vim', config = require('plugins._color').config }
+            use { 'navarasu/onedark.nvim', config = require('plugins._color').config }
 
             -- Editor functionality
             use { 'Shatur/neovim-session-manager', requires = 'nvim-lua/plenary.nvim', config = require('plugins._nvim_session_manager').config }
