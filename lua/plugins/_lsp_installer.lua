@@ -27,7 +27,6 @@ function M.config()
         'omnisharp',
         'bashls',
         'powershell_es',
-        'sqls',
         'yamlls',
         'kotlin_language_server',
         'sourcekit' -- swift
