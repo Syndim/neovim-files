@@ -23,8 +23,14 @@ function M.config()
         'pyright',
         'solargraph',
         'rust_analyzer',
-        'taplo',
-        'omnisharp'
+        'taplo', -- toml
+        'omnisharp',
+        'bashls',
+        'powershell_es',
+        'sqls',
+        'yamlls',
+        'kotlin_language_server',
+        'sourcekit' -- swift
     }
 
     for _, name in pairs(servers) do
