@@ -11,32 +11,50 @@ function M.config()
     local lsp_installer = require('nvim-lsp-installer')
     local lsp = require('plugins._lsp')
     local servers = {
-        'clangd',
-        'cmake',
-        'cssls',
-        'dartls',
-        'dockerls',
-        'html',
-        'jsonls',
-        'tsserver',
-        'sumneko_lua',
-        'pyright',
-        'solargraph',
-        'rust_analyzer',
-        'taplo', -- toml
-        'omnisharp',
-        'bashls',
-        'powershell_es',
-        'yamlls',
-        'kotlin_language_server',
-        'sourcekit' -- swift
+        clangd = {},
+        cmake = {},
+        cssls = {},
+        dartls = {},
+        dockerls = {},
+        html = {},
+        jsonls = {},
+        tsserver = {},
+        sumneko_lua = {},
+        pyright = {},
+        solargraph = {
+            pre_install_check = function()
+                return os.execute('ruby --version') == 0
+            end
+        },
+        rust_analyzer = {},
+        taplo = {
+            pre_install_check = function()
+                return os.execute('cargo --version') == 0
+            end
+        }, -- toml
+        omnisharp = {},
+        bashls = {},
+        powershell_es = {
+            pre_install_check = function()
+                return os.execute('pwsh --version') == 0
+            end
+        },
+        yamlls = {},
+        kotlin_language_server = {},
+        sourcekit = {
+            pre_install_check = function()
+                return os.execute('swfit -version') == 0
+            end
+        }, -- swift
     }
 
-    for _, name in pairs(servers) do
+    for name, settings in pairs(servers) do
         local server_is_found, server = lsp_installer.get_server(name)
         if server_is_found and not server:is_installed() then
-            print('Installing ' .. name)
-            server:install()
+            if settings.pre_install_check == nil or settings.pre_install_check() then
+                print('Installing' .. name)
+                server:install()
+            end
         end
     end
 
