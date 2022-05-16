@@ -9,6 +9,11 @@ function M.config()
         end
         show(keys, opts)
     end
+    vim.api.nvim_exec([[
+    augroup telescope
+        autocmd!
+        autocmd FileType TelescopePrompt inoremap <buffer> <silent> <C-r> <C-r>
+    augroup END]], false)
     wk.setup {}
 end
 
