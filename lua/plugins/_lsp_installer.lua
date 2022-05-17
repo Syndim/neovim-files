@@ -1,11 +1,21 @@
 local M = {}
 
 function M.config()
+    local global = require('global')
     local function setup_custom_server(ext_name, server, config)
         require(ext_name).setup({
             server = vim.tbl_deep_extend('force', server:get_default_options(), config)
         })
         server:attach_buffers()
+    end
+
+    local function execute(cmd)
+        local redirect = ' > /dev/null 2>&1'
+        if global.is_windows then
+            redirect = ' > nul 2>&1'
+        end
+
+        return os.execute(cmd .. redirect)
     end
 
     local lsp_installer = require('nvim-lsp-installer')
@@ -23,27 +33,27 @@ function M.config()
         pyright = {},
         solargraph = {
             pre_install_check = function()
-                return os.execute('ruby --version') == 0
+                return execute('ruby --version') == 0
             end
         },
         rust_analyzer = {},
         taplo = {
             pre_install_check = function()
-                return os.execute('cargo --version') == 0
+                return execute('cargo --version') == 0
             end
         }, -- toml
         omnisharp = {},
         bashls = {},
         powershell_es = {
             pre_install_check = function()
-                return os.execute('pwsh --version') == 0
+                return execute('pwsh --version') == 0
             end
         },
         yamlls = {},
         kotlin_language_server = {},
         sourcekit = {
             pre_install_check = function()
-                return os.execute('swfit -version') == 0
+                return execute('swfit -version') == 0
             end
         }, -- swift
     }
