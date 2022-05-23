@@ -72,9 +72,6 @@ return require('packer').startup(
             -- Vim motions on speed!
             use 'easymotion/vim-easymotion'
 
-            -- Next-generation motion plugin using incremental input processing, allowing for unparalleled speed with minimal cognitive effort
-            use 'ggandor/lightspeed.nvim'
-
             -- Multiple cursors plugin for vim/neovim
             use 'mg979/vim-visual-multi'
 
