@@ -33,6 +33,18 @@ return require('packer').startup(
             -- 💥 Create key bindings that stick. WhichKey is a lua plugin for Neovim 0.5 that displays a popup with possible keybindings of the command you started typing.
             use { 'folke/which-key.nvim', config = require('plugins._which_key').config }
 
+            --  Extensible Neovim Scrollbar
+            use { 'petertriho/nvim-scrollbar', requires = 'kevinhwang91/nvim-hlslens', config = require('plugins._scrollbar').config }
+
+            -- Clipboard manager neovim plugin with telescope integration
+            use { 'AckslD/nvim-neoclip.lua', requires = { 'nvim-telescope/telescope.nvim', { 'tami5/sqlite.lua', module = 'sqlite' } }, config = require('plugins._neoclip').config }
+
+            -- Bookmark manager
+            use { 'ThePrimeagen/harpoon', config = require('plugins._harpoon').config }
+
+            --  The fastest Neovim colorizer.
+            use { 'norcalli/nvim-colorizer.lua', config = require('plugins._colorizer').config }
+
             -- A snazzy bufferline for Neovim
             use { 'akinsho/bufferline.nvim', requires = 'kyazdani42/nvim-web-devicons', config = require('plugins._bufferline').config }
 
@@ -59,6 +71,9 @@ return require('packer').startup(
 
             -- Vim motions on speed!
             use 'easymotion/vim-easymotion'
+
+            -- Next-generation motion plugin using incremental input processing, allowing for unparalleled speed with minimal cognitive effort
+            use 'ggandor/lightspeed.nvim'
 
             -- Multiple cursors plugin for vim/neovim
             use 'mg979/vim-visual-multi'
@@ -219,17 +234,11 @@ return require('packer').startup(
             use 'peitalin/vim-jsx-typescript'
 
             -- HTML/CSS
-            -- Automatically closes HTML tags once you finish typing them.
-            use 'vim-scripts/HTML-AutoCloseTag'
-
             -- CSS3 syntax (and syntax defined in some foreign specifications) support for Vim's built-in syntax/css.vim
             use 'hail2u/vim-css3-syntax'
 
             -- emmet for vim: http://emmet.io/
             use 'mattn/emmet-vim'
-
-            -- extended % matching for HTML, LaTeX, and many other languages
-            use 'vim-scripts/matchit.zip'
 
             -- Markdown
             -- Markdown Vim Mode
