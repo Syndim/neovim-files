@@ -5,6 +5,23 @@ function M.config()
         vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes(key, true, true, true), mode, true)
     end
 
+    local sources = vim.g.cmp_sources or {
+        'path',
+        'crates',
+        'buffer',
+        'nvim_lua',
+        'nvim_lsp_signature_help',
+        'rg',
+        'npm',
+        'tags',
+        'treesitter'
+    }
+
+    local additional_sources = {}
+    for _, source in ipairs(sources) do
+        table.insert(additional_sources, { name = source })
+    end
+
     -- nvim-cmp setup
     local cmp = require('cmp')
     -- local global = require('global')
@@ -70,17 +87,7 @@ function M.config()
         sources = cmp.config.sources({
             { name = 'nvim_lsp' },
             { name = 'vsnip' },
-        }, {
-            { name = 'path' },
-            { name = "crates" },
-            { name = 'buffer' },
-            { name = 'nvim_lua' },
-            { name = 'nvim_lsp_signature_help' },
-            { name = 'rg' },
-            { name = 'npm' },
-            { name = 'tags' },
-            { name = 'treesitter' }
-        }),
+        }, additional_sources),
     }
 
     cmp.setup.cmdline('/', {
