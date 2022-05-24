@@ -8,9 +8,6 @@ end
 g.neovide_remember_window_size = true
 
 local global = require('global')
-if global.is_wsl then
-    o.guifont = 'FiraCode NF:h14'
-end
 
 if global.is_mac then
     local opts = {
@@ -21,3 +18,8 @@ if global.is_mac then
     api.nvim_set_keymap('n', '˚', '<C-w>k', opts)
     api.nvim_set_keymap('n', '¬', '<C-w>l', opts)
 end
+api.nvim_create_autocmd({ 'UIEnter' }, { callback = function()
+    if global.is_wsl then
+        o.guifont = 'FiraCode NF:h14'
+    end
+end })
