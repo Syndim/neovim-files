@@ -11,7 +11,6 @@ function M.config()
         'buffer',
         'nvim_lua',
         'nvim_lsp_signature_help',
-        'rg',
         'npm',
         'tags',
         'treesitter'
@@ -45,7 +44,6 @@ function M.config()
                     buffer = '[BUF]',
                     nvim_lua = '[NVIM]',
                     nvim_lsp_signature_help = '[SIG]',
-                    rg = '[RG]',
                     npm = '[NPM]',
                     tags = '[TAGS]',
                     treesitter = '[TS]'
