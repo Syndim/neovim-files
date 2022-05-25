@@ -170,6 +170,9 @@ return require('packer').startup(
         -- LSP signature hint as you type
         -- use { 'ray-x/lsp_signature.nvim', config = require('plugins._lsp_signature').config }
 
+        -- Extended 'textDocument/definition' handler for OmniSharp Neovim LSP
+        use 'Hoffs/omnisharp-extended-lsp.nvim'
+
         --  An additional source for nvim-cmp to autocomplete packages and its versions
         use { 'David-Kunz/cmp-npm', config = function() require('cmp-npm').setup({}) end }
 

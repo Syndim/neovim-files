@@ -96,6 +96,10 @@ function M.config()
                 }
             })
             server:setup(lua_config)
+        elseif server.name == 'omnisharp' then
+            local handlers_config = config['handlers']
+            config['handers'] = handlers_config or {}
+            config['handlers']['textDocument/definition'] = require('omnisharp_extended').handler
         elseif server.name == 'dartls' then
             -- Do nothing
         else
