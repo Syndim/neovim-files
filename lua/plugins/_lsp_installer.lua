@@ -98,8 +98,18 @@ function M.config()
             server:setup(lua_config)
         elseif server.name == 'omnisharp' then
             local handlers_config = config['handlers']
-            config['handers'] = handlers_config or {}
+            if handlers_config == nil then
+                config['handlers'] = {}
+            end
+            local default_on_attach = lsp.create_on_attach()
+            local function on_attach()
+                default_on_attach()
+                vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gd', '<cmd>lua require("omnisharp_extended").telescope_lsp_definitions()<CR>', { noremap = true, silent = true })
+            end
+
+            config['on_attach'] = on_attach
             config['handlers']['textDocument/definition'] = require('omnisharp_extended').handler
+            server:setup(config)
         elseif server.name == 'dartls' then
             -- Do nothing
         else
