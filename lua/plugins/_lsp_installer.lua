@@ -75,6 +75,7 @@ function M.config()
         if server.name == 'rust_analyzer' then
             setup_custom_server('rust-tools', server, config)
         elseif server.name == 'clangd' then
+            config.capabilities.offsetEncoding = { 'utf-16' }
             setup_custom_server('clangd_extensions', server, config)
         elseif server.name == 'sumneko_lua' then
             local lua_config = vim.tbl_deep_extend('force', config, {
