@@ -1,14 +1,21 @@
 local M = {}
 
--- Remember to put flutter's bin folder to PATH
-function M.config()
-    local lsp = require('plugins._lsp')
-
+function M.setup(lsp, config)
     local function on_attach(client, bufnr)
         lsp.create_on_attach()(client, bufnr)
         local opts = { noremap = true, silent = true }
         vim.api.nvim_buf_set_keymap(bufnr, 'n', '<Leader>cl', '<cmd>Telescope flutter commands<CR>', opts)
     end
+
+    local flutter_config = vim.tbl_deep_extend('force', config, {
+        on_attach = on_attach,
+        handlers = {
+            ["$/progress"] = function() end
+        },
+        flags = {
+            debounce_text_changes = 300,
+        }
+    })
 
     require("flutter-tools").setup({
         ui = {
@@ -27,16 +34,7 @@ function M.config()
                 device = true,
             }
         },
-        lsp = {
-            on_attach = on_attach,
-            capabilities = lsp.get_capabilities(),
-            handlers = {
-                ["$/progress"] = function() end
-            },
-            flags = {
-                debounce_text_changes = 300,
-            }
-        }
+        lsp = flutter_config
     })
 
     require("telescope").load_extension("flutter")
