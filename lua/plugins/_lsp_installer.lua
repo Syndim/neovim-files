@@ -15,24 +15,24 @@ function M.config()
     local lsp = require('plugins._lsp')
     local lsp_config = require('lspconfig')
     local common_servers = {
-        cmake,
-        cssls,
-        dartls,
-        dockerls,
-        html,
-        jsonls,
-        tsserver,
-        pyright,
-        solargraph,
-        taplo, -- toml
-        bashls,
-        yamlls,
-        kotlin_language_server,
+        'cmake',
+        'cssls',
+        'dartls',
+        'dockerls',
+        'html',
+        'jsonls',
+        'tsserver',
+        'pyright',
+        'solargraph',
+        'taplo', -- toml
+        'bashls',
+        'yamlls',
+        'kotlin_language_server',
     }
 
     local optional_servers = {
         powershell_es = 'pwsh --version',
-        sourcekit  = 'swift -version'
+        sourcekit     = 'swift -version'
     }
 
     lsp_installer.setup({
