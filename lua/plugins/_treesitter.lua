@@ -1,7 +1,11 @@
 local M = {}
 
 function M.config()
-    require 'nvim-treesitter.configs'.setup {
+    for _, config in pairs(require('nvim-treesitter.parsers').get_parser_configs()) do
+        config.install_info.url = config.install_info.url:gsub('https://github.com/', 'https://ghproxy.com/https://github.com/')
+    end
+
+    require('nvim-treesitter.configs').setup {
         highlight = {
             enable = true,
             disable = {}
@@ -48,7 +52,7 @@ function M.config()
         },
     }
 
-    local ft_to_parser = require 'nvim-treesitter.parsers'.filetype_to_parsername
+    local ft_to_parser = require('nvim-treesitter.parsers').filetype_to_parsername
     ft_to_parser.javascript = 'tsx'
     ft_to_parser['typescript.tsx'] = 'tsx'
 end
