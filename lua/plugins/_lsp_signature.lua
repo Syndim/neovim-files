@@ -6,10 +6,10 @@ function M.config()
         max_height = 100,
         hint_enable = false,
         handler_opts = {
-            border = "none"
+            border = 'none'
         }
     }
-    require "lsp_signature".setup(opts)
+    require('lsp_signature').setup(opts)
 end
 
 return M

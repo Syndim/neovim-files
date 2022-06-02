@@ -35,11 +35,6 @@ function M.config()
         sourcekit  = 'swift -version'
     }
 
-    local special_servers = {
-        'rust-tools',
-        'clangd_extensions'
-    }
-
     lsp_installer.setup({
         automatic_installation = true,
         github = {
@@ -55,17 +50,12 @@ function M.config()
         lsp_config[name].setup(config)
     end
 
-    -- LSP with plugins
-    for _, name in ipairs(special_servers) do
-        require(name).setup({
-            server = config
-        })
-    end
-
     -- Custom settings
     require('plugins._lsp_lua').setup(lsp_config, config)
-    require('plugins._lsp_omnisharp').setup(lsp_config, lsp, config)
+    require('plugins._lsp_csharp').setup(lsp_config, lsp, config)
     require('plugins._lsp_flutter').setup(lsp, config)
+    require('plugins._lsp_rust').setup(config)
+    require('plugins._lsp_clang').setup(config)
 
     -- Optional LSP
     for name, condition in pairs(optional_servers) do
