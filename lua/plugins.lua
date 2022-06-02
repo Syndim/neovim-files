@@ -121,15 +121,10 @@ return require('packer').startup(
             use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate', config = require('plugins._treesitter').config }
             -- 🌈 Rainbow parentheses for neovim using tree-sitter 🌈
             use { 'p00f/nvim-ts-rainbow', requires = 'nvim-treesitter/nvim-treesitter' }
-            -- Show code context
-            -- Disabled for now
-            use { 'romgrk/nvim-treesitter-context', requires = 'nvim-treesitter/nvim-treesitter', config = require('plugins._treesitter_context').config }
             -- 🌅 Twilight is a Lua plugin for Neovim 0.5 that dims inactive portions of the code you're editing using TreeSitter.
             -- use { 'folke/twilight.nvim', requires = 'nvim-treesitter/nvim-treesitter', config = require('plugins._twilight').config }
             -- Use treesitter to auto close and auto rename html tag
-            use { 'windwp/nvim-ts-autotag', requires = 'nvim-treesitter/nvim-treesitter', config = require('plugins._nvim_ts_autotag').config }
-            -- Treesitter playground integrated into Neovim
-            use { 'nvim-treesitter/playground', requires = 'nvim-treesitter/nvim-treesitter' }
+            use { 'windwp/nvim-ts-autotag', requires = 'nvim-treesitter/nvim-treesitter', config = require('plugins._treesitter_autotag').config }
 
             -- LSP and auto completion
             -- Quickstart configurations for the Nvim LSP client
