@@ -34,7 +34,6 @@ function M.config()
         powershell_es = 'pwsh',
         sourcekit     = 'swift',
         solargraph    = 'ruby',
-        dartls        = 'dart',
     }
 
     lsp_installer.setup({
@@ -55,9 +54,12 @@ function M.config()
     -- Custom settings
     require('plugins._lsp_lua').setup(lsp_config, config)
     require('plugins._lsp_csharp').setup(lsp_config, lsp, config)
-    require('plugins._lsp_flutter').setup(lsp, config)
     require('plugins._lsp_rust').setup(config)
     require('plugins._lsp_clang').setup(config)
+
+    if which('dart') == 0 then
+        require('plugins._lsp_flutter').setup(lsp, config)
+    end
 
     -- Optional LSP
     for name, condition in pairs(optional_servers) do
