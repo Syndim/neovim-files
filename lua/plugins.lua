@@ -25,10 +25,6 @@ return require('packer').startup(
             -- Packer can manage itself as an optional plugin
             use 'wbthomason/packer.nvim'
 
-            -- Helper for lua config
-            -- Neovim plugin that allows you to easily write your .vimrc in lua or any lua based language
-            use 'svermeulen/vimpeccable'
-
             -- Editor interface
             -- 💥 Create key bindings that stick. WhichKey is a lua plugin for Neovim 0.5 that displays a popup with possible keybindings of the command you started typing.
             use { 'folke/which-key.nvim', config = require('plugins._which_key').config }
@@ -102,27 +98,23 @@ return require('packer').startup(
 
             -- Language support
             -- Generic
-            -- Vim plugin, insert or delete brackets, parens, quotes in pair
-            use 'jiangmiao/auto-pairs'
-
-            -- endwise.vim: wisely add "end" in ruby, endfunction/endif/more in vim script, etc
-            use 'tpope/vim-endwise'
-
             -- commentary.vim: comment stuff out
             use { 'tpope/vim-commentary', setup = require('plugins._commentary').setup }
 
             -- Vim plugin that displays tags in a window, ordered by scope
             use { 'preservim/tagbar', setup = require('plugins._tagbar').setup }
 
-            -- Vim plugin, provides insert mode auto-completion for quotes, parens, brackets, etc.
-            use 'Raimondi/delimitMate'
-
             -- Nvim Treesitter configurations and abstraction layer
             use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate', config = require('plugins._treesitter').config }
+
             -- 🌈 Rainbow parentheses for neovim using tree-sitter 🌈
             use { 'p00f/nvim-ts-rainbow', requires = 'nvim-treesitter/nvim-treesitter' }
+
             -- Use treesitter to auto close and auto rename html tag
             use { 'windwp/nvim-ts-autotag', requires = 'nvim-treesitter/nvim-treesitter', config = require('plugins._treesitter_autotag').config }
+
+            -- autopairs for neovim written by lua
+            use { 'windwp/nvim-autopairs', requires = 'nvim-treesitter/nvim-treesitter', config = require('plugins._treesitter_autopair').config }
 
             -- LSP and auto completion
             -- Quickstart configurations for the Nvim LSP client
@@ -163,11 +155,6 @@ return require('packer').startup(
 
             -- cmp-nvim-lsp-signature-help
             use 'hrsh7th/cmp-nvim-lsp-signature-help'
-            -- LSP signature hint as you type
-            -- use { 'ray-x/lsp_signature.nvim', config = require('plugins._lsp_signature').config }
-
-            -- Extended 'textDocument/definition' handler for OmniSharp Neovim LSP
-            use 'Hoffs/omnisharp-extended-lsp.nvim'
 
             --  An additional source for nvim-cmp to autocomplete packages and its versions
             use { 'David-Kunz/cmp-npm', config = function() require('cmp-npm').setup({}) end }
@@ -185,11 +172,12 @@ return require('packer').startup(
             use 'nvim-lua/lsp-status.nvim'
 
             -- C/C++
-            -- c or cpp syntax files
-            use 'vim-jp/vim-cpp'
-
             -- Clangd's off-spec features for neovim's LSP client
             use { 'p00f/clangd_extensions.nvim', config = require('plugins._clangd').config }
+
+            -- C#
+            -- Extended 'textDocument/definition' handler for OmniSharp Neovim LSP
+            use 'Hoffs/omnisharp-extended-lsp.nvim'
 
             -- Rust
             -- Vim configuration for Rust.
@@ -227,9 +215,6 @@ return require('packer').startup(
             use 'peitalin/vim-jsx-typescript'
 
             -- HTML/CSS
-            -- CSS3 syntax (and syntax defined in some foreign specifications) support for Vim's built-in syntax/css.vim
-            use 'hail2u/vim-css3-syntax'
-
             -- emmet for vim: http://emmet.io/
             use 'mattn/emmet-vim'
 
