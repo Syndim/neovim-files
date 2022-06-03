@@ -2,13 +2,15 @@ local M = {}
 
 function M.config()
     local global = require('global')
-    local function execute(cmd)
+    local function which(cmd)
         local redirect = ' > /dev/null 2>&1'
+        local which = 'which'
         if global.is_windows then
             redirect = ' > nul 2>&1'
+            which = 'where.exe'
         end
 
-        return os.execute(cmd .. redirect)
+        return os.execute(which .. ' ' .. cmd .. redirect)
     end
 
     local lsp_installer = require('nvim-lsp-installer')
@@ -17,13 +19,11 @@ function M.config()
     local common_servers = {
         'cmake',
         'cssls',
-        'dartls',
         'dockerls',
         'html',
         'jsonls',
         'tsserver',
         'pyright',
-        'solargraph',
         'taplo', -- toml
         'bashls',
         'yamlls',
@@ -31,8 +31,10 @@ function M.config()
     }
 
     local optional_servers = {
-        powershell_es = 'pwsh --version',
-        sourcekit     = 'swift -version'
+        powershell_es = 'pwsh',
+        sourcekit     = 'swift',
+        solargraph    = 'ruby',
+        dartls        = 'dart',
     }
 
     lsp_installer.setup({
@@ -59,7 +61,7 @@ function M.config()
 
     -- Optional LSP
     for name, condition in pairs(optional_servers) do
-        if execute(condition) == 0 then
+        if which(condition) == 0 then
             lsp_config[name].setup(config)
         end
     end
