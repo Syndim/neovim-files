@@ -13,7 +13,8 @@ function M.config()
         return os.execute(which .. ' ' .. cmd .. redirect)
     end
 
-    local lsp_installer = require('nvim-lsp-installer')
+    local mason = require('mason')
+    local mason_lsp_config = require('mason-lspconfig')
     local lsp = require('plugins._lsp')
     local lsp_config = require('lspconfig')
     local common_servers = {
@@ -36,11 +37,13 @@ function M.config()
         solargraph    = 'ruby',
     }
 
-    lsp_installer.setup({
-        automatic_installation = true,
+    mason.setup({
         github = {
             download_url_template = "https://ghproxy.com/https://github.com/%s/releases/download/%s/%s",
         },
+    })
+    mason_lsp_config.setup({
+        automatic_installation = true
     })
 
     -- Specify the default options which we'll use to setup all servers
