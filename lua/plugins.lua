@@ -133,10 +133,12 @@ return require('packer').startup(
                 config = require('plugins._treesitter_autopair').config }
 
             -- LSP and auto completion
-            -- Portable package manager for Neovim that runs everywhere Neovim runs. Easily install and manage LSP servers, DAP servers, linters, and formatters.
             -- Extension to mason.nvim that makes it easier to use lspconfig with mason.nvim
             use { 'williamboman/mason-lspconfig.nvim', requires = { 'williamboman/mason.nvim', 'neovim/nvim-lspconfig' },
-                config = require('plugins._mason').config }
+                config = require('plugins._mason_lspconfig').config }
+
+            use { 'WhoIsSethDaniel/mason-tool-installer.nvim', requires = { 'williamboman/mason.nvim' },
+                config = require('plugins._mason_tool_installer').config }
 
             -- Use Neovim as a language server to inject LSP diagnostics, code actions, and more via Lua.
             use { 'jose-elias-alvarez/null-ls.nvim', config = require('plugins._null_ls').config }
