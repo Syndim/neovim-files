@@ -24,7 +24,6 @@ function M.config()
         'html',
         'jsonls',
         'tsserver',
-        'pyright',
         'taplo', -- toml
         'bashls',
         'yamlls',
@@ -59,8 +58,9 @@ function M.config()
     require('plugins._lsp_csharp').setup(lsp_config, lsp, config)
     require('plugins._lsp_rust').setup(config)
     require('plugins._lsp_clang').setup(config)
+    require('plugins._lsp_python').setup(lsp_config, config)
 
-    if which('dart') == 0 then
+    if which('flutter') == 0 then
         require('plugins._lsp_flutter').setup(lsp, config)
     end
 
