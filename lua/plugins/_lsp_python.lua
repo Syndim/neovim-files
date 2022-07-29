@@ -30,7 +30,6 @@ function M.setup(lsp_config, config)
 
     local python_config = vim.tbl_deep_extend('force', config, {
         on_init = function(client)
-            print("on_init")
             client.config.settings.python.pythonPath = get_python_path(client.config.root_dir)
         end
     })
