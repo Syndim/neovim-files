@@ -23,6 +23,7 @@ function M.config()
 
     -- nvim-cmp setup
     local cmp = require('cmp')
+    local lspkind = require('lspkind')
     -- local global = require('global')
     cmp.setup {
         -- view = {
@@ -34,23 +35,33 @@ function M.config()
             end,
         },
         formatting = {
-            -- show completion source in menu
-            format = function(entry, vim_item)
-                vim_item.menu = ({
-                    nvim_lsp = '[LSP]',
-                    vsnip = '[SNIP]',
-                    path = '[PATH]',
-                    crates = '[CRATES]',
-                    buffer = '[BUF]',
-                    nvim_lua = '[NVIM]',
-                    nvim_lsp_signature_help = '[SIG]',
-                    npm = '[NPM]',
-                    tags = '[TAGS]',
-                    treesitter = '[TS]'
-                })[entry.source.name]
+            format = lspkind.cmp_format({
+                mode = 'symbol_text',
+                maxwidth = 50,
 
-                return vim_item
-            end,
+                -- The function below will be called before any actual modifications from lspkind
+                -- so that you can provide more controls on popup customization. (See [#30](https://github.com/onsails/lspkind-nvim/pull/30))
+                before = function(entry, vim_item)
+                    return vim_item
+                end
+            })
+            -- show completion source in menu
+            -- format = function(entry, vim_item)
+            --     vim_item.menu = ({
+            --         nvim_lsp = '[LSP]',
+            --         vsnip = '[SNIP]',
+            --         path = '[PATH]',
+            --         crates = '[CRATES]',
+            --         buffer = '[BUF]',
+            --         nvim_lua = '[NVIM]',
+            --         nvim_lsp_signature_help = '[SIG]',
+            --         npm = '[NPM]',
+            --         tags = '[TAGS]',
+            --         treesitter = '[TS]'
+            --     })[entry.source.name]
+
+            --     return vim_item
+            -- end,
         },
         mapping = cmp.mapping.preset.insert({
             ['<C-p>'] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }),

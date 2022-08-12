@@ -173,6 +173,9 @@ return require('packer').startup(
             -- cmp-nvim-lsp-signature-help
             use 'hrsh7th/cmp-nvim-lsp-signature-help'
 
+            -- vscode-like pictograms for neovim lsp completion items
+            use 'onsails/lspkind.nvim'
+
             --  An additional source for nvim-cmp to autocomplete packages and its versions
             use { 'David-Kunz/cmp-npm', config = function() require('cmp-npm').setup({}) end }
 
