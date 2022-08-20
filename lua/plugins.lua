@@ -26,12 +26,17 @@ return require('packer').startup(
             use 'wbthomason/packer.nvim'
 
             -- Editor interface
+            -- Treesitter powered spellchecker
+            use { 'lewis6991/spellsitter.nvim', config = function() require('spellsitter').setup() end }
+
+            -- A fancy, configurable, notification manager for NeoVim
+            use { 'rcarriga/nvim-notify', config = require('plugins._notify').config }
+
             -- 💥 Create key bindings that stick. WhichKey is a lua plugin for Neovim 0.5 that displays a popup with possible keybindings of the command you started typing.
             use { 'folke/which-key.nvim', config = require('plugins._which_key').config }
 
             --  Extensible Neovim Scrollbar
-            use { 'petertriho/nvim-scrollbar', requires = 'kevinhwang91/nvim-hlslens',
-                config = require('plugins._scrollbar').config }
+            use { 'petertriho/nvim-scrollbar', requires = 'kevinhwang91/nvim-hlslens', config = require('plugins._scrollbar').config }
 
             -- Clipboard manager neovim plugin with telescope integration
             use { 'AckslD/nvim-neoclip.lua',
@@ -67,12 +72,12 @@ return require('packer').startup(
             use { 'https://gitlab.com/yorickpeterse/nvim-window.git', as = 'nvim-window',
                 config = require('plugins._nvim_window').config }
 
-            --  Neovim plugin to manage the file system and other tree like structures.
+            -- Neovim plugin to manage the file system and other tree like structures.
             use { "nvim-neo-tree/neo-tree.nvim", branch = "v2.x",
                 requires = { "nvim-lua/plenary.nvim", "kyazdani42/nvim-web-devicons", "MunifTanjim/nui.nvim", },
                 config = require('plugins._neo_tree').config }
 
-            --  Neovim plugin to improve the default vim.ui interfaces
+            -- Neovim plugin to improve the default vim.ui interfaces
             use { 'stevearc/dressing.nvim', config = require('plugins._dressing').config }
 
             -- Vim motions on speed!
@@ -91,7 +96,7 @@ return require('packer').startup(
             -- Find, Filter, Preview, Pick. All lua, all the time.
             use { 'nvim-telescope/telescope.nvim', config = require('plugins._telescope').config }
 
-            --  FZY style sorter that is compiled
+            -- FZY style sorter that is compiled
             use { 'nvim-telescope/telescope-fzy-native.nvim', requires = 'nvim-telescope/telescope.nvim',
                 config = require('plugins._telescope_fzy_native').config }
 
@@ -107,16 +112,17 @@ return require('packer').startup(
             -- Delete Neovim buffers without losing window layout
             use 'famiu/bufdelete.nvim'
 
-            --  surround.vim: Delete/change/add parentheses/quotes/XML-tags/much more with ease
+            -- surround.vim: Delete/change/add parentheses/quotes/XML-tags/much more with ease
             use 'tpope/vim-surround'
 
             -- Language support
             -- Generic
-            -- commentary.vim: comment stuff out
-            use { 'tpope/vim-commentary', setup = require('plugins._commentary').setup }
+            -- 🧠 💪 // Smart and powerful comment plugin for neovim. Supports treesitter, dot repeat, left-right/up-down motions, hooks, and more 
+            use { 'numToStr/Comment.nvim', config = require('plugins._comment').config }
 
             -- Vim plugin that displays tags in a window, ordered by scope
-            use { 'preservim/tagbar', setup = require('plugins._tagbar').setup }
+            -- use { 'preservim/tagbar', setup = require('plugins._tagbar').setup }
+            use { 'simrat39/symbols-outline.nvim', config = require('plugins._symbols_outline').config }
 
             -- Nvim Treesitter configurations and abstraction layer
             use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate', config = require('plugins._treesitter').config }
@@ -191,6 +197,9 @@ return require('packer').startup(
             -- Utility functions for getting diagnostic status and progress messages from LSP servers, for use in the Neovim statusline
             use 'nvim-lua/lsp-status.nvim'
 
+            -- 🚦 A pretty diagnostics, references, telescope results, quickfix and location list to help you solve all the trouble your code is causing.
+            use { 'folke/trouble.nvim', config = require('plugins._trouble').config }
+
             -- C/C++
             -- Clangd's off-spec features for neovim's LSP client
             use { 'p00f/clangd_extensions.nvim', config = require('plugins._clangd').config }
@@ -254,6 +263,10 @@ return require('packer').startup(
             -- nu-shell
             use { 'LhKipp/nvim-nu', requires = { 'jose-elias-alvarez/null-ls.nvim', 'nvim-treesitter/nvim-treesitter' },
                 config = require('plugins._nvim_nu').config }
+
+            -- Others
+            -- Fix CursorHold Performance.
+            use { 'antoinemadec/FixCursorHold.nvim', setup = require('plugins._fix_cursor_hold').setup }
 
             ---@diagnostic disable-next-line: undefined-global
             if packer_bootstrap then

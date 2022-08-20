@@ -1,8 +1,10 @@
 local M = {}
 
-function M.setup()
+function M.config()
+    require('Comment').setup()
+
     local mapping_keys = {
-        '<C-T>', -- For windows termianal
+        '<C-G>', -- For windows termianal
         '<C-H>', -- For Others
     }
 

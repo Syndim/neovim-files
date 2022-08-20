@@ -4,6 +4,7 @@ function M.config()
     local global = require('global')
     local function which(cmd)
         local redirect = ' > /dev/null 2>&1'
+        ---@diagnostic disable-next-line: redefined-local
         local which = 'which'
         if global.is_windows then
             redirect = ' > nul 2>&1'
