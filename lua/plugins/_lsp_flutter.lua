@@ -17,8 +17,6 @@ function M.setup(lsp, config)
         },
         color = {
             enabled = true,
-            background = true,
-            foreground = true,
         }
     })
 
