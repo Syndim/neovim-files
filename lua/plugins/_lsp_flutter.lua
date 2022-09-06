@@ -10,10 +10,15 @@ function M.setup(lsp, config)
     local flutter_config = vim.tbl_deep_extend('force', config, {
         on_attach = on_attach,
         handlers = {
-            ["$/progress"] = function() end
+            -- ["$/progress"] = function() end
         },
         flags = {
             debounce_text_changes = 300,
+        },
+        color = {
+            enabled = true,
+            background = true,
+            foreground = true,
         }
     })
 
@@ -41,3 +46,4 @@ function M.setup(lsp, config)
 end
 
 return M
+
