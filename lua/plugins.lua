@@ -36,7 +36,11 @@ return require('packer').startup(
             use { 'folke/which-key.nvim', config = require('plugins._which_key').config }
 
             --  Extensible Neovim Scrollbar
-            use { 'petertriho/nvim-scrollbar', requires = 'kevinhwang91/nvim-hlslens', config = require('plugins._scrollbar').config }
+            use {
+                'petertriho/nvim-scrollbar',
+                requires = 'kevinhwang91/nvim-hlslens',
+                config = require('plugins._scrollbar').config
+            }
 
             -- Clipboard manager neovim plugin with telescope integration
             use { 'AckslD/nvim-neoclip.lua',
@@ -44,38 +48,58 @@ return require('packer').startup(
                 config = require('plugins._neoclip').config }
 
             -- Integrates vim-bookmarks into telescope.nvim
-            use { 'tom-anders/telescope-vim-bookmarks.nvim', requires = 'MattesGroeger/vim-bookmarks',
-                config = require('plugins._bookmarks').config, setup = require('plugins._bookmarks').setup }
+            use {
+                'tom-anders/telescope-vim-bookmarks.nvim',
+                requires = 'MattesGroeger/vim-bookmarks',
+                config = require('plugins._bookmarks').config,
+                setup = require('plugins._bookmarks').setup
+            }
 
             --  The fastest Neovim colorizer.
             use { 'norcalli/nvim-colorizer.lua', config = require('plugins._colorizer').config }
 
             -- A snazzy bufferline for Neovim
-            use { 'akinsho/bufferline.nvim', requires = 'kyazdani42/nvim-web-devicons',
-                config = require('plugins._bufferline').config }
+            use {
+                'akinsho/bufferline.nvim',
+                requires = 'kyazdani42/nvim-web-devicons',
+                config = require('plugins._bufferline').config
+            }
 
             -- A blazing fast and easy to configure neovim statusline written in pure lua.
-            use { 'nvim-lualine/lualine.nvim', requires = { 'kyazdani42/nvim-web-devicons', opt = true },
-                after = 'onedark.nvim', config = require('plugins._lualine').config }
+            use {
+                'nvim-lualine/lualine.nvim',
+                requires = { 'kyazdani42/nvim-web-devicons', opt = true },
+                after = 'onedark.nvim',
+                config = require('plugins._lualine').config
+            }
 
             -- Clean, vibrant and pleasing color schemes for Vim, Sublime Text, iTerm, gnome-terminal and more.
             use { 'navarasu/onedark.nvim', config = require('plugins._color').config }
 
             -- Editor functionality
-            use { 'Shatur/neovim-session-manager', requires = 'nvim-lua/plenary.nvim',
-                config = require('plugins._nvim_session_manager').config }
+            use {
+                'Shatur/neovim-session-manager',
+                requires = 'nvim-lua/plenary.nvim',
+                config = require('plugins._nvim_session_manager').config
+            }
 
             -- Peek lines just when you intend
             use { 'nacro90/numb.nvim', config = require('plugins._numb').config }
 
             -- Easily jump between NeoVim windows.
-            use { 'https://gitlab.com/yorickpeterse/nvim-window.git', as = 'nvim-window',
-                config = require('plugins._nvim_window').config }
+            use {
+                'https://gitlab.com/yorickpeterse/nvim-window.git',
+                as = 'nvim-window',
+                config = require('plugins._nvim_window').config
+            }
 
             -- Neovim plugin to manage the file system and other tree like structures.
-            use { "nvim-neo-tree/neo-tree.nvim", branch = "v2.x",
-                requires = { "nvim-lua/plenary.nvim", "kyazdani42/nvim-web-devicons", "MunifTanjim/nui.nvim", },
-                config = require('plugins._neo_tree').config }
+            use {
+                'nvim-neo-tree/neo-tree.nvim',
+                branch = 'v2.x',
+                requires = { 'nvim-lua/plenary.nvim', 'kyazdani42/nvim-web-devicons', 'MunifTanjim/nui.nvim', },
+                config = require('plugins._neo_tree').config
+            }
 
             -- Neovim plugin to improve the default vim.ui interfaces
             use { 'stevearc/dressing.nvim', config = require('plugins._dressing').config }
@@ -87,8 +111,12 @@ return require('packer').startup(
             use 'mg979/vim-visual-multi'
 
             -- Git integration for buffers
-            use { 'lewis6991/gitsigns.nvim', requires = { 'nvim-lua/plenary.nvim' }, tag = 'release',
-                config = require('plugins._gitsigns').config }
+            use {
+                'lewis6991/gitsigns.nvim',
+                requires = { 'nvim-lua/plenary.nvim' },
+                tag = 'release',
+                config = require('plugins._gitsigns').config
+            }
 
             -- Hlsearch Lens for Neovim
             use { 'kevinhwang91/nvim-hlslens', config = require('plugins._nvim_hlslens').config }
@@ -97,14 +125,23 @@ return require('packer').startup(
             use { 'nvim-telescope/telescope.nvim', config = require('plugins._telescope').config }
 
             -- FZY style sorter that is compiled
-            use { 'nvim-telescope/telescope-fzy-native.nvim', requires = 'nvim-telescope/telescope.nvim',
-                config = require('plugins._telescope_fzy_native').config }
+            use {
+                'nvim-telescope/telescope-fzy-native.nvim',
+                requires = 'nvim-telescope/telescope.nvim',
+                config = require('plugins._telescope_fzy_native').config
+            }
 
-            use { 'nvim-telescope/telescope-live-grep-args.nvim', requires = 'nvim-telescope/telescope.nvim',
-                config = require('plugins._telescope_rg').config }
+            use {
+                'nvim-telescope/telescope-live-grep-args.nvim',
+                requires = 'nvim-telescope/telescope.nvim',
+                config = require('plugins._telescope_rg').config
+            }
 
-            use { 'nvim-telescope/telescope-ui-select.nvim', requires = 'nvim-telescope/telescope.nvim',
-                config = require('plugins._telescope_ui_select').config }
+            use {
+                'nvim-telescope/telescope-ui-select.nvim',
+                requires = 'nvim-telescope/telescope.nvim',
+                config = require('plugins._telescope_ui_select').config
+            }
 
             -- A neovim lua plugin to help easily manage multiple terminal windows
             use { 'akinsho/toggleterm.nvim', config = require('plugins._toggleterm').config }
@@ -117,7 +154,7 @@ return require('packer').startup(
 
             -- Language support
             -- Generic
-            -- 🧠 💪 // Smart and powerful comment plugin for neovim. Supports treesitter, dot repeat, left-right/up-down motions, hooks, and more 
+            -- 🧠 💪 // Smart and powerful comment plugin for neovim. Supports treesitter, dot repeat, left-right/up-down motions, hooks, and more
             use { 'numToStr/Comment.nvim', config = require('plugins._comment').config }
 
             -- Vim plugin that displays tags in a window, ordered by scope
@@ -131,20 +168,32 @@ return require('packer').startup(
             use { 'p00f/nvim-ts-rainbow', requires = 'nvim-treesitter/nvim-treesitter' }
 
             -- Use treesitter to auto close and auto rename html tag
-            use { 'windwp/nvim-ts-autotag', requires = 'nvim-treesitter/nvim-treesitter',
-                config = require('plugins._treesitter_autotag').config }
+            use {
+                'windwp/nvim-ts-autotag',
+                requires = 'nvim-treesitter/nvim-treesitter',
+                config = require('plugins._treesitter_autotag').config
+            }
 
             -- autopairs for neovim written by lua
-            use { 'windwp/nvim-autopairs', requires = 'nvim-treesitter/nvim-treesitter',
-                config = require('plugins._treesitter_autopair').config }
+            use {
+                'windwp/nvim-autopairs',
+                requires = 'nvim-treesitter/nvim-treesitter',
+                config = require('plugins._treesitter_autopair').config
+            }
 
             -- LSP and auto completion
             -- Extension to mason.nvim that makes it easier to use lspconfig with mason.nvim
-            use { 'williamboman/mason-lspconfig.nvim', requires = { 'williamboman/mason.nvim', 'neovim/nvim-lspconfig' },
-                config = require('plugins._mason_lspconfig').config }
+            use {
+                'williamboman/mason-lspconfig.nvim',
+                requires = { 'williamboman/mason.nvim', 'neovim/nvim-lspconfig' },
+                config = require('plugins._mason_lspconfig').config
+            }
 
-            use { 'WhoIsSethDaniel/mason-tool-installer.nvim', requires = { 'williamboman/mason.nvim' },
-                config = require('plugins._mason_tool_installer').config }
+            use {
+                'WhoIsSethDaniel/mason-tool-installer.nvim',
+                requires = { 'williamboman/mason.nvim' },
+                config = require('plugins._mason_tool_installer').config
+            }
 
             -- Use Neovim as a language server to inject LSP diagnostics, code actions, and more via Lua.
             use { 'jose-elias-alvarez/null-ls.nvim', config = require('plugins._null_ls').config }
@@ -197,8 +246,14 @@ return require('packer').startup(
             -- Utility functions for getting diagnostic status and progress messages from LSP servers, for use in the Neovim statusline
             use 'nvim-lua/lsp-status.nvim'
 
+            -- Quickfix
             -- 🚦 A pretty diagnostics, references, telescope results, quickfix and location list to help you solve all the trouble your code is causing.
             use { 'folke/trouble.nvim', config = require('plugins._trouble').config }
+
+            -- 🌸 A command-line fuzzy finder
+            use { 'junegunn/fzf' }
+            -- Better quickfix window in Neovim, polish old quickfix window.
+            use { 'kevinhwang91/nvim-bqf', ft = 'qf' }
 
             -- C/C++
             -- Clangd's off-spec features for neovim's LSP client
@@ -216,8 +271,11 @@ return require('packer').startup(
             use 'simrat39/rust-tools.nvim'
 
             -- A neovim plugin that helps managing crates.io dependencies
-            use { 'saecki/crates.nvim', requires = { 'nvim-lua/plenary.nvim' },
-                config = function() require('crates').setup() end }
+            use {
+                'saecki/crates.nvim',
+                requires = { 'nvim-lua/plenary.nvim' },
+                config = function() require('crates').setup() end
+            }
 
             -- Python
             --  A vim plugin to display the indention levels with thin vertical lines
@@ -235,8 +293,11 @@ return require('packer').startup(
 
             -- Just
             --  Treesitter grammar for Justfiles (casey/just)
-            use { 'IndianBoy42/tree-sitter-just', requires = { 'nvim-treesitter/nvim-treesitter' },
-                config = require('plugins._just').config }
+            use {
+                'IndianBoy42/tree-sitter-just',
+                requires = { 'nvim-treesitter/nvim-treesitter' },
+                config = require('plugins._just').config
+            }
 
             -- Typescript
             -- Typescript syntax files for Vim
@@ -261,8 +322,11 @@ return require('packer').startup(
             use { 'akinsho/flutter-tools.nvim', requires = { 'nvim-lua/plenary.nvim', 'nvim-telescope/telescope.nvim' } }
 
             -- nu-shell
-            use { 'LhKipp/nvim-nu', requires = { 'jose-elias-alvarez/null-ls.nvim', 'nvim-treesitter/nvim-treesitter' },
-                config = require('plugins._nvim_nu').config }
+            use {
+                'LhKipp/nvim-nu',
+                requires = { 'jose-elias-alvarez/null-ls.nvim', 'nvim-treesitter/nvim-treesitter' },
+                config = require('plugins._nvim_nu').config
+            }
 
             -- Others
             -- Fix CursorHold Performance.
