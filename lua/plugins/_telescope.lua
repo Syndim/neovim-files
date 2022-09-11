@@ -2,19 +2,21 @@ local M = {}
 
 function M.config()
     local actions = require('telescope.actions')
-    local trouble = require("trouble.providers.telescope")
+    local trouble = require('trouble.providers.telescope')
     require('telescope').setup({
         defaults = {
             mappings = {
                 i = {
-                    ["<C-j>"] = actions.move_selection_next,
-                    ["<C-k>"] = actions.move_selection_previous,
-                    ["<C-t>"] = trouble.open_with_trouble,
-                    ["<M-t>"] = trouble.open_selected_with_trouble,
+                    ['<C-j>'] = actions.move_selection_next,
+                    ['<C-k>'] = actions.move_selection_previous,
+                    ['<C-t>'] = trouble.open_with_trouble,
+                    ['<M-t>'] = trouble.open_selected_with_trouble,
+                    ['<C-q>'] = actions.smart_send_to_qflist + actions.open_qflist,
                 },
                 n = {
-                    ["<C-t>"] = trouble.open_with_trouble,
-                    ["<M-t>"] = trouble.open_selected_with_trouble,
+                    ['<C-q>'] = actions.smart_send_to_qflist + actions.open_qflist,
+                    ['<C-t>'] = trouble.open_with_trouble,
+                    ['<M-t>'] = trouble.open_selected_with_trouble,
                 }
             },
             layout_config = {
