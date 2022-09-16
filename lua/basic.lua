@@ -49,7 +49,7 @@ o.termguicolors = true
 
 -- Fonts
 if global.is_windows then
-    o.guifont = 'FiraCode NF:h14'
+    o.guifont = 'FiraCode NFM:h14'
 else
     o.guifont = 'FiraCode Nerd Font Mono:h18'
 end
