@@ -1,6 +1,6 @@
 function _G.format_on_save()
     if vim.g.format_on_save_enabled then
-        vim.lsp.buf.formatting_sync()
+        vim.lsp.buf.formatting()
     end
 end
 
