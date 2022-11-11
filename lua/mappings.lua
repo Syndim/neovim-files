@@ -43,3 +43,6 @@ api.nvim_set_keymap('n', '<A-h>', '<C-w>h', opts)
 api.nvim_set_keymap('n', '<A-j>', '<C-w>j', opts)
 api.nvim_set_keymap('n', '<A-k>', '<C-w>k', opts)
 api.nvim_set_keymap('n', '<A-l>', '<C-w>l', opts)
+
+-- Clear search highlights
+api.nvim_set_keymap('n', '<Leader>ch', ':noh<CR>', opts)
