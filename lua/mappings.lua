@@ -46,3 +46,6 @@ api.nvim_set_keymap('n', '<A-l>', '<C-w>l', opts)
 
 -- Clear search highlights
 api.nvim_set_keymap('n', '<Leader>ch', ':noh<CR>', opts)
+
+-- Close all buffers
+api.nvim_set_keymap('n', '<Leader>X', ':%bd<CR>', opts)
