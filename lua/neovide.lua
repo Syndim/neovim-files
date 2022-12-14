@@ -17,4 +17,5 @@ if global.is_mac then
     api.nvim_set_keymap('n', '∆', '<C-w>j', opts)
     api.nvim_set_keymap('n', '˚', '<C-w>k', opts)
     api.nvim_set_keymap('n', '¬', '<C-w>l', opts)
+    api.nvim_set_keymap('n', 'π', '<cmd>Telescope buffers<cr>', opts)
 end
