@@ -21,7 +21,8 @@ function M.config()
             {
                 event = 'neo_tree_buffer_enter',
                 handler = function(_arg)
-                    vim.cmd('setlocal rnu')
+                    vim.cmd('setlocal relativenumber')
+                    vim.cmd('setlocal number')
                 end,
             }
         },
