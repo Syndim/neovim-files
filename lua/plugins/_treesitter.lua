@@ -6,7 +6,11 @@ function M.config()
             'https://ghproxy.com/https://github.com/')
     end
 
+    local treesitter_path = vim.fn.stdpath('data') .. '/treesitter'
+    vim.opt.runtimepath:append(treesitter_path)
+
     require('nvim-treesitter.configs').setup {
+        parser_install_dir = treesitter_path,
         highlight = {
             enable = true,
             disable = {}
