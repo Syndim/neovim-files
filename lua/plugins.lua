@@ -30,14 +30,16 @@ require('lazy').setup(
             'petertriho/nvim-scrollbar',
             dependencies = 'kevinhwang91/nvim-hlslens',
             config = require('plugins._scrollbar').config,
-            lazy = false
+            event = 'BufEnter'
         },
 
         -- Clipboard manager neovim plugin with telescope integration
-        { 'AckslD/nvim-neoclip.lua',
+        {
+            'AckslD/nvim-neoclip.lua',
             dependencies = { 'nvim-telescope/telescope.nvim', { 'tami5/sqlite.lua', module = 'sqlite' } },
             config = require('plugins._neoclip').config,
-            lazy = false },
+            event = 'BufEnter'
+        },
 
         -- Integrates vim-bookmarks into telescope.nvim
         {
@@ -45,7 +47,7 @@ require('lazy').setup(
             dependencies = 'MattesGroeger/vim-bookmarks',
             config = require('plugins._bookmarks').config,
             init = require('plugins._bookmarks').setup,
-            lazy = false
+            event = 'BufEnter'
         },
 
         --  The fastest Neovim colorizer.
@@ -56,7 +58,7 @@ require('lazy').setup(
             'akinsho/bufferline.nvim',
             dependencies = 'kyazdani42/nvim-web-devicons',
             config = require('plugins._bufferline').config,
-            event = 'BufEnter'
+            event = 'BufRead'
         },
 
         -- A blazing fast and easy to configure neovim statusline written in pure lua.
@@ -65,7 +67,7 @@ require('lazy').setup(
             dependencies = { 'kyazdani42/nvim-web-devicons', opt = true },
             after = 'onedark.nvim',
             config = require('plugins._lualine').config,
-            event = 'BufEnter'
+            event = 'BufRead'
         },
 
         -- Clean, vibrant and pleasing color schemes for Vim, Sublime Text, iTerm, gnome-terminal and more.
@@ -76,7 +78,7 @@ require('lazy').setup(
             'Shatur/neovim-session-manager',
             dependencies = 'nvim-lua/plenary.nvim',
             config = require('plugins._nvim_session_manager').config,
-            lazy = false
+            event = 'BufEnter'
         },
 
         -- Peek lines just when you intend
@@ -124,14 +126,14 @@ require('lazy').setup(
         { 'kevinhwang91/nvim-hlslens', config = require('plugins._nvim_hlslens').config, event = 'BufEnter' },
 
         -- Find, Filter, Preview, Pick. All lua, all the time.
-        { 'nvim-telescope/telescope.nvim', config = require('plugins._telescope').config, lazy = false },
+        { 'nvim-telescope/telescope.nvim', config = require('plugins._telescope').config, event = 'BufEnter' },
 
         -- FZY style sorter that is compiled
         {
             'nvim-telescope/telescope-fzy-native.nvim',
             dependencies = 'nvim-telescope/telescope.nvim',
             config = require('plugins._telescope_fzy_native').config,
-            lazy = false
+            event = 'BufEnter'
         },
 
         {
@@ -145,7 +147,7 @@ require('lazy').setup(
             'nvim-telescope/telescope-ui-select.nvim',
             dependencies = 'nvim-telescope/telescope.nvim',
             config = require('plugins._telescope_ui_select').config,
-            lazy = false
+            event = 'BufEnter'
         },
 
         -- A neovim lua plugin to help easily manage multiple terminal windows
@@ -195,14 +197,14 @@ require('lazy').setup(
             'williamboman/mason-lspconfig.nvim',
             dependencies = { 'williamboman/mason.nvim', 'neovim/nvim-lspconfig' },
             config = require('plugins._mason_lspconfig').config,
-            lazy = false
+            event = 'BufEnter'
         },
 
         {
             'WhoIsSethDaniel/mason-tool-installer.nvim',
             dependencies = { 'williamboman/mason.nvim' },
             config = require('plugins._mason_tool_installer').config,
-            lazy = false
+            event = 'BufEnter'
         },
 
         -- Neovim as a language server to inject LSP diagnostics, code actions, and more via Lua.
