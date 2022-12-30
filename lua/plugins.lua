@@ -5,7 +5,7 @@ if not vim.loop.fs_stat(lazypath) then
         'git',
         'clone',
         '--filter=blob:none',
-        '--single-branch',
+        '--branch=stable',
         'https://github.com/folke/lazy.nvim.git',
         lazypath,
     })
@@ -98,7 +98,7 @@ require('lazy').setup(
         {
             'nvim-neo-tree/neo-tree.nvim',
             branch = 'v2.x',
-            dependencies = { 'nvim-lua/plenary.nvim', 'kyazdani42/nvim-web-devicons', 'MunifTanjim/nui.nvim', },
+            dependencies = { 'nvim-lua/plenary.nvim', 'kyazdani42/nvim-web-devicons', 'MunifTanjim/nui.nvim' },
             config = require('plugins._neo_tree').config,
             keys = {
                 { '<F2>' },
@@ -182,7 +182,7 @@ require('lazy').setup(
             'windwp/nvim-ts-autotag',
             dependencies = 'nvim-treesitter/nvim-treesitter',
             config = require('plugins._treesitter_autotag').config,
-            event = 'BufEnter'
+            ft = { 'html', 'javascriptreact', 'typescriptreact' }
         },
 
         -- autopairs for neovim written by lua
@@ -323,7 +323,7 @@ require('lazy').setup(
 
         -- HTML/CSS
         -- emmet for vim: http://emmet.io/
-        { 'mattn/emmet-vim', ft = 'html' },
+        { 'mattn/emmet-vim', ft = { 'html', 'javascriptreact', 'typescriptreact' } },
 
         -- Markdown
         -- Markdown Vim Mode
