@@ -291,7 +291,7 @@ require('lazy').setup(
             'saecki/crates.nvim',
             dependencies = { 'nvim-lua/plenary.nvim' },
             config = function() require('crates').setup() end,
-            ft = 'toml'
+            event = 'BufEnter Cargo.toml'
         },
 
         -- Python
