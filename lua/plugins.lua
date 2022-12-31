@@ -17,7 +17,7 @@ require('lazy').setup(
 
         -- Editor interface
         -- Treesitter powered spellchecker
-        { 'lewis6991/spellsitter.nvim', config = function() require('spellsitter').setup() end, event = 'BufEnter' },
+        { 'lewis6991/spellsitter.nvim', config = function() require('spellsitter').setup() end, event = 'BufRead' },
 
         -- A fancy, configurable, notification manager for NeoVim
         { 'rcarriga/nvim-notify', config = require('plugins._notify').config, lazy = false },
@@ -30,7 +30,7 @@ require('lazy').setup(
             'petertriho/nvim-scrollbar',
             dependencies = 'kevinhwang91/nvim-hlslens',
             config = require('plugins._scrollbar').config,
-            event = 'BufEnter'
+            event = 'BufRead'
         },
 
         -- Clipboard manager neovim plugin with telescope integration
@@ -38,7 +38,7 @@ require('lazy').setup(
             'AckslD/nvim-neoclip.lua',
             dependencies = { 'nvim-telescope/telescope.nvim', { 'tami5/sqlite.lua', module = 'sqlite' } },
             config = require('plugins._neoclip').config,
-            event = 'BufEnter'
+            event = 'BufRead'
         },
 
         -- Integrates vim-bookmarks into telescope.nvim
@@ -51,7 +51,7 @@ require('lazy').setup(
         },
 
         --  The fastest Neovim colorizer.
-        { 'norcalli/nvim-colorizer.lua', config = require('plugins._colorizer').config, event = 'BufEnter' },
+        { 'norcalli/nvim-colorizer.lua', config = require('plugins._colorizer').config, event = 'BufRead' },
 
         -- A snazzy bufferline for Neovim
         {
@@ -82,7 +82,7 @@ require('lazy').setup(
         },
 
         -- Peek lines just when you intend
-        { 'nacro90/numb.nvim', config = require('plugins._numb').config, event = 'BufEnter' },
+        { 'nacro90/numb.nvim', config = require('plugins._numb').config, event = 'BufRead' },
 
         -- Easily jump between NeoVim windows.
         {
@@ -108,10 +108,10 @@ require('lazy').setup(
         { 'stevearc/dressing.nvim', config = require('plugins._dressing').config, lazy = false },
 
         -- Vim motions on speed!
-        { 'easymotion/vim-easymotion', event = 'BufEnter' },
+        { 'easymotion/vim-easymotion', event = 'BufRead' },
 
         -- Multiple cursors plugin for vim/neovim
-        { 'mg979/vim-visual-multi', event = 'BufEnter' },
+        { 'mg979/vim-visual-multi', event = 'BufRead' },
 
         -- Git integration for buffers
         {
@@ -119,11 +119,11 @@ require('lazy').setup(
             dependencies = { 'nvim-lua/plenary.nvim' },
             tag = 'release',
             config = require('plugins._gitsigns').config,
-            event = 'BufEnter'
+            event = 'BufRead'
         },
 
         -- Hlsearch Lens for Neovim
-        { 'kevinhwang91/nvim-hlslens', config = require('plugins._nvim_hlslens').config, event = 'BufEnter' },
+        { 'kevinhwang91/nvim-hlslens', config = require('plugins._nvim_hlslens').config, event = 'BufRead' },
 
         -- Find, Filter, Preview, Pick. All lua, all the time.
         { 'nvim-telescope/telescope.nvim', config = require('plugins._telescope').config, event = 'BufEnter' },
@@ -157,23 +157,23 @@ require('lazy').setup(
         { 'famiu/bufdelete.nvim', lazy = false },
 
         -- surround.vim: Delete/change/add parentheses/quotes/XML-tags/much more with ease
-        { 'tpope/vim-surround', event = 'BufEnter' },
+        { 'tpope/vim-surround', event = 'BufRead' },
 
         -- Language support
         -- Generic
         -- 🧠 💪 // Smart and powerful comment plugin for neovim. Supports treesitter, dot repeat, left-right/up-down motions, hooks, and more
-        { 'numToStr/Comment.nvim', config = require('plugins._comment').config, event = 'BufEnter' },
+        { 'numToStr/Comment.nvim', config = require('plugins._comment').config, event = 'BufRead' },
 
         -- Vim plugin that displays tags in a window, ordered by scope
         -- { 'preservim/tagbar', init =require('plugins._tagbar').setup }
-        { 'simrat39/symbols-outline.nvim', config = require('plugins._symbols_outline').config, event = 'BufEnter' },
+        { 'simrat39/symbols-outline.nvim', config = require('plugins._symbols_outline').config, event = 'BufRead' },
 
         -- Nvim Treesitter configurations and abstraction layer
         { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate', config = require('plugins._treesitter').config,
-            event = 'BufEnter' },
+            event = 'BufRead' },
 
         -- 🌈 Rainbow parentheses for neovim using tree-sitter 🌈
-        { 'p00f/nvim-ts-rainbow', dependencies = 'nvim-treesitter/nvim-treesitter', event = 'BufEnter' },
+        { 'p00f/nvim-ts-rainbow', dependencies = 'nvim-treesitter/nvim-treesitter', event = 'BufRead' },
 
         -- treesitter to auto close and auto rename html tag
         {
@@ -188,7 +188,7 @@ require('lazy').setup(
             'windwp/nvim-autopairs',
             dependencies = 'nvim-treesitter/nvim-treesitter',
             config = require('plugins._treesitter_autopair').config,
-            event = 'BufEnter'
+            event = 'BufRead'
         },
 
         -- LSP and auto completion
@@ -268,7 +268,7 @@ require('lazy').setup(
 
         -- Quickfix
         -- 🚦 A pretty diagnostics, references, telescope results, quickfix and location list to help you solve all the trouble your code is causing.
-        { 'folke/trouble.nvim', config = require('plugins._trouble').config, event = 'BufEnter' },
+        { 'folke/trouble.nvim', config = require('plugins._trouble').config, event = 'BufRead' },
 
         -- 🌸 A command-line fuzzy finder
         { 'junegunn/fzf' },

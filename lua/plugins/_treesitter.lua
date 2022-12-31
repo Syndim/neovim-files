@@ -7,7 +7,7 @@ function M.config()
     end
 
     local treesitter_path = vim.fn.stdpath('data') .. '/treesitter'
-    vim.opt.runtimepath:append(treesitter_path)
+    vim.opt.runtimepath:prepend(treesitter_path)
 
     require('nvim-treesitter.configs').setup {
         parser_install_dir = treesitter_path,
@@ -45,7 +45,9 @@ function M.config()
             'tsx',
             'typescript',
             'yaml',
-            'fish'
+            'fish',
+            'vim',
+            'help'
         },
         incremental_selection = {
             enable = true,
