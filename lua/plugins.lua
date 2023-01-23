@@ -39,6 +39,7 @@ require('lazy').setup(
         {
             'RRethy/vim-illuminate',
             event = 'BufReadPost',
+            config = require('plugins._vim_illuminate').config
         },
 
         {
