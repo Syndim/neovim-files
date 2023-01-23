@@ -1,12 +1,12 @@
-local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+local lazypath = vim.fn.stdpath('data') .. '/lazy/lazy.nvim'
 
 if not vim.loop.fs_stat(lazypath) then
     vim.fn.system({
-        "git",
-        "clone",
-        "--filter=blob:none",
-        "https://github.com/folke/lazy.nvim.git",
-        "--branch=stable", -- latest stable release
+        'git',
+        'clone',
+        '--filter=blob:none',
+        'https://github.com/folke/lazy.nvim.git',
+        '--branch=stable', -- latest stable release
         lazypath,
     })
 end
@@ -20,11 +20,43 @@ require('lazy').setup(
         'folke/lazy.nvim',
 
         -- Editor interface
+        -- Indent guides for Neovim
+        {
+            'lukas-reineke/indent-blankline.nvim',
+            event = 'BufReadPost',
+            config = require('plugins._indent_blankline').config
+        },
+
+        -- Neovim Lua plugin to visualize and operate on indent scope.
+        {
+            'echasnovski/mini.indentscope',
+            version = false, -- wait till new 0.7.0 release to put it back on semver
+            event = 'BufReadPre',
+            config = require('plugins._mini_indent_scope').config,
+        },
+
+        -- illuminate.vim - (Neo)Vim plugin for automatically highlighting other uses of the word under the cursor using either LSP, Tree-sitter, or regex matching.
+        {
+            'RRethy/vim-illuminate',
+            event = 'BufReadPost',
+        },
+
+        {
+            'folke/todo-comments.nvim',
+            dependencies = 'nvim-lua/plenary.nvim',
+            event = "BufReadPost",
+            config = require('plugins._todo_comments').config
+        },
+
         -- Treesitter powered spellchecker
         { 'lewis6991/spellsitter.nvim', config = function() require('spellsitter').setup() end, event = 'BufRead' },
 
         -- A fancy, configurable, notification manager for NeoVim
-        { 'rcarriga/nvim-notify', config = require('plugins._notify').config, lazy = false },
+        {
+            'rcarriga/nvim-notify',
+            config = require('plugins._notify').config,
+            lazy = false,
+        },
 
         -- 💥 Create key bindings that stick. WhichKey is a lua plugin for Neovim 0.5 that displays a popup with possible keybindings of the command you started typing.
         { 'folke/which-key.nvim', config = require('plugins._which_key').config, lazy = false },
@@ -62,7 +94,7 @@ require('lazy').setup(
             'akinsho/bufferline.nvim',
             dependencies = 'kyazdani42/nvim-web-devicons',
             config = require('plugins._bufferline').config,
-            event = 'BufRead'
+            event = 'VeryLazy'
         },
 
         -- A blazing fast and easy to configure neovim statusline written in pure lua.
@@ -71,7 +103,7 @@ require('lazy').setup(
             dependencies = { 'kyazdani42/nvim-web-devicons', opt = true },
             after = 'onedark.nvim',
             config = require('plugins._lualine').config,
-            event = 'BufRead'
+            event = 'VeryLazy'
         },
 
         -- Clean, vibrant and pleasing color schemes for Vim, Sublime Text, iTerm, gnome-terminal and more.
@@ -109,13 +141,17 @@ require('lazy').setup(
         },
 
         -- Neovim plugin to improve the default vim.ui interfaces
-        { 'stevearc/dressing.nvim', config = require('plugins._dressing').config, lazy = false },
+        {
+            'stevearc/dressing.nvim',
+            config = require('plugins._dressing').config,
+            init = require('plugins._dressing').init
+        },
 
         -- Vim motions on speed!
-        { 'easymotion/vim-easymotion', event = 'BufRead' },
+        { 'easymotion/vim-easymotion', event = 'BufReadPost' },
 
         -- Multiple cursors plugin for vim/neovim
-        { 'mg979/vim-visual-multi', event = 'BufRead' },
+        { 'mg979/vim-visual-multi', event = 'BufReadPost' },
 
         -- Git integration for buffers
         {
@@ -141,17 +177,19 @@ require('lazy').setup(
         },
 
         {
-            'nvim-telescope/telescope-live-grep-args.nvim',
-            dependencies = 'nvim-telescope/telescope.nvim',
-            config = require('plugins._telescope_rg').config,
-            event = 'BufEnter'
-        },
-
-        {
             'nvim-telescope/telescope-ui-select.nvim',
             dependencies = 'nvim-telescope/telescope.nvim',
             config = require('plugins._telescope_ui_select').config,
             event = 'BufEnter'
+        },
+
+        -- Find the enemy and replace them with dark power.
+        {
+            'windwp/nvim-spectre',
+            keys = {
+                { '<leader>s' },
+            },
+            config = require('plugins._nvim_spectre').config
         },
 
         -- A neovim lua plugin to help easily manage multiple terminal windows
@@ -173,8 +211,13 @@ require('lazy').setup(
         { 'simrat39/symbols-outline.nvim', config = require('plugins._symbols_outline').config, event = 'BufRead' },
 
         -- Nvim Treesitter configurations and abstraction layer
-        { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate', config = require('plugins._treesitter').config,
-            event = 'BufRead' },
+        {
+            'nvim-treesitter/nvim-treesitter',
+            run = ':TSUpdate',
+            config = require('plugins._treesitter').config,
+            version = false,
+            event = 'BufReadPost'
+        },
 
         -- 🌈 Rainbow parentheses for neovim using tree-sitter 🌈
         { 'p00f/nvim-ts-rainbow', dependencies = 'nvim-treesitter/nvim-treesitter', event = 'BufRead' },
@@ -216,6 +259,7 @@ require('lazy').setup(
 
         -- A completion plugin for neovim coded in Lua.
         { 'hrsh7th/nvim-cmp', config = require('plugins._cmp').config, event = { 'InsertEnter', 'CmdlineEnter' },
+            version = false,
             dependencies = {
                 -- nvim-cmp source for neovim builtin LSP client
                 'hrsh7th/cmp-nvim-lsp',
@@ -293,10 +337,6 @@ require('lazy').setup(
 
         -- Tools for better development in rust using neovim's builtin lsp
         { 'simrat39/rust-tools.nvim', ft = 'rust' },
-
-        -- Python
-        --  A vim plugin to display the indention levels with thin vertical lines
-        { 'Yggdroot/indentLine', init = require('plugins._indent_line').setup, ft = 'python' },
 
         -- Ruby
         -- Vim/Ruby Configuration Files
