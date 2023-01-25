@@ -34,7 +34,6 @@ function M.config()
     }
 
     api.nvim_set_keymap('n', '<C-p>', '<cmd>Telescope find_files<cr>', opts)
-    api.nvim_set_keymap('n', '<A-p>', '<cmd>Telescope buffers<cr>', opts)
     api.nvim_set_keymap('n', '<Leader>fg', '<cmd>Telescope live_grep<cr>', opts)
     api.nvim_set_keymap('n', '<Leader>fb', '<cmd>Telescope buffers<cr>', opts)
     api.nvim_set_keymap('n', '<Leader>fh', '<cmd>Telescope help_tags<cr>', opts)
