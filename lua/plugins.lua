@@ -200,16 +200,15 @@ require('lazy').setup(
         { 'famiu/bufdelete.nvim', lazy = false },
 
         -- surround.vim: Delete/change/add parentheses/quotes/XML-tags/much more with ease
-        { 'tpope/vim-surround', event = 'BufRead' },
+        { 'tpope/vim-surround', event = 'BufReadPost' },
 
         -- Language support
         -- Generic
         -- 🧠 💪 // Smart and powerful comment plugin for neovim. Supports treesitter, dot repeat, left-right/up-down motions, hooks, and more
-        { 'numToStr/Comment.nvim', config = require('plugins._comment').config, event = 'BufRead' },
+        { 'numToStr/Comment.nvim', config = require('plugins._comment').config, event = 'BufReadPost' },
 
-        -- Vim plugin that displays tags in a window, ordered by scope
-        -- { 'preservim/tagbar', init =require('plugins._tagbar').setup }
-        { 'simrat39/symbols-outline.nvim', config = require('plugins._symbols_outline').config, event = 'BufRead' },
+        -- A tree like view for symbols in Neovim using the Language Server Protocol. Supports all your favourite languages.
+        { 'simrat39/symbols-outline.nvim', config = require('plugins._symbols_outline').config, event = 'BufReadPost' },
 
         -- Nvim Treesitter configurations and abstraction layer
         {
@@ -221,7 +220,7 @@ require('lazy').setup(
         },
 
         -- 🌈 Rainbow parentheses for neovim using tree-sitter 🌈
-        { 'p00f/nvim-ts-rainbow', dependencies = 'nvim-treesitter/nvim-treesitter', event = 'BufRead' },
+        { 'p00f/nvim-ts-rainbow', dependencies = 'nvim-treesitter/nvim-treesitter', event = 'BufReadPost' },
 
         -- treesitter to auto close and auto rename html tag
         {
