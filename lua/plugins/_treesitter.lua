@@ -3,7 +3,7 @@ local M = {}
 function M.config()
     for _, config in pairs(require('nvim-treesitter.parsers').get_parser_configs()) do
         config.install_info.url = config.install_info.url:gsub('https://github.com/',
-            'https://ghproxy.com/https://github.com/')
+                'https://ghproxy.com/https://github.com/')
     end
 
     local treesitter_path = vim.fn.stdpath('data') .. '/treesitter'
@@ -30,7 +30,7 @@ function M.config()
             'cpp',
             'c_sharp',
             'css',
-            'dart',
+            -- 'dart',
             'java',
             'javascript',
             'json',
