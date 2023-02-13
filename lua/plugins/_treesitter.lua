@@ -13,9 +13,7 @@ function M.config()
         parser_install_dir = treesitter_path,
         highlight = {
             enable = true,
-            disable = {
-                'dart'
-            }
+            disable = {}
         },
         indent = {
             enable = false,
@@ -32,7 +30,7 @@ function M.config()
             'cpp',
             'c_sharp',
             'css',
-            'dart',
+            -- 'dart',
             'java',
             'javascript',
             'json',
