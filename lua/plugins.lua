@@ -250,7 +250,7 @@ require('lazy').setup(
         -- Extension to mason.nvim that makes it easier to lspconfig with mason.nvim
         {
             'williamboman/mason-lspconfig.nvim',
-            dependencies = { 'williamboman/mason.nvim', 'neovim/nvim-lspconfig' },
+            dependencies = { 'williamboman/mason.nvim', { 'neovim/nvim-lspconfig', version = false } },
             config = require('plugins._mason_lspconfig').config,
             event = 'BufEnter'
         },
