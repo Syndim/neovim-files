@@ -19,7 +19,7 @@ function M.setup(lsp_config, config)
             }
         }
     })
-    lsp_config.sumneko_lua.setup(lua_config)
+    lsp_config.lua_ls.setup(lua_config)
 end
 
 return M
