@@ -215,9 +215,6 @@ require('lazy').setup(
         -- 🧠 💪 // Smart and powerful comment plugin for neovim. Supports treesitter, dot repeat, left-right/up-down motions, hooks, and more
         { 'numToStr/Comment.nvim',         config = require('plugins._comment').config,         event = 'BufReadPost' },
 
-        -- A solid language pack for Vim. 
-        { 'sheerun/vim-polyglot', event = 'BufReadPost'},
-
         -- A tree like view for symbols in Neovim using the Language Server Protocol. Supports all your favourite languages.
         { 'simrat39/symbols-outline.nvim', config = require('plugins._symbols_outline').config, event = 'BufReadPost' },
 
