@@ -87,14 +87,6 @@ require('lazy').setup(
             event = 'BufEnter'
         },
 
-        -- A telescope.nvim extension that offers intelligent prioritization when selecting files from your editing history.
-        {
-            'nvim-telescope/telescope-frecency.nvim',
-            dependencies = { 'nvim-telescope/telescope.nvim', 'kkharji/sqlite.lua' },
-            config = require('plugins._telescope_frecency').config,
-            event = 'BufEnter'
-        },
-
         --  The fastest Neovim colorizer.
         { 'norcalli/nvim-colorizer.lua', config = require('plugins._colorizer').config, event = 'BufRead' },
 

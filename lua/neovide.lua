@@ -18,4 +18,5 @@ if global.is_mac then
     api.nvim_set_keymap('n', '¬', '<C-w>l', opts)
     api.nvim_set_keymap('n', 'π', '<cmd>lua require("illuminate").goto_prev_reference()<cr>', opts)
     api.nvim_set_keymap('n', '˜', '<cmd>lua require("illuminate").goto_next_reference()<cr>', opts)
+    api.nvim_set_keymap('n', 'ø', '<cmd>Telescope buffers<cr>', opts)
 end

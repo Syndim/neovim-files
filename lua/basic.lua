@@ -68,8 +68,6 @@ else
     o.ffs = 'unix,dos,mac'
 end
 
-o.fixendofline = false
-
 g.grepprg = "grepprg=rg --vimgrep --no-heading"
 -- o.signcolumn = 'number'
 -- wo.signcolumn = 'number'
