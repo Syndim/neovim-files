@@ -35,6 +35,21 @@ require('lazy').setup(
             config = require('plugins._mini_indent_scope').config,
         },
 
+        --  Neovim Lua plugin to jump within visible lines. Part of 'mini.nvim' library.
+        {
+            'echasnovski/mini.jump2d',
+            version = '*',
+            event = 'BufReadPost',
+            config = require('plugins._mini_jump_2d').config
+        },
+
+        {
+            'echasnovski/mini.surround',
+            version = '*',
+            event = 'BufReadPost',
+            config = require('plugins._mini_surround').config
+        },
+
         -- illuminate.vim - (Neo)Vim plugin for automatically highlighting other uses of the word under the cursor using either LSP, Tree-sitter, or regex matching.
         {
             'RRethy/vim-illuminate',
