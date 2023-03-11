@@ -1,12 +1,7 @@
 local M = {}
 
 function M.config()
-    local onedark = require('onedark')
-    onedark.setup {
-        style = 'darker'
-    }
-
-    onedark.load()
+    require('vscode').setup({})
 end
 
 return M

@@ -117,13 +117,13 @@ require('lazy').setup(
         {
             'nvim-lualine/lualine.nvim',
             dependencies = { 'kyazdani42/nvim-web-devicons', opt = true },
-            after = 'onedark.nvim',
+            after = 'vscode.nvim',
             config = require('plugins._lualine').config,
             event = 'VeryLazy'
         },
 
-        -- Clean, vibrant and pleasing color schemes for Vim, Sublime Text, iTerm, gnome-terminal and more.
-        { 'navarasu/onedark.nvim',       config = require('plugins._color').config,     lazy = false },
+        -- Neovim/Vim color scheme inspired by Dark+ and Light+ theme in Visual Studio Code
+        { 'Mofiqul/vscode.nvim',         config = require('plugins._color').config,     lazy = false },
 
         -- Editor functionality
         {
@@ -273,7 +273,10 @@ require('lazy').setup(
         { 'jose-elias-alvarez/null-ls.nvim', config = require('plugins._null_ls').config,      event = 'BufEnter' },
 
         -- A completion plugin for neovim coded in Lua.
-        { 'hrsh7th/nvim-cmp', config = require('plugins._cmp').config, event = { 'InsertEnter', 'CmdlineEnter' },
+        {
+            'hrsh7th/nvim-cmp',
+            config = require('plugins._cmp').config,
+            event = { 'InsertEnter', 'CmdlineEnter' },
             version = false,
             dependencies = {
                 -- nvim-cmp source for neovim builtin LSP client
@@ -327,20 +330,26 @@ require('lazy').setup(
                     dependencies = { 'nvim-lua/plenary.nvim' },
                     config = require('plugins._crates').config,
                 },
-            } },
+            }
+        },
 
         -- Quickfix
         -- 🚦 A pretty diagnostics, references, telescope results, quickfix and location list to help you solve all the trouble your code is causing.
-        { 'folke/trouble.nvim',                config = require('plugins._trouble').config, event = 'BufRead' },
+        { 'folke/trouble.nvim',    config = require('plugins._trouble').config, event = 'BufRead' },
 
         -- 🌸 A command-line fuzzy finder
         { 'junegunn/fzf' },
         -- Better quickfix window in Neovim, polish old quickfix window.
-        { 'kevinhwang91/nvim-bqf',             ft = 'qf' },
+        { 'kevinhwang91/nvim-bqf', ft = 'qf' },
 
         -- C/C++
         -- Clangd's off-spec features for neovim's LSP client
-        { 'p00f/clangd_extensions.nvim',       config = require('plugins._clangd').config,  ft = { 'c', 'cpp', 'h', 'hpp' } },
+        {
+            'p00f/clangd_extensions.nvim',
+            config = require('plugins._clangd').config,
+            ft = { 'c', 'cpp', 'h',
+                'hpp' }
+        },
 
         -- C#
         -- Extended 'textDocument/definition' handler for OmniSharp Neovim LSP
@@ -385,8 +394,11 @@ require('lazy').setup(
         { 'dart-lang/dart-vim-plugin',   init = require('plugins._dart').setup,                ft = 'dart' },
 
         -- Tools to help create flutter apps in neovim using the native lsp
-        { 'akinsho/flutter-tools.nvim', dependencies = { 'nvim-lua/plenary.nvim', 'nvim-telescope/telescope.nvim' },
-            ft = 'dart' },
+        {
+            'akinsho/flutter-tools.nvim',
+            dependencies = { 'nvim-lua/plenary.nvim', 'nvim-telescope/telescope.nvim' },
+            ft = 'dart'
+        },
 
         -- nu-shell
         {

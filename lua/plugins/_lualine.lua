@@ -3,7 +3,7 @@ local M = {}
 function M.config()
     require('lualine').setup({
         options = {
-            theme = 'onedark',
+            theme = 'vscode',
             component_separators = '',
             icons_enabled = true
         },
@@ -13,7 +13,7 @@ function M.config()
             },
             lualine_b = {
                 { 'branch' },
-                { 'diff', colored = false }
+                { 'diff',  colored = false }
             },
             lualine_c = {
                 { 'filename', path = 1, file_status = true },
