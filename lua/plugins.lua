@@ -43,6 +43,7 @@ require('lazy').setup(
             config = require('plugins._mini_jump_2d').config
         },
 
+        -- Neovim Lua plugin with fast and feature-rich surround actions. Part of 'mini.nvim' library.
         {
             'echasnovski/mini.surround',
             version = '*',
@@ -57,6 +58,7 @@ require('lazy').setup(
             config = require('plugins._vim_illuminate').config
         },
 
+        -- ✅ Highlight, list and search todo comments in your projects
         {
             'folke/todo-comments.nvim',
             dependencies = 'nvim-lua/plenary.nvim',
@@ -65,7 +67,7 @@ require('lazy').setup(
         },
 
         -- Treesitter powered spellchecker
-        { 'lewis6991/spellsitter.nvim', config = function() require('spellsitter').setup() end, event = 'BufRead' },
+        { 'lewis6991/spellsitter.nvim', config = function() require('spellsitter').setup() end, event = 'BufReadPost' },
 
         -- A fancy, configurable, notification manager for NeoVim
         {
@@ -82,7 +84,7 @@ require('lazy').setup(
             'petertriho/nvim-scrollbar',
             dependencies = 'kevinhwang91/nvim-hlslens',
             config = require('plugins._scrollbar').config,
-            event = 'BufRead'
+            event = 'BufReadPost'
         },
 
         -- Clipboard manager neovim plugin with telescope integration
@@ -90,7 +92,7 @@ require('lazy').setup(
             'AckslD/nvim-neoclip.lua',
             dependencies = { 'nvim-telescope/telescope.nvim', 'kkharji/sqlite.lua' },
             config = require('plugins._neoclip').config,
-            event = 'BufRead'
+            event = 'BufReadPost'
         },
 
         -- Integrates vim-bookmarks into telescope.nvim
@@ -103,7 +105,7 @@ require('lazy').setup(
         },
 
         --  The fastest Neovim colorizer.
-        { 'norcalli/nvim-colorizer.lua', config = require('plugins._colorizer').config, event = 'BufRead' },
+        { 'norcalli/nvim-colorizer.lua', config = require('plugins._colorizer').config, event = 'BufReadPost' },
 
         -- A snazzy bufferline for Neovim
         {
@@ -134,7 +136,7 @@ require('lazy').setup(
         },
 
         -- Peek lines just when you intend
-        { 'nacro90/numb.nvim',         config = require('plugins._numb').config, event = 'BufRead' },
+        { 'nacro90/numb.nvim',         config = require('plugins._numb').config, event = 'BufReadPost' },
 
         -- Easily jump between NeoVim windows.
         {
@@ -175,11 +177,11 @@ require('lazy').setup(
             dependencies = { 'nvim-lua/plenary.nvim' },
             tag = 'release',
             config = require('plugins._gitsigns').config,
-            event = 'BufRead'
+            event = 'BufReadPost'
         },
 
         -- Hlsearch Lens for Neovim
-        { 'kevinhwang91/nvim-hlslens',     config = require('plugins._nvim_hlslens').config, event = 'BufRead' },
+        { 'kevinhwang91/nvim-hlslens',     config = require('plugins._nvim_hlslens').config, event = 'BufReadPost' },
 
         -- Find, Filter, Preview, Pick. All lua, all the time.
         { 'nvim-telescope/telescope.nvim', config = require('plugins._telescope').config,    event = 'BufEnter' },
@@ -209,21 +211,26 @@ require('lazy').setup(
         },
 
         -- A neovim lua plugin to help easily manage multiple terminal windows
-        { 'akinsho/toggleterm.nvim',       config = require('plugins._toggleterm').config,      lazy = false },
+        { 'akinsho/toggleterm.nvim', config = require('plugins._toggleterm').config, lazy = false },
 
         -- Delete Neovim buffers without losing window layout
-        { 'famiu/bufdelete.nvim',          lazy = false },
-
-        -- surround.vim: Delete/change/add parentheses/quotes/XML-tags/much more with ease
-        { 'tpope/vim-surround',            event = 'BufReadPost' },
+        { 'famiu/bufdelete.nvim',    lazy = false },
 
         -- Language support
         -- Generic
         -- 🧠 💪 // Smart and powerful comment plugin for neovim. Supports treesitter, dot repeat, left-right/up-down motions, hooks, and more
-        { 'numToStr/Comment.nvim',         config = require('plugins._comment').config,         event = 'BufReadPost' },
+        {
+            'numToStr/Comment.nvim',
+            config = require('plugins._comment').config,
+            event = 'BufReadPost'
+        },
 
         -- A tree like view for symbols in Neovim using the Language Server Protocol. Supports all your favourite languages.
-        { 'simrat39/symbols-outline.nvim', config = require('plugins._symbols_outline').config, event = 'BufReadPost' },
+        {
+            'simrat39/symbols-outline.nvim',
+            config = require('plugins._symbols_outline').config,
+            event = 'BufReadPost'
+        },
 
         -- Nvim Treesitter configurations and abstraction layer
         {
@@ -250,7 +257,15 @@ require('lazy').setup(
             'windwp/nvim-autopairs',
             dependencies = 'nvim-treesitter/nvim-treesitter',
             config = require('plugins._treesitter_autopair').config,
-            event = 'BufRead'
+            event = 'BufReadPost'
+        },
+
+        -- Enhanced matchparen.vim plugin for Neovim
+        {
+            'utilyre/sentiment.nvim',
+            version = '*',
+            config = require('plugins._sentiment').config,
+            event = 'BufReadPost'
         },
 
         -- LSP and auto completion
@@ -335,7 +350,7 @@ require('lazy').setup(
 
         -- Quickfix
         -- 🚦 A pretty diagnostics, references, telescope results, quickfix and location list to help you solve all the trouble your code is causing.
-        { 'folke/trouble.nvim',    config = require('plugins._trouble').config, event = 'BufRead' },
+        { 'folke/trouble.nvim',    config = require('plugins._trouble').config, event = 'BufReadPost' },
 
         -- 🌸 A command-line fuzzy finder
         { 'junegunn/fzf' },
