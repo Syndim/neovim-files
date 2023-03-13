@@ -16,6 +16,13 @@ function M.config()
             }
         }
     )
+
+    local opts = {
+        noremap = true
+    }
+
+    vim.api.nvim_set_keymap('n', '<C-I>', ':BufferLineCyclePrev<CR>', opts)
+    vim.api.nvim_set_keymap('n', '<C-O>', ':BufferLineCycleNext<CR>', opts)
 end
 
 return M

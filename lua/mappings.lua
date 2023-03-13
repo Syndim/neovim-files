@@ -15,9 +15,9 @@ api.nvim_set_keymap('n', '<C-right>', '<C-I>', opts)
 api.nvim_set_keymap('n', '<Leader>b', '<C-O>', opts)
 api.nvim_set_keymap('n', '<Leader>n', '<C-I>', opts)
 -- Neovim 0.7 separates tab and c-i so we need to map both
-api.nvim_set_keymap('n', '<Tab>', ':bp<CR>', opts)
-api.nvim_set_keymap('n', '<C-I>', ':bp<CR>', opts)
-api.nvim_set_keymap('n', '<C-O>', ':bn<CR>', opts)
+-- api.nvim_set_keymap('n', '<Tab>', ':bp<CR>', opts)
+-- api.nvim_set_keymap('n', '<C-I>', ':bp<CR>', opts)
+-- api.nvim_set_keymap('n', '<C-O>', ':bn<CR>', opts)
 
 -- Close buffer
 api.nvim_set_keymap('n', '<Leader>x', ':Bdelete<CR>', { noremap = true, silent = true, nowait = true })
