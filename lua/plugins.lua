@@ -382,7 +382,7 @@ require('lazy').setup(
         { 'vim-ruby/vim-ruby',                 ft = 'ruby' },
 
         -- rake.vim: it's like rails.vim without the rails
-        { 'tpope/vim-rake',                    ft = 'ruby' },
+        -- { 'tpope/vim-rake',                    ft = 'ruby' },
 
         -- Just
         --  Treesitter grammar for Justfiles (casey/just)
