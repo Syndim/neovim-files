@@ -160,9 +160,6 @@ require('lazy').setup(
         -- Vim motions on speed!
         { 'easymotion/vim-easymotion', event = 'BufReadPost' },
 
-        -- 🦘 Neovim's answer to the mouse
-        { '/ggandor/leap.nvim',        config = require('plugins._leap').config, event = 'BufReadPost' },
-
         -- Multiple cursors plugin for vim/neovim
         { 'mg979/vim-visual-multi',    event = 'BufReadPost' },
 
