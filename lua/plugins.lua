@@ -128,7 +128,7 @@ require('lazy').setup(
         },
 
         -- Peek lines just when you intend
-        { 'nacro90/numb.nvim',         config = require('plugins._numb').config, event = 'BufReadPost' },
+        { 'nacro90/numb.nvim',      config = require('plugins._numb').config, event = 'BufReadPost' },
 
         -- Easily jump between NeoVim windows.
         {
@@ -158,13 +158,13 @@ require('lazy').setup(
         },
 
         -- Vim motions on speed!
-        { 'easymotion/vim-easymotion', event = 'BufReadPost' },
+        -- { 'easymotion/vim-easymotion', event = 'BufReadPost' },
 
         -- 🦘 Neovim's answer to the mouse
         { '/ggandor/leap.nvim',        config = require('plugins._leap').config, event = 'BufReadPost' },
 
         -- Multiple cursors plugin for vim/neovim
-        { 'mg979/vim-visual-multi',    event = 'BufReadPost' },
+        { 'mg979/vim-visual-multi', event = 'BufReadPost' },
 
         -- Git integration for buffers
         {
