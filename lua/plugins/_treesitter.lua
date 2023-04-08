@@ -46,8 +46,7 @@ function M.config()
             'typescript',
             'yaml',
             'fish',
-            'vim',
-            'help'
+            'vim'
         },
         incremental_selection = {
             enable = true,
@@ -60,9 +59,8 @@ function M.config()
         },
     }
 
-    local ft_to_parser = require('nvim-treesitter.parsers').filetype_to_parsername
-    ft_to_parser.javascript = 'tsx'
-    ft_to_parser['typescript.tsx'] = 'tsx'
+    vim.treesitter.language.register('javascript', 'tsx')
+    vim.treesitter.language.register('typescript.tsx', 'tsx')
 end
 
 return M

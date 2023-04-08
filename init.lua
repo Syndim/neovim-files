@@ -1,5 +1,4 @@
 require('features')
-require('local_rc')
 require('basic')
 require('filetypes')
 require('autocmds')

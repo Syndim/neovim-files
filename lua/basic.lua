@@ -69,5 +69,8 @@ else
 end
 
 g.grepprg = "grepprg=rg --vimgrep --no-heading"
+
+-- Load project config file
+o.exrc = true
 -- o.signcolumn = 'number'
 -- wo.signcolumn = 'number'
