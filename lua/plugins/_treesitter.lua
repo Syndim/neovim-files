@@ -13,7 +13,16 @@ function M.config()
         parser_install_dir = treesitter_path,
         highlight = {
             enable = true,
-            disable = {}
+            disable = function(lang, _)
+                local enabled_languages = { 'python', 'c_sharp', 'fish', 'ruby', 'javascript', 'typescript', 'tsx' }
+                for _, enabled in pairs(enabled_languages) do
+                    if lang == enabled then
+                        return false
+                    end
+                end
+
+                return true
+            end
         },
         indent = {
             enable = false,

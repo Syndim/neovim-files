@@ -1,6 +1,6 @@
 local M = {}
 
-function M.config() 
+function M.config()
     require('nvim-ts-autotag').setup({})
 end
 

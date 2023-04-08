@@ -124,7 +124,11 @@ require('lazy').setup(
         },
 
         -- Neovim/Vim color scheme inspired by Dark+ and Light+ theme in Visual Studio Code
-        { 'Mofiqul/vscode.nvim',         config = require('plugins._color').config,     lazy = false },
+        {
+            'Mofiqul/vscode.nvim',
+            config = require('plugins._color').config,
+            lazy = false
+        },
 
         -- Editor functionality
         {
@@ -135,7 +139,7 @@ require('lazy').setup(
         },
 
         -- Peek lines just when you intend
-        { 'nacro90/numb.nvim',      config = require('plugins._numb').config, event = 'BufReadPost' },
+        { 'nacro90/numb.nvim',           config = require('plugins._numb').config,      event = 'BufReadPost' },
 
         -- Neovim plugin to manage the file system and other tree like structures.
         {
