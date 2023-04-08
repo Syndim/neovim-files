@@ -79,6 +79,13 @@ require('lazy').setup(
             event = 'BufReadPost'
         },
 
+        -- Status column plugin that provides a configurable 'statuscolumn' and click handlers.
+        {
+            'luukvbaal/statuscol.nvim',
+            config = require('plugins._statuscol').config,
+            event = 'BufReadPost'
+        },
+
         -- Clipboard manager neovim plugin with telescope integration
         {
             'AckslD/nvim-neoclip.lua',
@@ -130,14 +137,6 @@ require('lazy').setup(
         -- Peek lines just when you intend
         { 'nacro90/numb.nvim',      config = require('plugins._numb').config, event = 'BufReadPost' },
 
-        -- Easily jump between NeoVim windows.
-        {
-            url = 'https://gitlab.com/yorickpeterse/nvim-window.git',
-            name = 'nvim-window',
-            config = require('plugins._nvim_window').config,
-            lazy = false
-        },
-
         -- Neovim plugin to manage the file system and other tree like structures.
         {
             'nvim-neo-tree/neo-tree.nvim',
@@ -161,7 +160,7 @@ require('lazy').setup(
         -- { 'easymotion/vim-easymotion', event = 'BufReadPost' },
 
         -- 🦘 Neovim's answer to the mouse
-        { '/ggandor/leap.nvim',        config = require('plugins._leap').config, event = 'BufReadPost' },
+        { '/ggandor/leap.nvim',     config = require('plugins._leap').config, event = 'BufReadPost' },
 
         -- Multiple cursors plugin for vim/neovim
         { 'mg979/vim-visual-multi', event = 'BufReadPost' },
