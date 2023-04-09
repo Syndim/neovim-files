@@ -58,9 +58,6 @@ require('lazy').setup(
             config = require('plugins._todo_comments').config
         },
 
-        -- Treesitter powered spellchecker
-        { 'lewis6991/spellsitter.nvim', config = function() require('spellsitter').setup() end, event = 'BufReadPost' },
-
         -- A fancy, configurable, notification manager for NeoVim
         {
             'rcarriga/nvim-notify',
@@ -69,7 +66,7 @@ require('lazy').setup(
         },
 
         -- 💥 Create key bindings that stick. WhichKey is a lua plugin for Neovim 0.5 that displays a popup with possible keybindings of the command you started typing.
-        { 'folke/which-key.nvim',       config = require('plugins._which_key').config,          lazy = false },
+        { 'folke/which-key.nvim',        config = require('plugins._which_key').config, lazy = false },
 
         --  Extensible Neovim Scrollbar
         {
@@ -104,7 +101,7 @@ require('lazy').setup(
         },
 
         --  The fastest Neovim colorizer.
-        { 'norcalli/nvim-colorizer.lua', config = require('plugins._colorizer').config, event = 'BufReadPost' },
+        { 'norcalli/nvim-colorizer.lua', config = require('plugins._colorizer').config, event = 'VeryLazy' },
 
         -- A snazzy bufferline for Neovim
         {
@@ -139,7 +136,7 @@ require('lazy').setup(
         },
 
         -- Peek lines just when you intend
-        { 'nacro90/numb.nvim',           config = require('plugins._numb').config,      event = 'BufReadPost' },
+        { 'nacro90/numb.nvim',      config = require('plugins._numb').config, event = 'BufReadPost' },
 
         -- Neovim plugin to manage the file system and other tree like structures.
         {
@@ -159,9 +156,6 @@ require('lazy').setup(
             config = require('plugins._dressing').config,
             init = require('plugins._dressing').init
         },
-
-        -- Vim motions on speed!
-        -- { 'easymotion/vim-easymotion', event = 'BufReadPost' },
 
         -- 🦘 Neovim's answer to the mouse
         { '/ggandor/leap.nvim',     config = require('plugins._leap').config, event = 'BufReadPost' },
@@ -360,8 +354,7 @@ require('lazy').setup(
         {
             'p00f/clangd_extensions.nvim',
             config = require('plugins._clangd').config,
-            ft = { 'c', 'cpp', 'h',
-                'hpp' }
+            ft = { 'c', 'cpp', 'h', 'hpp' }
         },
 
         -- C#
@@ -378,9 +371,6 @@ require('lazy').setup(
         -- Ruby
         -- Vim/Ruby Configuration Files
         { 'vim-ruby/vim-ruby',                 ft = 'ruby' },
-
-        -- rake.vim: it's like rails.vim without the rails
-        -- { 'tpope/vim-rake',                    ft = 'ruby' },
 
         -- Just
         --  Treesitter grammar for Justfiles (casey/just)
@@ -420,11 +410,6 @@ require('lazy').setup(
             config = require('plugins._nvim_nu').config,
             ft = 'nu'
         },
-
-        -- Others
-        -- Fix CursorHold Performance.
-        { 'antoinemadec/FixCursorHold.nvim', init = require('plugins._fix_cursor_hold').setup, lazy = false },
-
     },
     {
         defaults = {
