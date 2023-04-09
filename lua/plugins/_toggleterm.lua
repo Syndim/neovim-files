@@ -12,7 +12,7 @@ function M.config()
         start_in_insert = true,
         persist_size = true,
         direction = 'horizontal',
-        shell = global.is_windows and vim.o.shell or 'zsh'
+        shell = global.is_windows and vim.o.shell or 'fish'
     }
 end
 
