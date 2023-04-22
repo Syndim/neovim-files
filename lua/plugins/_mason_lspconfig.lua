@@ -2,17 +2,6 @@ local M = {}
 
 function M.config()
     local global = require('global')
-    local function which(cmd)
-        local redirect = ' > /dev/null 2>&1'
-        ---@diagnostic disable-next-line: redefined-local
-        local which = 'which'
-        if global.is_windows then
-            redirect = ' > nul 2>&1'
-            which = 'where.exe'
-        end
-
-        return os.execute(which .. ' ' .. cmd .. redirect)
-    end
 
     local mason = require('mason')
     local mason_lsp_config = require('mason-lspconfig')
@@ -54,6 +43,17 @@ function M.config()
         lsp_config[name].setup(config)
     end
 
+    -- Taplo in the registry doesn't contain Windows definition
+    if global.is_windows then
+        local mason_registry = require('mason-registry')
+        local taplo_assets = mason_registry.get_package('taplo').spec.source.asset
+        table.insert(taplo_assets, {
+            target = 'win_x64',
+            file = 'taplo-full-windows-x86_64.zip',
+            bin = 'taplo.exe'
+        })
+    end
+
     -- Custom settings
     require('plugins._lsp_lua').setup(lsp_config, config)
     require('plugins._lsp_csharp').setup(lsp_config, lsp, config)
@@ -61,13 +61,13 @@ function M.config()
     require('plugins._lsp_clang').setup(config)
     require('plugins._lsp_python').setup(lsp_config, config)
 
-    if which('flutter') == 0 then
+    if global:which('flutter') == 0 then
         require('plugins._lsp_flutter').setup(lsp, config)
     end
 
     -- Optional LSP
     for name, condition in pairs(optional_servers) do
-        if which(condition) == 0 then
+        if global:which(condition) == 0 then
             lsp_config[name].setup(config)
         end
     end
