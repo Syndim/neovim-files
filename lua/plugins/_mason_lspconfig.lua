@@ -24,7 +24,7 @@ function M.config()
     local optional_servers = {
         powershell_es = 'pwsh',
         sourcekit     = 'swift',
-        solargraph    = 'ruby',
+        -- solargraph    = 'ruby',
     }
 
     mason.setup({
