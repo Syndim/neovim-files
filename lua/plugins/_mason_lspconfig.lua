@@ -51,7 +51,7 @@ function M.config()
     -- Use proxy for schema file
     mason_registry:on('package:handle', vim.schedule_wrap(function(package, handle)
         if package.spec.schemas ~= nil then
-            if package.spec.schemas.lsp:starts_with('vscode:https://raw.githubusercontent.com/') then
+            if package.spec.schemas.lsp:starts_with('vscode:https://raw.githubusercontent.com') then
                 package.spec.schemas.lsp = package.spec.schemas.lsp:replace('vscode:', 'vscode:https://ghproxy.com/')
             end
         end
