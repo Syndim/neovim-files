@@ -340,6 +340,15 @@ require('lazy').setup(
             }
         },
 
+        -- Fully featured & enhanced replacement for copilot.vim complete with API for interacting with Github Copilot
+        {
+            'zbirenbaum/copilot.lua',
+            cmd = 'Copilot',
+            event = 'InsertEnter',
+            config = require('plugins._copilot').config,
+            cond = function() return vim.g.copilot_enabled end
+        },
+
         -- Quickfix
         -- 🚦 A pretty diagnostics, references, telescope results, quickfix and location list to help you solve all the trouble your code is causing.
         { 'folke/trouble.nvim',    config = require('plugins._trouble').config, event = 'BufReadPost' },
