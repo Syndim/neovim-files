@@ -7,6 +7,9 @@ function M.config()
         },
         suggestion = {
             auto_trigger = true,
+            keymap = {
+                accept = "<C-f>"
+            }
         }
     })
 end
