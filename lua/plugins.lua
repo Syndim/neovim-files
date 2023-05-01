@@ -158,7 +158,12 @@ require('lazy').setup(
         },
 
         -- 🦘 Neovim's answer to the mouse
-        { '/ggandor/leap.nvim',     config = require('plugins._leap').config, event = 'BufReadPost' },
+        {
+            '/ggandor/leap.nvim',
+            dependencies = { 'tpope/vim-repeat' },
+            config = require('plugins._leap').config,
+            event = 'BufReadPost'
+        },
 
         -- Multiple cursors plugin for vim/neovim
         { 'mg979/vim-visual-multi', event = 'BufReadPost' },
