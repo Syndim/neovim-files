@@ -4,7 +4,8 @@ function M.config()
     require('mason-tool-installer').setup({
         ensure_installed = {
             'pylint',
-            'hadolint'
+            'hadolint',
+            'eslint_d'
         }
     })
 end
