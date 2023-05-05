@@ -15,6 +15,21 @@ function M.config()
             null_ls.builtins.diagnostics.fish,
             null_ls.builtins.diagnostics.hadolint,
             null_ls.builtins.diagnostics.protoc_gen_lint,
+            null_ls.builtins.formatting.prettierd.with({
+                filetypes = {
+                    "javascript",
+                    "javascriptreact",
+                    "typescript",
+                    "typescriptreact",
+                    "vue",
+                    "css",
+                    "scss",
+                    "less",
+                    "html",
+                    "json",
+                    "jsonc"
+                }
+            }),
         },
     })
 end

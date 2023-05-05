@@ -6,6 +6,7 @@ function M.config()
             'pylint',
             'hadolint',
             'eslint_d',
+            'prettierd'
         }
     })
 end
