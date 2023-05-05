@@ -5,6 +5,7 @@ function M.config()
         ensure_installed = {
             'pylint',
             'hadolint',
+            'eslint_d',
         }
     })
 end
