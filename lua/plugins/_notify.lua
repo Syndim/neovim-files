@@ -13,7 +13,7 @@ function M.config()
     })
     vim.notify = function(msg, level, opts)
         if string.len(msg) > 0 then
-            notify.notify(msg, level, opts)
+            return notify.notify(msg, level, opts)
         end
     end
 

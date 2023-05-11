@@ -356,6 +356,16 @@ require('lazy').setup(
             cond = function() return features.copilot_enabled end
         },
 
+        -- Free, ultrafast Copilot alternative for Vim and Neovim
+        {
+            'Exafunction/codeium.vim',
+            cmd = 'Codeium',
+            event = 'BufReadPost',
+            config = require('plugins._codeium').config,
+            init = require('plugins._codeium').setup,
+            cond = function() return features.codeium_enabled end,
+        },
+
         -- Quickfix
         -- 🚦 A pretty diagnostics, references, telescope results, quickfix and location list to help you solve all the trouble your code is causing.
         { 'folke/trouble.nvim',    config = require('plugins._trouble').config, event = 'BufReadPost' },
