@@ -8,12 +8,12 @@ function M.setup(config)
         -- https://github.com/rust-analyzer/rust-analyzer/blob/master/docs/user/generated_config.adoc
         ['rust-analyzer'] = {
             -- enable clippy on save
-            checkOnSave = {
-                command = 'clippy'
-            },
-            procMacro = {
-                enable = true
-            }
+            -- checkOnSave = {
+            --     command = 'clippy'
+            -- },
+            -- procMacro = {
+            --     enable = true
+            -- }
         }
     }
 
