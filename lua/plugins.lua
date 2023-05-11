@@ -356,6 +356,14 @@ require('lazy').setup(
             cond = function() return features.copilot_enabled end
         },
 
+        -- Simple Copilot status indicator for Neovim
+        {
+            'jonahgoldwastaken/copilot-status.nvim',
+            dependencies = { 'zbirenbaum/copilot.lua' },
+            event = 'InsertEnter',
+            cond = function() return features.copilot_enabled end
+        },
+
         -- Free, ultrafast Copilot alternative for Vim and Neovim
         {
             'Exafunction/codeium.vim',

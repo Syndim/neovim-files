@@ -7,6 +7,7 @@ end
 g.neovide_remember_window_size = true
 
 local global = require('global')
+local features = require('features')
 
 if global.is_mac then
     local opts = {
