@@ -13,6 +13,8 @@ end
 
 vim.opt.rtp:prepend(lazypath)
 
+local features = require('features')
+
 require('lazy').setup(
     {
         -- Package menagement
@@ -351,7 +353,7 @@ require('lazy').setup(
             cmd = 'Copilot',
             event = 'InsertEnter',
             config = require('plugins._copilot').config,
-            cond = function() return vim.g.copilot_enabled end
+            cond = function() return features.copilot_enabled end
         },
 
         -- Quickfix

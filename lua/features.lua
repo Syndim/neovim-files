@@ -1,2 +1,7 @@
-vim.g.format_on_save_enabled = true
-vim.g.copilot_enabled = false
+local M = {
+    format_on_save_enabled = true,
+    copilot_enabled = false,
+    lsp_config = {}
+}
+
+return M
