@@ -361,6 +361,7 @@ require('lazy').setup(
             'jonahgoldwastaken/copilot-status.nvim',
             dependencies = { 'zbirenbaum/copilot.lua' },
             event = 'InsertEnter',
+            config = require('plugins._copilot_status').config,
             cond = function() return features.copilot_enabled end
         },
 

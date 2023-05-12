@@ -20,8 +20,8 @@ function M.config()
                 "require'lsp-status'.status()"
                 -- { 'diagnostics', sources = { 'nvim_lsp' } },
             },
-            lualine_x = { { require('plugins._copilot').status }, { require('plugins._codeium').status },
-                { 'filetype', colored = true }, 'encoding',
+            lualine_x = { { require('plugins._copilot_status').status }, { require('plugins._codeium').status },
+                { 'filetype',                               colored = true }, 'encoding',
                 'fileformat' },
             lualine_y = { 'progress' },
             lualine_z = {

@@ -1,15 +1,6 @@
 local M = {}
 
 local global = require('global')
-local features = require('features')
-
-function M.status()
-    if features.copilot_enabled then
-        return require('copilot_status').status_string()
-    end
-
-    return ''
-end
 
 function M.config()
     require('copilot').setup({
