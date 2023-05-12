@@ -5,7 +5,7 @@ local features = require('features')
 
 function M.status()
     if features.copilot_enabled then
-        return require('copilot_status').status_string
+        return require('copilot_status').status_string()
     end
 
     return ''
