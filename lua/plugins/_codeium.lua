@@ -5,7 +5,24 @@ local global = require('global')
 
 function M.status()
     if features.codeium_enabled then
-        return vim.fn['codeium#GetStatusString']()
+        local status = vim.api.nvim_buf_get_var(0, '_codeium_status')
+        if status == nil then
+            if vim.fn['codeium#Enabled']() then
+                return '󱃖'
+            else
+                return ''
+            end
+        elseif status == 2 then
+            local completions = vim.api.nvim_buf_get_var(0, '_codeium_completions')
+            if completions['items'] ~= nil and completions['index'] ~= nil then
+                return string.format('%d/%d', completions.index + 1, #completions.items)
+            end
+            return '0'
+        elseif status == 1 then
+            return ''
+        else
+            return '󱃖'
+        end
     end
 
     return ''
