@@ -351,7 +351,7 @@ require('lazy').setup(
         {
             'zbirenbaum/copilot.lua',
             cmd = 'Copilot',
-            event = 'InsertEnter',
+            event = 'BufEnter',
             config = require('plugins._copilot').config,
             cond = function() return features.copilot_enabled end
         },
@@ -360,7 +360,7 @@ require('lazy').setup(
         {
             'jonahgoldwastaken/copilot-status.nvim',
             dependencies = { 'zbirenbaum/copilot.lua' },
-            event = 'InsertEnter',
+            event = 'BufEnter',
             config = require('plugins._copilot_status').config,
             cond = function() return features.copilot_enabled end
         },
