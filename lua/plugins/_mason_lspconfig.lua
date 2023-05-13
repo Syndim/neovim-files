@@ -14,7 +14,6 @@ function M.config()
         'dockerls',
         'html',
         'jsonls',
-        'tsserver',
         'taplo', -- toml
         'bashls',
         'yamlls',
@@ -71,6 +70,7 @@ function M.config()
     require('plugins._lsp_rust').setup(config)
     require('plugins._lsp_clang').setup(config)
     require('plugins._lsp_python').setup(lsp_config, config)
+    require('plugins._lsp_typescript').setup(lsp_config, config)
 
     if global:which('flutter') == 0 then
         require('plugins._lsp_flutter').setup(lsp, config)
