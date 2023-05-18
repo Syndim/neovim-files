@@ -39,7 +39,7 @@ function M.config()
             'cpp',
             'c_sharp',
             'css',
-            -- 'dart',
+            'dart',
             'java',
             'javascript',
             'json',
