@@ -377,12 +377,19 @@ require('lazy').setup(
 
         -- Quickfix
         -- 🚦 A pretty diagnostics, references, telescope results, quickfix and location list to help you solve all the trouble your code is causing.
-        { 'folke/trouble.nvim',    config = require('plugins._trouble').config, event = 'BufReadPost' },
+        { 'folke/trouble.nvim',                config = require('plugins._trouble').config, event = 'BufReadPost' },
 
-        -- 🌸 A command-line fuzzy finder
-        { 'junegunn/fzf' },
         -- Better quickfix window in Neovim, polish old quickfix window.
-        { 'kevinhwang91/nvim-bqf', ft = 'qf' },
+        {
+            'kevinhwang91/nvim-bqf',
+            dependencies = {
+                'junegunn/fzf',
+                run = function()
+                    vim.fn['fzf#install']()
+                end
+            },
+            ft = 'qf'
+        },
 
         -- C/C++
         -- Clangd's off-spec features for neovim's LSP client
