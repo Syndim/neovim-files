@@ -379,15 +379,17 @@ require('lazy').setup(
         -- 🚦 A pretty diagnostics, references, telescope results, quickfix and location list to help you solve all the trouble your code is causing.
         { 'folke/trouble.nvim',                config = require('plugins._trouble').config, event = 'BufReadPost' },
 
+        -- 🌸 A command-line fuzzy finder
+        {
+            'junegunn/fzf',
+            run = function()
+                vim.fn['fzf#install']()
+            end
+        },
         -- Better quickfix window in Neovim, polish old quickfix window.
         {
             'kevinhwang91/nvim-bqf',
-            dependencies = {
-                'junegunn/fzf',
-                run = function()
-                    vim.fn['fzf#install']()
-                end
-            },
+            dependencies = { 'junegunn/fzf', 'nvim-treesitter/nvim-treesitter' },
             ft = 'qf'
         },
 
