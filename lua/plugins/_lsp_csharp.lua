@@ -14,7 +14,6 @@ function M.setup(lsp_config, lsp, config)
 
         -- start issue https://github.com/OmniSharp/omnisharp-roslyn/issues/2483
         -- get the list of tokens from lua =vim.lsp.get_active_clients()[1] and just replace the spaces with underscores
-        client.server_capabilities.semanticTokensProvider = nil
         local function toSnakeCase(str)
             return string.gsub(str, "%s*[- ]%s*", "_")
         end
@@ -22,11 +21,14 @@ function M.setup(lsp_config, lsp, config)
         local tokenModifiers = client.server_capabilities.semanticTokensProvider.legend.tokenModifiers
         for i, v in ipairs(tokenModifiers) do
             tokenModifiers[i] = toSnakeCase(v)
+            -- print(tokenModifiers[i])
         end
         local tokenTypes = client.server_capabilities.semanticTokensProvider.legend.tokenTypes
         for i, v in ipairs(tokenTypes) do
             tokenTypes[i] = toSnakeCase(v)
+            -- print(tokenTypes[i])
         end
+        -- client.server_capabilities.semanticTokensProvider = nil
         -- end
 
         default_on_attach(client, bufnr)
