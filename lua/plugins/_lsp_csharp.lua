@@ -14,26 +14,38 @@ function M.setup(lsp_config, lsp, config)
 
         -- start issue https://github.com/OmniSharp/omnisharp-roslyn/issues/2483
         -- get the list of tokens from lua =vim.lsp.get_active_clients()[1] and just replace the spaces with underscores
+        client.server_capabilities.semanticTokensProvider = nil
+        local function toSnakeCase(str)
+            return string.gsub(str, "%s*[- ]%s*", "_")
+        end
+
         local tokenModifiers = client.server_capabilities.semanticTokensProvider.legend.tokenModifiers
         for i, v in ipairs(tokenModifiers) do
-            tokenModifiers[i] = v:gsub(' ', '_'):gsub('-_', '')
+            tokenModifiers[i] = toSnakeCase(v)
         end
         local tokenTypes = client.server_capabilities.semanticTokensProvider.legend.tokenTypes
         for i, v in ipairs(tokenTypes) do
-            tokenTypes[i] = v:gsub(' ', '_'):gsub('-_', '')
+            tokenTypes[i] = toSnakeCase(v)
         end
         -- end
 
         default_on_attach(client, bufnr)
     end
 
+    local function root_dir(fname)
+        local util = require('lspconfig.util')
+        return util.root_pattern('*.sln')(fname) or util.root_pattern('*.csproj')(fname) or
+            util.root_pattern('omnisharp.json')(fname)
+    end
+
     local omnisharp_config = vim.tbl_deep_extend('force', config, {
         handlers = handlers_config,
-        on_attach = on_attach
+        on_attach = on_attach,
+        organize_imports_on_format = true,
+        root_dir = root_dir
     })
 
     lsp_config.omnisharp.setup(omnisharp_config)
 end
 
 return M
-
