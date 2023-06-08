@@ -34,7 +34,7 @@ function M.setup(lsp_config, config)
         end
     })
 
-    lsp_config['pyright'].setup(python_config)
+    lsp_config['pylsp'].setup(python_config)
 end
 
 return M

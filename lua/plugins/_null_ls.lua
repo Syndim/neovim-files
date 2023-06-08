@@ -8,7 +8,7 @@ function M.config()
             null_ls.builtins.code_actions.gitrebase,
             null_ls.builtins.code_actions.gitsigns,
             null_ls.builtins.diagnostics.eslint_d,
-            -- null_ls.builtins.diagnostics.pylint,
+            null_ls.builtins.diagnostics.ruff,
             null_ls.builtins.diagnostics.tsc,
             null_ls.builtins.diagnostics.clang_check,
             null_ls.builtins.diagnostics.cmake_lint,
