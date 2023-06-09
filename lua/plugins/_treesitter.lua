@@ -14,7 +14,8 @@ function M.config()
         highlight = {
             enable = true,
             disable = function(lang, _)
-                local enabled_languages = { 'python', 'c_sharp', 'fish', 'ruby', 'javascript', 'typescript', 'tsx' }
+                local enabled_languages = { 'python', 'c_sharp', 'fish', 'ruby', 'javascript', 'typescript', 'tsx',
+                    'just' }
                 for _, enabled in pairs(enabled_languages) do
                     if lang == enabled then
                         return false
