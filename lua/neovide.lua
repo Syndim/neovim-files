@@ -20,6 +20,9 @@ if global.is_mac then
     api.nvim_set_keymap('n', '˜', '<cmd>lua require("illuminate").goto_next_reference()<cr>', opts)
     api.nvim_set_keymap('n', 'ø', '<cmd>Telescope buffers<cr>', opts)
 elseif global.is_wsl then
+    -- Neovide under wsl will fetch new set of environments and VIRTUAL_ENV
+    -- environment variable somehow get lost
+    -- So we reset it here
     local util = require('lspconfig/util')
     local path = util.path
     local cwd = vim.fn.getcwd()
