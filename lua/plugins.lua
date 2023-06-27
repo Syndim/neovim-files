@@ -22,6 +22,24 @@ require('lazy').setup(
         'folke/lazy.nvim',
 
         -- Editor interface
+        -- A Neovim plugin helping you establish good command workflow and habit
+        {
+            "m4xshen/hardtime.nvim",
+            event = "VeryLazy",
+            config = require('plugins._hard_time').config
+        },
+
+        -- Open files and command output from neovim terminals in your current neovim instance
+        {
+            'willothy/flatten.nvim',
+            -- config = true,
+            -- or pass configuration with
+            opts = {},
+            -- Ensure that it runs first to minimize delay when opening file from terminal
+            lazy = false,
+            priority = 1001,
+        },
+
         -- Indent guides for Neovim
         {
             'lukas-reineke/indent-blankline.nvim',
@@ -129,11 +147,11 @@ require('lazy').setup(
             lazy = false
         },
 
-        -- Editor functionality
+        -- A small automated session manager for Neovim
         {
-            'Shatur/neovim-session-manager',
+            'rmagatti/auto-session',
             dependencies = 'nvim-lua/plenary.nvim',
-            config = require('plugins._nvim_session_manager').config,
+            config = require('plugins._auto_session').config,
             event = 'BufEnter'
         },
 
