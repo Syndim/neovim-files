@@ -177,12 +177,46 @@ require('lazy').setup(
             init = require('plugins._dressing').init
         },
 
-        -- 🦘 Neovim's answer to the mouse
+        -- Navigate your code with search labels, enhanced character motions and Treesitter integration
         {
-            '/ggandor/leap.nvim',
-            dependencies = { 'tpope/vim-repeat' },
-            config = require('plugins._leap').config,
-            event = 'BufReadPost'
+            "folke/flash.nvim",
+            event = "VeryLazy",
+            ---@type Flash.Config
+            opts = {},
+            keys = {
+                {
+                    "s<CR>",
+                    mode = { "n", "x", "o" },
+                    function()
+                        require("flash").jump({ continue = true })
+                    end,
+                    desc = "Flash",
+                },
+                {
+                    "s",
+                    mode = { "n", "x", "o" },
+                    function()
+                        require("flash").jump()
+                    end,
+                    desc = "Flash",
+                },
+                {
+                    "r",
+                    mode = "o",
+                    function()
+                        require("flash").remote()
+                    end,
+                    desc = "Remote Flash",
+                },
+                {
+                    "<c-s>",
+                    mode = { "c" },
+                    function()
+                        require("flash").toggle()
+                    end,
+                    desc = "Toggle Flash Search",
+                },
+            },
         },
 
         -- Multiple cursors plugin for vim/neovim
@@ -197,11 +231,8 @@ require('lazy').setup(
             event = 'BufReadPost'
         },
 
-        -- Hlsearch Lens for Neovim
-        { 'kevinhwang91/nvim-hlslens',     config = require('plugins._nvim_hlslens').config, event = 'BufReadPost' },
-
         -- Find, Filter, Preview, Pick. All lua, all the time.
-        { 'nvim-telescope/telescope.nvim', config = require('plugins._telescope').config,    event = 'BufEnter' },
+        { 'nvim-telescope/telescope.nvim', config = require('plugins._telescope').config,  event = 'BufEnter' },
 
         -- FZY style sorter that is compiled
         {
@@ -228,10 +259,10 @@ require('lazy').setup(
         },
 
         -- A neovim lua plugin to help easily manage multiple terminal windows
-        { 'akinsho/toggleterm.nvim', config = require('plugins._toggleterm').config, lazy = false },
+        { 'akinsho/toggleterm.nvim',       config = require('plugins._toggleterm').config, lazy = false },
 
         -- Delete Neovim buffers without losing window layout
-        { 'famiu/bufdelete.nvim',    lazy = false },
+        { 'famiu/bufdelete.nvim',          lazy = false },
 
         -- Language support
         -- Generic
