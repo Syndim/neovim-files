@@ -22,13 +22,6 @@ require('lazy').setup(
         'folke/lazy.nvim',
 
         -- Editor interface
-        -- A Neovim plugin helping you establish good command workflow and habit
-        {
-            "m4xshen/hardtime.nvim",
-            event = "VeryLazy",
-            config = require('plugins._hard_time').config
-        },
-
         -- Open files and command output from neovim terminals in your current neovim instance
         {
             'willothy/flatten.nvim',
@@ -289,9 +282,6 @@ require('lazy').setup(
             event = 'BufReadPost'
         },
 
-        -- 🌈 Rainbow parentheses for neovim using tree-sitter 🌈
-        { 'p00f/nvim-ts-rainbow',            dependencies = 'nvim-treesitter/nvim-treesitter', event = 'BufReadPost' },
-
         -- treesitter to auto close and auto rename html tag
         {
             'windwp/nvim-ts-autotag',
@@ -333,7 +323,7 @@ require('lazy').setup(
         },
 
         -- Neovim as a language server to inject LSP diagnostics, code actions, and more via Lua.
-        { 'jose-elias-alvarez/null-ls.nvim', config = require('plugins._null_ls').config,      event = 'BufEnter' },
+        { 'jose-elias-alvarez/null-ls.nvim', config = require('plugins._null_ls').config, event = 'BufEnter' },
 
         -- A completion plugin for neovim coded in Lua.
         {
@@ -426,7 +416,7 @@ require('lazy').setup(
 
         -- Quickfix
         -- 🚦 A pretty diagnostics, references, telescope results, quickfix and location list to help you solve all the trouble your code is causing.
-        { 'folke/trouble.nvim',                config = require('plugins._trouble').config, event = 'BufReadPost' },
+        { 'folke/trouble.nvim',              config = require('plugins._trouble').config, event = 'BufReadPost' },
 
         -- 🌸 A command-line fuzzy finder
         {
