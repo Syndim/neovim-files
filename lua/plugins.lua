@@ -128,15 +128,16 @@ require('lazy').setup(
         {
             'nvim-lualine/lualine.nvim',
             dependencies = { 'kyazdani42/nvim-web-devicons', opt = true },
-            after = 'vscode.nvim',
             config = require('plugins._lualine').config,
             event = 'VeryLazy'
         },
 
-        -- Neovim/Vim color scheme inspired by Dark+ and Light+ theme in Visual Studio Code
+        -- 🍨 Soothing pastel theme for (Neo)vim
         {
-            'Mofiqul/vscode.nvim',
+            "catppuccin/nvim",
+            name = "catppuccin",
             config = require('plugins._color').config,
+            priority = 1000,
             lazy = false
         },
 

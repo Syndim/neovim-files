@@ -1,12 +1,11 @@
 local M = {}
 
 function M.config()
-    local vscode = require('vscode');
-
-    vscode.setup({
-        style = 'dark'
+    require('catppuccin').setup({
+        flavour = 'mocha'
     })
-    vscode.load()
+
+    vim.cmd.colorscheme 'catppuccin'
 end
 
 return M

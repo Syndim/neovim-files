@@ -3,7 +3,7 @@ local M = {}
 function M.config()
     require('lualine').setup({
         options = {
-            theme = 'vscode',
+            theme = 'catppuccin',
             component_separators = '',
             icons_enabled = true
         },
