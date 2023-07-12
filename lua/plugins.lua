@@ -323,9 +323,6 @@ require('lazy').setup(
             event = 'BufEnter'
         },
 
-        -- Neovim as a language server to inject LSP diagnostics, code actions, and more via Lua.
-        { 'jose-elias-alvarez/null-ls.nvim', config = require('plugins._null_ls').config, event = 'BufEnter' },
-
         -- A completion plugin for neovim coded in Lua.
         {
             'hrsh7th/nvim-cmp',
@@ -417,7 +414,7 @@ require('lazy').setup(
 
         -- Quickfix
         -- 🚦 A pretty diagnostics, references, telescope results, quickfix and location list to help you solve all the trouble your code is causing.
-        { 'folke/trouble.nvim',              config = require('plugins._trouble').config, event = 'BufReadPost' },
+        { 'folke/trouble.nvim',                config = require('plugins._trouble').config, event = 'BufReadPost' },
 
         -- 🌸 A command-line fuzzy finder
         {
