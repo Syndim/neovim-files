@@ -487,7 +487,7 @@ require('lazy').setup(
         -- nu-shell
         {
             'LhKipp/nvim-nu',
-            dependencies = { 'jose-elias-alvarez/null-ls.nvim', 'nvim-treesitter/nvim-treesitter' },
+            dependencies = { 'nvim-treesitter/nvim-treesitter' },
             config = require('plugins._nvim_nu').config,
             ft = 'nu'
         },
