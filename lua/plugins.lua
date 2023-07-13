@@ -216,6 +216,13 @@ require('lazy').setup(
         -- Multiple cursors plugin for vim/neovim
         { 'mg979/vim-visual-multi', event = 'BufReadPost' },
 
+        -- Hover plugin framework for Neovim
+        {
+            'lewis6991/hover.nvim',
+            config = require('plugins._hover').config,
+            event = 'BufReadPost'
+        },
+
         -- Git integration for buffers
         {
             'lewis6991/gitsigns.nvim',
@@ -308,18 +315,6 @@ require('lazy').setup(
         },
 
         -- LSP and auto completion
-        -- improve neovim lsp experience
-        {
-            'nvimdev/lspsaga.nvim',
-            config = function()
-                require('lspsaga').setup({})
-            end,
-            dependencies = {
-                'nvim-treesitter/nvim-treesitter', -- optional
-                'kyazdani42/nvim-web-devicons'     -- optional
-            },
-            event = 'LspAttach'
-        },
         -- Extension to mason.nvim that makes it easier to lspconfig with mason.nvim
         {
             'williamboman/mason-lspconfig.nvim',
