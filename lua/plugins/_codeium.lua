@@ -1,10 +1,10 @@
 local M = {}
 
-local features = require('features')
 local global = require('global')
+local codeium_initialize = false
 
 function M.status()
-    if features.codeium_enabled then
+    if codeium_initialize then
         local status = vim.api.nvim_buf_get_var(0, '_codeium_status')
         if status == nil then
             if vim.fn['codeium#Enabled']() then
@@ -42,6 +42,8 @@ function M.config()
         vim.keymap.set('i', '‘', function() return vim.fn['codeium#CycleCompletions'](1) end, { expr = true })
         vim.keymap.set('i', '“', function() return vim.fn['codeium#CycleCompletions'](-1) end, { expr = true })
     end
+
+    codeium_initialize = true
 end
 
 return M
