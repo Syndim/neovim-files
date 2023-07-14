@@ -395,28 +395,22 @@ require('lazy').setup(
         {
             'zbirenbaum/copilot.lua',
             cmd = 'Copilot',
-            event = 'BufEnter',
             config = require('plugins._copilot').config,
-            cond = function() return features.copilot_enabled end
         },
 
         -- Simple Copilot status indicator for Neovim
         {
             'jonahgoldwastaken/copilot-status.nvim',
             dependencies = { 'zbirenbaum/copilot.lua' },
-            event = 'BufEnter',
             config = require('plugins._copilot_status').config,
-            cond = function() return features.copilot_enabled end
         },
 
         -- Free, ultrafast Copilot alternative for Vim and Neovim
         {
             'Exafunction/codeium.vim',
             cmd = 'Codeium',
-            event = 'BufReadPost',
             config = require('plugins._codeium').config,
             init = require('plugins._codeium').setup,
-            cond = function() return features.codeium_enabled end,
         },
 
         -- Quickfix

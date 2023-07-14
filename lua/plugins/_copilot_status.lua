@@ -1,10 +1,9 @@
 local M = {}
 
-local features = require('features')
 local copilot_init_finished = false
 
 function M.status()
-    if features.copilot_enabled and copilot_init_finished then
+    if copilot_init_finished then
         return require('copilot_status').status_string()
     end
 
