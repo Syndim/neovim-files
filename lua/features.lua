@@ -14,7 +14,7 @@ local M = {
     end,
 
     enable_codeium = function()
-        load_plugins({ 'codeium.nvim' })
+        load_plugins({ 'codeium.vim' })
     end
 }
 
