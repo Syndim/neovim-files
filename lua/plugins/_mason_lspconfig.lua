@@ -18,6 +18,7 @@ function M.config()
         'bashls',
         'yamlls',
         'kotlin_language_server',
+        'ruff_lsp', -- Python
     }
 
     local optional_servers = {
