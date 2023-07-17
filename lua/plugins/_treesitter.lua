@@ -51,7 +51,6 @@ function M.config()
             'rust',
             'scss',
             'toml',
-            'tsx',
             'typescript',
             'yaml',
             'fish',
