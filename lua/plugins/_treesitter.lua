@@ -14,7 +14,8 @@ function M.config()
         highlight = {
             enable = true,
             disable = function(lang, _)
-                local enabled_languages = { 'python', 'c_sharp', 'fish', 'ruby', 'javascript', 'typescript', 'tsx' } -- , 'just' }
+                local enabled_languages = { 'python', 'c_sharp', 'fish', 'ruby', 'javascript', 'typescript',
+                    'typescriptreact' }                                                                                          -- , 'just' }
                 for _, enabled in pairs(enabled_languages) do
                     if lang == enabled then
                         return false
@@ -67,8 +68,8 @@ function M.config()
         },
     }
 
-    vim.treesitter.language.register('javascript', 'tsx')
-    vim.treesitter.language.register('typescript.tsx', 'tsx')
+    vim.treesitter.language.register('javascript', 'typescript')
+    vim.treesitter.language.register('typescriptreact', 'typescript')
 end
 
 return M
