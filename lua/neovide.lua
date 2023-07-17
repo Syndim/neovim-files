@@ -32,4 +32,7 @@ elseif global.is_wsl then
         vim.env.VIRTUAL_ENV = venv
         vim.env.PATH = path.join(venv, 'bin') .. ':' .. vim.env.PATH
     end
+
+    local node_path = vim.fn.trim(vim.fn.system('rtx where node'))
+    vim.env.PATH = path.join(node_path, 'bin') .. ':' .. vim.env.PATH
 end
