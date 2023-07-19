@@ -13,8 +13,6 @@ end
 
 vim.opt.rtp:prepend(lazypath)
 
-local features = require('features')
-
 require('lazy').setup(
     {
         -- Package menagement
