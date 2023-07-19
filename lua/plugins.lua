@@ -379,6 +379,15 @@ require('lazy').setup(
             cond = is_not_embedded
         },
 
+
+        -- async fast minimalist plugin make format easy in neovim
+        {
+            'nvimdev/guard.nvim',
+            config = require('plugins._guard').config,
+            event = 'VeryLazy',
+            cond = is_not_embedded
+        },
+
         -- A completion plugin for neovim coded in Lua.
         {
             'hrsh7th/nvim-cmp',
@@ -539,21 +548,6 @@ require('lazy').setup(
             dependencies = { 'nvim-treesitter/nvim-treesitter' },
             config = require('plugins._just').config,
             ft = 'just',
-            cond = is_not_embedded
-        },
-
-        -- Typescript
-        -- Typescript syntax files for Vim
-        {
-            'leafgarland/typescript-vim',
-            ft = 'typescript',
-            cond = is_not_embedded
-        },
-
-        -- React JSX syntax highlighting for vim and Typescript
-        {
-            'peitalin/vim-jsx-typescript',
-            ft = { 'javascriptreact', 'typescriptreact' },
             cond = is_not_embedded
         },
 
