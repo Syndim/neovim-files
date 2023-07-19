@@ -5,6 +5,7 @@ function M.config()
     local npairs = require('nvim-autopairs')
     local cond = require('nvim-autopairs.conds')
     local ts_conds = require('nvim-autopairs.ts-conds')
+    local global = require('global')
     npairs.setup({})
     npairs.add_rules({
         Rule('<', '>', 'rust')
@@ -17,9 +18,11 @@ function M.config()
             }))
             :with_cr(cond.none()),
     })
-    local cmp_autopairs = require('nvim-autopairs.completion.cmp')
-    local cmp = require('cmp')
-    cmp.event:on('confirm_done', cmp_autopairs.on_confirm_done({ map_char = { tex = '' } }))
+    if not global.is_embedded then
+        local cmp_autopairs = require('nvim-autopairs.completion.cmp')
+        local cmp = require('cmp')
+        cmp.event:on('confirm_done', cmp_autopairs.on_confirm_done({ map_char = { tex = '' } }))
+    end
 end
 
 return M

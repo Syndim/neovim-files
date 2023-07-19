@@ -13,6 +13,8 @@ end
 
 vim.opt.rtp:prepend(lazypath)
 
+local is_not_embedded = not require('global').is_embedded
+
 require('lazy').setup(
     {
         -- Package menagement
@@ -29,6 +31,7 @@ require('lazy').setup(
             -- Ensure that it runs first to minimize delay when opening file from terminal
             lazy = false,
             priority = 1001,
+            cond = is_not_embedded
         },
 
         -- Indent guides for Neovim
@@ -51,7 +54,8 @@ require('lazy').setup(
             'echasnovski/mini.surround',
             version = '*',
             event = 'BufReadPost',
-            config = require('plugins._mini_surround').config
+            config = require('plugins._mini_surround').config,
+            cond = is_not_embedded
         },
 
         -- illuminate.vim - (Neo)Vim plugin for automatically highlighting other uses of the word under the cursor using either LSP, Tree-sitter, or regex matching.
@@ -74,24 +78,32 @@ require('lazy').setup(
             'rcarriga/nvim-notify',
             config = require('plugins._notify').config,
             lazy = false,
+            cond = is_not_embedded
         },
 
         -- 💥 Create key bindings that stick. WhichKey is a lua plugin for Neovim 0.5 that displays a popup with possible keybindings of the command you started typing.
-        { 'folke/which-key.nvim',        config = require('plugins._which_key').config, lazy = false },
+        {
+            'folke/which-key.nvim',
+            config = require('plugins._which_key').config,
+            lazy = false,
+            cond = is_not_embedded,
+        },
 
         --  Extensible Neovim Scrollbar
         {
             'petertriho/nvim-scrollbar',
             dependencies = 'kevinhwang91/nvim-hlslens',
             config = require('plugins._scrollbar').config,
-            event = 'BufReadPost'
+            event = 'BufReadPost',
+            cond = is_not_embedded
         },
 
         -- Status column plugin that provides a configurable 'statuscolumn' and click handlers.
         {
             'luukvbaal/statuscol.nvim',
             config = require('plugins._statuscol').config,
-            event = 'BufReadPost'
+            event = 'BufReadPost',
+            cond = is_not_embedded
         },
 
         -- Clipboard manager neovim plugin with telescope integration
@@ -99,7 +111,8 @@ require('lazy').setup(
             'AckslD/nvim-neoclip.lua',
             dependencies = { 'nvim-telescope/telescope.nvim', 'kkharji/sqlite.lua' },
             config = require('plugins._neoclip').config,
-            event = 'BufReadPost'
+            event = 'BufReadPost',
+            cond = is_not_embedded
         },
 
         -- Integrates vim-bookmarks into telescope.nvim
@@ -108,18 +121,25 @@ require('lazy').setup(
             dependencies = 'MattesGroeger/vim-bookmarks',
             config = require('plugins._bookmarks').config,
             init = require('plugins._bookmarks').setup,
-            event = 'BufEnter'
+            event = 'BufEnter',
+            cond = is_not_embedded
         },
 
         --  The fastest Neovim colorizer.
-        { 'norcalli/nvim-colorizer.lua', config = require('plugins._colorizer').config, event = 'VeryLazy' },
+        {
+            'norcalli/nvim-colorizer.lua',
+            config = require('plugins._colorizer').config,
+            event = 'VeryLazy',
+            cond = is_not_embedded
+        },
 
         -- A snazzy bufferline for Neovim
         {
             'akinsho/bufferline.nvim',
             dependencies = 'kyazdani42/nvim-web-devicons',
             config = require('plugins._bufferline').config,
-            event = 'VeryLazy'
+            event = 'VeryLazy',
+            cond = is_not_embedded
         },
 
         -- A blazing fast and easy to configure neovim statusline written in pure lua.
@@ -127,7 +147,8 @@ require('lazy').setup(
             'nvim-lualine/lualine.nvim',
             dependencies = { 'kyazdani42/nvim-web-devicons', opt = true },
             config = require('plugins._lualine').config,
-            event = 'VeryLazy'
+            event = 'VeryLazy',
+            cond = is_not_embedded
         },
 
         -- 🍨 Soothing pastel theme for (Neo)vim
@@ -136,7 +157,8 @@ require('lazy').setup(
             name = "catppuccin",
             config = require('plugins._color').config,
             priority = 1000,
-            lazy = false
+            lazy = false,
+            cond = is_not_embedded
         },
 
         -- A small automated session manager for Neovim
@@ -144,29 +166,36 @@ require('lazy').setup(
             'rmagatti/auto-session',
             dependencies = 'nvim-lua/plenary.nvim',
             config = require('plugins._auto_session').config,
-            event = 'BufEnter'
+            event = 'BufEnter',
+            cond = is_not_embedded
         },
 
         -- Peek lines just when you intend
-        { 'nacro90/numb.nvim',      config = require('plugins._numb').config, event = 'BufReadPost' },
+        {
+            'nacro90/numb.nvim',
+            config = require('plugins._numb').config,
+            event = 'BufReadPost'
+        },
 
         -- Neovim plugin to manage the file system and other tree like structures.
         {
             'nvim-neo-tree/neo-tree.nvim',
-            branch = 'v2.x',
+            branch = 'v3.x',
             dependencies = { 'nvim-lua/plenary.nvim', 'kyazdani42/nvim-web-devicons', 'MunifTanjim/nui.nvim' },
             config = require('plugins._neo_tree').config,
             keys = {
                 { '<F2>' },
                 { '<F3>' }
-            }
+            },
+            cond = is_not_embedded
         },
 
         -- Neovim plugin to improve the default vim.ui interfaces
         {
             'stevearc/dressing.nvim',
             config = require('plugins._dressing').config,
-            init = require('plugins._dressing').init
+            init = require('plugins._dressing').init,
+            cond = is_not_embedded
         },
 
         -- Navigate your code with search labels, enhanced character motions and Treesitter integration
@@ -218,7 +247,8 @@ require('lazy').setup(
         {
             'lewis6991/hover.nvim',
             config = require('plugins._hover').config,
-            event = 'BufReadPost'
+            event = 'BufReadPost',
+            cond = is_not_embedded
         },
 
         -- Git integration for buffers
@@ -227,25 +257,33 @@ require('lazy').setup(
             dependencies = { 'nvim-lua/plenary.nvim' },
             tag = 'release',
             config = require('plugins._gitsigns').config,
-            event = 'BufReadPost'
+            event = 'BufReadPost',
+            cond = is_not_embedded
         },
 
         -- Find, Filter, Preview, Pick. All lua, all the time.
-        { 'nvim-telescope/telescope.nvim', config = require('plugins._telescope').config,  event = 'BufEnter' },
+        {
+            'nvim-telescope/telescope.nvim',
+            config = require('plugins._telescope').config,
+            event = 'BufEnter',
+            cond = is_not_embedded
+        },
 
         -- FZY style sorter that is compiled
         {
             'nvim-telescope/telescope-fzy-native.nvim',
             dependencies = 'nvim-telescope/telescope.nvim',
             config = require('plugins._telescope_fzy_native').config,
-            event = 'BufEnter'
+            event = 'BufEnter',
+            cond = is_not_embedded
         },
 
         {
             'nvim-telescope/telescope-ui-select.nvim',
             dependencies = 'nvim-telescope/telescope.nvim',
             config = require('plugins._telescope_ui_select').config,
-            event = 'BufEnter'
+            event = 'BufEnter',
+            cond = is_not_embedded
         },
 
         -- Find the enemy and replace them with dark power.
@@ -254,14 +292,24 @@ require('lazy').setup(
             keys = {
                 { '<leader>s' },
             },
-            config = require('plugins._nvim_spectre').config
+            config = require('plugins._nvim_spectre').config,
+            cond = is_not_embedded
         },
 
         -- A neovim lua plugin to help easily manage multiple terminal windows
-        { 'akinsho/toggleterm.nvim',       config = require('plugins._toggleterm').config, lazy = false },
+        {
+            'akinsho/toggleterm.nvim',
+            config = require('plugins._toggleterm').config,
+            lazy = false,
+            cond = is_not_embedded,
+        },
 
         -- Delete Neovim buffers without losing window layout
-        { 'famiu/bufdelete.nvim',          lazy = false },
+        {
+            'famiu/bufdelete.nvim',
+            lazy = false,
+            cond = is_not_embedded,
+        },
 
         -- Language support
         -- Generic
@@ -276,7 +324,8 @@ require('lazy').setup(
         {
             'simrat39/symbols-outline.nvim',
             config = require('plugins._symbols_outline').config,
-            event = 'BufReadPost'
+            event = 'BufReadPost',
+            cond = is_not_embedded
         },
 
         -- Nvim Treesitter configurations and abstraction layer
@@ -318,14 +367,16 @@ require('lazy').setup(
             'williamboman/mason-lspconfig.nvim',
             dependencies = { 'williamboman/mason.nvim', { 'neovim/nvim-lspconfig', version = false } },
             config = require('plugins._mason_lspconfig').config,
-            event = 'BufEnter'
+            event = 'BufEnter',
+            cond = is_not_embedded
         },
 
         {
             'WhoIsSethDaniel/mason-tool-installer.nvim',
             dependencies = { 'williamboman/mason.nvim' },
             config = require('plugins._mason_tool_installer').config,
-            event = 'BufEnter'
+            event = 'BufEnter',
+            cond = is_not_embedded
         },
 
         -- A completion plugin for neovim coded in Lua.
@@ -386,7 +437,8 @@ require('lazy').setup(
                     dependencies = { 'nvim-lua/plenary.nvim' },
                     config = require('plugins._crates').config,
                 },
-            }
+            },
+            cond = is_not_embedded
         },
 
         -- Fully featured & enhanced replacement for copilot.vim complete with API for interacting with Github Copilot
@@ -394,6 +446,7 @@ require('lazy').setup(
             'zbirenbaum/copilot.lua',
             cmd = 'Copilot',
             config = require('plugins._copilot').config,
+            cond = is_not_embedded
         },
 
         -- Simple Copilot status indicator for Neovim
@@ -401,6 +454,7 @@ require('lazy').setup(
             'jonahgoldwastaken/copilot-status.nvim',
             dependencies = { 'zbirenbaum/copilot.lua' },
             config = require('plugins._copilot_status').config,
+            cond = is_not_embedded
         },
 
         -- Free, ultrafast Copilot alternative for Vim and Neovim
@@ -409,24 +463,33 @@ require('lazy').setup(
             cmd = 'Codeium',
             config = require('plugins._codeium').config,
             init = require('plugins._codeium').setup,
+            cond = is_not_embedded
         },
 
         -- Quickfix
         -- 🚦 A pretty diagnostics, references, telescope results, quickfix and location list to help you solve all the trouble your code is causing.
-        { 'folke/trouble.nvim',                config = require('plugins._trouble').config, event = 'BufReadPost' },
+        {
+            'folke/trouble.nvim',
+            config = require('plugins._trouble').config,
+            event = 'BufReadPost',
+            cond = is_not_embedded
+        },
 
         -- 🌸 A command-line fuzzy finder
         {
             'junegunn/fzf',
             run = function()
                 vim.fn['fzf#install']()
-            end
+            end,
+            cond = is_not_embedded
         },
+
         -- Better quickfix window in Neovim, polish old quickfix window.
         {
             'kevinhwang91/nvim-bqf',
             dependencies = { 'junegunn/fzf', 'nvim-treesitter/nvim-treesitter' },
-            ft = 'qf'
+            ft = 'qf',
+            cond = is_not_embedded
         },
 
         -- C/C++
@@ -434,23 +497,40 @@ require('lazy').setup(
         {
             'p00f/clangd_extensions.nvim',
             config = require('plugins._clangd').config,
-            ft = { 'c', 'cpp', 'h', 'hpp' }
+            ft = { 'c', 'cpp', 'h', 'hpp' },
+            cond = is_not_embedded
         },
 
         -- C#
         -- Extended 'textDocument/definition' handler for OmniSharp Neovim LSP
-        { 'Hoffs/omnisharp-extended-lsp.nvim', ft = 'cs' },
+        {
+            'Hoffs/omnisharp-extended-lsp.nvim',
+            ft = 'cs',
+            cond = is_not_embedded
+        },
 
         -- Rust
         -- Vim configuration for Rust.
-        { 'rust-lang/rust.vim',                ft = 'rust' },
+        {
+            'rust-lang/rust.vim',
+            ft = 'rust',
+            cond = is_not_embedded
+        },
 
         -- Tools for better development in rust using neovim's builtin lsp
-        { 'simrat39/rust-tools.nvim',          ft = 'rust' },
+        {
+            'simrat39/rust-tools.nvim',
+            ft = 'rust',
+            cond = is_not_embedded
+        },
 
         -- Ruby
         -- Vim/Ruby Configuration Files
-        { 'vim-ruby/vim-ruby',                 ft = 'ruby' },
+        {
+            'vim-ruby/vim-ruby',
+            ft = 'ruby',
+            cond = is_not_embedded
+        },
 
         -- Just
         --  Treesitter grammar for Justfiles (casey/just)
@@ -458,29 +538,48 @@ require('lazy').setup(
             'IndianBoy42/tree-sitter-just',
             dependencies = { 'nvim-treesitter/nvim-treesitter' },
             config = require('plugins._just').config,
-            ft = 'just'
+            ft = 'just',
+            cond = is_not_embedded
         },
 
         -- Typescript
         -- Typescript syntax files for Vim
-        { 'leafgarland/typescript-vim',  ft = 'typescript' },
+        {
+            'leafgarland/typescript-vim',
+            ft = 'typescript',
+            cond = is_not_embedded
+        },
 
         -- React JSX syntax highlighting for vim and Typescript
-        { 'peitalin/vim-jsx-typescript', ft = { 'javascriptreact', 'typescriptreact' } },
+        {
+            'peitalin/vim-jsx-typescript',
+            ft = { 'javascriptreact', 'typescriptreact' },
+            cond = is_not_embedded
+        },
 
         -- HTML/CSS
         -- emmet for vim: http://emmet.io/
-        { 'mattn/emmet-vim',             ft = { 'html', 'javascriptreact', 'typescriptreact' } },
+        {
+            'mattn/emmet-vim',
+            ft = { 'html', 'javascriptreact', 'typescriptreact' },
+            cond = is_not_embedded
+        },
 
         -- Dart & Flutter
         -- Syntax highlighting for Dart in Vim
-        { 'dart-lang/dart-vim-plugin',   init = require('plugins._dart').setup,                ft = 'dart' },
+        {
+            'dart-lang/dart-vim-plugin',
+            init = require('plugins._dart').setup,
+            ft = 'dart',
+            cond = is_not_embedded
+        },
 
         -- Tools to help create flutter apps in neovim using the native lsp
         {
             'akinsho/flutter-tools.nvim',
             dependencies = { 'nvim-lua/plenary.nvim', 'nvim-telescope/telescope.nvim' },
-            ft = 'dart'
+            ft = 'dart',
+            cond = is_not_embedded
         },
 
         -- nu-shell
@@ -488,7 +587,8 @@ require('lazy').setup(
             'LhKipp/nvim-nu',
             dependencies = { 'nvim-treesitter/nvim-treesitter' },
             config = require('plugins._nvim_nu').config,
-            ft = 'nu'
+            ft = 'nu',
+            cond = is_not_embedded
         },
     },
     {
