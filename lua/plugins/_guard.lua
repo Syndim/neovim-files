@@ -20,8 +20,6 @@ function M.config()
         :fmt(prettierd)
         :lint(eslint_d)
 
-    ft('*'):fmt('lsp')
-
     require('guard').setup({
         fmt_on_save = true,
         lsp_as_default_formatter = true
