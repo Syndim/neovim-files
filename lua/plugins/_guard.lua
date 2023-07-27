@@ -22,7 +22,7 @@ function M.config()
 
     require('guard').setup({
         fmt_on_save = false,
-        lsp_as_default_formatter = true
+        lsp_as_default_formatter = false
     })
 end
 
