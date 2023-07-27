@@ -21,7 +21,7 @@ function M.config()
         :lint(eslint_d)
 
     require('guard').setup({
-        fmt_on_save = true,
+        fmt_on_save = false,
         lsp_as_default_formatter = true
     })
 end
