@@ -8,7 +8,7 @@ function M.config()
     vim.fn.sign_define('DiagnosticSignInfo',
         { text = ' ', texthl = 'DiagnosticSignInfo' })
     vim.fn.sign_define('DiagnosticSignHint',
-        { text = '', texthl = 'DiagnosticSignHint' })
+        { text = '󰌵', texthl = 'DiagnosticSignHint' })
 
     require('neo-tree').setup({
         window = {
