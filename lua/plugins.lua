@@ -13,7 +13,8 @@ end
 
 vim.opt.rtp:prepend(lazypath)
 
-local is_not_embedded = not require('global').is_embedded
+local global = require('global')
+local is_not_embedded = not global.is_embedded
 
 require('lazy').setup(
     {
@@ -516,6 +517,14 @@ require('lazy').setup(
             'Hoffs/omnisharp-extended-lsp.nvim',
             ft = 'cs',
             cond = is_not_embedded
+        },
+
+        -- Swift (for ShadowVim)
+        -- Vim runtime files for Swift
+        {
+            'keith/swift.vim',
+            lazy = false,
+            cond = global.is_in_xcode
         },
 
         -- Rust

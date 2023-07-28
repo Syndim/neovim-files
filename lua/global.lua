@@ -9,6 +9,7 @@ function global:load_variables()
     self.is_windows  = string.find(system, 'Windows') ~= nil
     self.is_wsl      = string.find(release, 'WSL') ~= nil
     self.is_embedded = vim.g.shadowvim or vim.g.vscode
+    self.is_in_xcode = vim.g.shadowvim
 end
 
 function global:which(cmd)
