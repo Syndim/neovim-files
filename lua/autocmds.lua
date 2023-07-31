@@ -1,5 +1,4 @@
 local api = vim.api
-local global = require('global')
 
 -- Fix json indent issue
 api.nvim_create_autocmd({ 'VimEnter', 'BufWinEnter', 'BufRead', 'BufNewFile', 'BufEnter' },
