@@ -354,6 +354,14 @@ require('lazy').setup(
             event = 'BufReadPost'
         },
 
+        -- Show code context
+        {
+            'nvim-treesitter/nvim-treesitter-context',
+            dependencies = 'nvim-treesitter/nvim-treesitter',
+            config = require('plugins._treesitter_context').config,
+            event = 'VeryLazy'
+        },
+
         -- Enhanced matchparen.vim plugin for Neovim
         {
             'utilyre/sentiment.nvim',
