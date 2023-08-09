@@ -531,7 +531,6 @@ require('lazy').setup(
         -- Vim runtime files for Swift
         {
             'keith/swift.vim',
-            lazy = false,
             cond = global.is_in_xcode
         },
 
