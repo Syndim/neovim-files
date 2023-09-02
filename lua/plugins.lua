@@ -388,13 +388,12 @@ require('lazy').setup(
             cond = is_not_embedded
         },
 
-
-        -- async fast minimalist plugin make format easy in neovim
+        -- An unofficial collection of linters and formatters configured for efm-langserver for neovim.
         {
-            'nvimdev/guard.nvim',
-            config = require('plugins._guard').config,
-            event = 'VeryLazy',
-            cond = is_not_embedded
+            'creativenull/efmls-configs-nvim',
+            dependencies = { 'neovim/nvim-lspconfig' },
+            config = require('plugins._efm').config,
+            event = 'BufEnter'
         },
 
         -- A completion plugin for neovim coded in Lua.

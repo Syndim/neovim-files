@@ -39,15 +39,45 @@ function M.config()
     })
 
     local mason_registry = require('mason-registry')
-    -- Taplo in the registry doesn't contain Windows definition
-    if global.is_windows then
-        local taplo_assets = mason_registry.get_package('taplo').spec.source.asset
-        table.insert(taplo_assets, {
-            target = 'win_x64',
-            file = 'taplo-full-windows-x86_64.zip',
-            bin = 'taplo.exe'
-        })
-    end
+    -- Patch assets
+    -- if global.is_windows then
+    --     local taplo_assets = mason_registry.get_package('taplo').spec.source.asset
+    --     table.insert(taplo_assets, {
+    --         target = 'win_x64',
+    --         file = 'taplo-full-windows-x86_64.zip',
+    --         bin = 'taplo.exe'
+    --     })
+    -- end
+
+    local efm_spec = mason_registry.get_package('efm').spec
+    efm_spec.source = {
+        asset = {
+            {
+                target = 'win_x64',
+                file = 'efm-langserver_{{version}}_windows_amd64.zip',
+                bin = 'efm-langserver_{{version}}_windows_amd64/efm-langserver'
+            },
+            {
+                target = 'linux_x64',
+                file = 'efm-langserver_{{version}}_linux_amd64.tar.gz',
+                bin = 'efm-langserver_{{version}}_linux_amd64/efm-langserver'
+            },
+            {
+                target = 'darwin_arm64',
+                file = 'efm-langserver_{{version}}_darwin_aarch64.zip',
+                bin = 'efm-langserver_{{version}}_darwin_aarch64/efm-langserver'
+            },
+            {
+                target = 'darwin_x64',
+                file = 'efm-langserver_{{version}}_darwin_amd64.zip',
+                bin = 'efm-langserver_{{version}}_darwin_amd64/efm-langserver'
+            }
+        },
+        id = efm_spec.source.id:replace('pkg:golang/github.com', 'pkg:github')
+    }
+    efm_spec.bin['efm-langserver'] = '{{source.asset.bin}}'
+
+    print(vim.inspect(efm_spec))
 
     -- Use proxy for schema file
     mason_registry:on('package:handle', vim.schedule_wrap(function(package, handle)

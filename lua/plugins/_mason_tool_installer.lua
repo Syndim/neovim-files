@@ -7,7 +7,8 @@ function M.config()
             -- 'ruff',
             -- 'hadolint',
             'eslint_d',
-            'prettierd'
+            'prettierd',
+            'efm'
         }
     })
 end
