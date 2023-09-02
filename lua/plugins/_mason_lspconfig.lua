@@ -77,8 +77,6 @@ function M.config()
     }
     efm_spec.bin['efm-langserver'] = '{{source.asset.bin}}'
 
-    print(vim.inspect(efm_spec))
-
     -- Use proxy for schema file
     mason_registry:on('package:handle', vim.schedule_wrap(function(package, handle)
         if package.spec.schemas ~= nil then
