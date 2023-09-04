@@ -64,8 +64,8 @@ function M.config()
             },
             {
                 target = 'darwin_arm64',
-                file = 'efm-langserver_{{version}}_darwin_aarch64.zip',
-                bin = 'efm-langserver_{{version}}_darwin_aarch64/efm-langserver'
+                file = 'efm-langserver_{{version}}_darwin_arm64.zip',
+                bin = 'efm-langserver_{{version}}_darwin_arm64/efm-langserver'
             },
             {
                 target = 'darwin_x64',
