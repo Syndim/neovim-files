@@ -346,14 +346,6 @@ require('lazy').setup(
             ft = { 'html', 'javascriptreact', 'typescriptreact' }
         },
 
-        -- autopairs for neovim written by lua
-        {
-            'windwp/nvim-autopairs',
-            dependencies = 'nvim-treesitter/nvim-treesitter',
-            config = require('plugins._treesitter_autopair').config,
-            event = 'BufReadPost'
-        },
-
         -- Show code context
         {
             'nvim-treesitter/nvim-treesitter-context',
@@ -507,6 +499,16 @@ require('lazy').setup(
             dependencies = { 'junegunn/fzf', 'nvim-treesitter/nvim-treesitter' },
             ft = 'qf',
             cond = is_not_embedded
+        },
+
+        -- A neovim autopair plugin designed to have all the features that an autopair plugin needs.
+        {
+            'altermo/ultimate-autopair.nvim',
+            event = { 'InsertEnter', 'CmdlineEnter' },
+            branch = 'v0.6',
+            opts = {
+                --Config goes here
+            },
         },
 
         -- C/C++
