@@ -55,7 +55,7 @@ function M.config()
             {
                 target = 'win_x64',
                 file = 'efm-langserver_{{version}}_windows_amd64.zip',
-                bin = 'efm-langserver_{{version}}_windows_amd64/efm-langserver'
+                bin = 'efm-langserver_{{version}}_windows_amd64/efm-langserver.exe'
             },
             {
                 target = 'linux_x64',
