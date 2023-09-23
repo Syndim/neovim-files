@@ -143,6 +143,13 @@ require('lazy').setup(
             cond = is_not_embedded
         },
 
+        -- Send buffers into early retirement by automatically closing them after x minutes of inactivity.
+        {
+            "chrisgrieser/nvim-early-retirement",
+            config = true,
+            event = "VeryLazy",
+        },
+
         -- A blazing fast and easy to configure neovim statusline written in pure lua.
         {
             'nvim-lualine/lualine.nvim',
