@@ -1,7 +1,12 @@
 local M = {}
 
 function M.config()
-    require('nvim-tree').setup({})
+    require('nvim-tree').setup({
+        view = {
+            relativenumber = true,
+            number = true
+        }
+    })
 
     local opts = {
         noremap = true
