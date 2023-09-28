@@ -185,19 +185,6 @@ require('lazy').setup(
             event = 'BufReadPost'
         },
 
-        -- Neovim plugin to manage the file system and other tree like structures.
-        -- {
-        --     'nvim-neo-tree/neo-tree.nvim',
-        --     branch = 'v3.x',
-        --     dependencies = { 'nvim-lua/plenary.nvim', 'kyazdani42/nvim-web-devicons', 'MunifTanjim/nui.nvim' },
-        --     config = require('plugins._neo_tree').config,
-        --     keys = {
-        --         { '<F2>' },
-        --         { '<F3>' }
-        --     },
-        --     cond = is_not_embedded
-        -- },
-
         -- A file explorer tree for neovim written in lua
         {
             'nvim-tree/nvim-tree.lua',
