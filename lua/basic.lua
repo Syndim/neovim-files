@@ -74,3 +74,7 @@ g.grepprg = "grepprg=rg --vimgrep --no-heading"
 o.exrc = true
 -- o.signcolumn = 'number'
 -- wo.signcolumn = 'number'
+
+-- disable netrw
+g.loaded_netrw = 1
+g.loaded_netrwPlugin = 1

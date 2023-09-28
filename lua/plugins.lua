@@ -166,7 +166,7 @@ require('lazy').setup(
             config = require('plugins._color').config,
             priority = 1000,
             lazy = false,
-            cond = is_not_embedded
+            -- cond = is_not_embedded
         },
 
         -- A small automated session manager for Neovim
@@ -186,14 +186,26 @@ require('lazy').setup(
         },
 
         -- Neovim plugin to manage the file system and other tree like structures.
+        -- {
+        --     'nvim-neo-tree/neo-tree.nvim',
+        --     branch = 'v3.x',
+        --     dependencies = { 'nvim-lua/plenary.nvim', 'kyazdani42/nvim-web-devicons', 'MunifTanjim/nui.nvim' },
+        --     config = require('plugins._neo_tree').config,
+        --     keys = {
+        --         { '<F2>' },
+        --         { '<F3>' }
+        --     },
+        --     cond = is_not_embedded
+        -- },
+
+        -- A file explorer tree for neovim written in lua
         {
-            'nvim-neo-tree/neo-tree.nvim',
-            branch = 'v3.x',
-            dependencies = { 'nvim-lua/plenary.nvim', 'kyazdani42/nvim-web-devicons', 'MunifTanjim/nui.nvim' },
-            config = require('plugins._neo_tree').config,
+            'nvim-tree/nvim-tree.lua',
+            dependencies = { 'kyazdani42/nvim-web-devicons' },
+            config = require('plugins._nvim_tree').config,
             keys = {
                 { '<F2>' },
-                { '<F3>' }
+                { '<F3>' },
             },
             cond = is_not_embedded
         },
