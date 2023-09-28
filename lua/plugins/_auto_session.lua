@@ -2,7 +2,7 @@ local M = {}
 
 function M.config()
     require('auto-session').setup({
-        pre_save_cmds = { 'Neotree action=close' }
+        pre_save_cmds = { 'NvimTreeClose' }
     })
 end
 
