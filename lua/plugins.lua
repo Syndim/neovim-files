@@ -39,7 +39,8 @@ require('lazy').setup(
         {
             'lukas-reineke/indent-blankline.nvim',
             event = 'BufReadPost',
-            config = require('plugins._indent_blankline').config
+            config = require('plugins._indent_blankline').config,
+            cond = is_not_embedded
         },
 
         -- Neovim Lua plugin to visualize and operate on indent scope.
