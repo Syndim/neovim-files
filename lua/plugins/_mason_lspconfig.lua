@@ -19,7 +19,6 @@ function M.config()
         'yamlls',
         'kotlin_language_server',
         'ruff_lsp', -- Python
-        'clangd'
     }
 
     local optional_servers = {
