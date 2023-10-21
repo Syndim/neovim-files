@@ -8,9 +8,18 @@ function M.setup(lsp_config, config)
     local global = require('global')
     local path = util.path
 
+    local function update_path(venv)
+        if global.is_windows then
+            vim.env.PATH = path.join(venv, 'bin') .. ';' .. vim.env.PATH
+        else
+            vim.env.PATH = path.join(venv, 'bin') .. ':' .. vim.env.PATH
+        end
+    end
+
     local function get_python_path(workspace)
         -- Use activated virtualenv.
         if vim.env.VIRTUAL_ENV then
+            update_path(vim.env.VIRTUAL_ENV)
             return path.join(vim.env.VIRTUAL_ENV, 'bin', 'python')
         end
 
@@ -19,11 +28,7 @@ function M.setup(lsp_config, config)
         if match ~= '' then
             local venv = vim.fn.trim(vim.fn.system('poetry env info -p'))
             vim.env.VIRTUAL_ENV = venv
-            if global.is_windows then
-                vim.env.PATH = path.join(venv, 'bin') .. ';' .. vim.env.PATH
-            else
-                vim.env.PATH = path.join(venv, 'bin') .. ':' .. vim.env.PATH
-            end
+            update_path(venv)
             return path.join(venv, 'bin', 'python')
         end
 
