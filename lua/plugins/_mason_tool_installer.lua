@@ -8,7 +8,8 @@ function M.config()
             -- 'hadolint',
             'eslint_d',
             'prettierd',
-            'efm'
+            'efm',
+            'autopep8'
         }
     })
 end

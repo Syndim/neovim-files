@@ -2,13 +2,27 @@ local M = {}
 
 function M.config()
     local languages = require('efmls-configs.defaults').languages()
+    local prettier_d = require('efmls-configs.formatters.prettier_d')
+    local eslint_d = require('efmls-configs.linters.eslint_d')
     languages = vim.tbl_extend('force', languages, {
         -- Custom languages, or override existing ones
         html = {
-            require('efmls-configs.formatters.prettier'),
+            prettier_d,
         },
         python = {
             require('efmls-configs.formatters.autopep8')
+        },
+        typescriptreact = {
+            eslint_d, prettier_d
+        },
+        typescript = {
+            eslint_d, prettier_d
+        },
+        javascript = {
+            eslint_d, prettier_d
+        },
+        javascriptreact = {
+            eslint_d, prettier_d
         }
     })
 

@@ -398,7 +398,7 @@ require('lazy').setup(
         -- An unofficial collection of linters and formatters configured for efm-langserver for neovim.
         {
             'creativenull/efmls-configs-nvim',
-            dependencies = { 'neovim/nvim-lspconfig' },
+            dependencies = { 'neovim/nvim-lspconfig', 'williamboman/mason-lspconfig.nvim' },
             config = require('plugins._efm').config,
             event = 'BufEnter'
         },
