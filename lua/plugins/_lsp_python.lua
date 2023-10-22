@@ -7,8 +7,10 @@ function M.setup(lsp_config, config)
     local util = require('lspconfig/util')
     local global = require('global')
     local path = util.path
+    print(vim.env.VIRTUAL_ENV)
 
-    local function update_path(venv)
+    local function update_venv_path(venv)
+        vim.env.VIRTUAL_ENV = venv
         if global.is_windows then
             vim.env.PATH = path.join(venv, 'bin') .. ';' .. vim.env.PATH
         else
@@ -19,7 +21,7 @@ function M.setup(lsp_config, config)
     local function get_python_path(workspace)
         -- Use activated virtualenv.
         if vim.env.VIRTUAL_ENV then
-            update_path(vim.env.VIRTUAL_ENV)
+            update_venv_path(vim.env.VIRTUAL_ENV)
             return path.join(vim.env.VIRTUAL_ENV, 'bin', 'python')
         end
 
@@ -27,8 +29,17 @@ function M.setup(lsp_config, config)
         local match = vim.fn.glob(path.join(workspace, 'poetry.lock'))
         if match ~= '' then
             local venv = vim.fn.trim(vim.fn.system('poetry env info -p'))
-            vim.env.VIRTUAL_ENV = venv
-            update_path(venv)
+            update_venv_path(venv)
+            return path.join(venv, 'bin', 'python')
+        end
+
+        match = vim.fn.glob(path.join(worksparce, 'pyproject.toml'))
+        if match ~= '' then
+            local rye_show_output = vim.fn.trim(vim.fn.system('rye show'))
+            local _, venv_start_index = string.find(rye_show_output, 'venv: ')
+            local venv_end_index = string.find(rye_show_output, '\n', venv_start_index + 1)
+            local venv = vim.fn.trim(string.sub(rye_show_output, venv_start_index, venv_end_index))
+            update_venv_path(venv)
             return path.join(venv, 'bin', 'python')
         end
 
