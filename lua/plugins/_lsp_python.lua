@@ -7,7 +7,7 @@ function M.setup(lsp_config, config)
     local util = require('lspconfig/util')
     local global = require('global')
     local path = util.path
-    print(vim.env.VIRTUAL_ENV)
+    -- print(vim.env.VIRTUAL_ENV)
 
     local function update_venv_path(venv)
         vim.env.VIRTUAL_ENV = venv
