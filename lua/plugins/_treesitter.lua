@@ -1,9 +1,10 @@
 local M = {}
 
 function M.config()
+    local features = require('features')
     for _, config in pairs(require('nvim-treesitter.parsers').get_parser_configs()) do
         config.install_info.url = config.install_info.url:gsub('https://github.com/',
-            'https://ghproxy.com/https://github.com/')
+            features.github_proxy .. 'github.com/')
     end
 
     local treesitter_path = vim.fn.stdpath('data') .. '/treesitter'
@@ -15,7 +16,7 @@ function M.config()
             enable = true,
             disable = function(lang, _)
                 local enabled_languages = { 'python', 'c_sharp', 'fish', 'ruby', 'javascript', 'typescript',
-                    'typescriptreact' }                                                                                          -- , 'just' }
+                    'typescriptreact' } -- , 'just' }
                 for _, enabled in pairs(enabled_languages) do
                     if lang == enabled then
                         return false
