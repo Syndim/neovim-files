@@ -10,6 +10,7 @@ function global:load_variables()
     self.is_wsl      = string.find(release, 'WSL') ~= nil
     self.is_embedded = vim.g.shadowvim or vim.g.vscode
     self.is_in_xcode = vim.g.shadowvim
+    self.github_proxy = 'https://gh-proxy.com/https://'
 end
 
 function global:which(cmd)

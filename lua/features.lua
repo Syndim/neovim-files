@@ -12,8 +12,6 @@ local M = {
     is_coilot_enabled = false,
     is_codeium_enabled = false,
 
-    github_proxy = 'https://ghproxy.com/https://',
-
     enable_copilot = function()
         load_plugins({ 'copilot.lua', 'copilot-status.nvim' })
         require('features').is_coilot_enabled = true

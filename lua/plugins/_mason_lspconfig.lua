@@ -2,7 +2,6 @@ local M = {}
 
 function M.config()
     local global = require('global')
-    local features = require('features')
     require('utils')
 
     local mason = require('mason')
@@ -31,7 +30,7 @@ function M.config()
     mason.setup({
         log_level = vim.log.levels.DEBUG,
         github = {
-            download_url_template = features.github_proxy .. "github.com/%s/releases/download/%s/%s",
+            download_url_template = global.github_proxy .. "github.com/%s/releases/download/%s/%s",
         },
     })
     mason_lsp_config.setup({
@@ -82,7 +81,7 @@ function M.config()
         if package.spec.schemas ~= nil then
             if package.spec.schemas.lsp:starts_with('vscode:https://raw.githubusercontent.com') then
                 package.spec.schemas.lsp = package.spec.schemas.lsp:replace('vscode:https://',
-                    'vscode:' .. features.github_proxy)
+                    'vscode:' .. global.github_proxy)
             end
         end
     end))
