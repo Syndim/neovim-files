@@ -4,13 +4,13 @@ local system = os_name.sysname
 local release = os_name.release
 
 function global:load_variables()
-    self.is_mac      = string.find(system, 'Darwin') ~= nil
-    self.is_linux    = string.find(system, 'Linux') ~= nil
-    self.is_windows  = string.find(system, 'Windows') ~= nil
-    self.is_wsl      = string.find(release, 'WSL') ~= nil
-    self.is_embedded = vim.g.shadowvim or vim.g.vscode
-    self.is_in_xcode = vim.g.shadowvim
-    self.github_proxy = 'https://gh-proxy.com/https://'
+    self.is_mac       = string.find(system, 'Darwin') ~= nil
+    self.is_linux     = string.find(system, 'Linux') ~= nil
+    self.is_windows   = string.find(system, 'Windows') ~= nil
+    self.is_wsl       = string.find(release, 'WSL') ~= nil
+    self.is_embedded  = vim.g.shadowvim or vim.g.vscode
+    self.is_in_xcode  = vim.g.shadowvim
+    self.github_proxy = os.getenv('GITHUB_PROXY') or 'https://gh-proxy.com/https://'
 end
 
 function global:which(cmd)
