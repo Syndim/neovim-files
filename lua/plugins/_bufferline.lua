@@ -1,7 +1,8 @@
 local M = {}
 
 function M.config()
-    require('bufferline').setup(
+    local bufferline = require('bufferline')
+    bufferline.setup(
         {
             options = {
                 show_buffer_close_icons = false,
@@ -13,6 +14,9 @@ function M.config()
                 offsets = {
                     { filetype = 'NvimTree', text = 'File Explorer', text_align = 'left' }
                 },
+                style_preset = {
+                    bufferline.style_preset.no_italic
+                }
             }
         }
     )
