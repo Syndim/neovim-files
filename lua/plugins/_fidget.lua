@@ -1,9 +1,7 @@
 local M = {}
 
 function M.config()
-    local fidget = require('fidget')
-    fidget.setup()
-    vim.notify = fidget.notify
+    require('fidget').setup({})
 end
 
 return M

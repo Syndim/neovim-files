@@ -36,10 +36,10 @@ local function create_on_attach()
 end
 
 local function get_capabilities()
-    local lsp_status = require('lsp-status')
-    lsp_status.register_progress()
+    -- local lsp_status = require('lsp-status')
+    -- lsp_status.register_progress()
     local capabilities = require('cmp_nvim_lsp').default_capabilities()
-    capabilities = vim.tbl_extend('keep', capabilities, lsp_status.capabilities)
+    -- capabilities = vim.tbl_extend('keep', capabilities, lsp_status.capabilities)
     return capabilities
 end
 

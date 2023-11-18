@@ -461,7 +461,7 @@ require('lazy').setup(
                 'rafamadriz/friendly-snippets',
 
                 -- Utility functions for getting diagnostic status and progress messages from LSP servers, for in the Neovim statusline
-                'nvim-lua/lsp-status.nvim',
+                -- 'nvim-lua/lsp-status.nvim',
 
                 -- A neovim plugin that helps managing crates.io dependencies
                 {
