@@ -221,8 +221,7 @@ require('lazy').setup(
         {
             'folke/flash.nvim',
             event = 'VeryLazy',
-            ---@type Flash.Config
-            opts = {},
+            config = require('plugins._flash').config,
             keys = {
                 {
                     's<CR>',
