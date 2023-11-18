@@ -162,7 +162,10 @@ require('lazy').setup(
         -- A blazing fast and easy to configure neovim statusline written in pure lua.
         {
             'nvim-lualine/lualine.nvim',
-            dependencies = { 'kyazdani42/nvim-web-devicons', opt = true },
+            dependencies = {
+                { 'kyazdani42/nvim-web-devicons', opt = true },
+                'nvim-lua/lsp-status.nvim',
+            },
             config = require('plugins._lualine').config,
             event = 'VeryLazy',
             cond = is_not_embedded
