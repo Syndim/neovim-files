@@ -71,7 +71,7 @@ require('lazy').setup(
         {
             'folke/todo-comments.nvim',
             dependencies = 'nvim-lua/plenary.nvim',
-            event = "BufReadPost",
+            event = 'BufReadPost',
             config = require('plugins._todo_comments').config
         },
 
@@ -79,6 +79,14 @@ require('lazy').setup(
         {
             'rcarriga/nvim-notify',
             config = require('plugins._notify').config,
+            lazy = false,
+            cond = is_not_embedded
+        },
+
+        -- Extensible UI for Neovim notifications and LSP progress messages.
+        {
+            'j-hui/fidget.nvim',
+            config = require('plugins._fidget').config,
             lazy = false,
             cond = is_not_embedded
         },
@@ -146,9 +154,9 @@ require('lazy').setup(
 
         -- Send buffers into early retirement by automatically closing them after x minutes of inactivity.
         {
-            "chrisgrieser/nvim-early-retirement",
+            'chrisgrieser/nvim-early-retirement',
             config = true,
-            event = "VeryLazy",
+            event = 'VeryLazy',
         },
 
         -- A blazing fast and easy to configure neovim statusline written in pure lua.
@@ -162,8 +170,8 @@ require('lazy').setup(
 
         -- 🍨 Soothing pastel theme for (Neo)vim
         {
-            "catppuccin/nvim",
-            name = "catppuccin",
+            'catppuccin/nvim',
+            name = 'catppuccin',
             config = require('plugins._color').config,
             priority = 1000,
             lazy = false,
@@ -208,42 +216,42 @@ require('lazy').setup(
 
         -- Navigate your code with search labels, enhanced character motions and Treesitter integration
         {
-            "folke/flash.nvim",
-            event = "VeryLazy",
+            'folke/flash.nvim',
+            event = 'VeryLazy',
             ---@type Flash.Config
             opts = {},
             keys = {
                 {
-                    "s<CR>",
-                    mode = { "n", "x", "o" },
+                    's<CR>',
+                    mode = { 'n', 'x', 'o' },
                     function()
-                        require("flash").jump({ continue = true })
+                        require('flash').jump({ continue = true })
                     end,
-                    desc = "Flash",
+                    desc = 'Flash',
                 },
                 {
-                    "s",
-                    mode = { "n", "x", "o" },
+                    's',
+                    mode = { 'n', 'x', 'o' },
                     function()
-                        require("flash").jump()
+                        require('flash').jump()
                     end,
-                    desc = "Flash",
+                    desc = 'Flash',
                 },
                 {
-                    "r",
-                    mode = "o",
+                    'r',
+                    mode = 'o',
                     function()
-                        require("flash").remote()
+                        require('flash').remote()
                     end,
-                    desc = "Remote Flash",
+                    desc = 'Remote Flash',
                 },
                 {
-                    "<c-s>",
-                    mode = { "c" },
+                    '<c-s>',
+                    mode = { 'c' },
                     function()
-                        require("flash").toggle()
+                        require('flash').toggle()
                     end,
-                    desc = "Toggle Flash Search",
+                    desc = 'Toggle Flash Search',
                 },
             },
         },
