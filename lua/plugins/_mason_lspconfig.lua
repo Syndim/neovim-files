@@ -48,33 +48,33 @@ function M.config()
     --     })
     -- end
 
-    local efm_spec = mason_registry.get_package('efm').spec
-    efm_spec.source = {
-        asset = {
-            {
-                target = 'win_x64',
-                file = 'efm-langserver_{{version}}_windows_amd64.zip',
-                bin = 'efm-langserver_{{version}}_windows_amd64/efm-langserver.exe'
-            },
-            {
-                target = 'linux_x64',
-                file = 'efm-langserver_{{version}}_linux_amd64.tar.gz',
-                bin = 'efm-langserver_{{version}}_linux_amd64/efm-langserver'
-            },
-            {
-                target = 'darwin_arm64',
-                file = 'efm-langserver_{{version}}_darwin_arm64.zip',
-                bin = 'efm-langserver_{{version}}_darwin_arm64/efm-langserver'
-            },
-            {
-                target = 'darwin_x64',
-                file = 'efm-langserver_{{version}}_darwin_amd64.zip',
-                bin = 'efm-langserver_{{version}}_darwin_amd64/efm-langserver'
-            }
-        },
-        id = efm_spec.source.id:replace('pkg:golang/github.com', 'pkg:github')
-    }
-    efm_spec.bin['efm-langserver'] = '{{source.asset.bin}}'
+    -- local efm_spec = mason_registry.get_package('efm').spec
+    -- efm_spec.source = {
+    --     asset = {
+    --         {
+    --             target = 'win_x64',
+    --             file = 'efm-langserver_{{version}}_windows_amd64.zip',
+    --             bin = 'efm-langserver_{{version}}_windows_amd64/efm-langserver.exe'
+    --         },
+    --         {
+    --             target = 'linux_x64',
+    --             file = 'efm-langserver_{{version}}_linux_amd64.tar.gz',
+    --             bin = 'efm-langserver_{{version}}_linux_amd64/efm-langserver'
+    --         },
+    --         {
+    --             target = 'darwin_arm64',
+    --             file = 'efm-langserver_{{version}}_darwin_arm64.zip',
+    --             bin = 'efm-langserver_{{version}}_darwin_arm64/efm-langserver'
+    --         },
+    --         {
+    --             target = 'darwin_x64',
+    --             file = 'efm-langserver_{{version}}_darwin_amd64.zip',
+    --             bin = 'efm-langserver_{{version}}_darwin_amd64/efm-langserver'
+    --         }
+    --     },
+    --     id = efm_spec.source.id:replace('pkg:golang/github.com', 'pkg:github')
+    -- }
+    -- efm_spec.bin['efm-langserver'] = '{{source.asset.bin}}'
 
     -- Use proxy for schema file
     mason_registry:on('package:handle', vim.schedule_wrap(function(package, handle)
