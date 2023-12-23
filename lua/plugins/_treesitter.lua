@@ -7,6 +7,13 @@ function M.config()
             global.github_proxy .. 'github.com/')
     end
 
+    local proxy = os.getenv('HTTPS_PROXY') or ''
+    if proxy then
+        require("nvim-treesitter.install").command_extra_args = {
+            curl = { "--proxy", proxy },
+        }
+    end
+
     local treesitter_path = vim.fn.stdpath('data') .. '/treesitter'
     vim.opt.runtimepath:prepend(treesitter_path)
 
