@@ -340,7 +340,7 @@ require('lazy').setup(
 
         -- A tree like view for symbols in Neovim using the Language Server Protocol. Supports all your favourite languages.
         {
-            'simrat39/symbols-outline.nvim',
+            'hedyhli/outline.nvim',
             config = require('plugins._symbols_outline').config,
             event = 'BufReadPost',
             cond = is_not_embedded
