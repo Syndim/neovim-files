@@ -560,8 +560,10 @@ require('lazy').setup(
 
         -- Tools for better development in rust using neovim's builtin lsp
         {
-            'simrat39/rust-tools.nvim',
+            'mrcjkb/rustaceanvim',
+            version = '^3',
             ft = 'rust',
+            config = require('plugins._lsp_rust').config,
             cond = is_not_embedded
         },
 

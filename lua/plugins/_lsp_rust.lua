@@ -1,6 +1,9 @@
 local M = {}
 
-function M.setup(config)
+function M.config()
+    local lsp = require('plugins._lsp')
+    local config = lsp.create_config()
+
     local features = require('features')
 
     local settings = {
@@ -26,9 +29,9 @@ function M.setup(config)
         settings = settings
     })
 
-    require('rust-tools').setup({
+    vim.g.rustaceanvim = {
         server = rust_config,
-    })
+    }
 end
 
 return M
