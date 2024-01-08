@@ -9,7 +9,8 @@ function M.config()
             'eslint_d',
             'prettierd',
             'efm',
-            'autopep8'
+            'autopep8',
+            'rust-analyzer'
         }
     })
 end

@@ -19,7 +19,6 @@ function M.config()
         'yamlls',
         'kotlin_language_server',
         'ruff_lsp', -- Python
-        'rust_analyzer'
     }
 
     local optional_servers = {
