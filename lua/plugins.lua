@@ -46,7 +46,6 @@ require('lazy').setup(
         -- Neovim Lua plugin to visualize and operate on indent scope.
         {
             'echasnovski/mini.indentscope',
-            version = false, -- wait till new 0.7.0 release to put it back on semver
             event = 'BufReadPost',
             config = require('plugins._mini_indent_scope').config,
         },
