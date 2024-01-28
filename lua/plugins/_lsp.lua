@@ -40,6 +40,12 @@ local function get_capabilities()
     -- lsp_status.register_progress()
     local capabilities = require('cmp_nvim_lsp').default_capabilities()
     -- capabilities = vim.tbl_extend('keep', capabilities, lsp_status.capabilities)
+
+    capabilities.textDocument.foldingRange = {
+        dynamicRegistration = false,
+        lineFoldingOnly = true
+    }
+
     return capabilities
 end
 

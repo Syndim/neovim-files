@@ -321,6 +321,15 @@ require('lazy').setup(
             cond = is_not_embedded,
         },
 
+        -- Not UFO in the sky, but an ultra fold in Neovim.
+        {
+            'kevinhwang91/nvim-ufo',
+            dependencies = 'kevinhwang91/promise-async',
+            event = 'BufReadPost',
+            config = require('plugins._ufo').config,
+            cond = is_not_embedded
+        },
+
         -- Language support
         -- Generic
         -- 🧠 💪 // Smart and powerful comment plugin for neovim. Supports treesitter, dot repeat, left-right/up-down motions, hooks, and more
@@ -389,6 +398,7 @@ require('lazy').setup(
             cond = is_not_embedded
         },
 
+        -- Install and upgrade third party tools automatically
         {
             'WhoIsSethDaniel/mason-tool-installer.nvim',
             dependencies = { 'williamboman/mason.nvim' },
