@@ -38,7 +38,7 @@ require('lazy').setup(
         -- Indent guides for Neovim
         {
             'lukas-reineke/indent-blankline.nvim',
-            event = 'BufReadPost',
+            event = 'VeryLazy',
             config = require('plugins._indent_blankline').config,
             cond = is_not_embedded
         },
@@ -46,7 +46,7 @@ require('lazy').setup(
         -- Neovim Lua plugin to visualize and operate on indent scope.
         {
             'echasnovski/mini.indentscope',
-            event = 'BufReadPost',
+            event = 'VeryLazy',
             config = require('plugins._mini_indent_scope').config,
         },
 
@@ -54,7 +54,7 @@ require('lazy').setup(
         {
             'echasnovski/mini.surround',
             version = '*',
-            event = 'BufReadPost',
+            event = 'VeryLazy',
             config = require('plugins._mini_surround').config,
             cond = is_not_embedded
         },
@@ -62,7 +62,7 @@ require('lazy').setup(
         -- illuminate.vim - (Neo)Vim plugin for automatically highlighting other uses of the word under the cursor using either LSP, Tree-sitter, or regex matching.
         {
             'RRethy/vim-illuminate',
-            event = 'BufReadPost',
+            event = 'VeryLazy',
             config = require('plugins._vim_illuminate').config
         },
 
@@ -70,7 +70,7 @@ require('lazy').setup(
         {
             'folke/todo-comments.nvim',
             dependencies = 'nvim-lua/plenary.nvim',
-            event = 'BufReadPost',
+            event = 'VeryLazy',
             config = require('plugins._todo_comments').config
         },
 
@@ -86,7 +86,7 @@ require('lazy').setup(
         {
             'j-hui/fidget.nvim',
             config = require('plugins._fidget').config,
-            lazy = false,
+            event = 'BufReadPost',
             cond = is_not_embedded
         },
 
@@ -103,7 +103,7 @@ require('lazy').setup(
             'petertriho/nvim-scrollbar',
             dependencies = 'kevinhwang91/nvim-hlslens',
             config = require('plugins._scrollbar').config,
-            event = 'BufReadPost',
+            event = 'VeryLazy',
             cond = is_not_embedded
         },
 
@@ -111,7 +111,7 @@ require('lazy').setup(
         {
             'luukvbaal/statuscol.nvim',
             config = require('plugins._statuscol').config,
-            event = 'BufReadPost',
+            event = 'VeryLazy',
             cond = is_not_embedded
         },
 
@@ -120,7 +120,7 @@ require('lazy').setup(
             'AckslD/nvim-neoclip.lua',
             dependencies = { 'nvim-telescope/telescope.nvim', 'kkharji/sqlite.lua' },
             config = require('plugins._neoclip').config,
-            event = 'BufReadPost',
+            event = 'VeryLazy',
             cond = is_not_embedded
         },
 
@@ -130,7 +130,7 @@ require('lazy').setup(
             dependencies = 'MattesGroeger/vim-bookmarks',
             config = require('plugins._bookmarks').config,
             init = require('plugins._bookmarks').setup,
-            event = 'BufEnter',
+            event = 'VeryLazy',
             cond = is_not_embedded
         },
 
@@ -186,7 +186,7 @@ require('lazy').setup(
         {
             'nacro90/numb.nvim',
             config = require('plugins._numb').config,
-            event = 'BufReadPost'
+            event = 'VeryLazy'
         },
 
         -- A file explorer tree for neovim written in lua
@@ -251,13 +251,13 @@ require('lazy').setup(
         },
 
         -- Multiple cursors plugin for vim/neovim
-        { 'mg979/vim-visual-multi', event = 'BufReadPost' },
+        { 'mg979/vim-visual-multi', event = 'VeryLazy' },
 
         -- Hover plugin framework for Neovim
         {
             'lewis6991/hover.nvim',
             config = require('plugins._hover').config,
-            event = 'BufReadPost',
+            event = 'VeryLazy',
             cond = is_not_embedded
         },
 
@@ -267,7 +267,7 @@ require('lazy').setup(
             dependencies = { 'nvim-lua/plenary.nvim' },
             tag = 'release',
             config = require('plugins._gitsigns').config,
-            event = 'BufReadPost',
+            event = 'VeryLazy',
             cond = is_not_embedded
         },
 
@@ -275,7 +275,7 @@ require('lazy').setup(
         {
             'nvim-telescope/telescope.nvim',
             config = require('plugins._telescope').config,
-            event = 'BufEnter',
+            event = 'VeryLazy',
             cond = is_not_embedded
         },
 
@@ -284,7 +284,7 @@ require('lazy').setup(
             'nvim-telescope/telescope-fzy-native.nvim',
             dependencies = 'nvim-telescope/telescope.nvim',
             config = require('plugins._telescope_fzy_native').config,
-            event = 'BufEnter',
+            event = 'VeryLazy',
             cond = is_not_embedded
         },
 
@@ -292,7 +292,7 @@ require('lazy').setup(
             'nvim-telescope/telescope-ui-select.nvim',
             dependencies = 'nvim-telescope/telescope.nvim',
             config = require('plugins._telescope_ui_select').config,
-            event = 'BufEnter',
+            event = 'VeryLazy',
             cond = is_not_embedded
         },
 
@@ -327,14 +327,14 @@ require('lazy').setup(
         {
             'numToStr/Comment.nvim',
             config = require('plugins._comment').config,
-            event = 'BufReadPost'
+            event = 'VeryLazy'
         },
 
         -- A tree like view for symbols in Neovim using the Language Server Protocol. Supports all your favourite languages.
         {
             'hedyhli/outline.nvim',
             config = require('plugins._symbols_outline').config,
-            event = 'BufReadPost',
+            event = 'VeryLazy',
             cond = is_not_embedded
         },
 
@@ -344,7 +344,7 @@ require('lazy').setup(
             run = ':TSUpdate',
             config = require('plugins._treesitter').config,
             version = false,
-            event = 'BufReadPost'
+            event = 'VeryLazy'
         },
 
         -- treesitter to auto close and auto rename html tag
@@ -360,7 +360,7 @@ require('lazy').setup(
             'windwp/nvim-autopairs',
             dependencies = 'nvim-treesitter/nvim-treesitter',
             config = require('plugins._treesitter_autopair').config,
-            event = 'BufReadPost'
+            event = 'VeryLazy'
         },
 
         -- Show code context
@@ -376,7 +376,7 @@ require('lazy').setup(
             'utilyre/sentiment.nvim',
             version = '*',
             config = require('plugins._sentiment').config,
-            event = 'BufReadPost'
+            event = 'VeryLazy'
         },
 
         -- LSP and auto completion
@@ -385,7 +385,7 @@ require('lazy').setup(
             'williamboman/mason-lspconfig.nvim',
             dependencies = { 'williamboman/mason.nvim', { 'neovim/nvim-lspconfig', version = false } },
             config = require('plugins._mason_lspconfig').config,
-            event = 'BufEnter',
+            event = 'BufReadPost',
             cond = is_not_embedded
         },
 
@@ -393,7 +393,7 @@ require('lazy').setup(
             'WhoIsSethDaniel/mason-tool-installer.nvim',
             dependencies = { 'williamboman/mason.nvim' },
             config = require('plugins._mason_tool_installer').config,
-            event = 'BufEnter',
+            event = 'BufReadPost',
             cond = is_not_embedded
         },
 
@@ -402,7 +402,8 @@ require('lazy').setup(
             'creativenull/efmls-configs-nvim',
             dependencies = { 'neovim/nvim-lspconfig', 'williamboman/mason-lspconfig.nvim' },
             config = require('plugins._efm').config,
-            event = 'BufEnter'
+            event = 'BufReadPost',
+            cond = is_not_embedded
         },
 
         -- A completion plugin for neovim coded in Lua.
@@ -497,7 +498,7 @@ require('lazy').setup(
         {
             'folke/trouble.nvim',
             config = require('plugins._trouble').config,
-            event = 'BufReadPost',
+            event = 'VeryLazy',
             cond = is_not_embedded
         },
 
