@@ -500,6 +500,7 @@ require('lazy').setup(
             cmd = 'Codeium',
             config = require('plugins._codeium').config,
             init = require('plugins._codeium').setup,
+            version = false,
             cond = is_not_embedded
         },
 
