@@ -6,7 +6,8 @@ function M.setup(config)
     local clang_config = vim.tbl_deep_extend('force', config, {
         capabilities = {
             offsetEncoding = { encoding }
-        }
+        },
+        filetypes = { "c", "cpp", "objc", "objcpp", "cuda" }
     })
     require('clangd_extensions').setup({})
     local lsp_config = require('lspconfig')
