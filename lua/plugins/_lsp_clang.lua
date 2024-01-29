@@ -2,7 +2,7 @@ local M = {}
 
 function M.setup(config)
     local features = require('features')
-    local encoding = features.is_coilot_enabled and 'utf-16' or 'utf-8'
+    local encoding = features.is_copilot_enabled and 'utf-16' or 'utf-8'
     local clang_config = vim.tbl_deep_extend('force', config, {
         capabilities = {
             offsetEncoding = { encoding }
