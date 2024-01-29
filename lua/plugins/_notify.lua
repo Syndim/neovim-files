@@ -18,10 +18,11 @@ function M.config()
     end
 
     local opts = {
-        noremap = true
+        remap = false
     }
 
-    vim.api.nvim_set_keymap('n', '<leader>dn', '<cmd>lua require("notify").dismiss()<CR>', opts)
+    opts.desc = 'Close notification'
+    vim.keymap.set('n', '<leader>dn', notify.dismiss, opts)
 end
 
 return M

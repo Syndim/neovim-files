@@ -28,15 +28,24 @@ function M.config()
         noremap = true
     }
 
-    api.nvim_set_keymap('n', '<C-p>', '<cmd>Telescope find_files<cr>', opts)
-    api.nvim_set_keymap('n', '<Leader>fg', '<cmd>Telescope live_grep<cr>', opts)
-    api.nvim_set_keymap('n', '<Leader>fb', '<cmd>Telescope buffers<cr>', opts)
-    api.nvim_set_keymap('n', '<A-o>', '<cmd>Telescope buffers<cr>', opts)
-    api.nvim_set_keymap('n', '<Leader>fh', '<cmd>Telescope help_tags<cr>', opts)
-    api.nvim_set_keymap('n', '<Leader>gs', '<cmd>Telescope git_status<cr>', opts)
-    api.nvim_set_keymap('n', '<Leader>gb', '<cmd>Telescope git_branches<cr>', opts)
-    api.nvim_set_keymap('n', '<Leader>km', '<cmd>Telescope keymaps<cr>', opts)
-    api.nvim_set_keymap('n', '<Leader>cm', '<cmd>Telescope commands<cr>', opts)
+    opts.desc = 'Find files'
+    vim.keymap.set('n', '<C-p>', function() vim.cmd.Telescope('find_files') end, opts)
+    opts.desc = 'Live grep'
+    vim.keymap.set('n', '<Leader>fg', function() vim.cmd.Telescope('live_grep') end, opts)
+    opts.desc = 'Find buffers'
+    vim.keymap.set('n', '<Leader>fb', function() vim.cmd.Telescope('buffers') end, opts)
+    opts.desc = 'Find buffers'
+    vim.keymap.set('n', '<A-o>', function() vim.cmd.Telescope('buffers') end, opts)
+    opts.desc = 'Find help tags'
+    vim.keymap.set('n', '<Leader>fh', function() vim.cmd.Telescope('help_tags') end, opts)
+    opts.desc = 'Git status'
+    vim.keymap.set('n', '<Leader>gs', function() vim.cmd.Telescope('git_status') end, opts)
+    opts.desc = 'Git branches'
+    vim.keymap.set('n', '<Leader>gb', function() vim.cmd.Telescope('git_branches') end, opts)
+    opts.desc = 'Find keymaps'
+    vim.keymap.set('n', '<Leader>km', function() vim.cmd.Telescope('keymaps') end, opts)
+    opts.desc = 'Find commands'
+    vim.keymap.set('n', '<Leader>cm', function() vim.cmd.Telescope('commands') end, opts)
 end
 
 return M

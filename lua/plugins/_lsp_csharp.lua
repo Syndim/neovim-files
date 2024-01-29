@@ -10,8 +10,9 @@ function M.setup(lsp_config, lsp, config)
     local default_on_attach = lsp.create_on_attach()
     local function on_attach(client, bufnr)
         default_on_attach(client, bufnr)
-        vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gd',
-            '<cmd>lua require("omnisharp_extended").telescope_lsp_definitions()<CR>', { noremap = true, silent = true })
+        local opts = { remap = false }
+        opts.desc = 'C# go to definition'
+        vim.keymap.set('n', 'gd', require("omnisharp_extended").telescope_lsp_definitions, opts)
 
         -- start issue https://github.com/OmniSharp/omnisharp-roslyn/issues/2483
         -- get the list of tokens from lua =vim.lsp.get_active_clients()[1] and just replace the spaces with underscores

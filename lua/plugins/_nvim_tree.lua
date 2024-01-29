@@ -9,11 +9,13 @@ function M.config()
     })
 
     local opts = {
-        noremap = true
+        remap = false
     }
 
-    vim.api.nvim_set_keymap('', '<F3>', '<cmdNvimTreeToggle<cr>', opts)
-    vim.api.nvim_set_keymap('', '<F2>', '<cmd>NvimTreeFindFile<cr>', opts)
+    opts.desc = 'Toggle file tree'
+    vim.keymap.set('', '<F3>', vim.cmd.NvimTreeToggle, opts)
+    opts.desc = 'Find file in file tree'
+    vim.keymap.set('', '<F2>', vim.cmd.NvimTreeFindFile, opts)
 end
 
 return M

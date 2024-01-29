@@ -4,32 +4,43 @@ local function create_on_attach()
     -- Use an on_attach function to only map the following keys
     -- after the language server attaches to the current buffer
     local on_attach = function(client, bufnr)
-        local opts = { noremap = true, silent = true }
+        local opts = { remap = true, buffer = bufnr }
         -- print('LSP ' .. client.name .. ' attached, setting up key bindings')
         -- Enable completion triggered by <c-x><c-o>
         -- vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
 
         -- Mappings.
         -- See `:help vim.lsp.*` for documentation on any of the below functions
-        vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<CR>', opts)
-        -- vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>', opts)
-        vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gd', '<cmd>Telescope lsp_definitions<CR>', opts)
-        -- vim.api.nvim_buf_set_keymap(bufnr, 'n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
-        -- vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
-        vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gi', '<cmd>Telescope lsp_implementations<CR>', opts)
-        -- vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
-        vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gr', '<cmd>Telescope lsp_references<CR>', opts)
-        vim.api.nvim_buf_set_keymap(bufnr, 'n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
-        vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', opts)
-        vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', opts)
-        vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>wl',
-            '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opts)
-        vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
-        vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
-        vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
-        vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>ff', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
-        vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>ds', '<cmd>Telescope lsp_document_symbols<CR>', opts)
-        vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>ws', '<cmd>Telescope lsp_dynamic_workspace_symbols<CR>', opts)
+        opts.desc = 'Go to declaration'
+        vim.keymap.set('n', 'gD', function() vim.lsp.buf.declaration() end, opts)
+        opts.desc = 'Go to definition'
+        vim.keymap.set('n', 'gd', function() vim.cmd.Telescope('lsp_definitions') end, opts)
+        opts.desc = 'Find implementations'
+        vim.keymap.set('n', 'gi', function() vim.cmd.Telescope('lsp_implementations') end, opts)
+        opts.desc = 'Find references'
+        vim.keymap.set('n', 'gr', function() vim.cmd.Telescope('lsp_references') end, opts)
+        opts.desc = 'Signature help'
+        vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, opts)
+        opts.desc = 'Add workspace folder'
+        vim.keymap.set('n', '<leader>wa', vim.lsp.buf.add_workspace_folder, opts)
+        opts.desc = 'Remove workspace folder'
+        vim.keymap.set('n', '<leader>wr', vim.lsp.buf.remove_workspace_folder, opts)
+        opts.desc = 'List workspace folders'
+        vim.keymap.set('n', '<leader>wl',
+            function() print(vim.inspect(vim.lsp.buf.list_workspace_folders())) end, opts)
+        opts.desc = 'Type definition'
+        vim.keymap.set('n', '<leader>D', vim.lsp.buf.type_definition, opts)
+        opts.desc = 'Rename'
+        vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, opts)
+        opts.desc = 'Code action'
+        vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, opts)
+        opts.desc = 'Format current document'
+        vim.keymap.set('n', '<leader>ff', vim.lsp.buf.format, opts)
+        opts.desc = 'Document symbols'
+        vim.keymap.set('n', '<leader>ds', function() vim.cmd.Telescope('lsp_document_symbols') end,
+            opts)
+        opts.desc = 'Workspace symbols'
+        vim.keymap.set('n', '<leader>ws', function() vim.cmd.Telescope('lsp_dynamic_workspace_symbols') end, opts)
     end
 
     return on_attach
@@ -60,11 +71,11 @@ end
 function M.create_config()
     -- Mappings.
     -- See `:help vim.diagnostic.*` for documentation on any of the below functions
-    local opts = { noremap = true, silent = true }
-    vim.api.nvim_set_keymap('n', '<space>e', '<cmd>lua vim.diagnostic.open_float()<CR>', opts)
-    vim.api.nvim_set_keymap('n', '[d', '<cmd>lua vim.diagnostic.goto_prev()<CR>', opts)
-    vim.api.nvim_set_keymap('n', ']d', '<cmd>lua vim.diagnostic.goto_next()<CR>', opts)
-    vim.api.nvim_set_keymap('n', '<space>q', '<cmd>lua vim.diagnostic.setloclist()<CR>', opts)
+    local opts = { remap = false }
+    vim.keymap.set('n', '<space>e', vim.diagnostic.open_float, opts)
+    vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, opts)
+    vim.keymap.set('n', ']d', vim.diagnostic.goto_next, opts)
+    vim.keymap.set('n', '<space>q', vim.diagnostic.setloclist, opts)
 
     local on_attach = create_on_attach()
     local capabilities = get_capabilities()

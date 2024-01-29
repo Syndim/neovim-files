@@ -8,9 +8,11 @@ function M.config()
     })
 
     local opts = {
-        noremap = true
+        remap = false
     }
-    vim.api.nvim_set_keymap('n', '<leader>td', '<cmd>:TodoTelescope<cr>', opts)
+
+    opts.desc = 'Open todo'
+    vim.keymap.set('n', '<leader>td', vim.cmd.TodoTelescope, opts)
 end
 
 return M

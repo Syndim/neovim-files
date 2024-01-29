@@ -7,7 +7,7 @@ function M.config()
             show_relative_numbers = true
         }
     })
-    vim.api.nvim_set_keymap('n', '<F4>', ':Outline<CR>', { silent = true })
+    vim.keymap.set('n', '<F4>', vim.cmd.Outline, {})
 end
 
 return M

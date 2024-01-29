@@ -6,12 +6,14 @@ function M.config()
         noremap = true
     }
 
-    local api = vim.api;
-
-    api.nvim_set_keymap('n', '<leader>mm', [[<cmd>BookmarkToggle<CR>]], opts)
-    api.nvim_set_keymap('n', '<leader>ms', [[<cmd>Telescope vim_bookmarks all<CR>]], opts)
-    api.nvim_set_keymap('n', '<leader>mb', [[<cmd>BookmarkPrev<CR>]], opts)
-    api.nvim_set_keymap('n', '<leader>mn', [[<cmd>BookmarkNext<CR>]], opts)
+    opts.desc = 'Toggle bookmark'
+    vim.keymap.set('n', '<leader>mm', vim.cmd.BookmarkToggle, opts)
+    opts.desc = 'List bookmark'
+    vim.keymap.set('n', '<leader>ms', function() vim.cmd.Telescope({ 'vim_bookmarks', 'all' }) end, opts)
+    opts.desc = 'Previous bookmark'
+    vim.keymap.set('n', '<leader>mb', vim.cmd.BookmarkPrev, opts)
+    opts.desc = 'Next bookmark'
+    vim.keymap.set('n', '<leader>mn', vim.cmd.BookmarkNext, opts)
 end
 
 function M.setup()

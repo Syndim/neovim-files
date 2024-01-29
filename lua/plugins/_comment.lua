@@ -11,8 +11,8 @@ function M.config()
 
     for _, key in ipairs(mapping_keys) do
         if key ~= nil then
-            vim.api.nvim_set_keymap('n', key, 'gcc', {})
-            vim.api.nvim_set_keymap('v', key, 'gc', {})
+            vim.keymap.set('n', key, 'gcc', { remap = true })
+            vim.keymap.set('v', key, 'gc', { remap = true })
         end
     end
 end

@@ -2,9 +2,10 @@ local M = {}
 
 function M.config()
     local opts = {
-        noremap = true
+        remap = false
     }
-    vim.api.nvim_set_keymap('n', '<leader>s', '<cmd>lua require("spectre").open()<CR>', opts)
+    opts.desc = 'Open Spectre'
+    vim.keymap.set('n', '<leader>s', require("spectre").open, opts)
 end
 
 return M

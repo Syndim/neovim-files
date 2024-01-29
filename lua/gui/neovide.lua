@@ -18,15 +18,15 @@ api.nvim_create_autocmd({ 'UIEnter' }, {
 
 if global.is_mac then
     local opts = {
-        noremap = true
+        remap = false
     }
-    api.nvim_set_keymap('n', '˙', '<C-w>h', opts)
-    api.nvim_set_keymap('n', '∆', '<C-w>j', opts)
-    api.nvim_set_keymap('n', '˚', '<C-w>k', opts)
-    api.nvim_set_keymap('n', '¬', '<C-w>l', opts)
-    api.nvim_set_keymap('n', 'π', '<cmd>lua require("illuminate").goto_prev_reference()<cr>', opts)
-    api.nvim_set_keymap('n', '˜', '<cmd>lua require("illuminate").goto_next_reference()<cr>', opts)
-    api.nvim_set_keymap('n', 'ø', '<cmd>Telescope buffers<cr>', opts)
+    vim.keymap.set('n', '˙', '<C-w>h', opts)
+    vim.keymap.set('n', '∆', '<C-w>j', opts)
+    vim.keymap.set('n', '˚', '<C-w>k', opts)
+    vim.keymap.set('n', '¬', '<C-w>l', opts)
+    vim.keymap.set('n', 'π', require("illuminate").goto_prev_reference, opts)
+    vim.keymap.set('n', '˜', require("illuminate").goto_next_reference, opts)
+    vim.keymap.set('n', 'ø', function() vim.cmd.Telescope('buffers') end, opts)
 elseif global.is_wsl then
     -- Neovide under wsl will fetch new set of environments and VIRTUAL_ENV
     -- environment variable somehow get lost
