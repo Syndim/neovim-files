@@ -5,12 +5,19 @@ function M.config()
         ensure_installed = {
             'ruff-lsp',
             -- 'ruff',
-            -- 'hadolint',
             'eslint_d',
             'prettierd',
-            'efm',
             'autopep8',
-            'rust-analyzer'
+            'rust-analyzer',
+            'codespell',
+            'typos',
+            'cpplint',
+            'protolint',
+            'pylint',
+            'jsonlint',
+            'hadolint',
+            'markdownlint',
+            'yamllint'
         }
     })
 end

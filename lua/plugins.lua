@@ -395,6 +395,7 @@ require('lazy').setup(
             dependencies = { 'williamboman/mason.nvim', { 'neovim/nvim-lspconfig', version = false } },
             config = require('plugins._mason_lspconfig').config,
             event = 'BufReadPost',
+            run = ':Mason',
             cond = is_not_embedded
         },
 
@@ -407,12 +408,11 @@ require('lazy').setup(
             cond = is_not_embedded
         },
 
-        -- An unofficial collection of linters and formatters configured for efm-langserver for neovim.
+        -- null-ls.nvim reloaded / Use Neovim as a language server to inject LSP diagnostics, code actions, and more via Lua.
         {
-            'creativenull/efmls-configs-nvim',
-            dependencies = { 'neovim/nvim-lspconfig', 'williamboman/mason-lspconfig.nvim' },
-            config = require('plugins._efm').config,
-            event = 'BufReadPost',
+            'nvimtools/none-ls.nvim',
+            config = require('plugins._none_ls').config,
+            event = 'VeryLazy',
             cond = is_not_embedded
         },
 
