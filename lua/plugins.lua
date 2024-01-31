@@ -411,8 +411,9 @@ require('lazy').setup(
         -- null-ls.nvim reloaded / Use Neovim as a language server to inject LSP diagnostics, code actions, and more via Lua.
         {
             'nvimtools/none-ls.nvim',
+            dependencies = { 'WhoIsSethDaniel/mason-tool-installer.nvim', 'williamboman/mason.nvim', 'williamboman/mason-lspconfig.nvim' },
             config = require('plugins._none_ls').config,
-            event = 'VeryLazy',
+            event = 'BufReadPost',
             cond = is_not_embedded
         },
 
