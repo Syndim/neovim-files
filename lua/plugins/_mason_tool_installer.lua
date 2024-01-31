@@ -20,6 +20,8 @@ function M.config()
             'yamllint'
         }
     })
+
+    vim.cmd.MasonToolsInstall()
 end
 
 return M
