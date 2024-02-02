@@ -17,7 +17,7 @@ function M.config()
             'jsonlint',
             'hadolint',
             'markdownlint',
-            'yamllint'
+            'yamllint',
         }
     })
 

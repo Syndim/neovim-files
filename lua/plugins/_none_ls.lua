@@ -16,7 +16,6 @@ function M.config()
             null_ls.builtins.diagnostics.buf,
             null_ls.builtins.diagnostics.clang_check,
             null_ls.builtins.diagnostics.codespell,
-            null_ls.builtins.diagnostics.commitlint,
             null_ls.builtins.diagnostics.cpplint,
             null_ls.builtins.diagnostics.dotenv_linter,
             null_ls.builtins.diagnostics.eslint_d,
