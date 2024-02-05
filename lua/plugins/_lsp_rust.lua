@@ -42,6 +42,11 @@ function M.config()
 
     vim.g.rustaceanvim = {
         server = rust_config,
+        tools = {
+            code_actions = {
+                ui_select_fallback = true,
+            },
+        },
     }
 end
 
