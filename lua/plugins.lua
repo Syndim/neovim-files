@@ -614,6 +614,15 @@ require('lazy').setup(
             cond = is_not_embedded
         },
 
+        -- A neovim clone of pubspec-assist a plugin for adding and updating dart dependencies in pubspec.yaml files.
+        {
+            'akinsho/pubspec-assist.nvim',
+            dependencies = { 'plenary.nvim' },
+            ft = 'yaml',
+            opts = {},
+            cond = is_not_embedded
+        },
+
         -- nu-shell
         {
             'LhKipp/nvim-nu',
