@@ -1,11 +1,13 @@
 local lazypath = vim.fn.stdpath('data') .. '/lazy/lazy.nvim'
 
+local global = require('global')
+
 if not vim.loop.fs_stat(lazypath) then
     vim.fn.system({
         'git',
         'clone',
         '--filter=blob:none',
-        'https://github.com/folke/lazy.nvim.git',
+        global.github_proxy .. 'github.com/folke/lazy.nvim.git',
         '--branch=stable', -- latest stable release
         lazypath,
     })
@@ -13,7 +15,6 @@ end
 
 vim.opt.rtp:prepend(lazypath)
 
-local global = require('global')
 local is_not_embedded = not global.is_embedded
 
 require('lazy').setup(
