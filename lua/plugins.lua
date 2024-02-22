@@ -252,7 +252,12 @@ require('lazy').setup(
         },
 
         -- Multiple cursors plugin for vim/neovim
-        { 'mg979/vim-visual-multi', event = 'VeryLazy' },
+        {
+            'mg979/vim-visual-multi',
+            branch = 'master',
+            config = function() end,
+            event = 'VeryLazy'
+        },
 
         -- Hover plugin framework for Neovim
         {
