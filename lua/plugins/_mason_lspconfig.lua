@@ -14,11 +14,13 @@ function M.config()
         'dockerls',
         'html',
         'jsonls',
+        'eslint',
         'taplo', -- toml
         'bashls',
         'yamlls',
         'kotlin_language_server',
         'ruff_lsp', -- Python
+        'typos_lsp'
     }
 
     local optional_servers = {
