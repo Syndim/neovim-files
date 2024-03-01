@@ -11,10 +11,11 @@ function M.config()
             }
         }
     })
-    require('telescope').load_extension('neoclip')
+    local ts = require('plugins._telescope')
     local opts = { remap = false }
     opts.desc = 'Open neoclip'
-    vim.keymap.set('n', '<leader>p', function() vim.cmd.Telescope('neoclip') end, opts)
+    vim.keymap.set('n', '<leader>p', function() require('telescope').extensions.neoclip.default(ts.dropdown_theme) end,
+        opts)
 end
 
 return M

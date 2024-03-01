@@ -1,5 +1,7 @@
 local M = {}
 
+
+
 function M.config()
     local actions = require('telescope.actions')
     require('telescope').setup({
@@ -23,29 +25,34 @@ function M.config()
         }
     })
 
-    local api = vim.api
     local opts = {
         noremap = true
     }
 
+    local builtin = require('telescope.builtin')
+    local dropdown_theme = require('telescope.themes').get_dropdown({})
+
+    M.builtin = builtin
+    M.dropdown_theme = dropdown_theme
+
     opts.desc = 'Find files'
-    vim.keymap.set('n', '<C-p>', function() vim.cmd.Telescope('find_files') end, opts)
+    vim.keymap.set('n', '<C-p>', function() builtin.find_files(dropdown_theme) end, opts)
     opts.desc = 'Live grep'
-    vim.keymap.set('n', '<Leader>fg', function() vim.cmd.Telescope('live_grep') end, opts)
+    vim.keymap.set('n', '<Leader>fg', function() builtin.live_grep(dropdown_theme) end, opts)
     opts.desc = 'Find buffers'
-    vim.keymap.set('n', '<Leader>fb', function() vim.cmd.Telescope('buffers') end, opts)
+    vim.keymap.set('n', '<Leader>fb', function() builtin.buffers(dropdown_theme) end, opts)
     opts.desc = 'Find buffers'
-    vim.keymap.set('n', '<A-o>', function() vim.cmd.Telescope('buffers') end, opts)
+    vim.keymap.set('n', '<A-o>', function() builtin.buffers(dropdown_theme) end, opts)
     opts.desc = 'Find help tags'
-    vim.keymap.set('n', '<Leader>fh', function() vim.cmd.Telescope('help_tags') end, opts)
+    vim.keymap.set('n', '<Leader>fh', function() builtin.help_tags(dropdown_theme) end, opts)
     opts.desc = 'Git status'
-    vim.keymap.set('n', '<Leader>gs', function() vim.cmd.Telescope('git_status') end, opts)
+    vim.keymap.set('n', '<Leader>gs', function() builtin.git_status(dropdown_theme) end, opts)
     opts.desc = 'Git branches'
-    vim.keymap.set('n', '<Leader>gb', function() vim.cmd.Telescope('git_branches') end, opts)
+    vim.keymap.set('n', '<Leader>gb', function() builtin.git_branches(dropdown_theme) end, opts)
     opts.desc = 'Find keymaps'
-    vim.keymap.set('n', '<Leader>km', function() vim.cmd.Telescope('keymaps') end, opts)
+    vim.keymap.set('n', '<Leader>km', function() builtin.keymaps(dropdown_theme) end, opts)
     opts.desc = 'Find commands'
-    vim.keymap.set('n', '<Leader>cm', function() vim.cmd.Telescope('commands') end, opts)
+    vim.keymap.set('n', '<Leader>cm', function() builtin.commands(dropdown_theme) end, opts)
 end
 
 return M
