@@ -8,13 +8,13 @@ g.neovide_remember_window_size = true
 
 local global = require('global')
 
-api.nvim_create_autocmd({ 'UIEnter' }, {
-    callback = function()
-        if global.is_wsl and vim.g.neovide then
-            vim.o.guifont = 'FiraCode Nerd Font Mono:h14'
-        end
-    end
-})
+-- api.nvim_create_autocmd({ 'UIEnter' }, {
+--     callback = function()
+--         if global.is_wsl and vim.g.neovide then
+--             vim.o.guifont = 'FiraCode Nerd Font Mono:h14'
+--         end
+--     end
+-- })
 
 if global.is_mac then
     local opts = {

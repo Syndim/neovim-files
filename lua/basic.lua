@@ -48,10 +48,13 @@ o.termguicolors = true
 -- o.hidden = true
 
 -- Fonts
-if global.is_windows then
-    o.guifont = 'FiraCode Nerd Font Mono:h14'
-else
-    o.guifont = 'FiraCode Nerd Font Mono:h18'
+-- For neovide the font setting is done through config.toml
+if not g.neovide then
+    if global.is_windows then
+        o.guifont = 'FiraCode Nerd Font Mono:h14'
+    else
+        o.guifont = 'FiraCode Nerd Font Mono:h18'
+    end
 end
 
 g.mapleader = ','
