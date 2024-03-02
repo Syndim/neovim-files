@@ -83,5 +83,5 @@ g.loaded_netrw = 1
 g.loaded_netrwPlugin = 1
 
 -- global status bar
-o.cmdheight = 0
+-- o.cmdheight = 0
 o.laststatus = 3

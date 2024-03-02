@@ -63,7 +63,8 @@ function M.config()
             'typescript',
             'yaml',
             'fish',
-            'vim'
+            'vim',
+            'slint'
         },
         incremental_selection = {
             enable = true,

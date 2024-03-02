@@ -20,7 +20,8 @@ function M.config()
         'yamlls',
         'kotlin_language_server',
         'ruff_lsp', -- Python
-        'typos_lsp'
+        'typos_lsp',
+        'slint_lsp'
     }
 
     local optional_servers = {
