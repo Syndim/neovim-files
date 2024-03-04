@@ -21,7 +21,6 @@ function M.config()
         'kotlin_language_server',
         'ruff_lsp', -- Python
         'typos_lsp',
-        'slint_lsp'
     }
 
     local optional_servers = {
@@ -103,6 +102,7 @@ function M.config()
     require('plugins._lsp_clang').setup(config)
     require('plugins._lsp_python').setup(lsp_config, config)
     require('plugins._lsp_typescript').setup(lsp_config, config)
+    require('plugins._lsp_slint').setup(config)
 
     if global:which('flutter') == 0 then
         require('plugins._lsp_flutter').setup(lsp, config)

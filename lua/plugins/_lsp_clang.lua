@@ -1,7 +1,7 @@
 local M = {}
 
 function M.setup(config)
-    local features = require('features')
+    -- local features = require('features')
     local encoding = 'utf-16' -- features.is_copilot_enabled and 'utf-16' or 'utf-8'
     local clang_config = vim.tbl_deep_extend('force', config, {
         capabilities = {

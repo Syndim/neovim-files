@@ -34,3 +34,10 @@ api.nvim_create_autocmd({ 'BufEnter' }, {
         vim.o.shiftwidth = 2
     end
 })
+
+api.nvim_create_autocmd({ 'BufEnter' }, {
+    pattern = { '*.slint' },
+    callback = function()
+        vim.o.filetype = 'slint'
+    end
+})
