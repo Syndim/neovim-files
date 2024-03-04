@@ -1,5 +1,4 @@
 local g = vim.g
-local api = vim.api
 if not g.neovide then
     return
 end

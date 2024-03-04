@@ -48,8 +48,8 @@ o.termguicolors = true
 -- o.hidden = true
 
 -- Fonts
--- For neovide the font setting is done through config.toml
-if not g.neovide then
+-- For neovide and goneovim the font setting is done through config.toml
+if not g.neovide and not g.gonvim_running then
     if global.is_windows then
         o.guifont = 'FiraCode Nerd Font Mono:h14'
     else
