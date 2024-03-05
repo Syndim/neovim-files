@@ -11,6 +11,7 @@ local M = {
 
     is_copilot_enabled = false,
     is_codeium_enabled = false,
+    is_xcode_build_enabled = false,
 
     enable_copilot = function()
         load_plugins({ 'copilot.lua', 'copilot-status.nvim' })
@@ -20,6 +21,11 @@ local M = {
     enable_codeium = function()
         load_plugins({ 'codeium.vim' })
         require('features').is_codeium_enabled = true
+    end,
+
+    enable_xcode_build = function()
+        load_plugins({ 'xcodebuild.nvim' })
+        require('features').is_xcode_build_enabled = true
     end
 }
 

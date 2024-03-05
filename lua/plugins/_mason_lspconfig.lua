@@ -25,7 +25,6 @@ function M.config()
 
     local optional_servers = {
         powershell_es = 'pwsh',
-        sourcekit     = 'swift',
         -- solargraph    = 'ruby',
     }
 
@@ -106,6 +105,10 @@ function M.config()
 
     if global:which('flutter') == 0 then
         require('plugins._lsp_flutter').setup(lsp, config)
+    end
+
+    if global:which('swift') == 0 then
+        require('plugins._lsp_sourcekit').setup(lsp_config, config)
     end
 
     -- Optional LSP

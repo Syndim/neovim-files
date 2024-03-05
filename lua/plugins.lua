@@ -560,6 +560,17 @@ require('lazy').setup(
             cond = global.is_in_xcode
         },
 
+        -- Neovim plugin to Build, Debug, and Test iOS & macOS applications.
+        {
+            'wojciech-kulik/xcodebuild.nvim',
+            dependencies = {
+                'nvim-telescope/telescope.nvim',
+                'MunifTanjim/nui.nvim',
+                'nvim-tree/nvim-tree.lua',
+            },
+            config = require('plugins._xcode_build').config
+        },
+
         -- Rust
         -- Vim configuration for Rust.
         {

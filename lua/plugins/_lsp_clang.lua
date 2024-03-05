@@ -7,7 +7,7 @@ function M.setup(config)
         capabilities = {
             offsetEncoding = { encoding }
         },
-        filetypes = { "c", "cpp", "objc", "objcpp", "cuda" }
+        filetypes = { 'c', 'cpp', 'cuda' }
     })
     require('clangd_extensions').setup({})
     local lsp_config = require('lspconfig')
