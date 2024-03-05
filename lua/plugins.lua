@@ -87,7 +87,7 @@ require('lazy').setup(
         {
             'j-hui/fidget.nvim',
             config = require('plugins._fidget').config,
-            event = 'BufReadPost',
+            event = { 'BufReadPost', 'BufNewFile' },
             cond = is_not_embedded
         },
 
@@ -331,7 +331,7 @@ require('lazy').setup(
         {
             'kevinhwang91/nvim-ufo',
             dependencies = 'kevinhwang91/promise-async',
-            event = 'BufReadPost',
+            event = { 'BufReadPost', 'BufNewFile' },
             config = require('plugins._ufo').config,
             cond = is_not_embedded
         },
@@ -400,7 +400,7 @@ require('lazy').setup(
             'williamboman/mason-lspconfig.nvim',
             dependencies = { 'williamboman/mason.nvim', { 'neovim/nvim-lspconfig', version = false } },
             config = require('plugins._mason_lspconfig').config,
-            event = 'BufReadPost',
+            event = { 'BufReadPost', 'BufNewFile' },
             run = ':Mason',
             cond = is_not_embedded
         },
@@ -410,7 +410,7 @@ require('lazy').setup(
             'WhoIsSethDaniel/mason-tool-installer.nvim',
             dependencies = { 'williamboman/mason.nvim', 'williamboman/mason-lspconfig.nvim' },
             config = require('plugins._mason_tool_installer').config,
-            event = 'BufReadPost',
+            event = { 'BufReadPost', 'BufNewFile' },
             cond = is_not_embedded
         },
 
@@ -419,7 +419,7 @@ require('lazy').setup(
             'nvimtools/none-ls.nvim',
             dependencies = { 'WhoIsSethDaniel/mason-tool-installer.nvim', 'williamboman/mason.nvim', 'williamboman/mason-lspconfig.nvim' },
             config = require('plugins._none_ls').config,
-            event = 'BufReadPost',
+            event = { 'BufReadPost', 'BufNewFile' },
             cond = is_not_embedded
         },
 
