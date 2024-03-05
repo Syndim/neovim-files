@@ -44,7 +44,9 @@ vim.keymap.set('n', '<A-k>', '<C-w>k', opts)
 vim.keymap.set('n', '<A-l>', '<C-w>l', opts)
 
 -- Clear search highlights
+opts.desc = 'Clear highlights'
 vim.keymap.set('n', '<Leader>ch', vim.cmd.noh, opts)
 
 -- Close all buffers
+opts.desc = 'Close all buffers'
 vim.keymap.set('n', '<Leader>X', ':%bd<CR>', opts)
