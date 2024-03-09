@@ -15,7 +15,7 @@ function M.config()
 
     local features = require('features')
 
-    local settings = {
+    local default_settings = {
         -- to enable rust-analyzer settings visit:
         -- https://github.com/rust-analyzer/rust-analyzer/blob/master/docs/user/generated_config.adoc
         ['rust-analyzer'] = {
@@ -30,12 +30,12 @@ function M.config()
     }
 
     if features.lsp_config['rust'] ~= nil then
-        settings = vim.tbl_deep_extend('force', settings, features.lsp_config['rust'])
+        default_settings = vim.tbl_deep_extend('force', default_settings, features.lsp_config['rust'])
     end
 
     local rust_config = vim.tbl_deep_extend('force', config, {
         standalone = true,
-        settings = settings,
+        default_settings = default_settings,
     })
 
     rust_config.on_attach = on_attach
