@@ -8,7 +8,7 @@ function M.config()
         config.on_attach(client, bufnr)
         local opts = { remap = false, buffer = bufnr }
         opts.desc = 'Expand macro'
-        vim.keymap.set('n', '<leader>em', function() vim.cmd.RustLsp('expandMicro') end, opts)
+        vim.keymap.set('n', '<leader>em', function() vim.cmd.RustLsp('expandMacro') end, opts)
         opts.desc = 'Rust code action'
         vim.keymap.set('n', '<leader>ca', function() vim.cmd.RustLsp('codeAction') end, opts)
     end
