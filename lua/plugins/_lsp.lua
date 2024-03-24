@@ -15,11 +15,11 @@ local function create_on_attach()
         opts.desc = 'Go to declaration'
         vim.keymap.set('n', 'gD', function() vim.lsp.buf.declaration() end, opts)
         opts.desc = 'Go to definition'
-        vim.keymap.set('n', 'gd', function() ts.builtin.lsp_definitions(ts.dropdown_theme) end, opts)
+        vim.keymap.set('n', 'gd', function() vim.cmd.Telescope('lsp_definitions', 'theme=dropdown') end, opts)
         opts.desc = 'Find implementations'
-        vim.keymap.set('n', 'gi', function() ts.builtin.lsp_implementations(ts.dropdown_theme) end, opts)
+        vim.keymap.set('n', 'gi', function() vim.cmd.Telescope('lsp_implementations', 'theme=dropdown') end, opts)
         opts.desc = 'Find references'
-        vim.keymap.set('n', 'gr', function() ts.builtin.lsp_references(ts.dropdown_theme) end, opts)
+        vim.keymap.set('n', 'gr', function() vim.cmd.Telescope('lsp_references', 'theme=dropdown') end, opts)
         opts.desc = 'Signature help'
         vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, opts)
         opts.desc = 'Add workspace folder'
@@ -38,10 +38,11 @@ local function create_on_attach()
         opts.desc = 'Format current document'
         vim.keymap.set('n', '<leader>ff', vim.lsp.buf.format, opts)
         opts.desc = 'Document symbols'
-        vim.keymap.set('n', '<leader>ds', function() ts.builtin.lsp_document_symbols(ts.dropdown_theme) end,
+        vim.keymap.set('n', '<leader>ds', function() vim.cmd.Telescope('lsp_document_symbols', 'theme=dropdown') end,
             opts)
         opts.desc = 'Workspace symbols'
-        vim.keymap.set('n', '<leader>ws', function() ts.builtin.lsp_dynamic_workspace_symbols(ts.dropdown_theme) end,
+        vim.keymap.set('n', '<leader>ws',
+            function() vim.cmd.Telescope('lsp_dynamic_workspace_symbols', 'theme=dropdown') end,
             opts)
     end
 
