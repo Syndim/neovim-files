@@ -461,7 +461,12 @@ require('lazy').setup(
                 'onsails/lspkind.nvim',
 
                 --  An additional source for nvim-cmp to autocomplete packages and its versions
-                { 'David-Kunz/cmp-npm', config = function() require('cmp-npm').setup({}) end },
+                {
+                    'Syndim/cmp-npm',
+                    branch = 'windows_fix',
+                    config = function() require('cmp-npm').setup({}) end,
+                    ft = 'json'
+                },
 
                 --  tags sources for nvim-cmp
                 'quangnguyen30192/cmp-nvim-tags',
