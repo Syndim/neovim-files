@@ -21,7 +21,6 @@ function M.config()
             null_ls.builtins.diagnostics.hadolint,
             null_ls.builtins.diagnostics.markdownlint,
             null_ls.builtins.diagnostics.protolint,
-            null_ls.builtins.diagnostics.pylint,
             null_ls.builtins.diagnostics.yamllint,
 
             null_ls.builtins.formatting.clang_format,

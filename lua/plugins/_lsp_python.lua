@@ -68,6 +68,7 @@ function M.setup(lsp_config, config)
     })
 
     lsp_config['pyright'].setup(python_config)
+    lsp_config['ruff_lsp'].setup(python_config)
 end
 
 return M
