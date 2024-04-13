@@ -33,7 +33,7 @@ function M.setup(lsp_config, config)
             return path.join(venv, 'bin', 'python')
         end
 
-        match = vim.fn.glob(path.join(worksparce, 'pyproject.toml'))
+        match = vim.fn.glob(path.join(workspace, 'pyproject.toml'))
         if match ~= '' then
             local rye_show_output = vim.fn.trim(vim.fn.system('rye show'))
             local _, venv_start_index = string.find(rye_show_output, 'venv: ')
@@ -48,6 +48,13 @@ function M.setup(lsp_config, config)
         if match ~= '' then
             local venv = vim.fn.trim(vim.fn.system('PIPENV_PIPFILE=' .. match .. ' pipenv --venv'))
             return path.join(venv, 'bin', 'python')
+        end
+
+        -- Find .venv folder
+        local dot_venv_path = path.join(workspace, '.venv')
+        if vim.fn.isdirectory(dot_env_path) == 1 then
+            update_venv_path(dot_venv_path)
+            return path.join(dot_venv_path, 'bin', 'python')
         end
 
         -- Fallback to system Python.
