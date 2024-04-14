@@ -9,6 +9,7 @@ function M.config()
             'hadolint',
             'markdownlint',
             'yamllint',
+            'yamlfmt'
         }
     })
 
