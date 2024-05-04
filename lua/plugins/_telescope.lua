@@ -30,7 +30,16 @@ function M.config()
     }
 
     local builtin = require('telescope.builtin')
-    local dropdown_theme = require('telescope.themes').get_dropdown({})
+    local dropdown_theme = require('telescope.themes').get_dropdown({
+        layout_config = {
+            width = function(_, max_columns, _)
+                return math.min(max_columns, 160)
+            end,
+            height = function(_, _, max_lines)
+                return math.min(max_lines, 15)
+            end
+        }
+    })
 
     M.builtin = builtin
     M.dropdown_theme = dropdown_theme
