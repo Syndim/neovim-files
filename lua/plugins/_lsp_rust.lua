@@ -1,6 +1,10 @@
 local M = {}
 
 function M.config()
+    require('mason-lspconfig').setup_handlers({
+        ['rust_analyzer'] = function() end,
+    })
+
     local lsp = require('plugins._lsp')
     local config = lsp.create_config()
 
@@ -39,6 +43,12 @@ function M.config()
     })
 
     rust_config.on_attach = on_attach
+    rust_config.cmd = function()
+        local data_path = vim.fn.stdpath("data")
+        local dir = data_path .. "/mason/bin/"
+        local ra_binary = vim.fn.glob(dir .. "rust-analyzer*")
+        return { ra_binary } -- You can add args to the list, such as '--log-file'
+    end
 
     vim.g.rustaceanvim = {
         server = rust_config,

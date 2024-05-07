@@ -9,7 +9,8 @@ function M.config()
             'hadolint',
             'markdownlint',
             'yamllint',
-            'yamlfmt'
+            'yamlfmt',
+            'rust-analyzer'
         }
     })
 
