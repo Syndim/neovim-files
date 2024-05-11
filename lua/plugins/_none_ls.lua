@@ -23,7 +23,9 @@ function M.config()
             null_ls.builtins.diagnostics.protolint,
             null_ls.builtins.diagnostics.yamllint,
 
-            null_ls.builtins.formatting.clang_format,
+            null_ls.builtins.formatting.clang_format.with({
+                filetypes = { "c", "cpp", "cuda", "proto" }
+            }),
             null_ls.builtins.formatting.cmake_format,
             null_ls.builtins.formatting.dart_format,
             null_ls.builtins.formatting.just,
