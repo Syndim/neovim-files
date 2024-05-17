@@ -395,12 +395,12 @@ require('lazy').setup(
         },
 
         -- Show code context
-        {
-            'nvim-treesitter/nvim-treesitter-context',
-            dependencies = 'nvim-treesitter/nvim-treesitter',
-            config = require('plugins._treesitter_context').config,
-            event = 'VeryLazy'
-        },
+        -- {
+        --     'nvim-treesitter/nvim-treesitter-context',
+        --     dependencies = 'nvim-treesitter/nvim-treesitter',
+        --     config = require('plugins._treesitter_context').config,
+        --     event = 'VeryLazy'
+        -- },
 
         -- Enhanced matchparen.vim plugin for Neovim
         {
@@ -503,6 +503,17 @@ require('lazy').setup(
                     config = require('plugins._crates').config,
                 },
             },
+            cond = is_not_embedded
+        },
+
+        -- IDE-like breadcrumbs, out of the box
+        {
+            'Bekaboo/dropbar.nvim',
+            dependencies = {
+                'nvim-telescope/telescope-fzf-native.nvim'
+            },
+            event = 'VeryLazy',
+            config = require('plugins._dropbar').config,
             cond = is_not_embedded
         },
 
