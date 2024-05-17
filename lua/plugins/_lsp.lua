@@ -11,7 +11,6 @@ local function create_on_attach()
 
         -- Mappings.
         -- See `:help vim.lsp.*` for documentation on any of the below functions
-        local ts = require('plugins._telescope')
         opts.desc = 'Go to declaration'
         vim.keymap.set('n', 'gD', function() vim.lsp.buf.declaration() end, opts)
         opts.desc = 'Go to definition'
@@ -44,6 +43,9 @@ local function create_on_attach()
         vim.keymap.set('n', '<leader>ws',
             function() vim.cmd.Telescope('lsp_dynamic_workspace_symbols', 'theme=dropdown') end,
             opts)
+        vim.lsp.inlay_hint.enable(true, {
+            bufnr = bufnr
+        })
     end
 
     return on_attach
