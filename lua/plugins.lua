@@ -339,13 +339,6 @@ require('lazy').setup(
 
         -- Language support
         -- Generic
-        -- 🧠 💪 // Smart and powerful comment plugin for neovim. Supports treesitter, dot repeat, left-right/up-down motions, hooks, and more
-        {
-            'numToStr/Comment.nvim',
-            config = require('plugins._comment').config,
-            event = 'VeryLazy'
-        },
-
         -- A tree like view for symbols in Neovim using the Language Server Protocol. Supports all your favourite languages.
         {
             'hedyhli/outline.nvim',
