@@ -147,6 +147,7 @@ require('lazy').setup(
         {
             'akinsho/bufferline.nvim',
             dependencies = 'kyazdani42/nvim-web-devicons',
+            version = false,
             config = require('plugins._bufferline').config,
             event = 'VeryLazy',
             cond = is_not_embedded

@@ -39,7 +39,10 @@ o.mousemodel = 'popup'
 
 -- Windows behavior
 cmd('source $VIMRUNTIME/mswin.vim')
-cmd('behave mswin')
+cmd('set selection=exclusive')
+cmd('set selectmode=mouse,key')
+cmd('set mousemodel=popup')
+cmd('set keymodel=startsel,stopsel')
 
 -- GUI colors
 o.termguicolors = true
