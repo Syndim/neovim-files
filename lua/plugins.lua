@@ -75,6 +75,13 @@ require('lazy').setup(
             config = require('plugins._todo_comments').config
         },
 
+        -- Tiny plugin to enhance Neovim's native comments
+        {
+            "folke/ts-comments.nvim",
+            opts = {},
+            event = "VeryLazy",
+        },
+
         -- A fancy, configurable, notification manager for NeoVim
         {
             'rcarriga/nvim-notify',

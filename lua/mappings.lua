@@ -51,5 +51,5 @@ vim.keymap.set('n', '<Leader>ch', vim.cmd.noh, opts)
 opts.desc = 'Close all buffers'
 vim.keymap.set('n', '<Leader>X', ':%bd<CR>', opts)
 
-vim.keymap.set('n', '<C-/>', 'gcc', { remap = true })
-vim.keymap.set('v', '<C-/>', 'gc', { remap = true })
+vim.keymap.set('n', '<C-h>', 'gcc', { remap = true })
+vim.keymap.set('v', '<C-h>', 'gc', { remap = true })
