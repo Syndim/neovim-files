@@ -421,7 +421,7 @@ require('lazy').setup(
         -- Extension to mason.nvim that makes it easier to lspconfig with mason.nvim
         {
             'williamboman/mason-lspconfig.nvim',
-            dependencies = { 'williamboman/mason.nvim', { 'neovim/nvim-lspconfig', version = false } },
+            dependencies = { 'williamboman/mason.nvim', { 'neovim/nvim-lspconfig', version = false }, 'folke/neodev.nvim' },
             config = require('plugins._mason_lspconfig').config,
             event = { 'BufReadPost', 'BufNewFile' },
             run = ':Mason',
@@ -499,9 +499,6 @@ require('lazy').setup(
 
                 -- Set of preconfigured snippets for different languages.
                 'rafamadriz/friendly-snippets',
-
-                -- Utility functions for getting diagnostic status and progress messages from LSP servers, for in the Neovim statusline
-                -- 'nvim-lua/lsp-status.nvim',
 
                 -- A neovim plugin that helps managing crates.io dependencies
                 {
