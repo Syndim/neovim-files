@@ -531,6 +531,7 @@ require('lazy').setup(
 
         {
             'ofseed/copilot-status.nvim',
+            version = '*',
             cond = is_not_embedded
         },
 
