@@ -14,7 +14,7 @@ local M = {
     is_xcode_build_enabled = false,
 
     enable_copilot = function()
-        load_plugins({ 'copilot.lua', 'copilot-status.nvim' })
+        load_plugins({ 'copilot.vim', 'copilot-status.nvim' })
         require('features').is_copilot_enabled = true
     end,
 

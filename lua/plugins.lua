@@ -521,19 +521,16 @@ require('lazy').setup(
             cond = is_not_embedded
         },
 
-        -- Fully featured & enhanced replacement for copilot.vim complete with API for interacting with Github Copilot
+        -- Neovim plugin for GitHub Copilot
         {
-            'zbirenbaum/copilot.lua',
-            cmd = 'Copilot',
+            'github/copilot.vim',
+            init = require('plugins._copilot').setup,
             config = require('plugins._copilot').config,
             cond = is_not_embedded
         },
 
-        -- Simple Copilot status indicator for Neovim
         {
-            'jonahgoldwastaken/copilot-status.nvim',
-            dependencies = { 'zbirenbaum/copilot.lua' },
-            config = require('plugins._copilot_status').config,
+            'ofseed/copilot-status.nvim',
             cond = is_not_embedded
         },
 

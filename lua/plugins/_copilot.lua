@@ -1,21 +1,13 @@
 local M = {}
 
-local global = require('global')
+function M.setup()
+    vim.g.copilot_no_tab_map = true
+end
 
 function M.config()
-    require('copilot').setup({
-        panel = {
-            auto_refresh = true
-        },
-        suggestion = {
-            auto_trigger = true,
-            keymap = {
-                accept = '<C-f>',
-                next = vim.g.neovide and global.is_mac and '‘' or nil,
-                prev = vim.g.neovide and global.is_mac and '“' or nil,
-            }
-        }
-    })
+    local opts = { expr = true, replace_keycodes = false }
+    opts.desc = 'Accept copilot suggestion'
+    vim.keymap.set('i', '<C-f>', function() return vim.fn['copilot#Accept']('\\<CR>') end, opts)
 end
 
 return M
