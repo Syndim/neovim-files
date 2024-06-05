@@ -421,7 +421,7 @@ require('lazy').setup(
         -- Extension to mason.nvim that makes it easier to lspconfig with mason.nvim
         {
             'williamboman/mason-lspconfig.nvim',
-            dependencies = { 'williamboman/mason.nvim', { 'neovim/nvim-lspconfig', version = false }, 'folke/neodev.nvim' },
+            dependencies = { 'williamboman/mason.nvim', { 'neovim/nvim-lspconfig', version = false } },
             config = require('plugins._mason_lspconfig').config,
             event = { 'BufReadPost', 'BufNewFile' },
             run = ':Mason',
@@ -443,6 +443,17 @@ require('lazy').setup(
             dependencies = { 'WhoIsSethDaniel/mason-tool-installer.nvim', 'williamboman/mason.nvim', 'williamboman/mason-lspconfig.nvim' },
             config = require('plugins._none_ls').config,
             event = { 'BufReadPost', 'BufNewFile' },
+            cond = is_not_embedded
+        },
+
+        -- Faster LuaLS setup for Neovim
+        {
+            'folke/lazydev.nvim',
+            ft = "lua",
+            config = require('plugins._lazydev').config,
+            dependencies = {
+                'Bilal2453/luvit-meta'
+            },
             cond = is_not_embedded
         },
 
@@ -531,7 +542,7 @@ require('lazy').setup(
 
         {
             'ofseed/copilot-status.nvim',
-            version = '*',
+            version = false,
             cond = is_not_embedded
         },
 

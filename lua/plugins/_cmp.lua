@@ -6,6 +6,7 @@ function M.config()
     end
 
     local sources = vim.g.cmp_sources or {
+        'lazydev',
         'path',
         'crates',
         'buffer',

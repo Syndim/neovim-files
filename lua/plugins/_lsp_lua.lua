@@ -1,7 +1,6 @@
 local M = {}
 
 function M.setup(lsp_config, config)
-    require('neodev').setup({})
     local lua_config = vim.tbl_deep_extend('force', config, {
         settings = {
             Lua = {
