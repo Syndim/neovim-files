@@ -21,7 +21,15 @@ function M.config()
                 -- { 'diagnostics', sources = { 'nvim_lsp' } },
             },
             lualine_x = {
-                'copilot',
+                {
+                    'copilot',
+                    symbols = {
+                        status = {
+                            enabled = "",
+                            disabled = "",
+                        }
+                    },
+                },
                 { require('plugins._codeium').status },
                 { 'filetype',                        colored = true },
                 'encoding',
