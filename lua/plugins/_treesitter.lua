@@ -64,7 +64,7 @@ function M.config()
             'yaml',
             'fish',
             'vim',
-            'slint'
+            'slint',
             'html',
             'tsx'
         },
