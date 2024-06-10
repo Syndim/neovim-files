@@ -65,6 +65,8 @@ function M.config()
             'fish',
             'vim',
             'slint'
+            'html',
+            'tsx'
         },
         incremental_selection = {
             enable = true,
