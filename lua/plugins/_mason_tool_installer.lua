@@ -10,8 +10,7 @@ function M.config()
             'markdownlint',
             'yamllint',
             'yamlfmt',
-            'rust-analyzer',
-            'vimdoc'
+            'rust-analyzer'
         }
     })
 

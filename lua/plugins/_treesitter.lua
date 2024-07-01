@@ -66,7 +66,8 @@ function M.config()
             'vim',
             'slint',
             'html',
-            'tsx'
+            'tsx',
+            'vimdoc'
         },
         incremental_selection = {
             enable = true,
