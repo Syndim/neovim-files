@@ -50,11 +50,13 @@ function M.config()
         return { ra_binary } -- You can add args to the list, such as '--log-file'
     end
 
+    local global = require('global')
+
     vim.g.rustaceanvim = {
         server = rust_config,
         tools = {
             code_actions = {
-                ui_select_fallback = true,
+                ui_select_fallback = not global.is_windows,
             },
         },
     }
