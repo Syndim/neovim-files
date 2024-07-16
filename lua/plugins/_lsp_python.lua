@@ -63,12 +63,13 @@ function M.setup(lsp_config, config)
 
     local python_config = vim.tbl_deep_extend('force', config, {
         on_init = function(client)
+            client.config.settings.python = client.config.settings.python or {}
             client.config.settings.python.pythonPath = get_python_path(client.config.root_dir)
         end
     })
 
     lsp_config['pyright'].setup(python_config)
-    lsp_config['ruff_lsp'].setup(python_config)
+    lsp_config['ruff'].setup(python_config)
 end
 
 return M
