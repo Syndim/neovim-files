@@ -65,6 +65,13 @@ function M.setup(lsp_config, config)
         on_init = function(client)
             client.config.settings.python = client.config.settings.python or {}
             client.config.settings.python.pythonPath = get_python_path(client.config.root_dir)
+        end,
+        on_attach = function(client, bufnr)
+            config.on_attach(client, bufnr)
+            if client.name == 'ruff' then
+                -- Disable hover in favor of Pyright
+                client.server_capabilities.hoverProvider = false
+            end
         end
     })
 
