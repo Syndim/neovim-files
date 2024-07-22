@@ -8,7 +8,7 @@ function M.setup(lsp, config)
         vim.keymap.set('n', '<Leader>cl', function() vim.cmd.Telescope({ 'flutter', 'commands' }) end, opts)
     end
 
-    local flutter_config = vim.tbl_deep_extend('force', config, {
+    M.flutter_config = vim.tbl_deep_extend('force', config, {
         on_attach = on_attach,
         handlers = {
             ["$/progress"] = function() end
@@ -20,6 +20,16 @@ function M.setup(lsp, config)
             enabled = true,
         }
     })
+end
+
+function M.config()
+    local global = require('global')
+    local flutter_path = nil
+    if global.is_windows then
+        flutter_path = os.getenv('HOME') .. '\\fvm\\default\\bin\\flutter.bat'
+    else
+        flutter_path = os.getenv('HOME') .. '/.fvm/default/bin/flutter'
+    end
 
     require("flutter-tools").setup({
         ui = {
@@ -38,7 +48,9 @@ function M.setup(lsp, config)
                 device = true,
             }
         },
-        lsp = flutter_config
+        flutter_path = flutter_path,
+        fvm = true,
+        lsp = M.flutter_config
     })
 
     require("telescope").load_extension("flutter")

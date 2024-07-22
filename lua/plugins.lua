@@ -672,6 +672,7 @@ require('lazy').setup(
         {
             'akinsho/flutter-tools.nvim',
             dependencies = { 'nvim-lua/plenary.nvim', 'nvim-telescope/telescope.nvim' },
+            config = require('plugins._lsp_flutter').config,
             ft = 'dart',
             cond = is_not_embedded
         },
