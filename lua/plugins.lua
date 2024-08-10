@@ -49,6 +49,7 @@ require('lazy').setup(
             'echasnovski/mini.indentscope',
             event = 'VeryLazy',
             config = require('plugins._mini_indent_scope').config,
+            cond = is_not_embedded
         },
 
         -- Neovim Lua plugin with fast and feature-rich surround actions. Part of 'mini.nvim' library.
