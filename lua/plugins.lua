@@ -564,6 +564,14 @@ require('lazy').setup(
             cond = is_not_embedded
         },
 
+        -- Improved UI and workflow for the Neovim quickfix
+        {
+            'stevearc/quicker.nvim',
+            config = require('plugins._quicker').config,
+            event = 'VeryLazy',
+            conf = is_not_embedded
+        },
+
         -- 🌸 A command-line fuzzy finder
         {
             'junegunn/fzf',
