@@ -5,10 +5,10 @@ function M.setup(lsp_config, lsp, config)
     if handlers_config == nil then
         handlers_config = {}
     end
-    handlers_config["textDocument/definition"] = require('omnisharp_extended').definition_handler
-    handlers_config["textDocument/typeDefinition"] = require('omnisharp_extended').type_definition_handler
-    handlers_config["textDocument/references"] = require('omnisharp_extended').references_handler
-    handlers_config["textDocument/implementation"] = require('omnisharp_extended').implementation_handler
+    -- handlers_config["textDocument/definition"] = require('omnisharp_extended').definition_handler
+    -- handlers_config["textDocument/typeDefinition"] = require('omnisharp_extended').type_definition_handler
+    -- handlers_config["textDocument/references"] = require('omnisharp_extended').references_handler
+    -- handlers_config["textDocument/implementation"] = require('omnisharp_extended').implementation_handler
 
     local default_on_attach = lsp.create_on_attach()
     local function on_attach(client, bufnr)
