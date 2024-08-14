@@ -12,7 +12,7 @@ function M.setup(lsp_config, lsp, config)
 
     local default_on_attach = lsp.create_on_attach()
     local function on_attach(client, bufnr)
-        print('on attach')
+        -- print('on attach')
         default_on_attach(client, bufnr)
         local opts = { remap = false, buffer = bufnr }
         opts.desc = 'C# go to definition'
