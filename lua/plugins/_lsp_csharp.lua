@@ -17,7 +17,7 @@ function M.setup(lsp_config, lsp, config)
         local opts = { remap = false, buffer = bufnr }
         opts.desc = 'C# go to definition'
         vim.keymap.set('n', 'gd',
-            function() require("omnisharp_extended").telescope_lsp_definitions({ jump_type = "vsplit" }) end, opts)
+            function() require("omnisharp_extended").telescope_lsp_definitions() end, opts)
     end
 
     -- local function root_dir(fname)
