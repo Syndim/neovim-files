@@ -601,12 +601,29 @@ require('lazy').setup(
 
         -- C#
         -- Extended 'textDocument/definition' handler for OmniSharp Neovim LSP
+        -- {
+        --     'Hoffs/omnisharp-extended-lsp.nvim',
+        --     ft = 'cs',
+        --     cond = is_not_embedded
+        -- },
+        -- {
+        --     "iabdelkareem/csharp.nvim",
+        --     dependencies = {
+        --         "williamboman/mason.nvim", -- Required, automatically installs omnisharp
+        --         "mfussenegger/nvim-dap",
+        --         "Tastyep/structlog.nvim",  -- Optional, but highly recommended for debugging
+        --     },
+        --     config = require('plugins._csharp').config,
+        --     ft = { 'cs' },
+        --     cond = is_not_embedded
+        -- },
+
         {
-            'Hoffs/omnisharp-extended-lsp.nvim',
-            ft = 'cs',
+            'seblj/roslyn.nvim',
+            config = require('plugins._roslyn').config,
+            ft = { 'cs' },
             cond = is_not_embedded
         },
-
         -- Swift (for ShadowVim)
         -- Vim runtime files for Swift
         {

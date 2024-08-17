@@ -29,6 +29,10 @@ function M.config()
 
     mason.setup({
         log_level = vim.log.levels.DEBUG,
+        registries = {
+            'github:mason-org/mason-registry',
+            'github:syndim/mason-registry'
+        },
         github = {
             download_url_template = global.github_proxy .. "github.com/%s/releases/download/%s/%s",
         },
@@ -96,7 +100,6 @@ function M.config()
 
     -- Custom settings
     require('plugins._lsp_lua').setup(lsp_config, config)
-    require('plugins._lsp_csharp').setup(lsp_config, lsp, config)
     require('plugins._lsp_clang').setup(config)
     require('plugins._lsp_python').setup(lsp_config, config)
     require('plugins._lsp_typescript').setup(lsp_config, config)
