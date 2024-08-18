@@ -4,6 +4,9 @@ function M.config()
     local default_config = require('plugins._lsp').create_config()
     function on_attach(c, bufnr)
         default_config.on_attach(c, bufnr)
+        require('lsp_signature').on_attach({
+            bind = true
+        }, bufnr)
         local function semantic_tokens(client)
             if not client.is_hacked_roslyn then
                 client.is_hacked_roslyn = true
@@ -44,7 +47,6 @@ function M.config()
                     local doc_uri = params.textDocument.uri
 
                     local target_bufnr = find_buf_by_uri(doc_uri)
-                    print(doc_uri)
                     local line_count = vim.api.nvim_buf_line_count(target_bufnr)
                     local last_line = vim.api.nvim_buf_get_lines(target_bufnr, line_count - 1, line_count,
                         true)[1]
@@ -112,13 +114,9 @@ function M.config()
         },
     })
 
+    -- vim.notify(vim.inspect(config))
     require('roslyn').setup({
         config = config,
-        -- exe = {
-        --     'dotnet',
-        --     vim.fs.joinpath(vim.fn.stdpath('data'), 'roslyn', 'Microsoft.CodeAnalysis.LanguageServer.dll'),
-        --
-        -- },
         filewatching = true,
     })
 

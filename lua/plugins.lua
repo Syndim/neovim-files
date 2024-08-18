@@ -458,6 +458,11 @@ require('lazy').setup(
             cond = is_not_embedded
         },
 
+        -- LSP signature hint as you type
+        {
+            'ray-x/lsp_signature.nvim',
+        },
+
         -- A completion plugin for neovim coded in Lua.
         {
             'hrsh7th/nvim-cmp',
@@ -600,24 +605,7 @@ require('lazy').setup(
         },
 
         -- C#
-        -- Extended 'textDocument/definition' handler for OmniSharp Neovim LSP
-        -- {
-        --     'Hoffs/omnisharp-extended-lsp.nvim',
-        --     ft = 'cs',
-        --     cond = is_not_embedded
-        -- },
-        -- {
-        --     "iabdelkareem/csharp.nvim",
-        --     dependencies = {
-        --         "williamboman/mason.nvim", -- Required, automatically installs omnisharp
-        --         "mfussenegger/nvim-dap",
-        --         "Tastyep/structlog.nvim",  -- Optional, but highly recommended for debugging
-        --     },
-        --     config = require('plugins._csharp').config,
-        --     ft = { 'cs' },
-        --     cond = is_not_embedded
-        -- },
-
+        -- Roslyn LSP plugin for neovim
         {
             'seblj/roslyn.nvim',
             config = require('plugins._roslyn').config,
