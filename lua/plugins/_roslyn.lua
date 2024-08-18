@@ -5,7 +5,8 @@ function M.config()
     function on_attach(c, bufnr)
         default_config.on_attach(c, bufnr)
         require('lsp_signature').on_attach({
-            bind = true
+            bind = true,
+            hint_enable = false,
         }, bufnr)
         local function semantic_tokens(client)
             if not client.is_hacked_roslyn then
