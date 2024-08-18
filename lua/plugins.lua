@@ -458,11 +458,6 @@ require('lazy').setup(
             cond = is_not_embedded
         },
 
-        -- LSP signature hint as you type
-        {
-            'ray-x/lsp_signature.nvim',
-        },
-
         -- A completion plugin for neovim coded in Lua.
         {
             'hrsh7th/nvim-cmp',
@@ -609,6 +604,8 @@ require('lazy').setup(
         {
             'seblj/roslyn.nvim',
             config = require('plugins._roslyn').config,
+            -- Somehow signature doesn't work with cmp-nvim-lsp-signature-help, using lsp_signature for now
+            dependencies = { 'ray-x/lsp_signature.nvim' },
             ft = { 'cs' },
             cond = is_not_embedded
         },

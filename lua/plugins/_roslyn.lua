@@ -115,7 +115,6 @@ function M.config()
         },
     })
 
-    -- vim.notify(vim.inspect(config))
     require('roslyn').setup({
         config = config,
         filewatching = true,
