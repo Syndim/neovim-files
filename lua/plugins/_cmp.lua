@@ -25,7 +25,11 @@ function M.config()
     local cmp = require('cmp')
     local lspkind = require('lspkind')
     -- local global = require('global')
-    cmp.setup {
+    cmp.setup({
+        performance = {
+            debounce = 0, -- default is 60ms
+            throttle = 0, -- default is 30ms
+        },
         -- view = {
         -- entries = global.is_windows and 'native' or 'custom',
         -- },
@@ -94,7 +98,7 @@ function M.config()
             { name = 'nvim_lsp' },
             { name = 'vsnip' },
         }, additional_sources),
-    }
+    })
 
     cmp.setup.cmdline('/', {
         sources = {
