@@ -438,6 +438,14 @@ require('lazy').setup(
             cond = is_not_embedded
         },
 
+        -- Display references, definitions and implementations of document symbols
+        {
+            'Wansmer/symbol-usage.nvim',
+            event = 'LspAttach',
+            opts = {},
+            cond = is_not_embedded
+        },
+
         -- null-ls.nvim reloaded / Use Neovim as a language server to inject LSP diagnostics, code actions, and more via Lua.
         {
             'nvimtools/none-ls.nvim',
