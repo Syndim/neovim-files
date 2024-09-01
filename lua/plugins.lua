@@ -286,6 +286,14 @@ require('lazy').setup(
             cond = is_not_embedded
         },
 
+        {
+            'FabianWirth/search.nvim',
+            dependencies = { 'nvim-telescope/telescope.nvim' },
+            config = require('plugins._search').config,
+            event = 'VeryLazy',
+            cond = is_not_embedded
+        },
+
         -- Find, Filter, Preview, Pick. All lua, all the time.
         {
             'nvim-telescope/telescope.nvim',
