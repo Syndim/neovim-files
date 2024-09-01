@@ -5,8 +5,8 @@ local opts = {
 }
 
 -- Split
-vim.keymap.set('n', '<Leader>h', vim.cmd.split, opts)
-vim.keymap.set('n', '<Leader>v', vim.cmd.vsplit, opts)
+-- vim.keymap.set('n', '<Leader>h', vim.cmd.split, opts)
+-- vim.keymap.set('n', '<Leader>v', vim.cmd.vsplit, opts)
 
 -- Buffer navigation
 vim.keymap.set('n', '<C-left>', '<C-O>', opts)

@@ -307,6 +307,7 @@ require('lazy').setup(
             cond = is_not_embedded
         },
 
+        -- Treesitter based structural search and replace plugin for Neovim.
         {
             'cshuaimin/ssr.nvim',
             config = require('plugins._ssr').config,
@@ -471,6 +472,15 @@ require('lazy').setup(
             'mhanberg/output-panel.nvim',
             event = 'VeryLazy',
             opts = {},
+            cond = is_not_embedded
+        },
+
+        -- Create custom submodes and menus
+        {
+            'anuvyklack/hydra.nvim',
+            dependencies = { 'mrjones2014/smart-splits.nvim' },
+            event = 'VeryLazy',
+            config = require('plugins._hydra').config,
             cond = is_not_embedded
         },
 
