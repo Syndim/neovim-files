@@ -49,7 +49,7 @@ function M.config()
             {
                 'Commands',
                 function()
-                    builtin.keymaps(dropdown_theme)
+                    builtin.commands(dropdown_theme)
                 end
             }
         },
