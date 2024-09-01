@@ -22,7 +22,7 @@ vim.keymap.set('n', '<Leader>n', '<C-I>', opts)
 vim.keymap.set('n', '<Leader>x', ':Bdelete<CR>', { noremap = true, nowait = true })
 
 -- Clear CRLF
-vim.keymap.set('n', '<Leader>r', ':%s/\\r//g<CR>', {})
+-- vim.keymap.set('n', '<Leader>r', ':%s/\\r//g<CR>', {})
 
 -- Copy/Paste/Cut
 vim.keymap.set('n', 'YY', '"+y<CR>', opts)
