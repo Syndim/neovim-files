@@ -13,11 +13,7 @@ function M.config()
             {
                 'Files',
                 function()
-                    if vim.fn.isdirectory('.git') == 1 then
-                        builtin.git_files(dropdown_theme)
-                    else
-                        builtin.find_files(dropdown_theme)
-                    end
+                    builtin.find_files(dropdown_theme)
                 end
             },
             {
