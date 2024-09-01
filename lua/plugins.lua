@@ -68,6 +68,13 @@ require('lazy').setup(
             config = require('plugins._vim_illuminate').config
         },
 
+        {
+            'tummetott/reticle.nvim',
+            event = 'VeryLazy', -- optionally lazy load the plugin
+            opts = {
+            },
+        },
+
         -- ✅ Highlight, list and search todo comments in your projects
         {
             'folke/todo-comments.nvim',
