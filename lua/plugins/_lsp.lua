@@ -44,9 +44,11 @@ local function create_on_attach()
         vim.keymap.set('n', '<leader>ws',
             function() vim.cmd.Telescope('lsp_dynamic_workspace_symbols', 'theme=dropdown') end,
             opts)
-        vim.lsp.inlay_hint.enable(true, {
-            bufnr = bufnr
-        })
+        if client.supports_method("textDocument/inlayHint") or client.server_capabilities.inlayHintProvider then
+            vim.lsp.inlay_hint.enable(true, {
+                bufnr = bufnr
+            })
+        end
     end
 
     return on_attach
