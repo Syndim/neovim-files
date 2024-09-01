@@ -75,6 +75,13 @@ require('lazy').setup(
             opts = {}
         },
 
+        -- A Neovim plugin hiding your colorcolumn when unneeded.
+        {
+            'm4xshen/smartcolumn.nvim',
+            event = 'VeryLazy',
+            opts = {}
+        },
+
         -- ✅ Highlight, list and search todo comments in your projects
         {
             'folke/todo-comments.nvim',
