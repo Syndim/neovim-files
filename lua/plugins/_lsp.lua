@@ -33,7 +33,8 @@ local function create_on_attach()
         opts.desc = 'Rename'
         vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, opts)
         opts.desc = 'Code action'
-        vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, opts)
+        -- vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, opts)
+        vim.keymap.set('n', '<leader>ca', require('actions-preview').code_actions, opts)
         opts.desc = 'Format current document'
         vim.keymap.set('n', '<leader>ff', vim.lsp.buf.format, opts)
         opts.desc = 'Document symbols'
