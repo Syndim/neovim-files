@@ -13,7 +13,8 @@ function M.config()
         'nvim_lua',
         'npm',
         'tags',
-        'treesitter'
+        'treesitter',
+        'calc'
     }
 
     local additional_sources = {}
@@ -53,7 +54,8 @@ function M.config()
                     nvim_lsp_signature_help = '[SIG]',
                     npm = '[NPM]',
                     tags = '[TAGS]',
-                    treesitter = '[TS]'
+                    treesitter = '[TS]',
+                    calc = '[CALC]'
                 }),
 
                 -- The function below will be called before any actual modifications from lspkind

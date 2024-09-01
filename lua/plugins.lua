@@ -540,6 +540,9 @@ require('lazy').setup(
                 -- nvim-cmp source for vim's cmdline
                 'hrsh7th/cmp-cmdline',
 
+                -- nvim-cmp source for math calculation
+                'hrsh7th/cmp-calc',
+
                 -- nvim-cmp source for textDocument/documentSymbol via nvim-lsp
                 'hrsh7th/cmp-nvim-lsp-document-symbol',
 
