@@ -68,11 +68,11 @@ require('lazy').setup(
             config = require('plugins._vim_illuminate').config
         },
 
+        -- A plugin for neovim which changes the colour of CursorColumn depending on mode.
         {
-            'tummetott/reticle.nvim',
-            event = 'VeryLazy', -- optionally lazy load the plugin
-            opts = {
-            },
+            'svampkorg/moody.nvim',
+            event = { 'ModeChanged', 'BufWinEnter', 'WinEnter' },
+            opts = {}
         },
 
         -- ✅ Highlight, list and search todo comments in your projects
@@ -85,9 +85,9 @@ require('lazy').setup(
 
         -- Tiny plugin to enhance Neovim's native comments
         {
-            "folke/ts-comments.nvim",
+            'folke/ts-comments.nvim',
             opts = {},
-            event = "VeryLazy",
+            event = 'VeryLazy',
         },
 
         -- A fancy, configurable, notification manager for NeoVim
