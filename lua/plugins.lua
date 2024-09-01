@@ -72,7 +72,7 @@ require('lazy').setup(
         {
             'svampkorg/moody.nvim',
             event = { 'ModeChanged', 'BufWinEnter', 'WinEnter' },
-            opts = {}
+            config = require('plugins._moody').config
         },
 
         -- A Neovim plugin hiding your colorcolumn when unneeded.
