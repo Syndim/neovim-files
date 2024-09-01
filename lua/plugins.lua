@@ -121,12 +121,11 @@ require('lazy').setup(
             cond = is_not_embedded,
         },
 
-        --  Extensible Neovim Scrollbar
         {
-            'petertriho/nvim-scrollbar',
-            dependencies = 'kevinhwang91/nvim-hlslens',
-            config = require('plugins._scrollbar').config,
-            event = 'VeryLazy',
+            'Isrothy/neominimap.nvim',
+            version = 'v3.*.*',
+            lazy = false,
+            init = require('plugins._minimap').setup,
             cond = is_not_embedded
         },
 
