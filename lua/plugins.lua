@@ -72,7 +72,7 @@ require('lazy').setup(
         {
             'svampkorg/moody.nvim',
             event = { 'ModeChanged', 'BufWinEnter', 'WinEnter' },
-            config = require('plugins._moody').config
+            config = require('plugins._moody').config,
         },
 
         -- A Neovim plugin hiding your colorcolumn when unneeded.
@@ -303,6 +303,13 @@ require('lazy').setup(
             'FabianWirth/search.nvim',
             dependencies = { 'nvim-telescope/telescope.nvim' },
             config = require('plugins._search').config,
+            event = 'VeryLazy',
+            cond = is_not_embedded
+        },
+
+        {
+            'cshuaimin/ssr.nvim',
+            config = require('plugins._ssr').config,
             event = 'VeryLazy',
             cond = is_not_embedded
         },
