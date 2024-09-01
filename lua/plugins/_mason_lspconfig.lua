@@ -102,7 +102,7 @@ function M.config()
     require('plugins._lsp_lua').setup(lsp_config, config)
     require('plugins._lsp_clang').setup(config)
     require('plugins._lsp_python').setup(lsp_config, config)
-    require('plugins._lsp_typescript').setup(lsp_config, config)
+    -- require('plugins._lsp_typescript').setup(lsp_config, config)
     -- require('plugins._lsp_slint').setup(config)
 
     if global:which('flutter') == 0 or global:which('fvm') == 0 then

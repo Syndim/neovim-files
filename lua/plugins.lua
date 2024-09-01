@@ -682,6 +682,16 @@ require('lazy').setup(
             config = require('plugins._xcode_build').config
         },
 
+        -- Typescript
+        -- ⚡ TypeScript integration NeoVim deserves ⚡
+        {
+            'pmizio/typescript-tools.nvim',
+            dependencies = { 'nvim-lua/plenary.nvim', 'neovim/nvim-lspconfig' },
+            config = require('plugins._lsp_typescript').config,
+            ft = { 'typescript', 'javascript', 'typescriptreact', 'javascriptreact' },
+            cond = is_not_embedded
+        },
+
         -- Rust
         -- Vim configuration for Rust.
         {
