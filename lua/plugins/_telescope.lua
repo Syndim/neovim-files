@@ -1,7 +1,5 @@
 local M = {}
 
-
-
 function M.config()
     local actions = require('telescope.actions')
     require('telescope').setup({
@@ -20,9 +18,9 @@ function M.config()
                 }
             },
             layout_config = {
-                horizontal = {
-                    prompt_position = 'top'
-                }
+                -- Changing to bottom because `search.nvim` will add tab bar below
+                -- https://github.com/FabianWirth/search.nvim/issues/4
+                prompt_position = 'bottom'
             },
             sorting_strategy = 'ascending',
         }
