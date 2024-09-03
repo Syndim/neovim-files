@@ -81,7 +81,7 @@ function M.config()
     vim.keymap.set('n', '<Leader>cm', function() search.open({ tab_name = 'Commands' }) end, opts)
     opts.desc = 'Jump list'
     vim.keymap.set('n', '<Leader>jl', function() search.open({ tab_name = 'Jumplist' }) end, opts)
-    vim.keymap.set('n', '<A-j>', function() search.open({ tab_name = 'Jumplist' }) end, opts)
+    vim.keymap.set('n', '<A-u>', function() search.open({ tab_name = 'Jumplist' }) end, opts)
 end
 
 return M
