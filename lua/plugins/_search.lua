@@ -23,6 +23,12 @@ function M.config()
                 end
             },
             {
+                'Jumplist',
+                function()
+                    builtin.jumplist(dropdown_theme)
+                end
+            },
+            {
                 'Grep',
                 function()
                     builtin.live_grep(dropdown_theme)
@@ -73,6 +79,9 @@ function M.config()
     vim.keymap.set('n', '<Leader>km', function() search.open({ tab_name = 'Keymaps' }) end, opts)
     opts.desc = 'Find commands'
     vim.keymap.set('n', '<Leader>cm', function() search.open({ tab_name = 'Commands' }) end, opts)
+    opts.desc = 'Jump list'
+    vim.keymap.set('n', '<Leader>jl', function() search.open({ tab_name = 'Jumplist' }) end, opts)
+    vim.keymap.set('n', '<A-j>', function() search.open({ tab_name = 'Jumplist' }) end, opts)
 end
 
 return M

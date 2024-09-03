@@ -51,7 +51,6 @@ function M.config()
     -- vim.keymap.set('n', '<Leader>fg', function() builtin.live_grep(dropdown_theme) end, opts)
     -- opts.desc = 'Find buffers'
     -- vim.keymap.set('n', '<Leader>fb', function() builtin.buffers(dropdown_theme) end, opts)
-    -- opts.desc = 'Find buffers'
     -- vim.keymap.set('n', '<A-o>', function() builtin.buffers(dropdown_theme) end, opts)
     -- opts.desc = 'Find help tags'
     -- vim.keymap.set('n', '<Leader>fh', function() builtin.help_tags(dropdown_theme) end, opts)
@@ -63,6 +62,9 @@ function M.config()
     -- vim.keymap.set('n', '<Leader>km', function() builtin.keymaps(dropdown_theme) end, opts)
     -- opts.desc = 'Find commands'
     -- vim.keymap.set('n', '<Leader>cm', function() builtin.commands(dropdown_theme) end, opts)
+    -- opts.desc = 'Jump list'
+    -- vim.keymap.set('n', '<Leader>jl', function() builtin.jumplist(dropdown_theme) end, opts)
+    -- vim.keymap.set('n', '<A-j>', function() builtin.jumplist(dropdown_theme) end, opts)
 end
 
 return M
