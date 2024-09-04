@@ -73,13 +73,15 @@ require('lazy').setup(
             'svampkorg/moody.nvim',
             event = { 'ModeChanged', 'BufWinEnter', 'WinEnter' },
             config = require('plugins._moody').config,
+            cond = is_not_embedded
         },
 
         -- A Neovim plugin hiding your colorcolumn when unneeded.
         {
             'm4xshen/smartcolumn.nvim',
             event = 'VeryLazy',
-            opts = {}
+            opts = {},
+            cond = is_not_embedded
         },
 
         -- ✅ Highlight, list and search todo comments in your projects
@@ -664,6 +666,7 @@ require('lazy').setup(
             ft = { 'cs' },
             cond = is_not_embedded
         },
+
         -- Swift (for ShadowVim)
         -- Vim runtime files for Swift
         {
