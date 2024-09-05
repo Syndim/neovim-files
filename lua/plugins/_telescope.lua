@@ -64,7 +64,7 @@ function M.config()
     -- vim.keymap.set('n', '<Leader>cm', function() builtin.commands(dropdown_theme) end, opts)
     -- opts.desc = 'Jump list'
     -- vim.keymap.set('n', '<Leader>jl', function() builtin.jumplist(dropdown_theme) end, opts)
-    -- vim.keymap.set('n', '<A-j>', function() builtin.jumplist(dropdown_theme) end, opts)
+    -- vim.keymap.set('n', '<A-i>', function() builtin.jumplist(dropdown_theme) end, opts)
 end
 
 return M
