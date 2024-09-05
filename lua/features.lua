@@ -5,6 +5,8 @@ local function load_plugins(plugins)
     })
 end
 
+local global = require('global')
+
 local M = {
     format_on_save_enabled = true,
     lsp_config = {},
@@ -14,18 +16,24 @@ local M = {
     is_xcode_build_enabled = false,
 
     enable_copilot = function()
-        load_plugins({ 'copilot.vim', 'copilot-status.nvim' })
-        require('features').is_copilot_enabled = true
+        if not global.is_embedded then
+            load_plugins({ 'copilot.vim', 'copilot-status.nvim' })
+            require('features').is_copilot_enabled = true
+        end
     end,
 
     enable_codeium = function()
-        load_plugins({ 'codeium.vim' })
-        require('features').is_codeium_enabled = true
+        if not global.is_embedded then
+            load_plugins({ 'codeium.vim' })
+            require('features').is_codeium_enabled = true
+        end
     end,
 
     enable_xcode_build = function()
-        load_plugins({ 'xcodebuild.nvim' })
-        require('features').is_xcode_build_enabled = true
+        if not global.is_embedded then
+            load_plugins({ 'xcodebuild.nvim' })
+            require('features').is_xcode_build_enabled = true
+        end
     end
 }
 
