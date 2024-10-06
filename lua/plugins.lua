@@ -200,13 +200,13 @@ require('lazy').setup(
         },
 
         -- A small automated session manager for Neovim
-        {
-            'rmagatti/auto-session',
-            dependencies = 'nvim-lua/plenary.nvim',
-            config = require('plugins._auto_session').config,
-            event = 'BufEnter',
-            cond = is_not_embedded
-        },
+        -- {
+        --     'rmagatti/auto-session',
+        --     dependencies = 'nvim-lua/plenary.nvim',
+        --     config = require('plugins._auto_session').config,
+        --     event = 'BufEnter',
+        --     cond = is_not_embedded
+        -- },
 
         -- Peek lines just when you intend
         {
