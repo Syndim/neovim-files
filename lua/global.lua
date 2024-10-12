@@ -3,6 +3,14 @@ local os_name = vim.loop.os_uname()
 local system = os_name.sysname
 local release = os_name.release
 
+local function redirect_str()
+    if global.is_windows then
+        return ' > nul 2>&1'
+    else
+        return ' > /dev/null 2>&1'
+    end
+end
+
 function global:load_variables()
     self.is_mac       = string.find(system, 'Darwin') ~= nil
     self.is_linux     = string.find(system, 'Linux') ~= nil
@@ -11,25 +19,17 @@ function global:load_variables()
     self.is_embedded  = vim.g.shadowvim or vim.g.vscode
     self.is_in_xcode  = vim.g.shadowvim
     self.github_proxy = os.getenv('GITHUB_PROXY') or 'https://mirror.ghproxy.com/https://'
+    self.redirect     = redirect_str()
 end
 
 function global:which(cmd)
-    local redirect = global.redirect()
-    ---@diagnostic disable-next-line: redefined-local
+    local redirect = self.redirect
     local which = 'which'
-    if global.is_windows then
+    if self.is_windows then
         which = 'where.exe'
     end
 
     return os.execute(which .. ' ' .. cmd .. redirect)
-end
-
-function global:redirect()
-    if global.is_windows then
-        return ' > nul 2>&1'
-    else
-        return ' > /dev/null 2>&1'
-    end
 end
 
 global:load_variables()

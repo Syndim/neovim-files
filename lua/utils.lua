@@ -7,7 +7,7 @@ function string:starts_with(start)
 end
 
 function string:ends_with(ending)
-    return ending == "" or self:sub(-#ending) == ending
+    return ending == "" or self:sub(- #ending) == ending
 end
 
 function string:replace(old, new)
@@ -32,3 +32,27 @@ end
 function string:insert(pos, text)
     return self:sub(1, pos - 1) .. text .. self:sub(pos)
 end
+
+function start_cmd(cmd, args, on_exit)
+    local function on_stdout(err, data)
+        if err then
+            print('ERROR: ', err)
+        end
+        if data then
+            print('OUTPUT: ', data)
+        end
+    end
+
+    -- 启动一个后台任务
+    local handle = vim.loop.spawn(cmd, {
+        args = args,
+        stdio = { nil, vim.loop.new_pipe(false), vim.loop.new_pipe(false) }
+    }, vim.schedule_wrap(on_exit))
+
+    vim.loop.read_start(handle.stdout, vim.schedule_wrap(on_stdout))
+    vim.loop.read_start(handle.stderr, vim.schedule_wrap(on_stdout))
+end
+
+return {
+    start_cmd = start_cmd
+}
