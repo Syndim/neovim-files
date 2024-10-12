@@ -10,7 +10,7 @@ function M.config()
             'markdownlint',
             'yamllint',
             'yamlfmt',
-            'rust-analyzer',
+            -- 'rust-analyzer',
             'roslyn'
         }
     })

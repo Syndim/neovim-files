@@ -14,15 +14,22 @@ function global:load_variables()
 end
 
 function global:which(cmd)
-    local redirect = ' > /dev/null 2>&1'
+    local redirect = global.redirect()
     ---@diagnostic disable-next-line: redefined-local
     local which = 'which'
     if global.is_windows then
-        redirect = ' > nul 2>&1'
         which = 'where.exe'
     end
 
     return os.execute(which .. ' ' .. cmd .. redirect)
+end
+
+function global:redirect()
+    if global.is_windows then
+        return ' > nul 2>&1'
+    else
+        return ' > /dev/null 2>&1'
+    end
 end
 
 global:load_variables()
