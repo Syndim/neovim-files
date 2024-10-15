@@ -43,26 +43,26 @@ function M.config()
     })
 
     rust_config.on_attach = on_attach
-    -- rust_config.cmd = function()
-    --     local data_path = vim.fn.stdpath("data")
-    --     local dir = data_path .. "/mason/bin/"
-    --     local ra_binary = vim.fn.glob(dir .. "rust-analyzer*")
-    --     return { ra_binary } -- You can add args to the list, such as '--log-file'
-    -- end
+    rust_config.cmd = function()
+        local data_path = vim.fn.stdpath("data")
+        local dir = data_path .. "/mason/bin/"
+        local ra_binary = vim.fn.glob(dir .. "rust-analyzer*")
+        return { ra_binary } -- You can add args to the list, such as '--log-file'
+    end
 
     local global = require('global')
-    local utils = require('utils')
-
-    if os.execute('rustup which rust-analyzer' .. global.redirect) ~= 0 then
-        vim.notify('Installing rust-analyzer')
-        utils.start_cmd('rustup', { 'component', 'add', 'rust-analyzer' }, function(code)
-            if code == 0 then
-                vim.notify('rust-analyzer installed')
-            else
-                vim.notify("rust-analyzer failed to install")
-            end
-        end)
-    end
+    -- local utils = require('utils')
+    --
+    -- if os.execute('rustup which rust-analyzer' .. global.redirect) ~= 0 then
+    --     vim.notify('Installing rust-analyzer')
+    --     utils.start_cmd('rustup', { 'component', 'add', 'rust-analyzer' }, function(code)
+    --         if code == 0 then
+    --             vim.notify('rust-analyzer installed')
+    --         else
+    --             vim.notify("rust-analyzer failed to install")
+    --         end
+    --     end)
+    -- end
 
     vim.g.rustaceanvim = {
         server = rust_config,

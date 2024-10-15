@@ -66,19 +66,19 @@ function M.config()
             })
         },
         mapping = cmp.mapping.preset.insert({
-            ['<C-p>'] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }),
-            ['<C-n>'] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }),
+            ['<C-p>'] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Select }),
+            ['<C-n>'] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Select }),
             ['<C-u>'] = cmp.mapping.scroll_docs(-4),
             ['<C-d>'] = cmp.mapping.scroll_docs(4),
             ['<C-Space>'] = cmp.mapping.complete(),
             ['<C-e>'] = cmp.mapping.close(),
             ['<CR>'] = cmp.mapping.confirm {
-                behavior = cmp.ConfirmBehavior.Replace,
+                behavior = cmp.ConfirmBehavior.Insert,
                 select = true,
             },
             ['<Tab>'] = function(fallback)
                 if cmp.visible() then
-                    cmp.select_next_item({ behavior = cmp.SelectBehavior.Insert })
+                    cmp.select_next_item({ behavior = cmp.SelectBehavior.Select })
                 elseif vim.fn["vsnip#available"](1) == 1 then
                     feedkey("<Plug>(vsnip-expand-or-jump)", "")
                 else
@@ -87,7 +87,7 @@ function M.config()
             end,
             ['<S-Tab>'] = function(fallback)
                 if cmp.visible() then
-                    cmp.select_prev_item({ behavior = cmp.SelectBehavior.Insert })
+                    cmp.select_prev_item({ behavior = cmp.SelectBehavior.Select })
                 elseif vim.fn["vsnip#jumpable"](-1) == 1 then
                     feedkey("<Plug>(vsnip-jump-prev)", "")
                 else
