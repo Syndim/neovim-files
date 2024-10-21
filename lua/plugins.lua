@@ -517,9 +517,9 @@ require('lazy').setup(
 
         -- A completion plugin for neovim coded in Lua.
         {
-            'iguanacucumber/magazine.nvim',
-            name = 'nvim-cmp',
-            -- 'hrsh7th/nvim-cmp',
+            -- 'iguanacucumber/magazine.nvim',
+            -- name = 'nvim-cmp',
+            'hrsh7th/nvim-cmp',
             config = require('plugins._cmp').config,
             event = { 'InsertEnter', 'CmdlineEnter' },
             version = false,
