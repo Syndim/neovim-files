@@ -95,7 +95,7 @@ function M.create_config()
         }
     }
 
-    vim.lsp.set_log_level('INFO')
+    -- vim.lsp.set_log_level('INFO')
     return config
 end
 

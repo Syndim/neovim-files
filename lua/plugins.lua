@@ -785,5 +785,8 @@ require('lazy').setup(
         git = {
             timeout = 600,
         },
+        rocks = {
+            enabled = false
+        }
     }
 )

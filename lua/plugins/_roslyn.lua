@@ -2,7 +2,7 @@ local M = {}
 
 function M.config()
     local default_config = require('plugins._lsp').create_config()
-    function on_attach(c, bufnr)
+    local function on_attach(c, bufnr)
         default_config.on_attach(c, bufnr)
         local function semantic_tokens(client)
             if not client.is_hacked_roslyn then
@@ -73,7 +73,11 @@ function M.config()
 
     local config = vim.tbl_deep_extend('force', default_config, {
         on_attach = on_attach,
+        single_file_support = false,
         settings = {
+            ["csharp|background_analysis"] = {
+                dotnet_compiler_diagnostics_scope = "fullSolution"
+            },
             ['csharp|navigation'] = {
                 dotnet_navigate_to_decompiled_sources = true,
             },
