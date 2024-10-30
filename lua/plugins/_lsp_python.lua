@@ -12,9 +12,17 @@ function M.setup(lsp_config, config)
     local function update_venv_path(venv)
         vim.env.VIRTUAL_ENV = venv
         if global.is_windows then
-            vim.env.PATH = path.join(venv, 'bin') .. ';' .. vim.env.PATH
+            vim.env.PATH = path.join(venv, 'Scripts') .. ';' .. vim.env.PATH
         else
             vim.env.PATH = path.join(venv, 'bin') .. ':' .. vim.env.PATH
+        end
+    end
+
+    local function format_python_path(venv)
+        if global.is_windows then
+            return path.join(venv, 'Scripts', 'python')
+        else
+            return path.join(venv, 'bin', 'python')
         end
     end
 
@@ -30,7 +38,7 @@ function M.setup(lsp_config, config)
         if match ~= '' then
             local venv = vim.fn.trim(vim.fn.system('poetry env info -p'))
             update_venv_path(venv)
-            return path.join(venv, 'bin', 'python')
+            return format_python_path(venv)
         end
 
         match = vim.fn.glob(path.join(workspace, 'pyproject.toml'))
@@ -40,21 +48,21 @@ function M.setup(lsp_config, config)
             local venv_end_index = string.find(rye_show_output, '\n', venv_start_index + 1)
             local venv = vim.fn.trim(string.sub(rye_show_output, venv_start_index, venv_end_index))
             update_venv_path(venv)
-            return path.join(venv, 'bin', 'python')
+            return format_python_path(venv)
         end
 
         -- Find and use virtualenv from pipenv in workspace directory.
         match = vim.fn.glob(path.join(workspace, 'Pipfile'))
         if match ~= '' then
             local venv = vim.fn.trim(vim.fn.system('PIPENV_PIPFILE=' .. match .. ' pipenv --venv'))
-            return path.join(venv, 'bin', 'python')
+            return format_python_path(venv)
         end
 
         -- Find .venv folder
         local dot_venv_path = path.join(workspace, '.venv')
-        if vim.fn.isdirectory(dot_env_path) == 1 then
+        if vim.fn.isdirectory(dot_venv_path) == 1 then
             update_venv_path(dot_venv_path)
-            return path.join(dot_venv_path, 'bin', 'python')
+            return format_python_path(dot_venv_path)
         end
 
         -- Fallback to system Python.
@@ -72,7 +80,7 @@ function M.setup(lsp_config, config)
                 -- Disable hover in favor of Pyright
                 client.server_capabilities.hoverProvider = false
             end
-        end
+        end,
     })
 
     lsp_config['basedpyright'].setup(python_config)
