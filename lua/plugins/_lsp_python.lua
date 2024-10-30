@@ -30,7 +30,7 @@ function M.setup(lsp_config, config)
         -- Use activated virtualenv.
         if vim.env.VIRTUAL_ENV then
             update_venv_path(vim.env.VIRTUAL_ENV)
-            return path.join(vim.env.VIRTUAL_ENV, 'bin', 'python')
+            return format_python_path(vim.env.VIRTUAL_ENV)
         end
 
         -- Find and use venv from poetry
