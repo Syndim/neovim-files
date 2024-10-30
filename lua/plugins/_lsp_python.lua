@@ -75,7 +75,7 @@ function M.setup(lsp_config, config)
         end
     })
 
-    lsp_config['pyright'].setup(python_config)
+    lsp_config['basedpyright'].setup(python_config)
     lsp_config['ruff'].setup(python_config)
 end
 
