@@ -23,6 +23,15 @@ require('lazy').setup(
         -- 💤 A modern plugin manager for Neovim
         'folke/lazy.nvim',
 
+        -- Utils
+        -- 🍿 A collection of small QoL plugins for Neovim
+        {
+            'folke/snacks.nvim',
+            lazy = false,
+            priority = 1000,
+            config = require('plugins._snacks').config
+        },
+
         -- Editor interface
         -- Open files and command output from neovim terminals in your current neovim instance
         {
@@ -128,14 +137,6 @@ require('lazy').setup(
             'petertriho/nvim-scrollbar',
             dependencies = 'kevinhwang91/nvim-hlslens',
             config = require('plugins._scrollbar').config,
-            event = 'VeryLazy',
-            cond = is_not_embedded
-        },
-
-        -- Status column plugin that provides a configurable 'statuscolumn' and click handlers.
-        {
-            'luukvbaal/statuscol.nvim',
-            config = require('plugins._statuscol').config,
             event = 'VeryLazy',
             cond = is_not_embedded
         },
@@ -361,13 +362,6 @@ require('lazy').setup(
             cond = is_not_embedded,
         },
 
-        -- Delete Neovim buffers without losing window layout
-        {
-            'famiu/bufdelete.nvim',
-            lazy = false,
-            cond = is_not_embedded,
-        },
-
         -- Not UFO in the sky, but an ultra fold in Neovim.
         {
             'kevinhwang91/nvim-ufo',
@@ -389,20 +383,20 @@ require('lazy').setup(
 
         -- Obsidian 🤝 Neovim
         -- {
-        --     "epwalsh/obsidian.nvim",
-        --     version = "*", -- recommended, use latest release instead of latest commit
+        --     'epwalsh/obsidian.nvim',
+        --     version = '*', -- recommended, use latest release instead of latest commit
         --     lazy = true,
-        --     ft = "markdown",
+        --     ft = 'markdown',
         --     -- Replace the above line with this if you only want to load obsidian.nvim for markdown files in your vault:
         --     -- event = {
         --     --   -- If you want to use the home shortcut '~' here you need to call 'vim.fn.expand'.
-        --     --   -- E.g. "BufReadPre " .. vim.fn.expand "~" .. "/my-vault/**.md"
-        --     --   "BufReadPre path/to/my-vault/**.md",
-        --     --   "BufNewFile path/to/my-vault/**.md",
+        --     --   -- E.g. 'BufReadPre ' .. vim.fn.expand '~' .. '/my-vault/**.md'
+        --     --   'BufReadPre path/to/my-vault/**.md',
+        --     --   'BufNewFile path/to/my-vault/**.md',
         --     -- },
         --     dependencies = {
         --         -- Required.
-        --         "nvim-lua/plenary.nvim",
+        --         'nvim-lua/plenary.nvim',
         --
         --         -- see below for full list of optional dependencies 👇
         --     },
@@ -495,19 +489,17 @@ require('lazy').setup(
             cond = is_not_embedded
         },
 
-        -- null-ls.nvim reloaded / Use Neovim as a language server to inject LSP diagnostics, code actions, and more via Lua.
+        -- Lightweight yet powerful formatter plugin for Neovim
         {
-            'nvimtools/none-ls.nvim',
-            dependencies = { 'WhoIsSethDaniel/mason-tool-installer.nvim', 'williamboman/mason.nvim', 'williamboman/mason-lspconfig.nvim' },
-            config = require('plugins._none_ls').config,
-            event = { 'BufReadPost', 'BufNewFile' },
-            cond = is_not_embedded
+            'stevearc/conform.nvim',
+            config = require('plugins._conform').config,
+            event = { 'VeryLazy' }
         },
 
         -- Faster LuaLS setup for Neovim
         {
             'folke/lazydev.nvim',
-            ft = "lua",
+            ft = 'lua',
             config = require('plugins._lazydev').config,
             dependencies = {
                 'Bilal2453/luvit-meta'

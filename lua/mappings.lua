@@ -19,7 +19,7 @@ vim.keymap.set('n', '<Leader>n', '<C-I>', opts)
 -- vim.keymap.set('n', '<C-O>', ':bn<CR>', opts)
 
 -- Close buffer
-vim.keymap.set('n', '<Leader>x', ':Bdelete<CR>', { noremap = true, nowait = true })
+-- vim.keymap.set('n', '<Leader>x', ':Bdelete<CR>', { noremap = true, nowait = true })
 
 -- Clear CRLF
 -- vim.keymap.set('n', '<Leader>r', ':%s/\\r//g<CR>', {})
