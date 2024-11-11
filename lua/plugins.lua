@@ -657,7 +657,7 @@ require('lazy').setup(
         -- Roslyn LSP plugin for neovim
         {
             'seblj/roslyn.nvim',
-            dependencies = { 'williamboman/mason.nvim' },
+            dependencies = { 'williamboman/mason-lspconfig.nvim' },
             config = require('plugins._roslyn').config,
             ft = { 'cs' },
             cond = is_not_embedded
