@@ -95,9 +95,11 @@ function M.config()
         },
     })
 
+    -- For some reason if we set capabilities, there are chances that it will freeze neovim
+    config.capabilities = nil
+
     require('roslyn').setup({
-        config = config,
-        filewatching = true,
+        config = config
     })
 
     vim.api.nvim_create_autocmd({ 'InsertLeave' }, {
