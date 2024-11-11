@@ -29,10 +29,10 @@ function M.config()
 
     mason.setup({
         log_level = vim.log.levels.DEBUG,
-        registries = {
-            'github:mason-org/mason-registry',
-            'github:syndim/mason-registry'
-        },
+        -- registries = {
+        --     'github:mason-org/mason-registry',
+        --     'github:syndim/mason-registry'
+        -- },
         github = {
             download_url_template = global.github_proxy .. "github.com/%s/releases/download/%s/%s",
         },
