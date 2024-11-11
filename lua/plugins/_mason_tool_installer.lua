@@ -6,7 +6,7 @@ function M.config()
             'prettierd',
             'yamlfmt',
             'rust-analyzer',
-            'roslyn'
+            -- 'roslyn'
         }
     })
 
