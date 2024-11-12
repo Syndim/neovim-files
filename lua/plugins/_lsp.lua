@@ -46,7 +46,9 @@ local function create_on_attach()
 		vim.keymap.set("n", "<leader>ca", require("actions-preview").code_actions, opts)
 		opts.desc = "Format current document"
 		-- vim.keymap.set('n', '<leader>ff', vim.lsp.buf.format, opts)
-		vim.keymap.set("n", "<leader>ff", require("conform").format({ async = true }), opts)
+		vim.keymap.set("n", "<leader>ff", function()
+			require("conform").format({ async = true })
+		end, opts)
 		opts.desc = "Document symbols"
 		vim.keymap.set("n", "<leader>ds", function()
 			vim.cmd.Telescope("lsp_document_symbols", "theme=dropdown")
