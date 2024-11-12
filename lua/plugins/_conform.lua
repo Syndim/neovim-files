@@ -12,7 +12,10 @@ function M.config()
 				end
 			end,
 			rust = { "rustfmt", lsp_format = "fallback" },
-			javascript = { "prettierd", "prettier", stop_after_first = true },
+			javascript = { "prettierd" },
+			javascriptreact = { "prettierd" },
+			typescript = { "prettierd" },
+			typescriptreact = { "prettierd" },
 			cpp = { "clang_format" },
 			cs = { "csharpier" },
 			just = { "just" },

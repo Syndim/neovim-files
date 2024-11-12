@@ -9,6 +9,7 @@ function M.config()
 			"roslyn",
 			"stylua",
 			"csharpier",
+			"ts_ls",
 		},
 	})
 
