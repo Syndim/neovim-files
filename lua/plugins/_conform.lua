@@ -19,6 +19,7 @@ function M.config()
 			cpp = { "clang_format" },
 			cs = { "csharpier" },
 			just = { "just" },
+			yaml = { "yamlfmt" },
 		},
 		default_format_opts = {
 			lsp_format = "fallback",
