@@ -15,6 +15,7 @@ function M.config()
 			javascript = { "prettierd", "prettier", stop_after_first = true },
 			cpp = { "clang_format" },
 			cs = { "csharpier" },
+			just = { "just" },
 		},
 		default_format_opts = {
 			lsp_format = "fallback",
