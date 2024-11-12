@@ -16,19 +16,7 @@ local global = require('global')
 -- })
 
 if global.is_mac then
-    local opts = {
-        remap = false
-    }
-
-    local ts = require('plugins._telescope')
-
-    vim.keymap.set('n', '˙', '<C-w>h', opts)
-    vim.keymap.set('n', '∆', '<C-w>j', opts)
-    vim.keymap.set('n', '˚', '<C-w>k', opts)
-    vim.keymap.set('n', '¬', '<C-w>l', opts)
-    vim.keymap.set('n', 'π', require("illuminate").goto_prev_reference, opts)
-    vim.keymap.set('n', '˜', require("illuminate").goto_next_reference, opts)
-    vim.keymap.set('n', 'ø', function() ts.builtin.buffers(ts.dropdown_theme) end, opts)
+    vim.g.neovide_input_macos_option_key_is_meta = 'both'
 elseif global.is_wsl then
     -- Neovide under wsl will fetch new set of environments and VIRTUAL_ENV
     -- environment variable somehow get lost
