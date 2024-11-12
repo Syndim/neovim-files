@@ -1,4 +1,4 @@
-local global = require('global')
+local global = require("global")
 
 local o = vim.o
 local wo = vim.wo
@@ -6,7 +6,7 @@ local g = vim.g
 local cmd = vim.cmd
 
 -- Syntax on
-o.syntax = 'on'
+o.syntax = "on"
 
 -- Search
 o.hlsearch = true
@@ -28,21 +28,21 @@ o.relativenumber = true
 wo.relativenumber = true
 
 -- Encoding
-o.encoding = 'utf-8'
-o.fileencoding = 'utf-8'
+o.encoding = "utf-8"
+o.fileencoding = "utf-8"
 
 -- Enable hidden buffers
 o.hidden = true
 
 -- Mouse model
-o.mousemodel = 'popup'
+o.mousemodel = "popup"
 
 -- Windows behavior
-cmd('source $VIMRUNTIME/mswin.vim')
-cmd('set selection=exclusive')
-cmd('set selectmode=mouse,key')
-cmd('set mousemodel=popup')
-cmd('set keymodel=startsel,stopsel')
+cmd("source $VIMRUNTIME/mswin.vim")
+cmd("set selection=exclusive")
+cmd("set selectmode=mouse,key")
+cmd("set mousemodel=popup")
+cmd("set keymodel=startsel,stopsel")
 
 -- GUI colors
 o.termguicolors = true
@@ -53,25 +53,25 @@ o.termguicolors = true
 -- Fonts
 -- For neovide and goneovim the font setting is done through config.toml
 if not g.neovide and not g.gonvim_running then
-    if global.is_windows then
-        o.guifont = 'FiraCode Nerd Font Mono:h14'
-    else
-        o.guifont = 'FiraCode Nerd Font Mono:h18'
-    end
+	if global.is_windows then
+		o.guifont = "FiraCode Nerd Font Mono:h14"
+	else
+		o.guifont = "FiraCode Nerd Font Mono:h18"
+	end
 end
 
-g.mapleader = ','
+g.mapleader = ","
 
 if global.is_windows then
-    o.shell = 'cmd.exe'
+	o.shell = "cmd.exe"
 elseif global.is_linux or global.is_mac then
-    o.shell = 'bash'
+	o.shell = "bash"
 end
 
 if global.is_windows then
-    o.ffs = 'dos,unix,mac'
+	o.ffs = "dos,unix,mac"
 else
-    o.ffs = 'unix,dos,mac'
+	o.ffs = "unix,dos,mac"
 end
 
 g.grepprg = "grepprg=rg --vimgrep --no-heading"
