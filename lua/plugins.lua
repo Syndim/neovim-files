@@ -495,7 +495,14 @@ require("lazy").setup({
 	{
 		"stevearc/conform.nvim",
 		config = require("plugins._conform").config,
-		event = { "VeryLazy" },
+		event = "VeryLazy",
+	},
+
+	-- An asynchronous linter plugin for Neovim complementary to the built-in Language Server Protocol support.
+	{
+		"mfussenegger/nvim-lint",
+		config = require("plugins._nvim_lint").config,
+		event = "VeryLazy",
 	},
 
 	-- Faster LuaLS setup for Neovim

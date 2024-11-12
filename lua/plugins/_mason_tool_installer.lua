@@ -10,6 +10,7 @@ function M.config()
 			"stylua",
 			"csharpier",
 			"ts_ls",
+			"vale",
 		},
 	})
 
