@@ -17,6 +17,14 @@ local global = require("global")
 
 if global.is_mac then
 	vim.g.neovide_input_macos_option_key_is_meta = "both"
+	local opts = { noremap = true, silent = true }
+	vim.api.nvim_set_keymap("n", "<D-c>", '"+y', opts)
+	vim.api.nvim_set_keymap("v", "<D-c>", '"+y', opts)
+
+	vim.api.nvim_set_keymap("n", "<D-v>", '"+p', opts)
+	vim.api.nvim_set_keymap("i", "<D-v>", "<C-r>+", opts)
+	vim.api.nvim_set_keymap("c", "<D-v>", "<C-r>+", opts)
+	vim.api.nvim_set_keymap("v", "<D-v>", '"+p', opts)
 elseif global.is_wsl then
 	-- Neovide under wsl will fetch new set of environments and VIRTUAL_ENV
 	-- environment variable somehow get lost
