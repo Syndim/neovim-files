@@ -13,14 +13,6 @@ function M.config()
 						sources.markdown,
 					}
 				end
-				if ft == "cpp" or ft == "java" then
-					return {
-						sources.path,
-						utils.source.fallback({
-							sources.lsp,
-						}),
-					}
-				end
 				if vim.bo[buf].buftype == "terminal" then
 					return {
 						sources.terminal,
@@ -30,7 +22,7 @@ function M.config()
 					sources.path,
 					utils.source.fallback({
 						sources.lsp,
-						sources.treesitter,
+						-- sources.treesitter,
 					}),
 				}
 			end,
