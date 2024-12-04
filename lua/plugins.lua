@@ -516,48 +516,27 @@ require("lazy").setup({
 		cond = is_not_embedded,
 	},
 
-	-- A completion plugin for neovim coded in Lua.
+	-- Compatibility layer for using nvim-cmp sources on blink.cmp
 	{
-		-- 'iguanacucumber/magazine.nvim',
-		-- name = 'nvim-cmp',
-		"hrsh7th/nvim-cmp",
-		config = require("plugins._cmp").config,
-		event = { "InsertEnter", "CmdlineEnter" },
-		version = false,
+		"saghen/blink.compat",
+		lazy = true,
+		opts = {},
+	},
+
+	-- Performant, batteries-included completion plugin for Neovim
+	{
+		"saghen/blink.cmp",
+		lazy = false, -- lazy loading handled internally
+		config = require("plugins._blink").config,
 		dependencies = {
-			-- nvim-cmp source for neovim builtin LSP client
-			"hrsh7th/cmp-nvim-lsp",
-
-			-- nvim-cmp source for path
-			"hrsh7th/cmp-path",
-
-			-- nvim-cmp source for vim-vsnip
-			"hrsh7th/cmp-vsnip",
-
-			-- Snippet plugin for vim/nvim that supports LSP/VSCode's snippet format.
-			"hrsh7th/vim-vsnip",
-
-			-- nvim-cmp source for buffer words
-			"hrsh7th/cmp-buffer",
-
-			-- nvim-cmp source for nvim lua
-			"hrsh7th/cmp-nvim-lua",
-
-			-- nvim-cmp source for vim's cmdline
-			"hrsh7th/cmp-cmdline",
-
-			-- nvim-cmp source for math calculation
-			"hrsh7th/cmp-calc",
-
-			-- nvim-cmp source for textDocument/documentSymbol via nvim-lsp
-			"hrsh7th/cmp-nvim-lsp-document-symbol",
-
-			-- cmp-nvim-lsp-signature-help
-			"hrsh7th/cmp-nvim-lsp-signature-help",
-
-			-- vscode-like pictograms for neovim lsp completion items
-			"onsails/lspkind.nvim",
-
+			"rafamadriz/friendly-snippets",
+			-- A neovim plugin that helps managing crates.io dependencies
+			{
+				"saecki/crates.nvim",
+				dependencies = { "nvim-lua/plenary.nvim" },
+				config = require("plugins._crates").config,
+				ft = "toml",
+			},
 			--  An additional source for nvim-cmp to autocomplete packages and its versions
 			{
 				"Syndim/cmp-npm",
@@ -567,25 +546,79 @@ require("lazy").setup({
 				end,
 				ft = "json",
 			},
-
-			--  tags sources for nvim-cmp
-			"quangnguyen30192/cmp-nvim-tags",
-
-			--  cmp source for treesitter
-			"ray-x/cmp-treesitter",
-
-			-- Set of preconfigured snippets for different languages.
-			"rafamadriz/friendly-snippets",
-
-			-- A neovim plugin that helps managing crates.io dependencies
-			{
-				"saecki/crates.nvim",
-				dependencies = { "nvim-lua/plenary.nvim" },
-				config = require("plugins._crates").config,
-			},
 		},
-		cond = is_not_embedded,
 	},
+
+	-- A completion plugin for neovim coded in Lua.
+	-- {
+	-- 	-- 'iguanacucumber/magazine.nvim',
+	-- 	-- name = 'nvim-cmp',
+	-- 	"hrsh7th/nvim-cmp",
+	-- 	config = require("plugins._cmp").config,
+	-- 	event = { "InsertEnter", "CmdlineEnter" },
+	-- 	version = false,
+	-- 	dependencies = {
+	-- 		-- nvim-cmp source for neovim builtin LSP client
+	-- 		"hrsh7th/cmp-nvim-lsp",
+	--
+	-- 		-- nvim-cmp source for path
+	-- 		"hrsh7th/cmp-path",
+	--
+	-- 		-- nvim-cmp source for vim-vsnip
+	-- 		"hrsh7th/cmp-vsnip",
+	--
+	-- 		-- Snippet plugin for vim/nvim that supports LSP/VSCode's snippet format.
+	-- 		"hrsh7th/vim-vsnip",
+	--
+	-- 		-- nvim-cmp source for buffer words
+	-- 		"hrsh7th/cmp-buffer",
+	--
+	-- 		-- nvim-cmp source for nvim lua
+	-- 		"hrsh7th/cmp-nvim-lua",
+	--
+	-- 		-- nvim-cmp source for vim's cmdline
+	-- 		"hrsh7th/cmp-cmdline",
+	--
+	-- 		-- nvim-cmp source for math calculation
+	-- 		"hrsh7th/cmp-calc",
+	--
+	-- 		-- nvim-cmp source for textDocument/documentSymbol via nvim-lsp
+	-- 		"hrsh7th/cmp-nvim-lsp-document-symbol",
+	--
+	-- 		-- cmp-nvim-lsp-signature-help
+	-- 		"hrsh7th/cmp-nvim-lsp-signature-help",
+	--
+	-- 		-- vscode-like pictograms for neovim lsp completion items
+	-- 		"onsails/lspkind.nvim",
+	--
+	-- 		--  An additional source for nvim-cmp to autocomplete packages and its versions
+	-- 		{
+	-- 			"Syndim/cmp-npm",
+	-- 			branch = "windows_fix",
+	-- 			config = function()
+	-- 				require("cmp-npm").setup({})
+	-- 			end,
+	-- 			ft = "json",
+	-- 		},
+	--
+	-- 		--  tags sources for nvim-cmp
+	-- 		"quangnguyen30192/cmp-nvim-tags",
+	--
+	-- 		--  cmp source for treesitter
+	-- 		"ray-x/cmp-treesitter",
+	--
+	-- 		-- Set of preconfigured snippets for different languages.
+	-- 		"rafamadriz/friendly-snippets",
+	--
+	-- 		-- A neovim plugin that helps managing crates.io dependencies
+	-- 		{
+	-- 			"saecki/crates.nvim",
+	-- 			dependencies = { "nvim-lua/plenary.nvim" },
+	-- 			config = require("plugins._crates").config,
+	-- 		},
+	-- 	},
+	-- 	cond = is_not_embedded,
+	-- },
 
 	-- IDE-like breadcrumbs, out of the box
 	{
