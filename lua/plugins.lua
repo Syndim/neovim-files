@@ -527,6 +527,7 @@ require("lazy").setup({
 	{
 		"saghen/blink.cmp",
 		lazy = false, -- lazy loading handled internally
+		setup = require("plugins._blink").setup,
 		config = require("plugins._blink").config,
 		dependencies = {
 			"rafamadriz/friendly-snippets",
