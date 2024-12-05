@@ -61,13 +61,6 @@ require("lazy").setup({
 		cond = is_not_embedded,
 	},
 
-	-- illuminate.vim - (Neo)Vim plugin for automatically highlighting other uses of the word under the cursor using either LSP, Tree-sitter, or regex matching.
-	{
-		"RRethy/vim-illuminate",
-		event = "VeryLazy",
-		config = require("plugins._vim_illuminate").config,
-	},
-
 	-- A plugin for neovim which changes the colour of CursorColumn depending on mode.
 	{
 		"svampkorg/moody.nvim",
@@ -90,13 +83,6 @@ require("lazy").setup({
 		dependencies = "nvim-lua/plenary.nvim",
 		event = "VeryLazy",
 		config = require("plugins._todo_comments").config,
-	},
-
-	-- Tiny plugin to enhance Neovim's native comments
-	{
-		"folke/ts-comments.nvim",
-		opts = {},
-		event = "VeryLazy",
 	},
 
 	-- Extensible UI for Neovim notifications and LSP progress messages.

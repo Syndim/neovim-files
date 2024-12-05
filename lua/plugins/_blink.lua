@@ -45,7 +45,11 @@ end
 
 function M.config()
 	require("blink.cmp").setup({
-		keymap = { preset = "enter" },
+		keymap = {
+			preset = "enter",
+			["<C-u>"] = { "scroll_documentation_up", "fallback" },
+			["<C-d>"] = { "scroll_documentation_down", "fallback" },
+		},
 		appearance = {
 			use_nvim_cmp_as_default = true,
 			nerd_font_variant = "mono",

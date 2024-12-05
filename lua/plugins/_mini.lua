@@ -27,6 +27,15 @@ function M.config()
 			update_n_lines = "con", -- Update `n_lines`
 		},
 	})
+
+	-- mini.comment
+	require("mini.comment").setup()
+
+	-- mini.currentword
+	require("mini.cursorword").setup()
+
+	-- mini.trailspace
+	require("mini.trailspace").setup()
 end
 
 return M
