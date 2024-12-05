@@ -31,9 +31,6 @@ function M.config()
 	-- mini.comment
 	require("mini.comment").setup()
 
-	-- mini.currentword
-	require("mini.cursorword").setup()
-
 	-- mini.trailspace
 	require("mini.trailspace").setup()
 end
