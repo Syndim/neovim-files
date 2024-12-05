@@ -52,20 +52,12 @@ require("lazy").setup({
 		cond = is_not_embedded,
 	},
 
-	-- Neovim Lua plugin to visualize and operate on indent scope.
+	-- Library of 40+ independent Lua modules improving overall Neovim (version 0.8 and higher) experience with minimal effort
 	{
-		"echasnovski/mini.indentscope",
-		event = "VeryLazy",
-		config = require("plugins._mini_indent_scope").config,
-		cond = is_not_embedded,
-	},
-
-	-- Neovim Lua plugin with fast and feature-rich surround actions. Part of 'mini.nvim' library.
-	{
-		"echasnovski/mini.surround",
+		"echasnovski/mini.nvim",
 		version = "*",
 		event = "VeryLazy",
-		config = require("plugins._mini_surround").config,
+		config = require("plugins._mini").config,
 		cond = is_not_embedded,
 	},
 
@@ -105,14 +97,6 @@ require("lazy").setup({
 		"folke/ts-comments.nvim",
 		opts = {},
 		event = "VeryLazy",
-	},
-
-	-- A fancy, configurable, notification manager for NeoVim
-	{
-		"rcarriga/nvim-notify",
-		config = require("plugins._notify").config,
-		lazy = false,
-		cond = is_not_embedded,
 	},
 
 	-- Extensible UI for Neovim notifications and LSP progress messages.
@@ -301,14 +285,6 @@ require("lazy").setup({
 		cond = is_not_embedded,
 	},
 
-	{
-		"FabianWirth/search.nvim",
-		dependencies = { "nvim-telescope/telescope.nvim" },
-		config = require("plugins._search").config,
-		event = "VeryLazy",
-		cond = is_not_embedded,
-	},
-
 	-- Treesitter based structural search and replace plugin for Neovim.
 	{
 		"cshuaimin/ssr.nvim",
@@ -325,15 +301,7 @@ require("lazy").setup({
 		cond = is_not_embedded,
 	},
 
-	-- FZY style sorter that is compiled
-	{
-		"nvim-telescope/telescope-fzy-native.nvim",
-		dependencies = "nvim-telescope/telescope.nvim",
-		config = require("plugins._telescope_fzy_native").config,
-		event = "VeryLazy",
-		cond = is_not_embedded,
-	},
-
+	-- It sets vim.ui.select to telescope. That means for example that neovim core stuff can fill the telescope picker. Example would be lua vim.lsp.buf.code_action().
 	{
 		"nvim-telescope/telescope-ui-select.nvim",
 		dependencies = "nvim-telescope/telescope.nvim",
@@ -379,28 +347,6 @@ require("lazy").setup({
 		cond = is_not_embedded,
 	},
 
-	-- Obsidian 🤝 Neovim
-	-- {
-	--     'epwalsh/obsidian.nvim',
-	--     version = '*', -- recommended, use latest release instead of latest commit
-	--     lazy = true,
-	--     ft = 'markdown',
-	--     -- Replace the above line with this if you only want to load obsidian.nvim for markdown files in your vault:
-	--     -- event = {
-	--     --   -- If you want to use the home shortcut '~' here you need to call 'vim.fn.expand'.
-	--     --   -- E.g. 'BufReadPre ' .. vim.fn.expand '~' .. '/my-vault/**.md'
-	--     --   'BufReadPre path/to/my-vault/**.md',
-	--     --   'BufNewFile path/to/my-vault/**.md',
-	--     -- },
-	--     dependencies = {
-	--         -- Required.
-	--         'nvim-lua/plenary.nvim',
-	--
-	--         -- see below for full list of optional dependencies 👇
-	--     },
-	--     config = require('plugins._obsidian').config
-	-- },
-
 	-- Nvim Treesitter configurations and abstraction layer
 	{
 		"nvim-treesitter/nvim-treesitter",
@@ -425,14 +371,6 @@ require("lazy").setup({
 		config = require("plugins._treesitter_autopair").config,
 		event = "VeryLazy",
 	},
-
-	-- Show code context
-	-- {
-	--     'nvim-treesitter/nvim-treesitter-context',
-	--     dependencies = 'nvim-treesitter/nvim-treesitter',
-	--     config = require('plugins._treesitter_context').config,
-	--     event = 'VeryLazy'
-	-- },
 
 	-- Enhanced matchparen.vim plugin for Neovim
 	{

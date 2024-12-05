@@ -9,7 +9,7 @@ function M.config()
 	opts.desc = "Toggle bookmark"
 	vim.keymap.set("n", "<leader>mm", vim.cmd.BookmarkToggle, opts)
 	opts.desc = "List bookmark"
-	vim.keymap.set("n", "<leader>ms", function()
+	vim.keymap.set("n", "<leader>ml", function()
 		vim.cmd.Telescope({ "vim_bookmarks", "all" })
 	end, opts)
 	opts.desc = "Previous bookmark"
