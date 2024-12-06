@@ -63,7 +63,8 @@ require("lazy").setup({
 
 	-- illuminate.vim - (Neo)Vim plugin for automatically highlighting other uses of the word under the cursor using either LSP, Tree-sitter, or regex matching.
 	{
-		"RRethy/vim-illuminate",
+		"ofseed/vim-illuminate",
+		-- "RRethy/vim-illuminate",
 		event = "VeryLazy",
 		cond = is_not_embedded,
 	},
