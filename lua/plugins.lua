@@ -61,14 +61,6 @@ require("lazy").setup({
 		cond = is_not_embedded,
 	},
 
-	--  ☕ Dead simple yet super extensible plugin to center the currently focused buffer to the middle of the screen.
-	{
-		"shortcuts/no-neck-pain.nvim",
-		event = { "BufWinEnter", "WinEnter" },
-		config = require("plugins._no_neck_pain").config,
-		cond = is_not_embedded,
-	},
-
 	-- illuminate.vim - (Neo)Vim plugin for automatically highlighting other uses of the word under the cursor using either LSP, Tree-sitter, or regex matching.
 	{
 		"ofseed/vim-illuminate",
@@ -339,8 +331,8 @@ require("lazy").setup({
 	-- A tree like view for symbols in Neovim using the Language Server Protocol. Supports all your favourite languages.
 	{
 		"hedyhli/outline.nvim",
-		config = require("plugins._symbols_outline").config,
-		event = "VeryLazy",
+		config = require("plugins._outline").config,
+		event = { "VeryLazy" },
 		cond = is_not_embedded,
 	},
 
