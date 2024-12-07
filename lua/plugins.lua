@@ -64,7 +64,7 @@ require("lazy").setup({
 	--  ☕ Dead simple yet super extensible plugin to center the currently focused buffer to the middle of the screen.
 	{
 		"shortcuts/no-neck-pain.nvim",
-		event = "VeryLazy",
+		event = { "BufWinEnter", "WinEnter" },
 		config = require("plugins._no_neck_pain").config,
 		cond = is_not_embedded,
 	},

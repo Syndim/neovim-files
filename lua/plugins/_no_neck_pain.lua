@@ -3,6 +3,10 @@ local M = {}
 function M.config()
 	require("no-neck-pain").setup({
 		width = 120,
+		autocmds = {
+			enableOnVimEnter = true,
+			enableOnTabEnter = true,
+		},
 		integrations = {
 			outline = {
 				position = "right",
