@@ -647,8 +647,7 @@ require("lazy").setup({
 		"wojciech-kulik/xcodebuild.nvim",
 		dependencies = {
 			"nvim-telescope/telescope.nvim",
-			"MunifTanjim/nui.nvim",
-			"nvim-tree/nvim-tree.lua",
+			"MunifTanjim/nui.nvim"
 		},
 		config = require("plugins._xcode_build").config,
 	},
