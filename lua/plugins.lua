@@ -31,6 +31,15 @@ require("lazy").setup({
 		config = require("plugins._snacks").config,
 	},
 
+	-- Library of 40+ independent Lua modules improving overall Neovim (version 0.8 and higher) experience with minimal effort
+	{
+		"echasnovski/mini.nvim",
+		version = "*",
+		event = "VeryLazy",
+		config = require("plugins._mini").config,
+		cond = is_not_embedded,
+	},
+
 	-- Editor interface
 	-- Open files and command output from neovim terminals in your current neovim instance
 	{
@@ -52,12 +61,11 @@ require("lazy").setup({
 		cond = is_not_embedded,
 	},
 
-	-- Library of 40+ independent Lua modules improving overall Neovim (version 0.8 and higher) experience with minimal effort
+	--  ☕ Dead simple yet super extensible plugin to center the currently focused buffer to the middle of the screen.
 	{
-		"echasnovski/mini.nvim",
-		version = "*",
+		"shortcuts/no-neck-pain.nvim",
 		event = "VeryLazy",
-		config = require("plugins._mini").config,
+		config = require("plugins._no_neck_pain").config,
 		cond = is_not_embedded,
 	},
 
@@ -647,7 +655,7 @@ require("lazy").setup({
 		"wojciech-kulik/xcodebuild.nvim",
 		dependencies = {
 			"nvim-telescope/telescope.nvim",
-			"MunifTanjim/nui.nvim"
+			"MunifTanjim/nui.nvim",
 		},
 		config = require("plugins._xcode_build").config,
 	},
