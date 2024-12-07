@@ -38,7 +38,7 @@ function M.setup()
 		end)
 	end
 
-	if github_proxy ~= nil and github_proxy ~= "" then
+	if github_proxy ~= nil and github_proxy ~= "https://" then
 		download.from_github = download_from_github
 	end
 end

@@ -192,16 +192,11 @@ require("lazy").setup({
 		event = "VeryLazy",
 	},
 
-	-- A file explorer tree for neovim written in lua
+	-- A Neovim Plugin for the yazi terminal file manager
 	{
-		"nvim-tree/nvim-tree.lua",
-		dependencies = { "kyazdani42/nvim-web-devicons" },
-		config = require("plugins._nvim_tree").config,
-		keys = {
-			{ "<F2>" },
-			{ "<F3>" },
-		},
-		cond = is_not_embedded,
+		"mikavilpas/yazi.nvim",
+		event = "VeryLazy",
+		config = require("plugins._yazi").config,
 	},
 
 	-- Neovim plugin to improve the default vim.ui interfaces
@@ -458,8 +453,8 @@ require("lazy").setup({
 	-- Performant, batteries-included completion plugin for Neovim
 	{
 		"saghen/blink.cmp",
-		lazy = false, -- lazy loading handled internally
-		setup = require("plugins._blink").setup,
+		lazy = false,
+		init = require("plugins._blink").setup,
 		config = require("plugins._blink").config,
 		dependencies = {
 			"rafamadriz/friendly-snippets",
