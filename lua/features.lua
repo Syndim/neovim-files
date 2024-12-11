@@ -17,7 +17,7 @@ local M = {
 
 	enable_copilot = function()
 		if not global.is_embedded then
-			load_plugins({ "copilot.vim", "copilot-status.nvim" })
+			load_plugins({ "copilot.vim" })
 			require("features").is_copilot_enabled = true
 		end
 	end,

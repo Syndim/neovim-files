@@ -47,6 +47,7 @@ function M.config()
 	require("blink.cmp").setup({
 		keymap = {
 			preset = "enter",
+			["<C-f>"] = {},
 			["<C-u>"] = { "scroll_documentation_up", "fallback" },
 			["<C-d>"] = { "scroll_documentation_down", "fallback" },
 		},

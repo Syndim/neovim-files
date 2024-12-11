@@ -567,12 +567,6 @@ require("lazy").setup({
 		cond = is_not_embedded,
 	},
 
-	{
-		"ofseed/copilot-status.nvim",
-		version = false,
-		cond = is_not_embedded,
-	},
-
 	-- Free, ultrafast Copilot alternative for Vim and Neovim
 	{
 		"Exafunction/codeium.vim",

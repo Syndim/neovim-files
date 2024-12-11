@@ -1,10 +1,10 @@
 local M = {}
 
 local global = require("global")
-local codeium_initialize = false
+local codeium_initialized = false
 
 function M.status()
-	if codeium_initialize then
+	if codeium_initialized then
 		local status = vim.api.nvim_buf_get_var(0, "_codeium_status")
 		if status == nil then
 			if vim.fn["codeium#Enabled"]() then
@@ -46,16 +46,7 @@ function M.config()
 		return vim.fn["codeium#Clear"]()
 	end, { expr = true })
 
-	if vim.g.neovide and global.is_mac then
-		vim.keymap.set("i", "‘", function()
-			return vim.fn["codeium#CycleCompletions"](1)
-		end, { expr = true })
-		vim.keymap.set("i", "“", function()
-			return vim.fn["codeium#CycleCompletions"](-1)
-		end, { expr = true })
-	end
-
-	codeium_initialize = true
+	codeium_initialized = true
 end
 
 return M
