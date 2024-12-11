@@ -53,18 +53,6 @@ function M.config()
 	end
 
 	local global = require("global")
-	-- local utils = require('utils')
-	--
-	-- if os.execute('rustup which rust-analyzer' .. global.redirect) ~= 0 then
-	--     vim.notify('Installing rust-analyzer')
-	--     utils.start_cmd('rustup', { 'component', 'add', 'rust-analyzer' }, function(code)
-	--         if code == 0 then
-	--             vim.notify('rust-analyzer installed')
-	--         else
-	--             vim.notify("rust-analyzer failed to install")
-	--         end
-	--     end)
-	-- end
 
 	vim.g.rustaceanvim = {
 		server = rust_config,

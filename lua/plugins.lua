@@ -93,6 +93,14 @@ require("lazy").setup({
 		config = require("plugins._todo_comments").config,
 	},
 
+	-- A fancy, configurable, notification manager for NeoVim
+	{
+		"rcarriga/nvim-notify",
+		config = require("plugins._notify").config,
+		lazy = false,
+		cond = is_not_embedded,
+	},
+
 	-- Extensible UI for Neovim notifications and LSP progress messages.
 	{
 		"j-hui/fidget.nvim",
