@@ -561,8 +561,7 @@ require("lazy").setup({
 
 	-- Neovim plugin for GitHub Copilot
 	{
-		"github/copilot.vim",
-		init = require("plugins._copilot").setup,
+		"zbirenbaum/copilot.lua",
 		config = require("plugins._copilot").config,
 		cond = is_not_embedded,
 	},
