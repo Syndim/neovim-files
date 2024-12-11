@@ -20,9 +20,23 @@ function M.status()
 end
 
 function M.config()
+	local global = require("global")
+
+	if global.github_proxy ~= nil and global.github_proxy ~= "" then
+		-- patch download method
+		local update = require("codeium.update")
+		local original_download = update.download
+		local function download(callback)
+			local info = update.get_bin_info()
+			info.download_url = string.gsub(info.download_url, "https://", global.github_proxy)
+			original_download(callback)
+		end
+		update.download = download
+	end
+
 	require("codeium").setup({
 		detect_proxy = true,
-		enable_chat = true,
+		enable_chat = false,
 		enable_cmp_source = false,
 		virtual_text = {
 			enabled = true,
