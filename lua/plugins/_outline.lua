@@ -6,6 +6,7 @@ function M.config()
 			position = "left",
 			show_numbers = true,
 			show_relative_numbers = true,
+			width = 20,
 		},
 	})
 	vim.keymap.set("n", "<F4>", vim.cmd.Outline, {})
