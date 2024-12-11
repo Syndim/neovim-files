@@ -21,6 +21,8 @@ end
 
 function M.config()
 	require("codeium").setup({
+		detect_proxy = true,
+		enable_chat = true,
 		enable_cmp_source = false,
 		virtual_text = {
 			enabled = true,
@@ -32,18 +34,6 @@ function M.config()
 			},
 		},
 	})
-	-- vim.keymap.set("i", "<C-f>", function()
-	-- 	return vim.fn["codeium#Accept"]()
-	-- end, { expr = true })
-	-- vim.keymap.set("i", "<M-]>", function()
-	-- 	return vim.fn["codeium#CycleCompletions"](1)
-	-- end, { expr = true })
-	-- vim.keymap.set("i", "<M-[>", function()
-	-- 	return vim.fn["codeium#CycleCompletions"](-1)
-	-- end, { expr = true })
-	-- vim.keymap.set("i", "<c-]>", function()
-	-- 	return vim.fn["codeium#Clear"]()
-	-- end, { expr = true })
 
 	codeium_initialized = true
 end
