@@ -24,7 +24,7 @@ local M = {
 
 	enable_codeium = function()
 		if not global.is_embedded then
-			load_plugins({ "codeium.vim" })
+			load_plugins({ "codeium.nvim" })
 			require("features").is_codeium_enabled = true
 		end
 	end,

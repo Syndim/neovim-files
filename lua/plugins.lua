@@ -569,10 +569,9 @@ require("lazy").setup({
 
 	-- Free, ultrafast Copilot alternative for Vim and Neovim
 	{
-		"Exafunction/codeium.vim",
+		"Exafunction/codeium.nvim",
 		cmd = "Codeium",
 		config = require("plugins._codeium").config,
-		init = require("plugins._codeium").setup,
 		cond = is_not_embedded,
 	},
 
