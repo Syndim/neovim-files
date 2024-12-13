@@ -4,7 +4,8 @@ function M.setup()
 	local download = require("blink.cmp.fuzzy.download")
 	local github_proxy = require("global").github_proxy
 
-	local download_from_github = function(tag, cb)
+	local function download_from_github(tag, cb)
+		local download_config = require("blink.cmp.config").fuzzy.prebuilt_binaries
 		download.get_system_triple(function(system_triple)
 			if not system_triple then
 				return cb(
@@ -19,17 +20,22 @@ function M.setup()
 				.. system_triple
 				.. download.get_lib_extension()
 
-			vim.system({
-				"curl",
+			local args = { "curl" }
+
+			vim.list_extend(args, download_config.extra_curl_args)
+			vim.list_extend(args, {
 				"--fail", -- Fail on 4xx/5xx
 				"--location", -- Follow redirects
 				"--silent", -- Don't show progress
 				"--show-error", -- Show errors, even though we're using --silent
 				"--create-dirs",
 				"--output",
+
 				download.lib_path,
 				url,
-			}, {}, function(out)
+			})
+
+			vim.system(args, {}, function(out)
 				if out.code ~= 0 then
 					return cb("Failed to download pre-build binaries: " .. out.stderr)
 				end
