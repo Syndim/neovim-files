@@ -63,9 +63,9 @@ end
 g.mapleader = ","
 
 if global.is_windows then
-	o.shell = "cmd.exe"
+	o.shell = "powershell.exe"
 elseif global.is_linux or global.is_mac then
-	o.shell = "bash"
+	o.shell = "fish"
 end
 
 if global.is_windows then

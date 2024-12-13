@@ -53,14 +53,6 @@ require("lazy").setup({
 		cond = is_not_embedded,
 	},
 
-	-- Indent guides for Neovim
-	{
-		"lukas-reineke/indent-blankline.nvim",
-		event = "VeryLazy",
-		config = require("plugins._indent_blankline").config,
-		cond = is_not_embedded,
-	},
-
 	-- illuminate.vim - (Neo)Vim plugin for automatically highlighting other uses of the word under the cursor using either LSP, Tree-sitter, or regex matching.
 	{
 		"ofseed/vim-illuminate",
@@ -91,14 +83,6 @@ require("lazy").setup({
 		dependencies = "nvim-lua/plenary.nvim",
 		event = "VeryLazy",
 		config = require("plugins._todo_comments").config,
-	},
-
-	-- A fancy, configurable, notification manager for NeoVim
-	{
-		"rcarriga/nvim-notify",
-		config = require("plugins._notify").config,
-		lazy = false,
-		cond = is_not_embedded,
 	},
 
 	-- Extensible UI for Neovim notifications and LSP progress messages.
@@ -314,14 +298,6 @@ require("lazy").setup({
 			{ "<leader>s" },
 		},
 		config = require("plugins._nvim_spectre").config,
-		cond = is_not_embedded,
-	},
-
-	-- A neovim lua plugin to help easily manage multiple terminal windows
-	{
-		"akinsho/toggleterm.nvim",
-		config = require("plugins._toggleterm").config,
-		lazy = false,
 		cond = is_not_embedded,
 	},
 
