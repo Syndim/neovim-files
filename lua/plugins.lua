@@ -364,7 +364,6 @@ require("lazy").setup({
 		},
 		config = require("plugins._mason_lspconfig").config,
 		event = { "BufReadPost", "BufNewFile" },
-		run = ":Mason",
 		cond = is_not_embedded,
 	},
 
@@ -374,6 +373,7 @@ require("lazy").setup({
 		dependencies = { "williamboman/mason.nvim", "williamboman/mason-lspconfig.nvim" },
 		config = require("plugins._mason_tool_installer").config,
 		event = { "BufReadPost", "BufNewFile" },
+		cmd = "Mason",
 		cond = is_not_embedded,
 	},
 
