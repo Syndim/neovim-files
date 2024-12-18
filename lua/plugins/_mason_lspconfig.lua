@@ -9,7 +9,7 @@ function M.config()
 	local lsp = require("plugins._lsp")
 	local lsp_config = require("lspconfig")
 	local common_servers = {
-		"cmake",
+		"neocmake",
 		"cssls",
 		"dockerls",
 		"html",
