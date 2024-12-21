@@ -1,27 +1,17 @@
 local M = {}
 
 function M.setup()
-	local download = require("blink.cmp.fuzzy.download")
 	local github_proxy = require("global").github_proxy
 
-	local function download_from_github(tag, cb)
+	local download = require("blink.cmp.fuzzy.download")
+
+	local function download_file(url, filename)
 		local download_config = require("blink.cmp.config").fuzzy.prebuilt_binaries
-		download.get_system_triple(function(system_triple)
-			if not system_triple then
-				return cb(
-					"Your system is not supported by pre-built binaries. You must run cargo build --release via your package manager with rust nightly. See the README for more info."
-				)
-			end
-
-			local url = github_proxy
-				.. "github.com/saghen/blink.cmp/releases/download/"
-				.. tag
-				.. "/"
-				.. system_triple
-				.. download.get_lib_extension()
-
+		local async = require("blink.cmp.lib.async")
+		local files = require("blink.cmp.fuzzy.download.files")
+		url = string.gsub(url, "https://github.com", github_proxy .. "github.com")
+		return async.task.new(function(resolve, reject)
 			local args = { "curl" }
-
 			vim.list_extend(args, download_config.extra_curl_args)
 			vim.list_extend(args, {
 				"--fail", -- Fail on 4xx/5xx
@@ -30,22 +20,22 @@ function M.setup()
 				"--show-error", -- Show errors, even though we're using --silent
 				"--create-dirs",
 				"--output",
-
-				download.lib_path,
+				files.lib_folder .. "/" .. filename,
 				url,
 			})
 
 			vim.system(args, {}, function(out)
 				if out.code ~= 0 then
-					return cb("Failed to download pre-build binaries: " .. out.stderr)
+					reject("Failed to download " .. filename .. "for pre-built binaries: " .. out.stderr)
+				else
+					resolve()
 				end
-				cb()
 			end)
 		end)
 	end
 
 	if github_proxy ~= nil and github_proxy ~= "https://" then
-		download.from_github = download_from_github
+		download.download_file = download_file
 	end
 end
 
@@ -56,16 +46,29 @@ function M.config()
 			["<C-f>"] = {},
 			["<C-u>"] = { "scroll_documentation_up", "fallback" },
 			["<C-d>"] = { "scroll_documentation_down", "fallback" },
+			cmdline = {
+				preset = "super-tab",
+			},
 		},
 		appearance = {
 			use_nvim_cmp_as_default = true,
 			nerd_font_variant = "mono",
 		},
 		sources = {
-			default = { "lsp", "path", "snippets", "buffer", "lazydev", "crates", "npm" },
+			default = function(ctx)
+				local sources = { "lsp", "buffer", "snippets", "path" }
+				if vim.bo.filetype == "toml" then
+					table.insert(sources, "crates")
+				elseif vim.bo.filetype == "json" then
+					table.insert(sources, "npm")
+				elseif vim.bo.filetype == "lua" then
+					table.insert(sources, "lazydev")
+				end
+
+				return sources
+			end,
 			providers = {
-				lsp = { fallback_for = { "lazydev" } },
-				lazydev = { name = "LazyDev", module = "lazydev.integrations.blink" },
+				lazydev = { name = "LazyDev", module = "lazydev.integrations.blink", fallbacks = { "lsp" } },
 				crates = {
 					name = "crates",
 					module = "blink.compat.source",
@@ -84,15 +87,15 @@ function M.config()
 					enabled = true,
 				},
 			},
+			list = {
+				selection = "auto_insert",
+			},
 			documentation = {
 				auto_show = true,
 			},
 		},
 		signature = {
 			enabled = true,
-			trigger = {
-				show_on_insert_or_trigger_character = true,
-			},
 		},
 	})
 end
