@@ -62,9 +62,7 @@ function M.config()
 			nerd_font_variant = "mono",
 		},
 		sources = {
-			completion = {
-				enabled_providers = { "lsp", "path", "snippets", "buffer", "lazydev", "crates", "npm" },
-			},
+			default = { "lsp", "path", "snippets", "buffer", "lazydev", "crates", "npm" },
 			providers = {
 				lsp = { fallback_for = { "lazydev" } },
 				lazydev = { name = "LazyDev", module = "lazydev.integrations.blink" },
