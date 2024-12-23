@@ -48,7 +48,6 @@ function M.config()
 			["<C-d>"] = { "scroll_documentation_down", "fallback" },
 			cmdline = {
 				preset = "enter",
-				["<CR>"] = {},
 			},
 		},
 		appearance = {
@@ -107,7 +106,7 @@ function M.config()
 		callback = function()
 			local list = require("blink.cmp.completion.list")
 			orig_list_selection = list.config.selection
-			list.config.selection = "auto_insert"
+			list.config.selection = "manual"
 		end,
 	})
 	vim.api.nvim_create_autocmd("CmdlineLeave", {
