@@ -345,14 +345,6 @@ require("lazy").setup({
 		event = "VeryLazy",
 	},
 
-	-- Enhanced matchparen.vim plugin for Neovim
-	{
-		"utilyre/sentiment.nvim",
-		version = "*",
-		config = require("plugins._sentiment").config,
-		event = "VeryLazy",
-	},
-
 	-- LSP and auto completion
 	-- Extension to mason.nvim that makes it easier to lspconfig with mason.nvim
 	{

@@ -33,6 +33,9 @@ function M.config()
 
 	-- mini.trailspace
 	require("mini.trailspace").setup()
+
+	-- mini.pairs
+	require("mini.pairs").setup()
 end
 
 return M
