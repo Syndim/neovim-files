@@ -35,7 +35,13 @@ function M.config()
 	require("mini.trailspace").setup()
 
 	-- mini.pairs
-	require("mini.pairs").setup()
+	require("mini.pairs").setup({
+		modes = {
+			insert = true,
+			command = true,
+			terminal = true,
+		},
+	})
 end
 
 return M
