@@ -47,7 +47,8 @@ function M.config()
 			["<C-u>"] = { "scroll_documentation_up", "fallback" },
 			["<C-d>"] = { "scroll_documentation_down", "fallback" },
 			cmdline = {
-				preset = "super-tab",
+				preset = "enter",
+				["<CR>"] = {},
 			},
 		},
 		appearance = {
@@ -88,15 +89,34 @@ function M.config()
 				},
 			},
 			list = {
-				selection = "auto_insert",
+				-- selection = "auto_insert",
 			},
 			documentation = {
 				auto_show = true,
+				auto_show_delay_ms = 500,
 			},
 		},
 		signature = {
 			enabled = true,
 		},
+	})
+
+	-- https://github.com/Saghen/blink.cmp/issues/542#issuecomment-2542465747
+	local orig_list_selection
+	vim.api.nvim_create_autocmd("CmdlineEnter", {
+		callback = function()
+			local list = require("blink.cmp.completion.list")
+			orig_list_selection = list.config.selection
+			list.config.selection = "auto_insert"
+		end,
+	})
+	vim.api.nvim_create_autocmd("CmdlineLeave", {
+		callback = function()
+			if orig_list_selection then
+				local list = require("blink.cmp.completion.list")
+				list.config.selection = orig_list_selection
+			end
+		end,
 	})
 end
 
