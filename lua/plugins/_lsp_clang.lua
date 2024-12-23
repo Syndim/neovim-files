@@ -10,6 +10,7 @@ function M.setup(config)
 		filetypes = { "c", "cpp", "cuda" },
 	})
 	require("clangd_extensions").setup({})
+	require("clangd_extensions.inlay_hints").disable_inlay_hints()
 	local lsp_config = require("lspconfig")
 	lsp_config["clangd"].setup(clang_config)
 end
