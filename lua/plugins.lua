@@ -552,7 +552,7 @@ require("lazy").setup({
 	-- Chat with GitHub Copilot in Neovim
 	{
 		"CopilotC-Nvim/CopilotChat.nvim",
-		build = "make",
+		-- build = "make",
 		dependencies = {
 			{ "zbirenbaum/copilot.lua" },
 			{ "nvim-lua/plenary.nvim", branch = "master" },
