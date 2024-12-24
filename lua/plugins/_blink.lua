@@ -88,7 +88,9 @@ function M.config()
 				},
 			},
 			list = {
-				-- selection = "auto_insert",
+				selection = function(ctx)
+					return ctx.mode == "cmdline" and "auto_insert" or "preselect"
+				end,
 			},
 			documentation = {
 				auto_show = true,
