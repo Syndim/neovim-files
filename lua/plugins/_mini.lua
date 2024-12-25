@@ -33,6 +33,12 @@ function M.config()
 
 	-- mini.trailspace
 	require("mini.trailspace").setup()
+	local opts = { remap = false }
+	opts.desc = "Remove trailing whitespace"
+	vim.keymap.set("n", "<leader>cl", function()
+		MiniTrailspace.trim()
+		MiniTrailspace.trim_last_lines()
+	end, opts)
 
 	-- mini.pairs
 	require("mini.pairs").setup({
