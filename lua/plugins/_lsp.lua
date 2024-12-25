@@ -11,20 +11,24 @@ local function create_on_attach()
 
 		-- Mappings.
 		-- See `:help vim.lsp.*` for documentation on any of the below functions
+		-- local fzf = require("fzf-lua")
 		opts.desc = "Go to declaration"
 		vim.keymap.set("n", "gD", function()
 			vim.lsp.buf.declaration()
 		end, opts)
 		opts.desc = "Go to definition"
 		vim.keymap.set("n", "gd", function()
+			-- fzf.lsp_definitions()
 			vim.cmd.Telescope("lsp_definitions", "theme=dropdown")
 		end, opts)
 		opts.desc = "Find implementations"
 		vim.keymap.set("n", "gi", function()
+			-- fzf.lsp_implementations()
 			vim.cmd.Telescope("lsp_implementations", "theme=dropdown")
 		end, opts)
 		opts.desc = "Find references"
 		vim.keymap.set("n", "gr", function()
+			-- fzf.lsp_references()
 			vim.cmd.Telescope("lsp_references", "theme=dropdown")
 		end, opts)
 		opts.desc = "Signature help"
@@ -42,6 +46,9 @@ local function create_on_attach()
 		opts.desc = "Rename"
 		vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, opts)
 		opts.desc = "Code action"
+		-- vim.keymap.set("n", "<leader>ca", function()
+		-- 	fzf.lsp_code_actions()
+		-- end, opts)
 		-- vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, opts)
 		vim.keymap.set("n", "<leader>ca", require("actions-preview").code_actions, opts)
 		opts.desc = "Format current document"
@@ -51,10 +58,12 @@ local function create_on_attach()
 		end, opts)
 		opts.desc = "Document symbols"
 		vim.keymap.set("n", "<leader>ds", function()
+			-- fzf.lsp_document_symbols()
 			vim.cmd.Telescope("lsp_document_symbols", "theme=dropdown")
 		end, opts)
 		opts.desc = "Workspace symbols"
 		vim.keymap.set("n", "<leader>ws", function()
+			-- fzf.lsp_live_workspace_symbols()
 			vim.cmd.Telescope("lsp_dynamic_workspace_symbols", "theme=dropdown")
 		end, opts)
 		if

@@ -31,6 +31,7 @@ function M.config()
 	vim.keymap.set("n", "<leader>ed", cmd.XcodebuildSelectDevice, { desc = "Select Device" })
 	vim.keymap.set("n", "<leader>ep", cmd.XcodebuildSelectTestPlan, { desc = "Select Test Plan" })
 	vim.keymap.set("n", "<leader>eq", function()
+		-- require("fzf-lua").quickfix()
 		cmd.Telescope({ "quickfix" })
 	end, { desc = "Show QuickFix List" })
 

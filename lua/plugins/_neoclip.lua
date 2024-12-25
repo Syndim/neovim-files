@@ -15,6 +15,7 @@ function M.config()
 	local opts = { remap = false }
 	opts.desc = "Open neoclip"
 	vim.keymap.set("n", "<leader>p", function()
+		-- require("neoclip.fzf")()
 		require("telescope").extensions.neoclip.default(ts.dropdown_theme)
 	end, opts)
 end

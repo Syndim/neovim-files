@@ -112,7 +112,10 @@ require("lazy").setup({
 	-- Clipboard manager neovim plugin with telescope integration
 	{
 		"AckslD/nvim-neoclip.lua",
-		dependencies = { "nvim-telescope/telescope.nvim", "kkharji/sqlite.lua" },
+		dependencies = {
+			"nvim-telescope/telescope.nvim",
+			"kkharji/sqlite.lua",
+		},
 		config = require("plugins._neoclip").config,
 		event = "VeryLazy",
 		cond = is_not_embedded,
@@ -262,6 +265,14 @@ require("lazy").setup({
 		event = "VeryLazy",
 		cond = is_not_embedded,
 	},
+
+	-- Improved fzf.vim written in lua
+	-- {
+	-- 	"ibhagwan/fzf-lua",
+	-- 	config = require("plugins._fzf").config,
+	-- 	event = "VeryLazy",
+	-- 	cond = is_not_embedded,
+	-- },
 
 	-- Find, Filter, Preview, Pick. All lua, all the time.
 	{
@@ -692,8 +703,11 @@ require("lazy").setup({
 
 	-- Tools to help create flutter apps in neovim using the native lsp
 	{
-		"akinsho/flutter-tools.nvim",
-		dependencies = { "nvim-lua/plenary.nvim", "nvim-telescope/telescope.nvim" },
+		"nvim-flutter/flutter-tools.nvim",
+		dependencies = {
+			"nvim-lua/plenary.nvim",
+			"nvim-telescope/telescope.nvim",
+		},
 		config = require("plugins._lsp_flutter").config,
 		ft = "dart",
 		cond = is_not_embedded,

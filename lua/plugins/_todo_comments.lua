@@ -12,6 +12,7 @@ function M.config()
 	}
 
 	opts.desc = "Open todo"
+	-- vim.keymap.set("n", "<leader>td", vim.cmd.TodoFzfLua, opts)
 	vim.keymap.set("n", "<leader>td", vim.cmd.TodoTelescope, opts)
 end
 
