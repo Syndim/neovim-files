@@ -117,17 +117,6 @@ require("lazy").setup({
 		event = "VeryLazy",
 		cond = is_not_embedded,
 	},
-
-	-- Integrates vim-bookmarks into telescope.nvim
-	{
-		"tom-anders/telescope-vim-bookmarks.nvim",
-		dependencies = "MattesGroeger/vim-bookmarks",
-		config = require("plugins._bookmarks").config,
-		init = require("plugins._bookmarks").setup,
-		event = "VeryLazy",
-		cond = is_not_embedded,
-	},
-
 	--  The fastest Neovim colorizer.
 	{
 		"norcalli/nvim-colorizer.lua",
