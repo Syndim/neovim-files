@@ -56,6 +56,10 @@ function M.config()
 		},
 		sources = {
 			default = function(ctx)
+				if vim.bo.filetype == "DressingInput" then
+					return {}
+				end
+
 				local sources = { "lsp", "buffer", "snippets", "path" }
 				if vim.bo.filetype == "toml" then
 					table.insert(sources, "crates")
