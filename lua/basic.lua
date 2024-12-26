@@ -63,12 +63,7 @@ end
 g.mapleader = ","
 
 if global.is_windows then
-	local home = os.getenv("HOME")
-	if home then
-		o.shell = "powershell.exe -NoExit -File " .. home .. "/.config/powershell/setup/setup.ps1"
-	else
-		o.shell = "powershell.exe"
-	end
+	o.shell = "cmd.exe"
 elseif global.is_linux or global.is_mac then
 	o.shell = "fish"
 end

@@ -2,6 +2,7 @@ local M = {}
 
 function M.config()
 	local Snacks = require("snacks")
+	local global = require("global")
 	Snacks.setup({
 		bigfile = { enabled = true },
 		notifier = { enabled = true, style = "fancy" },
@@ -34,7 +35,23 @@ function M.config()
 	end, options)
 	options.desc = "Toggle terminal"
 	vim.keymap.set("", "<F12>", function()
-		Snacks.terminal.toggle()
+		if global.is_windows then
+			local cmd
+			local home = os.getenv("HOME")
+			if home then
+				cmd = "powershell.exe -NoExit -File " .. home .. "/.config/powershell/setup/setup.ps1"
+			else
+				cmd = vim.o.shell
+			end
+
+			Snacks.terminal.toggle(cmd, {
+				win = {
+					position = "bottom",
+				},
+			})
+		else
+			Snacks.terminal.toggle()
+		end
 	end)
 	vim.api.nvim_create_user_command("Notifications", function()
 		Snacks.notifier.show_history({})

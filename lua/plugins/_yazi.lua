@@ -3,6 +3,7 @@ local M = {}
 function M.config()
 	require("yazi").setup({
 		open_for_directories = true,
+		use_ya_for_events_reading = true,
 	})
 
 	local opts = {
