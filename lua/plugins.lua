@@ -674,16 +674,6 @@ require("lazy").setup({
 		cond = is_not_embedded,
 	},
 
-	-- Just
-	--  Treesitter grammar for Justfiles (casey/just)
-	{
-		"IndianBoy42/tree-sitter-just",
-		dependencies = { "nvim-treesitter/nvim-treesitter" },
-		config = require("plugins._just").config,
-		ft = "just",
-		cond = is_not_embedded,
-	},
-
 	-- HTML/CSS
 	-- emmet for vim: http://emmet.io/
 	{
