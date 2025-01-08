@@ -92,9 +92,12 @@ function M.config()
 				},
 			},
 			list = {
-				selection = function(ctx)
-					return ctx.mode == "cmdline" and "auto_insert" or "preselect"
-				end,
+				selection = {
+					auto_insert = true,
+					preselect = function(ctx)
+						return ctx.mode ~= "cmdline" and not require("blink.cmp").snippet_active({ direction = 1 })
+					end,
+				},
 			},
 			documentation = {
 				auto_show = true,
@@ -104,24 +107,6 @@ function M.config()
 		signature = {
 			enabled = true,
 		},
-	})
-
-	-- https://github.com/Saghen/blink.cmp/issues/542#issuecomment-2542465747
-	local orig_list_selection
-	vim.api.nvim_create_autocmd("CmdlineEnter", {
-		callback = function()
-			local list = require("blink.cmp.completion.list")
-			orig_list_selection = list.config.selection
-			list.config.selection = "manual"
-		end,
-	})
-	vim.api.nvim_create_autocmd("CmdlineLeave", {
-		callback = function()
-			if orig_list_selection then
-				local list = require("blink.cmp.completion.list")
-				list.config.selection = orig_list_selection
-			end
-		end,
 	})
 end
 
