@@ -9,13 +9,13 @@ function M.config()
 	})
 
 	vim.keymap.set(
-		"n",
+		{ "n", "v" },
 		"<Leader>cdc",
 		vim.cmd.TSCppDefineClassFunc,
 		{ remap = false, desc = "Generate class definition" }
 	)
 	vim.keymap.set(
-		"n",
+		{ "n", "v" },
 		"<Leader>cmc",
 		vim.cmd.TSCppMakeConcreteClass,
 		{ remap = false, desc = "Generate concrete class from interface" }
