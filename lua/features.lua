@@ -17,7 +17,7 @@ local M = {
 
 	enable_copilot = function()
 		if not global.is_embedded then
-			load_plugins({ "copilot.lua", "CopilotChat.nvim" })
+			load_plugins({ "copilot.lua", "codecompanion.nvim" })
 			require("features").is_copilot_enabled = true
 		end
 	end,

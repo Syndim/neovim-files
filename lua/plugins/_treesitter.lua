@@ -62,6 +62,7 @@ function M.config()
 			"tsx",
 			"vimdoc",
 			"just",
+			"markdown",
 		},
 		incremental_selection = {
 			enable = true,

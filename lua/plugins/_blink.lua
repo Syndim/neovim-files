@@ -40,6 +40,7 @@ function M.setup()
 end
 
 function M.config()
+	local features = require("features")
 	require("blink.cmp").setup({
 		keymap = {
 			preset = "enter",
@@ -61,6 +62,9 @@ function M.config()
 				end
 
 				local sources = { "lsp", "buffer", "snippets", "path" }
+				if features.is_copilot_enabled then
+					table.insert(sources, "codecompanion")
+				end
 				if vim.bo.filetype == "toml" then
 					table.insert(sources, "crates")
 				elseif vim.bo.filetype == "json" then

@@ -48,6 +48,8 @@ function M.config()
 			terminal = true,
 		},
 	})
+
+	require("mini.diff").setup()
 end
 
 return M

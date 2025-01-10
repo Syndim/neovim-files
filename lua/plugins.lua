@@ -310,14 +310,6 @@ require("lazy").setup({
 		cond = is_not_embedded,
 	},
 
-	--  Plugin to improve viewing Markdown files in Neovim
-	{
-		"MeanderingProgrammer/render-markdown.nvim",
-		ft = { "markdown", "copilot-chat" },
-		config = require("plugins._render_markdown").config,
-		cond = is_not_embedded,
-	},
-
 	-- Language support
 	-- Generic
 	-- A tree like view for symbols in Neovim using the Language Server Protocol. Supports all your favourite languages.
@@ -549,15 +541,23 @@ require("lazy").setup({
 		cond = is_not_embedded,
 	},
 
-	-- Chat with GitHub Copilot in Neovim
+	-- ✨ AI-powered coding, seamlessly in Neovim
 	{
-		"CopilotC-Nvim/CopilotChat.nvim",
-		-- build = "make",
+		"olimorris/codecompanion.nvim",
 		dependencies = {
-			{ "zbirenbaum/copilot.lua" },
-			{ "nvim-lua/plenary.nvim", branch = "master" },
+			{ "nvim-lua/plenary.nvim", version = false },
+			"nvim-treesitter/nvim-treesitter",
+			"zbirenbaum/copilot.lua",
 		},
-		config = require("plugins._copilot_chat").config,
+		config = require("plugins._code_companion").config,
+		cond = is_not_embedded,
+	},
+
+	--  Plugin to improve viewing Markdown files in Neovim
+	{
+		"MeanderingProgrammer/render-markdown.nvim",
+		ft = { "markdown", "codecompanion" },
+		config = require("plugins._render_markdown").config,
 		cond = is_not_embedded,
 	},
 
