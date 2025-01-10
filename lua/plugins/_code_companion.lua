@@ -19,12 +19,9 @@ function M.config()
 			},
 		},
 	})
-	vim.keymap.set(
-		"n",
-		"<Leader>cc",
-		vim.cmd.CodeCompanionChat,
-		{ remap = false, desc = "Start new code companion chat" }
-	)
+	vim.keymap.set("n", "<Leader>cc", function()
+		vim.cmd.CodeCompanionChat("Toggle")
+	end, { remap = false, desc = "Start new code companion chat" })
 end
 
 return M
