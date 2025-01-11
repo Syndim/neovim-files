@@ -62,9 +62,15 @@ function M.config()
 				end
 
 				local sources = { "lsp", "buffer", "snippets", "path" }
-				if features.is_copilot_enabled then
+				if features.enable_code_companion then
 					table.insert(sources, "codecompanion")
 				end
+				if features.enable_avante then
+					table.insert(sources, "avante_commands")
+					table.insert(sources, "avante_files")
+					table.insert(sources, "avante_mentions")
+				end
+
 				if vim.bo.filetype == "toml" then
 					table.insert(sources, "crates")
 				elseif vim.bo.filetype == "json" then
@@ -86,6 +92,24 @@ function M.config()
 					name = "npm",
 					module = "blink.compat.source",
 					score_offset = -3,
+				},
+				avante_commands = {
+					name = "avante_commands",
+					module = "blink.compat.source",
+					score_offset = 90,
+					opts = {},
+				},
+				avante_files = {
+					name = "avante_files",
+					module = "blink.compat.source",
+					score_offset = 100,
+					opts = {},
+				},
+				avante_mentions = {
+					name = "avante_mentions",
+					module = "blink.compat.source",
+					score_offset = 1000,
+					opts = {},
 				},
 			},
 		},
