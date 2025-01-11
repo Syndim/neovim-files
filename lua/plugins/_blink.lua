@@ -65,7 +65,7 @@ function M.config()
 				if features.enable_code_companion then
 					table.insert(sources, "codecompanion")
 				end
-				if features.enable_avante then
+				if features.enable_avante and vim.bo.filetype == "AvanteInput" then
 					table.insert(sources, "avante_commands")
 					table.insert(sources, "avante_files")
 					table.insert(sources, "avante_mentions")

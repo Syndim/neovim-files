@@ -22,11 +22,11 @@ function M.setup(opts)
 
 	if not global.is_embedded then
 		if config.enable_avante then
-			load_plugins({ "avante.nvim" })
+			load_plugins({ "copilot.lua", "avante.nvim" })
 		end
 
 		if config.enable_code_companion then
-			load_plugins({ "codecompanion.nvim" })
+			load_plugins({ "copilot.lua", "codecompanion.nvim" })
 		end
 
 		if config.enable_copilot then
