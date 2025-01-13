@@ -556,7 +556,7 @@ require("lazy").setup({
 	-- Use your Neovim like using Cursor AI IDE!
 	{
 		"yetone/avante.nvim",
-		build = "powershell -ExecutionPolicy Bypass -File Build.ps1 -BuildFromSource true" and global.is_windows
+		build = global.is_windows and "powershell -ExecutionPolicy Bypass -File Build.ps1 -BuildFromSource true"
 			or "make BUILD_FROM_SOURCE=true",
 		dependencies = {
 			"stevearc/dressing.nvim",
