@@ -8,6 +8,19 @@ function M.config()
 			provider = "telescope",
 		},
 	})
+
+	-- TODO: Remove this hack after this PR https://github.com/yetone/avante.nvim/pull/864
+	local registry = require("blink.compat.registry")
+	local original_registre_source = registry.register_source
+	function registry.register_source(name, s)
+		if string.find(name, "avante_", 1, true) then
+			function s:is_available()
+				return vim.bo.filetype == "AvanteInput"
+			end
+		end
+
+		original_registre_source(name, s)
+	end
 end
 
 return M
