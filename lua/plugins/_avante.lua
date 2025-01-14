@@ -7,6 +7,9 @@ function M.config()
 		file_selector = {
 			provider = "telescope",
 		},
+		windows = {
+			width = 40,
+		},
 	})
 
 	-- TODO: Remove this hack after this PR https://github.com/yetone/avante.nvim/pull/864
