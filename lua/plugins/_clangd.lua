@@ -1,12 +1,7 @@
 local M = {}
 
 function M.config()
-	vim.keymap.set(
-		"n",
-		"<Leader>a",
-		vim.cmd.ClangdSwitchSourceHeader,
-		{ remap = false, desc = "Switch C/C++ source header" }
-	)
+	vim.api.nvim_create_user_command("A", vim.cmd.ClangdSwitchSourceHeader, { nargs = 0 })
 end
 
 return M
