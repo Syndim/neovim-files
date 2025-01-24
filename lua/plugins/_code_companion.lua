@@ -14,7 +14,7 @@ function M.config()
 			chat = {
 				window = {
 					position = "right",
-					width = 0.4,
+					width = 0.35,
 				},
 			},
 		},

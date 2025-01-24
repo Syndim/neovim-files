@@ -8,7 +8,7 @@ function M.config()
 			provider = "telescope",
 		},
 		windows = {
-			width = 40,
+			width = 35,
 		},
 	})
 
