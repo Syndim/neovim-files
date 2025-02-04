@@ -29,6 +29,7 @@ require("lazy").setup({
 		lazy = false,
 		priority = 1000,
 		config = require("plugins._snacks").config,
+		cond = is_not_embedded,
 	},
 
 	-- Library of 40+ independent Lua modules improving overall Neovim (version 0.8 and higher) experience with minimal effort
@@ -83,6 +84,7 @@ require("lazy").setup({
 		dependencies = "nvim-lua/plenary.nvim",
 		event = "VeryLazy",
 		config = require("plugins._todo_comments").config,
+		cond = is_not_embedded,
 	},
 
 	-- Extensible UI for Neovim notifications and LSP progress messages.
@@ -174,6 +176,7 @@ require("lazy").setup({
 		"nacro90/numb.nvim",
 		config = require("plugins._numb").config,
 		event = "VeryLazy",
+		cond = is_not_embedded,
 	},
 
 	-- A Neovim Plugin for the yazi terminal file manager
@@ -181,6 +184,7 @@ require("lazy").setup({
 		"mikavilpas/yazi.nvim",
 		event = "VeryLazy",
 		config = require("plugins._yazi").config,
+		cond = is_not_embedded,
 	},
 
 	-- Neovim plugin to improve the default vim.ui interfaces
@@ -398,6 +402,7 @@ require("lazy").setup({
 		"stevearc/conform.nvim",
 		config = require("plugins._conform").config,
 		event = "VeryLazy",
+		cond = is_not_embedded,
 	},
 
 	-- An asynchronous linter plugin for Neovim complementary to the built-in Language Server Protocol support.
@@ -405,6 +410,7 @@ require("lazy").setup({
 		"mfussenegger/nvim-lint",
 		config = require("plugins._nvim_lint").config,
 		event = "VeryLazy",
+		cond = is_not_embedded,
 	},
 
 	-- Faster LuaLS setup for Neovim
@@ -423,6 +429,7 @@ require("lazy").setup({
 		"saghen/blink.compat",
 		lazy = true,
 		opts = {},
+		cond = is_not_embedded,
 	},
 
 	-- Performant, batteries-included completion plugin for Neovim
@@ -450,6 +457,7 @@ require("lazy").setup({
 				ft = "json",
 			},
 		},
+		cond = is_not_embedded,
 	},
 
 	-- A completion plugin for neovim coded in Lua.
