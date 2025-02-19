@@ -11,6 +11,21 @@ function M.config()
 		words = { enabled = true },
 		indent = { enabled = true },
 		scope = { enabled = true },
+		explorer = { enabled = true },
+		picker = {
+			sources = {
+				explorer = {
+					win = {
+						list = {
+							keys = {
+								["<Esc>"] = "",
+								["q"] = "",
+							},
+						},
+					},
+				},
+			},
+		},
 	})
 
 	local options = { noremap = true, nowait = true, desc = "Close buffer" }
@@ -56,6 +71,12 @@ function M.config()
 	vim.api.nvim_create_user_command("Notifications", function()
 		Snacks.notifier.show_history({})
 	end, { nargs = 0 })
+	options.desc = "Toggle file tree"
+	vim.keymap.set("", "<F3>", function()
+		Snacks.explorer({
+			follow_file = true,
+		})
+	end, options)
 end
 
 return M

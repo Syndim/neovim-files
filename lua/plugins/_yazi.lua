@@ -12,10 +12,10 @@ function M.config()
 
 	opts.desc = "Open Yazi"
 	vim.keymap.set("", "<F2>", vim.cmd.Yazi, opts)
-	opts.desc = "Open Yazi in working directory"
-	vim.keymap.set("", "<F3>", function()
-		vim.cmd.Yazi("cwd")
-	end, opts)
+	-- opts.desc = "Open Yazi in working directory"
+	-- vim.keymap.set("", "<F3>", function()
+	-- 	vim.cmd.Yazi("cwd")
+	-- end, opts)
 end
 
 return M
