@@ -47,7 +47,9 @@ function M.config()
 			["<C-f>"] = {},
 			["<C-u>"] = { "scroll_documentation_up", "fallback" },
 			["<C-d>"] = { "scroll_documentation_down", "fallback" },
-			cmdline = {
+		},
+		cmdline = {
+			keymap = {
 				preset = "enter",
 			},
 		},
