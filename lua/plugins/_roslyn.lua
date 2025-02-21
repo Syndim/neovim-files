@@ -96,6 +96,7 @@ function M.config()
 
 	require("roslyn").setup({
 		config = config,
+		filewatching = false,
 	})
 
 	vim.api.nvim_create_autocmd({ "InsertLeave" }, {
