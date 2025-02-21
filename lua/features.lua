@@ -9,43 +9,61 @@ local global = require("global")
 
 local M = {
 	lsp_config = {},
-	enable_format_on_save = true,
-	enable_copilot = false,
-	enable_code_companion = false,
-	enable_avante = false,
-	enable_codeium = false,
-	enable_xcode_build = false,
+	plugin_config = {
+		avante = {
+			enabled = false,
+			provider = nil,
+			openai = nil,
+			azure = nil,
+			claude = nil,
+		},
+		codeium = {
+			enabled = false,
+		},
+		copilot = {
+			enabled = false,
+		},
+		code_companion = {
+			enabled = false,
+		},
+		xcode_build = {
+			enabled = false,
+		},
+	},
+	editor_config = {
+		format_on_save = true,
+	},
 }
 
 function M.setup(opts)
 	local config = vim.tbl_deep_extend("force", M, opts)
 
 	if not global.is_embedded then
-		if config.enable_avante then
+		local plugin_config = config.plugin_config
+		if plugin_config.avante.enabled then
 			load_plugins({ "copilot.lua", "avante.nvim" })
 		end
 
-		if config.enable_code_companion then
+		if plugin_config.code_companion.enabled then
 			load_plugins({ "copilot.lua", "codecompanion.nvim" })
 		end
 
-		if config.enable_copilot then
+		if plugin_config.copilot.enabled then
 			load_plugins({ "copilot.lua" })
 		end
 
-		if config.enable_codeium then
+		if plugin_config.codeium.enabled then
 			load_plugins({ "codeium.nvim" })
 		end
 
-		if config.enable_xcode_build then
+		if plugin_config.xcode_build.enabled then
 			load_plugins({ "xcodebuild.nvim" })
 		end
 	else
-		config.enable_code_companion = false
-		config.enable_avante = false
-		config.enable_codeium = false
-		config.enable_copilot = false
-		config.enable_xcode_build = false
+		config.plugin_config.avante.enabled = false
+		config.plugin_config.code_companion.enabled = false
+		config.plugin_config.copilot.enabled = false
+		config.plugin_config.xcode_build.enabled = false
 	end
 
 	for k, v in pairs(config) do

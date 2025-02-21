@@ -20,7 +20,7 @@ api.nvim_create_autocmd({ "BufLeave" }, {
 api.nvim_create_autocmd({ "BufWritePre" }, {
 	callback = function(args)
 		local features = require("features")
-		if features.enable_format_on_save then
+		if features.editor_config.format_on_save then
 			-- vim.lsp.buf.format()
 			require("conform").format({ bufnr = args.buf })
 		end
