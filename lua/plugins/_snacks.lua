@@ -20,6 +20,7 @@ function M.config()
 							keys = {
 								["<Esc>"] = "",
 								["q"] = "",
+								["o"] = { "confirm", mode = { "n" } },
 							},
 						},
 					},
