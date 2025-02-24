@@ -45,7 +45,7 @@ api.nvim_create_autocmd({ "BufEnter" }, {
 api.nvim_create_autocmd({ "BufEnter" }, {
 	pattern = { "*.md" },
 	callback = function()
-		vim.bo.conceallevel = 2
+		vim.o.conceallevel = 2
 	end,
 })
 
