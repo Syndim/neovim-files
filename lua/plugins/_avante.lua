@@ -2,7 +2,7 @@ local M = {}
 
 function M.config()
 	local features = require("features")
-	local avante_config = features.plugin_config.avante
+	local avante_config = features.plugin.avante
 	local provider = avante_config.provider
 	require("avante").setup({
 		provider = provider and provider or "copilot",
