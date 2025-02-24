@@ -35,8 +35,8 @@ function M.config()
 		},
 	}
 
-	if features.lsp_config["rust"] ~= nil then
-		default_settings = vim.tbl_deep_extend("force", default_settings, features.lsp_config["rust"])
+	if features.lsp["rust"] ~= nil then
+		default_settings = vim.tbl_deep_extend("force", default_settings, features.lsp["rust"])
 	end
 
 	local rust_config = vim.tbl_deep_extend("force", config, {
