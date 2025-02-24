@@ -23,7 +23,7 @@ function M.config()
 			enable = true,
 			disable = function(lang, _)
 				local enabled_languages =
-					{ "python", "fish", "ruby", "javascript", "typescript", "typescriptreact", "just" }
+					{ "python", "fish", "ruby", "javascript", "typescript", "typescriptreact", "just", "swift" }
 				for _, enabled in pairs(enabled_languages) do
 					if lang == enabled then
 						return false
@@ -63,6 +63,7 @@ function M.config()
 			"vimdoc",
 			"just",
 			"markdown",
+			"swift",
 		},
 		incremental_selection = {
 			enable = true,
