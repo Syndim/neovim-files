@@ -8,8 +8,8 @@ end
 local global = require("global")
 
 local M = {
-	lsp_config = {},
-	plugin_config = {
+	lsp = {},
+	plugin = {
 		avante = {
 			enabled = false,
 			provider = nil,
@@ -30,7 +30,7 @@ local M = {
 			enabled = false,
 		},
 	},
-	editor_config = {
+	editor = {
 		format_on_save = true,
 	},
 }
@@ -39,7 +39,7 @@ function M.setup(opts)
 	local config = vim.tbl_deep_extend("force", M, opts)
 
 	if not global.is_embedded then
-		local plugin_config = config.plugin_config
+		local plugin_config = config.plugin
 		if plugin_config.avante.enabled then
 			load_plugins({ "copilot.lua", "avante.nvim" })
 		end
@@ -60,10 +60,10 @@ function M.setup(opts)
 			load_plugins({ "xcodebuild.nvim" })
 		end
 	else
-		config.plugin_config.avante.enabled = false
-		config.plugin_config.code_companion.enabled = false
-		config.plugin_config.copilot.enabled = false
-		config.plugin_config.xcode_build.enabled = false
+		config.plugin.avante.enabled = false
+		config.plugin.code_companion.enabled = false
+		config.plugin.copilot.enabled = false
+		config.plugin.xcode_build.enabled = false
 	end
 
 	for k, v in pairs(config) do

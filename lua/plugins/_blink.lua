@@ -64,10 +64,10 @@ function M.config()
 				end
 
 				local sources = { "lsp", "buffer", "snippets", "path" }
-				if features.plugin_config.code_companion.enabled then
+				if features.plugin.code_companion.enabled then
 					table.insert(sources, "codecompanion")
 				end
-				if features.plugin_config.avante.enabled and vim.bo.filetype == "AvanteInput" then
+				if features.plugin.avante.enabled and vim.bo.filetype == "AvanteInput" then
 					table.insert(sources, "avante_commands")
 					table.insert(sources, "avante_files")
 					table.insert(sources, "avante_mentions")
