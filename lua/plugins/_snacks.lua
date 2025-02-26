@@ -72,12 +72,18 @@ function M.config()
 	vim.api.nvim_create_user_command("Notifications", function()
 		Snacks.notifier.show_history({})
 	end, { nargs = 0 })
+	local explorer = nil
 	options.desc = "Toggle file tree"
 	vim.keymap.set("", "<F3>", function()
-		Snacks.explorer({
+		explorer = Snacks.explorer({
 			follow_file = true,
 		})
 	end, options)
+	vim.api.nvim_create_user_command("SnacksExplorerClose", function()
+		if explorer and not explorer.is_closed then
+			explorer:close()
+		end
+	end, { nargs = 0 })
 end
 
 return M
