@@ -67,10 +67,8 @@ function M.config()
 				if features.plugin.code_companion.enabled then
 					table.insert(sources, "codecompanion")
 				end
-				if features.plugin.avante.enabled and vim.bo.filetype == "AvanteInput" then
-					table.insert(sources, "avante_commands")
-					table.insert(sources, "avante_files")
-					table.insert(sources, "avante_mentions")
+				if features.plugin.avante.enabled then
+					table.insert(sources, "avante")
 				end
 
 				if vim.bo.filetype == "toml" then
@@ -95,23 +93,9 @@ function M.config()
 					module = "blink.compat.source",
 					score_offset = -3,
 				},
-				avante_commands = {
-					name = "avante_commands",
-					module = "blink.compat.source",
-					score_offset = 90,
-					opts = {},
-				},
-				avante_files = {
-					name = "avante_files",
-					module = "blink.compat.source",
-					score_offset = 100,
-					opts = {},
-				},
-				avante_mentions = {
-					name = "avante_mentions",
-					module = "blink.compat.source",
-					score_offset = 1000,
-					opts = {},
+				avante = {
+					module = "blink-cmp-avante",
+					name = "Avante",
 				},
 			},
 		},

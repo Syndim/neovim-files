@@ -571,6 +571,7 @@ require("lazy").setup({
 			"stevearc/dressing.nvim",
 			"nvim-lua/plenary.nvim",
 			"MunifTanjim/nui.nvim",
+			"Kaiser-Yang/blink-cmp-avante",
 		},
 		config = require("plugins._avante").config,
 		cond = is_not_embedded,
