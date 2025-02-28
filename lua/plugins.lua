@@ -240,7 +240,8 @@ require("lazy").setup({
 	{
 		"mg979/vim-visual-multi",
 		branch = "master",
-		config = function() end,
+		config = require("plugins._vim_visual_multi").config,
+		init = require("plugins._vim_visual_multi").setup,
 		event = "VeryLazy",
 	},
 
@@ -432,7 +433,7 @@ require("lazy").setup({
 		cond = is_not_embedded,
 	},
 
-	-- Performant, batteries-included completion plugin for Neovim
+	-- performant, batteries-included completion plugin for neovim
 	{
 		"saghen/blink.cmp",
 		lazy = false,
@@ -440,16 +441,16 @@ require("lazy").setup({
 		config = require("plugins._blink").config,
 		dependencies = {
 			"rafamadriz/friendly-snippets",
-			-- A neovim plugin that helps managing crates.io dependencies
+			-- a neovim plugin that helps managing crates.io dependencies
 			{
 				"saecki/crates.nvim",
 				dependencies = { "nvim-lua/plenary.nvim" },
 				config = require("plugins._crates").config,
 				ft = "toml",
 			},
-			--  An additional source for nvim-cmp to autocomplete packages and its versions
+			--  an additional source for nvim-cmp to autocomplete packages and its versions
 			{
-				"Syndim/cmp-npm",
+				"syndim/cmp-npm",
 				branch = "windows_fix",
 				config = function()
 					require("cmp-npm").setup({})
