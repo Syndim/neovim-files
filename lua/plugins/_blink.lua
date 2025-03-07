@@ -49,9 +49,8 @@ function M.config()
 			["<C-d>"] = { "scroll_documentation_down", "fallback" },
 		},
 		cmdline = {
-			keymap = {
-				preset = "enter",
-			},
+			keymap = { preset = "cmdline" },
+			completion = { menu = { auto_show = true } },
 		},
 		appearance = {
 			use_nvim_cmp_as_default = true,
