@@ -123,19 +123,22 @@ function M.create_config()
 		},
 	}
 
-	-- work around for the server request cancel issue
-	-- TODO: Remove this work around after neovim 0.11 is released
-	for _, method in ipairs({ "textDocument/diagnostic", "workspace/diagnostic" }) do
-		local default_diagnostic_handler = vim.lsp.handlers[method]
-		vim.lsp.handlers[method] = function(err, result, context, conf)
+	for k, default_handler in pairs(vim.lsp.handlers) do
+		vim.lsp.handlers[k] = function(err, result, context, conf)
+			-- work around for the server request cancel issue
+			-- TODO: Remove this work around after neovim 0.11 is released
 			if err ~= nil and err.code == -32802 then
 				return
 			end
-			return default_diagnostic_handler(err, result, context, conf)
+			-- work around for the sourcekit timeout issue
+			-- https://github.com/swiftlang/sourcekit-lsp/issues/2021
+			if err ~= nil and err.code == -32001 then
+				print(vim.inspect(context))
+				return
+			end
+			return default_handler(err, result, context, conf)
 		end
 	end
-	-- end of work around
-
 	-- vim.lsp.set_log_level('INFO')
 	return config
 end
