@@ -34,7 +34,7 @@ function M.config()
 			"github:Crashdummyy/mason-registry",
 		},
 		github = {
-			download_url_template = global.github_proxy .. "github.com/%s/releases/download/%s/%s",
+			download_url_template = global.github.url .. "/%s/releases/download/%s/%s",
 		},
 	})
 	mason_lsp_config.setup({
@@ -87,7 +87,7 @@ function M.config()
 			if package.spec.schemas ~= nil then
 				if package.spec.schemas.lsp:starts_with("vscode:https://raw.githubusercontent.com") then
 					package.spec.schemas.lsp =
-						package.spec.schemas.lsp:replace("vscode:https://", "vscode:" .. global.github_proxy)
+						package.spec.schemas.lsp:replace("vscode:https://github.com", "vscode:" .. global.github.url)
 				end
 			end
 		end)

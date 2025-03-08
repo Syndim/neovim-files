@@ -3,8 +3,7 @@ local M = {}
 function M.config()
 	local global = require("global")
 	for _, config in pairs(require("nvim-treesitter.parsers").get_parser_configs()) do
-		config.install_info.url =
-			config.install_info.url:gsub("https://github.com/", global.github_proxy .. "github.com/")
+		config.install_info.url = config.install_info.url:gsub("https://github.com", global.github.url)
 	end
 
 	local proxy = os.getenv("HTTPS_PROXY") or ""

@@ -1,7 +1,7 @@
 local M = {}
 
 function M.setup()
-	local github_proxy = require("global").github_proxy
+	local global = require("global")
 
 	local download = require("blink.cmp.fuzzy.download")
 
@@ -9,7 +9,8 @@ function M.setup()
 		local download_config = require("blink.cmp.config").fuzzy.prebuilt_binaries
 		local async = require("blink.cmp.lib.async")
 		local files = require("blink.cmp.fuzzy.download.files")
-		url = string.gsub(url, "https://github.com", github_proxy .. "github.com")
+		url = string.gsub(url, "https://github.com", global.github.url)
+		url = string.gsub(url, "https://raw.githubusercontent.com", global.github.raw_url)
 		return async.task.new(function(resolve, reject)
 			local args = { "curl" }
 			vim.list_extend(args, download_config.extra_curl_args)
@@ -34,7 +35,7 @@ function M.setup()
 		end)
 	end
 
-	if github_proxy ~= nil and github_proxy ~= "https://" then
+	if global.github.has_proxy then
 		download.download_file = download_file
 	end
 end

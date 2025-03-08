@@ -22,13 +22,13 @@ end
 function M.config()
 	local global = require("global")
 
-	if global.github_proxy ~= nil and global.github_proxy ~= "" then
+	if global.github.has_proxy then
 		-- patch download method
 		local update = require("codeium.update")
 		local original_download = update.download
 		local function download(callback)
 			local info = update.get_bin_info()
-			info.download_url = string.gsub(info.download_url, "https://", global.github_proxy)
+			info.download_url = string.gsub(info.download_url, "https://github.com", global.github.url)
 			original_download(callback)
 		end
 		update.download = download

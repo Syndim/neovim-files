@@ -18,7 +18,11 @@ function global:load_variables()
 	self.is_wsl = string.find(release, "WSL") ~= nil
 	self.is_embedded = vim.g.shadowvim or vim.g.vscode
 	self.is_in_xcode = vim.g.shadowvim
-	self.github_proxy = os.getenv("GITHUB_PROXY") or "https://mirror.ghproxy.com/https://"
+	self.github = {
+		url = os.getenv("GITHUB_URL") or "https://github.com",
+		raw_url = os.getenv("RAW_GITHUB_URL") or "https://raw.githubusercontent.com",
+	}
+	self.github.has_proxy = self.github.url ~= "http://github.com"
 	self.redirect = redirect_str()
 end
 
