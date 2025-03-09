@@ -41,7 +41,7 @@ function M.config()
 	vim.keymap.set("n", "<Leader>cm", function()
 		fzf.commands()
 	end, opts)
-	vim.keymap.set("n", "<A-p>", function()
+	vim.keymap.set("n", "<A-u>", function()
 		fzf.commands()
 	end, opts)
 	opts.desc = "Jump list"

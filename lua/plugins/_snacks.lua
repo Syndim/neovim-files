@@ -8,7 +8,7 @@ function M.config()
 		notifier = { enabled = true, style = "fancy" },
 		quickfile = { enabled = true },
 		statuscolumn = { enabled = true },
-		words = { enabled = true },
+		words = { enabled = true, debounce = 50 },
 		indent = { enabled = true },
 		scope = { enabled = true },
 		explorer = { enabled = true },
@@ -33,6 +33,14 @@ function M.config()
 	vim.keymap.set("n", "<Leader>x", function()
 		Snacks.bufdelete()
 	end, options)
+	options.desc = "Jump to next word"
+	vim.keymap.set("n", "<A-n>", function()
+		Snacks.words.jump(1)
+	end)
+	options.desc = "Jump to previous word"
+	vim.keymap.set("n", "<A-p>", function()
+		Snacks.words.jump(-1)
+	end)
 	options.desc = "Blame line"
 	vim.keymap.set("n", "<Leader>gB", function()
 		Snacks.git.blame_line()

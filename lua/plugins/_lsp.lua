@@ -32,7 +32,7 @@ local function create_on_attach()
 			vim.cmd.Telescope("lsp_references", "theme=dropdown")
 		end, opts)
 		opts.desc = "Signature help"
-		vim.keymap.set("n", "<C-k>", vim.lsp.buf.signature_help, opts)
+		vim.keymap.set("n", "<leader>hs", vim.lsp.buf.signature_help, opts)
 		opts.desc = "Add workspace folder"
 		vim.keymap.set("n", "<leader>wa", vim.lsp.buf.add_workspace_folder, opts)
 		opts.desc = "Remove workspace folder"

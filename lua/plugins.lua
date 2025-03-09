@@ -54,14 +54,6 @@ require("lazy").setup({
 		cond = is_not_embedded,
 	},
 
-	-- illuminate.vim - (Neo)Vim plugin for automatically highlighting other uses of the word under the cursor using either LSP, Tree-sitter, or regex matching.
-	{
-		"ofseed/vim-illuminate",
-		-- "RRethy/vim-illuminate",
-		event = "VeryLazy",
-		cond = is_not_embedded,
-	},
-
 	-- A plugin for neovim which changes the colour of CursorColumn depending on mode.
 	{
 		"svampkorg/moody.nvim",

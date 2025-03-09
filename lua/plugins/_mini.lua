@@ -49,7 +49,27 @@ function M.config()
 		},
 	})
 
+	-- mini.diff
 	require("mini.diff").setup()
+
+	-- mini.move
+	-- Alt+h/l/j/k to move line in normal mode or block in visual mode
+	require("mini.move").setup({
+		mappings = {
+			left = "<C-h>",
+			right = "<C-l>",
+			up = "<C-k>",
+			down = "<C-j>",
+
+			line_left = "<C-h>",
+			line_right = "<C-l>",
+			line_up = "<C-k>",
+			line_down = "<C-j>",
+		},
+	})
+
+	-- mini.ai, enhanced textobject for 'a' and 'i'
+	require("mini.ai").setup()
 end
 
 return M
