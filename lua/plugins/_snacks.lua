@@ -17,6 +17,10 @@ function M.config()
 				explorer = {
 					win = {
 						list = {
+							wo = {
+								number = true,
+								relativenumber = true,
+							},
 							keys = {
 								["<Esc>"] = "",
 								["q"] = "",
