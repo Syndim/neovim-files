@@ -39,7 +39,7 @@ local function create_on_attach()
 		vim.keymap.set("n", "<leader>wr", vim.lsp.buf.remove_workspace_folder, opts)
 		opts.desc = "List workspace folders"
 		vim.keymap.set("n", "<leader>wl", function()
-			print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
+			vim.lsp.buf.list_workspace_folders()
 		end, opts)
 		opts.desc = "Type definition"
 		vim.keymap.set("n", "<leader>D", vim.lsp.buf.type_definition, opts)
@@ -133,7 +133,7 @@ function M.create_config()
 			-- work around for the sourcekit timeout issue
 			-- https://github.com/swiftlang/sourcekit-lsp/issues/2021
 			if err ~= nil and err.code == -32001 then
-				print(vim.inspect(context))
+				-- print(vim.inspect(context))
 				return
 			end
 			return default_handler(err, result, context, conf)
