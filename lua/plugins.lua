@@ -255,6 +255,14 @@ require("lazy").setup({
 		cond = is_not_embedded,
 	},
 
+	-- A plugin to visualise and resolve merge conflicts in neovim
+	{
+		"akinsho/git-conflict.nvim",
+		config = true,
+		event = "VeryLazy",
+		cond = is_not_embedded,
+	},
+
 	-- Treesitter based structural search and replace plugin for Neovim.
 	{
 		"cshuaimin/ssr.nvim",
