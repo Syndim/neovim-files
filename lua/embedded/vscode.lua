@@ -17,3 +17,5 @@ opts.desc = "Go to declaration"
 vim.keymap.set("n", "gr", function()
 	vim.fn.VSCodeNotify("editor.action.revealDeclaration")
 end, opts)
+
+vim.o.selection = "inclusive"
