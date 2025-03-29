@@ -3,7 +3,6 @@ local global = require("global")
 local o = vim.o
 local wo = vim.wo
 local g = vim.g
-local cmd = vim.cmd
 
 -- Syntax on
 o.syntax = "on"

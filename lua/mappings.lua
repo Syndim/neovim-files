@@ -46,3 +46,11 @@ vim.keymap.set("n", "<C-->", "gcc", { remap = true })
 vim.keymap.set("v", "<C-->", "gc", { remap = true })
 vim.keymap.set("n", "<C-_>", "gcc", { remap = true })
 vim.keymap.set("v", "<C-_>", "gc", { remap = true })
+
+-- Disable LSP keys starts with gr
+if vim.fn.has("nvim-0.11") == 1 then
+	vim.keymap.del({ "n" }, "grn")
+	vim.keymap.del({ "n", "x" }, "gra")
+	vim.keymap.del({ "n" }, "gri")
+	vim.keymap.del({ "n" }, "grr")
+end
