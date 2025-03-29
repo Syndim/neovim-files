@@ -17,14 +17,20 @@ local global = require("global")
 
 if global.is_mac then
 	vim.g.neovide_input_macos_option_key_is_meta = "both"
-	local opts = { noremap = true, silent = true }
-	vim.api.nvim_set_keymap("n", "<D-c>", '"+y', opts)
-	vim.api.nvim_set_keymap("v", "<D-c>", '"+y', opts)
 
-	vim.api.nvim_set_keymap("n", "<D-v>", '"+p', opts)
-	vim.api.nvim_set_keymap("i", "<D-v>", "<C-r>+", opts)
-	vim.api.nvim_set_keymap("c", "<D-v>", "<C-r>+", opts)
-	vim.api.nvim_set_keymap("v", "<D-v>", '"+p', opts)
+	local opts = { noremap = true, silent = true }
+	vim.keymap.set("n", "<D-c>", '"+y', opts)
+	vim.keymap.set("v", "<D-c>", '"+y', opts)
+
+	function paste_from_register()
+		local content = vim.fn.getreg("+")
+		vim.api.nvim_paste(content, false, -1)
+	end
+
+	vim.keymap.set("n", "<D-v>", '"+gP', opts)
+	vim.keymap.set("i", "<D-v>", paste_from_register, opts)
+	vim.keymap.set("c", "<D-v>", "<C-r>+", opts)
+	vim.keymap.set("v", "<D-v>", '"+gP', opts)
 elseif global.is_wsl then
 	-- Neovide under wsl will fetch new set of environments and VIRTUAL_ENV
 	-- environment variable somehow get lost
