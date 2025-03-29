@@ -12,6 +12,7 @@ function M.config()
 		indent = { enabled = true },
 		scope = { enabled = true },
 		explorer = { enabled = true },
+		input = { enabled = true },
 		picker = {
 			sources = {
 				explorer = {

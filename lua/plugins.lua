@@ -179,14 +179,6 @@ require("lazy").setup({
 		cond = is_not_embedded,
 	},
 
-	-- Neovim plugin to improve the default vim.ui interfaces
-	{
-		"stevearc/dressing.nvim",
-		config = require("plugins._dressing").config,
-		init = require("plugins._dressing").init,
-		cond = is_not_embedded,
-	},
-
 	-- Navigate your code with search labels, enhanced character motions and Treesitter integration
 	{
 		"folke/flash.nvim",
