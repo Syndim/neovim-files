@@ -15,17 +15,26 @@ local global = require("global")
 --     end
 -- })
 
-if global.is_mac then
+function paste_from_register()
+	local content = vim.fn.getreg("+")
+	vim.api.nvim_paste(content, false, -1)
+end
+
+if global.is_windows or global.is_linux then
+	local opts = { noremap = true, silent = true }
+	vim.keymap.set("n", "<C-c>", '"+y', opts)
+	vim.keymap.set("v", "<C-c>", '"+y', opts)
+
+	vim.keymap.set("n", "<C-v>", '"+gP', opts)
+	vim.keymap.set("i", "<C-v>", paste_from_register, opts)
+	vim.keymap.set("c", "<C-v>", "<C-r>+", opts)
+	vim.keymap.set("v", "<C-v>", '"+gP', opts)
+elseif global.is_mac then
 	vim.g.neovide_input_macos_option_key_is_meta = "both"
 
 	local opts = { noremap = true, silent = true }
 	vim.keymap.set("n", "<D-c>", '"+y', opts)
 	vim.keymap.set("v", "<D-c>", '"+y', opts)
-
-	function paste_from_register()
-		local content = vim.fn.getreg("+")
-		vim.api.nvim_paste(content, false, -1)
-	end
 
 	vim.keymap.set("n", "<D-v>", '"+gP', opts)
 	vim.keymap.set("i", "<D-v>", paste_from_register, opts)
