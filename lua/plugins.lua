@@ -300,15 +300,6 @@ require("lazy").setup({
 		cond = is_not_embedded,
 	},
 
-	-- Not UFO in the sky, but an ultra fold in Neovim.
-	{
-		"kevinhwang91/nvim-ufo",
-		dependencies = "kevinhwang91/promise-async",
-		event = { "BufReadPost", "BufNewFile" },
-		config = require("plugins._ufo").config,
-		cond = is_not_embedded,
-	},
-
 	-- Language support
 	-- Generic
 	-- A tree like view for symbols in Neovim using the Language Server Protocol. Supports all your favourite languages.
