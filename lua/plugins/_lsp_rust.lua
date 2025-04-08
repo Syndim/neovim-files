@@ -60,7 +60,6 @@ function M.config()
 			code_actions = {
 				ui_select_fallback = not global.is_windows,
 			},
-			enable_clippy = false,
 		},
 	}
 end

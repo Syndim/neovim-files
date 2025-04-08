@@ -606,7 +606,6 @@ require("lazy").setup({
 	-- Tools for better development in rust using neovim's builtin lsp
 	{
 		"mrcjkb/rustaceanvim",
-		version = "^4",
 		ft = "rust",
 		config = require("plugins._lsp_rust").config,
 		cond = is_not_embedded,
