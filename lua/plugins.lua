@@ -173,14 +173,6 @@ require("lazy").setup({
 		cond = is_not_embedded,
 	},
 
-	-- A Neovim Plugin for the yazi terminal file manager
-	{
-		"mikavilpas/yazi.nvim",
-		event = "VeryLazy",
-		config = require("plugins._yazi").config,
-		cond = is_not_embedded,
-	},
-
 	-- Navigate your code with search labels, enhanced character motions and Treesitter integration
 	{
 		"folke/flash.nvim",
