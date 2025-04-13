@@ -29,6 +29,8 @@ function M.config()
 	local flutter_path = nil
 	if global.is_windows then
 		flutter_path = os.getenv("SCOOP") .. "\\apps\\fvm\\current\\default\\bin\\flutter.bat"
+	elseif global.is_mac then
+		flutter_path = os.getenv("HOME") .. "/fvm/default/bin/flutter"
 	else
 		flutter_path = os.getenv("HOME") .. "/.fvm/default/bin/flutter"
 	end
