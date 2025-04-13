@@ -39,6 +39,10 @@ local M = {
 function M.setup(opts)
 	local config = vim.tbl_deep_extend("force", M, opts)
 
+	for k, v in pairs(config) do
+		M[k] = v
+	end
+
 	if not global.is_embedded then
 		local plugin_config = config.plugin
 		if plugin_config.avante.enabled then
@@ -65,10 +69,6 @@ function M.setup(opts)
 		config.plugin.code_companion.enabled = false
 		config.plugin.copilot.enabled = false
 		config.plugin.xcode_build.enabled = false
-	end
-
-	for k, v in pairs(config) do
-		M[k] = v
 	end
 end
 
