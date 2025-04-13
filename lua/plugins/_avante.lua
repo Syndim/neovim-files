@@ -202,6 +202,7 @@ function M.config()
 		openai = avante_config.openai,
 		azure = avante_config.azure,
 		claude = avante_config.claude,
+		copilot = avante_config.copilot,
 	})
 
 	-- https://github.com/yetone/avante.nvim/wiki/Recipe-and-Tricks

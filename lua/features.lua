@@ -16,6 +16,7 @@ local M = {
 			openai = nil,
 			azure = nil,
 			claude = nil,
+			copilot = nil,
 		},
 		codeium = {
 			enabled = false,
