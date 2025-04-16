@@ -112,9 +112,7 @@ function M.config()
 			list = {
 				selection = {
 					auto_insert = true,
-					preselect = function(ctx)
-						return ctx.mode ~= "cmdline" and not require("blink.cmp").snippet_active({ direction = 1 })
-					end,
+					preselect = true,
 				},
 			},
 			documentation = {
