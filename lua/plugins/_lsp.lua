@@ -81,11 +81,11 @@ local function create_on_attach()
 end
 
 local function get_capabilities()
-	local capabilities = vim.lsp.protocol.make_client_capabilities()
+	-- local capabilities = vim.lsp.protocol.make_client_capabilities()
 	-- capabilities = vim.tbl_extend("force", capabilities, require("cmp_nvim_lsp").default_capabilities())
 	--
 
-	capabilities = require("blink.cmp").get_lsp_capabilities(capabilities)
+	local capabilities = require("blink.cmp").get_lsp_capabilities(nil, true)
 
 	capabilities.textDocument.foldingRange = {
 		dynamicRegistration = false,

@@ -270,6 +270,8 @@ require("lazy").setup({
 		"nvim-telescope/telescope.nvim",
 		config = require("plugins._telescope").config,
 		event = "VeryLazy",
+		-- TODO: Use proper version once telescope releases a new version
+		version = false,
 		cond = is_not_embedded,
 	},
 
