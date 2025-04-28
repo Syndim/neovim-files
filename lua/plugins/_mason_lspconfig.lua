@@ -19,7 +19,8 @@ function M.config()
 		"bashls",
 		"yamlls",
 		"kotlin_language_server",
-		"typos_lsp",
+		-- "typos_lsp",
+		"harper_ls",
 	}
 
 	local optional_servers = {
