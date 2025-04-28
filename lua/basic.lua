@@ -38,7 +38,6 @@ o.mousemodel = "popup"
 
 -- Windows behavior
 o.selectmode = "mouse,key"
-o.selection = "exclusive"
 
 -- GUI colors
 o.termguicolors = true
