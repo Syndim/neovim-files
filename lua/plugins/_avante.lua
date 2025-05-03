@@ -2,7 +2,7 @@
 local M = {}
 
 local function setup_common_commands()
-	-- prefil edit window with common scenarios to avoid repeating query and submit immediately
+	-- pre-fill edit window with common scenarios to avoid repeating query and submit immediately
 	local prefill_edit_window = function(request)
 		require("avante.api").edit()
 		local code_bufnr = vim.api.nvim_get_current_buf()
@@ -186,6 +186,18 @@ local function setup_common_commands()
 	})
 end
 
+function patches()
+	local utils = require("avante.utils")
+	local original_notify = utils.notify
+	utils.notify = function(msg, opts)
+		-- It's not something we should care about
+		if msg:contains("error reading file") then
+			return
+		end
+		original_notify(msg, opts)
+	end
+end
+
 function M.config()
 	local features = require("features")
 	local avante_config = features.plugin.avante
@@ -213,6 +225,7 @@ function M.config()
 
 	-- https://github.com/yetone/avante.nvim/wiki/Recipe-and-Tricks
 	setup_common_commands()
+	patches()
 end
 
 return M
