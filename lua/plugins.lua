@@ -457,6 +457,18 @@ require("lazy").setup({
 		cond = is_not_embedded,
 	},
 
+	{
+		"ravitemer/mcphub.nvim",
+		dependencies = {
+			"nvim-lua/plenary.nvim", -- Required for Job and HTTP requests
+		},
+		-- uncomment the following line to load hub lazily
+		--cmd = "MCPHub",  -- lazy load
+		build = "bundled_build.lua",
+		config = require("plugins._mcphub").config,
+		cond = is_not_embedded,
+	},
+
 	-- ✨ AI-powered coding, seamlessly in Neovim
 	{
 		"olimorris/codecompanion.nvim",
@@ -480,6 +492,7 @@ require("lazy").setup({
 			"nvim-lua/plenary.nvim",
 			"MunifTanjim/nui.nvim",
 			"Kaiser-Yang/blink-cmp-avante",
+			"ravitemer/mcphub.nvim",
 		},
 		config = require("plugins._avante").config,
 		cond = is_not_embedded,

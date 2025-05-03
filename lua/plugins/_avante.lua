@@ -215,12 +215,35 @@ function M.config()
 			width = 35,
 		},
 		behaviour = {
-			enable_cursor_planning_mode = true,
+			-- enable_cursor_planning_mode = true,
 		},
 		openapi = vim.tbl_deep_extend("force", shared_config, avante_config.openapi and avante_config.openai or {}),
 		azure = vim.tbl_deep_extend("force", shared_config, avante_config.azure and avante_config.azure or {}),
 		claude = vim.tbl_deep_extend("force", shared_config, avante_config.claude and avante_config.claude or {}),
 		copilot = vim.tbl_deep_extend("force", shared_config, avante_config.copilot and avante_config.copilot or {}),
+		-- mcphub config start
+		system_prompt = function()
+			local hub = require("mcphub").get_hub_instance()
+			return hub:get_active_servers_prompt()
+		end,
+		custom_tools = function()
+			return {
+				require("mcphub.extensions.avante").mcp_tool(),
+			}
+		end,
+		disabled_tools = {
+			"list_files", -- Built-in file operations
+			"search_files",
+			"read_file",
+			"create_file",
+			"rename_file",
+			"delete_file",
+			"create_dir",
+			"rename_dir",
+			"delete_dir",
+			"bash", -- Built-in terminal access
+		},
+		-- mcphub config end
 	})
 
 	-- https://github.com/yetone/avante.nvim/wiki/Recipe-and-Tricks
