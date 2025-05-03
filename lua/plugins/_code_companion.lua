@@ -1,17 +1,41 @@
 local M = {}
 
 function M.config()
-	require("codecompanion").setup({
-		strategies = {
-			chat = {
-				adapter = "copilot",
-			},
-			inline = {
-				adapter = "copilot",
-			},
+	local features = require("features").plugin.code_companion
+	local strategies = {
+		chat = {
+			adapter = "copilot",
 		},
+		inline = {
+			adapter = "copilot",
+		},
+	}
+	local adapters = nil
+
+	if features.strategies then
+		strategies = vim.tbl_deep_extend("force", strategies, features.strategies)
+	end
+	if features.adapters then
+		adapters = {}
+		for k, v in pairs(features.adapters) do
+			adapters[k] = function()
+				return require("codecompanion.adapters").extend(k, {
+					schema = {
+						model = {
+							default = v.model,
+						},
+					},
+				})
+			end
+		end
+	end
+
+	require("codecompanion").setup({
+		strategies = strategies,
+		adapters = adapters,
 		display = {
 			chat = {
+				show_settings = true,
 				window = {
 					position = "right",
 					width = 0.35,

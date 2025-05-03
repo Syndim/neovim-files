@@ -20,6 +20,8 @@ local M = {
 		},
 		codeium = {
 			enabled = false,
+			strategies = nil,
+			adapters = nil,
 		},
 		copilot = {
 			enabled = false,
