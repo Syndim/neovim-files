@@ -190,6 +190,9 @@ function M.config()
 	local features = require("features")
 	local avante_config = features.plugin.avante
 	local provider = avante_config.provider
+	local shared_config = {
+		max_tokens = 99999,
+	}
 	require("avante").setup({
 		provider = provider and provider or "copilot",
 		-- auto_suggestions_provider = "copilot",
@@ -199,10 +202,13 @@ function M.config()
 		windows = {
 			width = 35,
 		},
-		openai = avante_config.openai,
-		azure = avante_config.azure,
-		claude = avante_config.claude,
-		copilot = avante_config.copilot,
+		behaviour = {
+			enable_cursor_planning_mode = true,
+		},
+		openapi = vim.tbl_deep_extend("force", shared_config, avante_config.openapi and avante_config.openai or {}),
+		azure = vim.tbl_deep_extend("force", shared_config, avante_config.azure and avante_config.azure or {}),
+		claude = vim.tbl_deep_extend("force", shared_config, avante_config.claude and avante_config.claude or {}),
+		copilot = vim.tbl_deep_extend("force", shared_config, avante_config.copilot and avante_config.copilot or {}),
 	})
 
 	-- https://github.com/yetone/avante.nvim/wiki/Recipe-and-Tricks
