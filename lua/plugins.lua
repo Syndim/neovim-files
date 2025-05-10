@@ -63,6 +63,14 @@ require("lazy").setup({
 		cond = is_not_embedded,
 	},
 
+	--  Send buffers into early retirement by automatically closing them after x minutes of inactivity.
+	{
+		"chrisgrieser/nvim-early-retirement",
+		config = true,
+		event = "VeryLazy",
+		cond = is_not_embedded,
+	},
+
 	-- A Neovim plugin hiding your colorcolumn when unneeded.
 	{
 		"m4xshen/smartcolumn.nvim",
@@ -171,6 +179,16 @@ require("lazy").setup({
 		config = require("plugins._numb").config,
 		event = "VeryLazy",
 		cond = is_not_embedded,
+	},
+
+	--  Use the w, e, b motions like a spider. Move by subwords and skip insignificant punctuation.
+	{
+		"chrisgrieser/nvim-spider",
+		keys = {
+			{ "w", "<cmd>lua require('spider').motion('w')<CR>", mode = { "n", "o", "x" } },
+			{ "e", "<cmd>lua require('spider').motion('e')<CR>", mode = { "n", "o", "x" } },
+			{ "b", "<cmd>lua require('spider').motion('b')<CR>", mode = { "n", "o", "x" } },
+		},
 	},
 
 	-- Navigate your code with search labels, enhanced character motions and Treesitter integration
