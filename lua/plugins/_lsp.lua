@@ -107,8 +107,12 @@ function M.create_config()
 	-- See `:help vim.diagnostic.*` for documentation on any of the below functions
 	local opts = { remap = true }
 	vim.keymap.set("n", "<space>e", vim.diagnostic.open_float, opts)
-	vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, opts)
-	vim.keymap.set("n", "]d", vim.diagnostic.goto_next, opts)
+	vim.keymap.set("n", "[d", function()
+		vim.diagnostic.jump(1)
+	end, opts)
+	vim.keymap.set("n", "]d", function()
+		vim.diagnostic.jump(-1)
+	end, opts)
 	vim.keymap.set("n", "<space>q", vim.diagnostic.setloclist, opts)
 
 	local on_attach = create_on_attach()
@@ -126,10 +130,10 @@ function M.create_config()
 	for k, default_handler in pairs(vim.lsp.handlers) do
 		vim.lsp.handlers[k] = function(err, result, context, conf)
 			-- work around for the server request cancel issue
-			-- TODO: Remove this work around after neovim 0.11 is released
-			if err ~= nil and err.code == -32802 then
-				return
-			end
+			-- -- TODO: Remove this work around after neovim 0.11 is released
+			-- if err ~= nil and err.code == -32802 then
+			-- 	return
+			-- end
 			-- work around for the sourcekit timeout issue
 			-- https://github.com/swiftlang/sourcekit-lsp/issues/2021
 			if err ~= nil and err.code == -32001 then

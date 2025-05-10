@@ -46,6 +46,7 @@ function M.config()
 		"lua_ls",
 		"clangd",
 		"basedpyright",
+		"ruff",
 	})
 
 	for name, condition in pairs(optional_servers) do
@@ -56,6 +57,7 @@ function M.config()
 
 	mason_lsp_config.setup({
 		ensure_installed = servers,
+		automatic_enable = false,
 	})
 
 	local mason_registry = require("mason-registry")
