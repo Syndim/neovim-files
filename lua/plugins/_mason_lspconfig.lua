@@ -38,8 +38,24 @@ function M.config()
 			download_url_template = global.github.url .. "/%s/releases/download/%s/%s",
 		},
 	})
+
+	local servers = vim.tbl_extend("force", {}, common_servers)
+	vim.list_extend(servers, {
+		"rust_analyzer",
+		"ts_ls",
+		"lua_ls",
+		"clangd",
+		"basedpyright",
+	})
+
+	for name, condition in pairs(optional_servers) do
+		if global:which(condition) == 0 then
+			table.insert(servers, name)
+		end
+	end
+
 	mason_lsp_config.setup({
-		automatic_installation = true,
+		ensure_installed = servers,
 	})
 
 	local mason_registry = require("mason-registry")
