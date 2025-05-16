@@ -1,10 +1,6 @@
 local M = {}
 
 function M.config()
-	require("mason-lspconfig").setup_handlers({
-		["rust_analyzer"] = function() end,
-	})
-
 	local lsp = require("plugins._lsp")
 	local config = lsp.create_config()
 
