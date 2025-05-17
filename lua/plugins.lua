@@ -139,7 +139,6 @@ require("lazy").setup({
 		"nvim-lualine/lualine.nvim",
 		dependencies = {
 			{ "kyazdani42/nvim-web-devicons", opt = true },
-			"nvim-lua/lsp-status.nvim",
 		},
 		config = require("plugins._lualine").config,
 		event = "VeryLazy",

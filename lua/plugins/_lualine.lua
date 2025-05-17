@@ -17,12 +17,12 @@ function M.config()
 			},
 			lualine_c = {
 				{ "filename", path = 1, file_status = true },
-				"require'lsp-status'.status()",
 				-- { 'diagnostics', sources = { 'nvim_lsp' } },
 			},
 			lualine_x = {
 				{ require("plugins._copilot").status },
 				{ require("plugins._codeium").status },
+				{ "lsp_status" },
 				{ "filetype", colored = true },
 				"encoding",
 				"fileformat",
