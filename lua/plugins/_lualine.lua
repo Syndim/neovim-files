@@ -14,10 +14,10 @@ function M.config()
 			lualine_b = {
 				{ "branch" },
 				{ "diff", colored = false },
+				{ "diagnostics", sources = { "nvim_diagnostic", "nvim_lsp" } },
 			},
 			lualine_c = {
 				{ "filename", path = 1, file_status = true },
-				-- { 'diagnostics', sources = { 'nvim_lsp' } },
 			},
 			lualine_x = {
 				{ require("plugins._copilot").status },
@@ -27,7 +27,7 @@ function M.config()
 				"encoding",
 				"fileformat",
 			},
-			lualine_y = { "progress" },
+			lualine_y = { { "progress" } },
 			lualine_z = {
 				{ "location", color = { gui = "bold" } },
 			},
