@@ -36,4 +36,12 @@ elseif global.is_wsl then
 	vim.env.PATH = vim.fs.dirname(node_path) .. ":" .. vim.env.PATH
 	local dotnet_root = fn.trim(fn.system("brew --prefix dotnet"))
 	vim.env.DOTNET_ROOT = path.join(dotnet_root, "libexec")
+
+	-- https://github.com/neovide/neovide/issues/1331#issuecomment-1261545158
+	if vim.v.event.chan and vim.v.event.chan > 1 then
+		if vim.g.loaded_clipboard_provider then
+			vim.g.loaded_clipboard_provider = nil
+			vim.api.nvim_cmd({ cmd = "runtime", args = { "autoload/provider/clipboard.vim" } }, {})
+		end
+	end
 end
