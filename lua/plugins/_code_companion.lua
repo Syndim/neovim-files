@@ -42,6 +42,16 @@ function M.config()
 				},
 			},
 		},
+		extensions = {
+			mcphub = {
+				callback = "mcphub.extensions.codecompanion",
+				opts = {
+					show_result_in_chat = true,
+					make_vars = true,
+					make_slash_commands = true,
+				},
+			},
+		},
 	})
 	vim.keymap.set("n", "<Leader>cc", function()
 		vim.cmd.CodeCompanionChat("Toggle")
