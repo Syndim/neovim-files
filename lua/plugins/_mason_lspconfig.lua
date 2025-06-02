@@ -21,6 +21,7 @@ function M.config()
 		"kotlin_language_server",
 		-- "typos_lsp",
 		"harper_ls",
+		"slint_lsp",
 	}
 
 	local optional_servers = {
