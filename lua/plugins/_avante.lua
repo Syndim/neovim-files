@@ -203,7 +203,9 @@ function M.config()
 	local avante_config = features.plugin.avante
 	local provider = avante_config.provider
 	local shared_config = {
-		max_tokens = 99999,
+		extra_request_body = {
+			max_tokens = 99999,
+		},
 	}
 	require("avante").setup({
 		provider = provider and provider or "copilot",
@@ -217,10 +219,16 @@ function M.config()
 		behaviour = {
 			-- enable_cursor_planning_mode = true,
 		},
-		openapi = vim.tbl_deep_extend("force", shared_config, avante_config.openapi and avante_config.openai or {}),
-		azure = vim.tbl_deep_extend("force", shared_config, avante_config.azure and avante_config.azure or {}),
-		claude = vim.tbl_deep_extend("force", shared_config, avante_config.claude and avante_config.claude or {}),
-		copilot = vim.tbl_deep_extend("force", shared_config, avante_config.copilot and avante_config.copilot or {}),
+		providers = {
+			openapi = vim.tbl_deep_extend("force", shared_config, avante_config.openapi and avante_config.openai or {}),
+			azure = vim.tbl_deep_extend("force", shared_config, avante_config.azure and avante_config.azure or {}),
+			claude = vim.tbl_deep_extend("force", shared_config, avante_config.claude and avante_config.claude or {}),
+			copilot = vim.tbl_deep_extend(
+				"force",
+				shared_config,
+				avante_config.copilot and avante_config.copilot or {}
+			),
+		},
 		-- mcphub config start
 		system_prompt = function()
 			local hub = require("mcphub").get_hub_instance()
