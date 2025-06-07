@@ -217,7 +217,7 @@ function M.config()
 			width = 30,
 		},
 		behaviour = {
-			-- enable_cursor_planning_mode = true,
+			enable_cursor_planning_mode = true,
 		},
 		providers = {
 			openapi = vim.tbl_deep_extend("force", shared_config, avante_config.openapi and avante_config.openai or {}),
