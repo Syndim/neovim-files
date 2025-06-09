@@ -214,7 +214,7 @@ function M.config()
 			provider = "telescope",
 		},
 		windows = {
-			width = 30,
+			width = 25,
 		},
 		behaviour = {
 			enable_cursor_planning_mode = true,

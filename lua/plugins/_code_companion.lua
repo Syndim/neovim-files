@@ -38,7 +38,7 @@ function M.config()
 				show_settings = true,
 				window = {
 					position = "right",
-					width = 0.3,
+					width = 0.25,
 				},
 			},
 		},
