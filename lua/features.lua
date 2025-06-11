@@ -10,14 +10,14 @@ local global = require("global")
 local M = {
 	lsp = {},
 	plugin = {
-		avante = {
-			enabled = false,
-			provider = nil,
-			openai = nil,
-			azure = nil,
-			claude = nil,
-			copilot = nil,
-		},
+		-- avante = {
+		-- 	enabled = false,
+		-- 	provider = nil,
+		-- 	openai = nil,
+		-- 	azure = nil,
+		-- 	claude = nil,
+		-- 	copilot = nil,
+		-- },
 		codeium = {
 			enabled = false,
 			strategies = nil,
@@ -47,9 +47,9 @@ function M.setup(opts)
 
 	if not global.is_embedded then
 		local plugin_config = config.plugin
-		if plugin_config.avante.enabled then
-			load_plugins({ "copilot.lua", "avante.nvim" })
-		end
+		-- if plugin_config.avante.enabled then
+		-- 	load_plugins({ "copilot.lua", "avante.nvim" })
+		-- end
 
 		if plugin_config.code_companion.enabled then
 			load_plugins({ "copilot.lua", "codecompanion.nvim" })
@@ -67,7 +67,7 @@ function M.setup(opts)
 			load_plugins({ "xcodebuild.nvim" })
 		end
 	else
-		config.plugin.avante.enabled = false
+		-- config.plugin.avante.enabled = false
 		config.plugin.code_companion.enabled = false
 		config.plugin.copilot.enabled = false
 		config.plugin.xcode_build.enabled = false
