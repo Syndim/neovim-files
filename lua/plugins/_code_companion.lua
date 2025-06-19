@@ -1,5 +1,67 @@
 local M = {}
 
+-- https://github.com/olimorris/codecompanion.nvim/discussions/813#discussioncomment-12031954
+local function setup_fidget_integration()
+	local group = vim.api.nvim_create_augroup("CodeCompanionFidgetHooks", {})
+	local handles = {}
+
+	local function llm_role_title(adapter)
+		local parts = {}
+		table.insert(parts, adapter.formatted_name)
+		if adapter.model and adapter.model ~= "" then
+			table.insert(parts, "(" .. adapter.model .. ")")
+		end
+		return table.concat(parts, " ")
+	end
+
+	local function create_progress_handle(request)
+		return require("fidget.progress").handle.create({
+			title = " Requesting assistance (" .. request.data.strategy .. ")",
+			message = "In progress...",
+			lsp_client = {
+				name = llm_role_title(request.data.adapter),
+			},
+		})
+	end
+
+	local function pop_progress_handle(id)
+		local handle = handles[id]
+		handles[id] = nil
+		return handle
+	end
+
+	function report_exit_status(handle, request)
+		if request.data.status == "success" then
+			handle.message = "Completed"
+		elseif request.data.status == "error" then
+			handle.message = " Error"
+		else
+			handle.message = "󰜺 Cancelled"
+		end
+	end
+
+	vim.api.nvim_create_autocmd({ "User" }, {
+		pattern = "CodeCompanionRequestStarted",
+		group = group,
+		callback = function(request)
+			local handle = create_progress_handle(request)
+			handles[request.data.id] = handle
+		end,
+	})
+
+	vim.api.nvim_create_autocmd({ "User" }, {
+		pattern = "CodeCompanionRequestFinished",
+		group = group,
+		callback = function(request)
+			local handle = pop_progress_handle(request.data.id)
+			if handle then
+				report_exit_status(handle, request)
+				handle:finish()
+			end
+		end,
+	})
+end
+
 function M.config()
 	local features = require("features").plugin.code_companion
 	local strategies = {
@@ -75,6 +137,8 @@ function M.config()
 	vim.keymap.set("n", "<Leader>cgc", function()
 		vim.cmd.CodeCompanion("/commit")
 	end, { remap = false, desc = "Generate commit message for staged change" })
+
+	setup_fidget_integration()
 end
 
 return M

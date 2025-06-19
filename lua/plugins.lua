@@ -486,6 +486,7 @@ require("lazy").setup({
 			"nvim-treesitter/nvim-treesitter",
 			"zbirenbaum/copilot.lua",
 			"ravitemer/mcphub.nvim",
+			"j-hui/fidget.nvim",
 		},
 		config = require("plugins._code_companion").config,
 		cond = is_not_embedded,
