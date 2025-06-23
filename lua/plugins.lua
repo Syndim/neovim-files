@@ -369,15 +369,6 @@ require("lazy").setup({
 		cond = is_not_embedded,
 	},
 
-	-- Create custom submodes and menus
-	{
-		"anuvyklack/hydra.nvim",
-		dependencies = { "mrjones2014/smart-splits.nvim" },
-		event = "VeryLazy",
-		config = require("plugins._hydra").config,
-		cond = is_not_embedded,
-	},
-
 	-- Display references, definitions and implementations of document symbols
 	{
 		"Wansmer/symbol-usage.nvim",
