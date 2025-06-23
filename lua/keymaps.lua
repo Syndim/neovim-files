@@ -31,10 +31,30 @@ vim.keymap.set("t", "<A-h>", "<C-\\><C-n><C-w>h", opts)
 vim.keymap.set("t", "<A-j>", "<C-\\><C-n><C-w>j", opts)
 vim.keymap.set("t", "<A-k>", "<C-\\><C-n><C-w>k", opts)
 vim.keymap.set("t", "<A-l>", "<C-\\><C-n><C-w>l", opts)
+vim.keymap.set("t", "<A-w>", "<C-\\><C-n><C-w>w", opts)
 vim.keymap.set("n", "<A-h>", "<C-w>h", opts)
 vim.keymap.set("n", "<A-j>", "<C-w>j", opts)
 vim.keymap.set("n", "<A-k>", "<C-w>k", opts)
 vim.keymap.set("n", "<A-l>", "<C-w>l", opts)
+vim.keymap.set("n", "<A-w>", "<C-w>w", opts)
+vim.keymap.set("n", "<A-->", function()
+	local win = vim.api.nvim_get_current_win()
+	local wininfo = vim.fn.getwininfo(win)[1]
+	if wininfo.width < vim.o.columns then
+		vim.cmd("vertical resize -2")
+	elseif wininfo.height < vim.o.lines then
+		vim.cmd("resize -2")
+	end
+end, opts)
+vim.keymap.set("n", "<A-=>", function()
+	local win = vim.api.nvim_get_current_win()
+	local wininfo = vim.fn.getwininfo(win)[1]
+	if wininfo.width < vim.o.columns then
+		vim.cmd("vertical resize +2")
+	elseif wininfo.height < vim.o.lines then
+		vim.cmd("resize +2")
+	end
+end, opts)
 
 -- Clear search highlights
 opts.desc = "Clear highlights"
