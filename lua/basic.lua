@@ -48,25 +48,25 @@ o.termguicolors = true
 -- Fonts
 -- For neovide and goneovim the font setting is done through config.toml
 if not g.neovide and not g.gonvim_running then
-	if global.is_windows then
-		o.guifont = "FiraCode Nerd Font Mono:h14"
-	else
-		o.guifont = "FiraCode Nerd Font Mono:h18"
-	end
+    if global.is_windows then
+        o.guifont = "FiraCode Nerd Font Mono:h14"
+    else
+        o.guifont = "FiraCode Nerd Font Mono:h18"
+    end
 end
 
 g.mapleader = ","
 
 if global.is_windows then
-	o.shell = "cmd.exe"
+    o.shell = "cmd.exe"
 elseif global.is_linux or global.is_mac then
-	o.shell = "fish"
+    o.shell = "fish"
 end
 
 if global.is_windows then
-	o.ffs = "dos,unix,mac"
+    o.ffs = "dos,unix,mac"
 else
-	o.ffs = "unix,dos,mac"
+    o.ffs = "unix,dos,mac"
 end
 
 g.grepprg = "grepprg=rg --vimgrep --no-heading"

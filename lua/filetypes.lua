@@ -1,7 +1,7 @@
 vim.filetype.add({
-	filename = {
-		["Appfile"] = "ruby",
-		["Fastfile"] = "ruby",
-		["Pluginfile"] = "ruby",
-	},
+    filename = {
+        ["Appfile"] = "ruby",
+        ["Fastfile"] = "ruby",
+        ["Pluginfile"] = "ruby",
+    },
 })
