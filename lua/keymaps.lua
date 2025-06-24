@@ -64,10 +64,10 @@ vim.keymap.set("n", "<Leader>ch", vim.cmd.noh, opts)
 opts.desc = "Close all buffers"
 vim.keymap.set("n", "<Leader>X", "<cmd>%bd<CR>", opts)
 
-vim.keymap.set("n", "<C-->", "gcc", { remap = true })
-vim.keymap.set("v", "<C-->", "gc", { remap = true })
-vim.keymap.set("n", "<C-_>", "gcc", { remap = true })
-vim.keymap.set("v", "<C-_>", "gc", { remap = true })
+vim.keymap.set("n", "<C-t>", "gcc", { remap = true })
+vim.keymap.set("v", "<C-t>", "gc", { remap = true })
+vim.keymap.set("n", "<C-/>", "gcc", { remap = true })
+vim.keymap.set("v", "<C-/>", "gc", { remap = true })
 
 -- Disable LSP keys starts with gr
 if vim.fn.has("nvim-0.11") == 1 then
