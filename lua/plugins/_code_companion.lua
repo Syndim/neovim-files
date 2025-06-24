@@ -16,7 +16,7 @@ local function setup_fidget_integration()
 
     local function create_progress_handle(request)
         return require("fidget.progress").handle.create({
-            title = " Getting Response (" .. request.data.strategy .. ")",
+            title = " Generating (" .. request.data.strategy .. ")",
             message = "In progress...",
             lsp_client = {
                 name = llm_role_title(request.data.adapter),
