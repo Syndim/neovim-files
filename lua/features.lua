@@ -10,14 +10,14 @@ local global = require("global")
 local M = {
     lsp = {},
     plugin = {
-        avante = {
-            enabled = false,
-            provider = nil,
-            openai = nil,
-            azure = nil,
-            claude = nil,
-            copilot = nil,
-        },
+        -- avante = {
+        --     enabled = false,
+        --     provider = nil,
+        --     openai = nil,
+        --     azure = nil,
+        --     claude = nil,
+        --     copilot = nil,
+        -- },
         codeium = {
             enabled = false,
             strategies = nil,
@@ -47,9 +47,9 @@ function M.setup(opts)
 
     if not global.is_embedded then
         local plugin_config = config.plugin
-        if plugin_config.avante.enabled then
-            load_plugins({ "copilot.lua", "avante.nvim", "mcphub.nvim" })
-        end
+        -- if plugin_config.avante.enabled then
+        --     load_plugins({ "copilot.lua", "avante.nvim", "mcphub.nvim" })
+        -- end
 
         if plugin_config.code_companion.enabled then
             load_plugins({ "copilot.lua", "codecompanion.nvim", "mcphub.nvim" })

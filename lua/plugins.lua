@@ -484,21 +484,21 @@ require("lazy").setup({
     },
 
     -- Use your Neovim like using Cursor AI IDE!
-    {
-        "yetone/avante.nvim",
-        version = false,
-        build = global.is_windows and "powershell -ExecutionPolicy Bypass -File Build.ps1 -BuildFromSource true"
-            or "make BUILD_FROM_SOURCE=true CC=clang",
-        dependencies = {
-            "stevearc/dressing.nvim",
-            "nvim-lua/plenary.nvim",
-            "MunifTanjim/nui.nvim",
-            { "Kaiser-Yang/blink-cmp-avante", version = false },
-            "ravitemer/mcphub.nvim",
-        },
-        config = require("plugins._avante").config,
-        cond = is_not_embedded,
-    },
+    -- {
+    --     "yetone/avante.nvim",
+    --     version = false,
+    --     build = global.is_windows and "powershell -ExecutionPolicy Bypass -File Build.ps1 -BuildFromSource true"
+    --         or "make BUILD_FROM_SOURCE=true CC=clang",
+    --     dependencies = {
+    --         "stevearc/dressing.nvim",
+    --         "nvim-lua/plenary.nvim",
+    --         "MunifTanjim/nui.nvim",
+    --         { "Kaiser-Yang/blink-cmp-avante", version = false },
+    --         "ravitemer/mcphub.nvim",
+    --     },
+    --     config = require("plugins._avante").config,
+    --     cond = is_not_embedded,
+    -- },
 
     --  Plugin to improve viewing Markdown files in Neovim
     {

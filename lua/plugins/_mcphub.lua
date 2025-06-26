@@ -20,14 +20,14 @@ function M.config()
         end,
     }
 
-    local features = require("features")
-    if features.plugin.avante.enabled then
-        config.extentions = {
-            avante = {
-                make_slash_commands = true,
-            },
-        }
-    end
+    -- local features = require("features")
+    -- if features.plugin.avante.enabled then
+    --     config.extentions = {
+    --         avante = {
+    --             make_slash_commands = true,
+    --         },
+    --     }
+    -- end
 
     require("mcphub").setup(config)
 end

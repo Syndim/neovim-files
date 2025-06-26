@@ -71,9 +71,9 @@ function M.config()
                 if features.plugin.code_companion.enabled then
                     table.insert(sources, "codecompanion")
                 end
-                if features.plugin.avante.enabled then
-                    table.insert(sources, "avante")
-                end
+                -- if features.plugin.avante.enabled then
+                --     table.insert(sources, "avante")
+                -- end
 
                 if vim.bo.filetype == "toml" then
                     table.insert(sources, "crates")
