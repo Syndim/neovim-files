@@ -18,11 +18,11 @@ function M.config()
             end
             return false
         end,
-        -- extentions = {
-        -- 	avante = {
-        -- 		make_slash_commands = true,
-        -- 	},
-        -- },
+        extentions = {
+            avante = {
+                make_slash_commands = true,
+            },
+        },
     })
 end
 

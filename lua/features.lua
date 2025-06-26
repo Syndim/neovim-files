@@ -10,14 +10,14 @@ local global = require("global")
 local M = {
     lsp = {},
     plugin = {
-        -- avante = {
-        -- 	enabled = false,
-        -- 	provider = nil,
-        -- 	openai = nil,
-        -- 	azure = nil,
-        -- 	claude = nil,
-        -- 	copilot = nil,
-        -- },
+        avante = {
+            enabled = false,
+            provider = nil,
+            openai = nil,
+            azure = nil,
+            claude = nil,
+            copilot = nil,
+        },
         codeium = {
             enabled = false,
             strategies = nil,
