@@ -99,6 +99,7 @@ function M.config()
     if features.proxy then
         adapters = adapters or {}
         adapters.opts = {
+            allow_insecure = true,
             proxy = features.proxy,
         }
     end
