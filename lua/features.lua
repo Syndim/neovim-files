@@ -47,12 +47,12 @@ function M.setup(opts)
 
     if not global.is_embedded then
         local plugin_config = config.plugin
-        -- if plugin_config.avante.enabled then
-        -- 	load_plugins({ "copilot.lua", "avante.nvim" })
-        -- end
+        if plugin_config.avante.enabled then
+            load_plugins({ "copilot.lua", "avante.nvim", "mcphub.nvim" })
+        end
 
         if plugin_config.code_companion.enabled then
-            load_plugins({ "copilot.lua", "codecompanion.nvim" })
+            load_plugins({ "copilot.lua", "codecompanion.nvim", "mcphub.nvim" })
         end
 
         if plugin_config.copilot.enabled then

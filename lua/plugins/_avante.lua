@@ -210,7 +210,7 @@ function M.config()
     require("avante").setup({
         provider = provider and provider or "copilot",
         -- auto_suggestions_provider = "copilot",
-        file_selector = {
+        selector = {
             provider = "telescope",
         },
         windows = {

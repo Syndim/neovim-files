@@ -1,7 +1,7 @@
 local M = {}
 
 function M.config()
-    require("mcphub").setup({
+    local config = {
         use_bundled_binary = true,
         auto_approve = function(params)
             if vim.g.codecompanion_auto_tool_mode == true then
@@ -18,12 +18,18 @@ function M.config()
             end
             return false
         end,
-        extentions = {
+    }
+
+    local features = require("features")
+    if features.plugin.avante.enabled then
+        config.extentions = {
             avante = {
                 make_slash_commands = true,
             },
-        },
-    })
+        }
+    end
+
+    require("mcphub").setup(config)
 end
 
 return M
