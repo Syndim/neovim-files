@@ -84,13 +84,32 @@ function M.config()
                 adapters[k] = v
             else
                 adapters[k] = function()
-                    return require("codecompanion.adapters").extend(k, {
+                    local extra_config = {
                         schema = {
                             model = {
                                 default = v.model,
                             },
                         },
-                    })
+                    }
+
+                    if k == "copilot" then
+                        local copilot = require("codecompanion.adapters.copilot")
+                        extra_config.handlers = {
+                            form_messages = function(self, messages)
+                                if
+                                    #messages >= 2
+                                    and messages[#messages].role == "user"
+                                    and messages[#messages - 1].role == "tool"
+                                then
+                                    self.headers["x-initiator"] = "agent"
+                                else
+                                    self.headers["x-initiator"] = "user"
+                                end
+                                return copilot.handlers.form_messages(self, messages)
+                            end,
+                        }
+                    end
+                    return require("codecompanion.adapters").extend(k, extra_config)
                 end
             end
         end
