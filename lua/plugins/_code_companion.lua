@@ -96,14 +96,10 @@ function M.config()
                         local copilot = require("codecompanion.adapters.copilot")
                         extra_config.handlers = {
                             form_messages = function(self, messages)
-                                if
-                                    #messages >= 2
-                                    and messages[#messages].role == "user"
-                                    and messages[#messages - 1].role == "tool"
-                                then
-                                    self.headers["x-initiator"] = "agent"
+                                if #messages >= 1 and messages[#messages].role == "tool" then
+                                    self.headers["X-Initiator"] = "agent"
                                 else
-                                    self.headers["x-initiator"] = "user"
+                                    self.headers["X-Initiator"] = "user"
                                 end
                                 return copilot.handlers.form_messages(self, messages)
                             end,
