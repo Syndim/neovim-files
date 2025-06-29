@@ -18,6 +18,14 @@ function M.config()
             end
             return false
         end,
+        builtin_tools = {
+            replace_in_file = {
+                keymaps = {
+                    accept = "ga",
+                    reject = "gs",
+                },
+            },
+        },
     }
 
     -- local features = require("features")
