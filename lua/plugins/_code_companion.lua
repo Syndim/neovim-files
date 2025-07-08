@@ -104,7 +104,11 @@ function M.config()
                         local copilot = require("codecompanion.adapters.copilot")
                         extra_config.handlers = {
                             form_messages = function(self, messages)
-                                if #messages >= 1 and messages[#messages].role == "tool" then
+                                if
+                                    -- Sometimes the plugin will insert another message after the tool message
+                                    #messages >= 2 and messages[#messages - 1].role == "tool"
+                                    or #messages >= 1 and messages[#messages].role == "tool"
+                                then
                                     self.headers["X-Initiator"] = "agent"
                                 else
                                     self.headers["X-Initiator"] = "user"
