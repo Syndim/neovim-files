@@ -105,9 +105,13 @@ function M.config()
                         extra_config.handlers = {
                             form_messages = function(self, messages)
                                 if
-                                    -- Sometimes the plugin will insert another message after the tool message
-                                    #messages >= 2 and messages[#messages - 1].role == "tool"
-                                    or #messages >= 1 and messages[#messages].role == "tool"
+                                    -- Sometimes the plugin will insert extra invisible message after the tool message
+                                    (
+                                        #messages >= 2
+                                        and messages[#messages - 1].role == "tool"
+                                        and not messages[#messages - 1].opts.visible
+                                    )
+                                    or (#messages >= 1 and messages[#messages].role == "tool")
                                 then
                                     self.headers["X-Initiator"] = "agent"
                                 else
