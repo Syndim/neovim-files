@@ -54,7 +54,7 @@ function M.config()
             end
             local win = find_window_by_title("CodeCompanion")
             if win then
-                vim.api.nvim_win_set_width(win, 50)
+                vim.api.nvim_win_set_width(win, 60)
             end
         end,
     })

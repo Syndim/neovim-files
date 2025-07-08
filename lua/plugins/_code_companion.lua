@@ -143,7 +143,7 @@ function M.config()
                 show_settings = true,
                 window = {
                     position = "right",
-                    width = 50,
+                    width = 60,
                 },
             },
         },
