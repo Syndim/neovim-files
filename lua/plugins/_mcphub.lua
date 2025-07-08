@@ -38,6 +38,26 @@ function M.config()
     -- end
 
     require("mcphub").setup(config)
+    vim.api.nvim_create_augroup("MCPHub", { clear = true })
+    vim.api.nvim_create_autocmd("BufDelete", {
+        group = "MCPHub",
+        callback = function(args)
+            local function find_window_by_title(title_pattern)
+                for _, win in ipairs(vim.api.nvim_list_wins()) do
+                    local buf = vim.api.nvim_win_get_buf(win)
+                    local buf_name = vim.api.nvim_buf_get_name(buf)
+                    if buf_name:match(title_pattern) then
+                        return win
+                    end
+                end
+                return nil
+            end
+            local win = find_window_by_title("CodeCompanion")
+            if win then
+                vim.api.nvim_win_set_width(win, 50)
+            end
+        end,
+    })
 end
 
 return M
