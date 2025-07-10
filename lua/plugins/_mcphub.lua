@@ -9,7 +9,6 @@ function M.config()
             end
 
             if params.server_name == "neovim" then
-                print(params.server_name)
                 return true
             end
 
@@ -38,9 +37,8 @@ function M.config()
     -- end
 
     require("mcphub").setup(config)
-    vim.api.nvim_create_augroup("MCPHub", { clear = true })
-    vim.api.nvim_create_autocmd("BufDelete", {
-        group = "MCPHub",
+    vim.api.nvim_create_autocmd("BufWritePost", {
+        pattern = "*",
         callback = function(args)
             local function find_window_by_title(title_pattern)
                 for _, win in ipairs(vim.api.nvim_list_wins()) do
@@ -52,10 +50,12 @@ function M.config()
                 end
                 return nil
             end
-            local win = find_window_by_title("CodeCompanion")
-            if win then
-                vim.api.nvim_win_set_width(win, 60)
-            end
+            vim.defer_fn(function()
+                local win = find_window_by_title("CodeCompanion")
+                if win then
+                    vim.api.nvim_win_set_width(win, 60)
+                end
+            end, 10)
         end,
     })
 end
