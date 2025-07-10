@@ -109,7 +109,7 @@ function M.config()
                                     (
                                         #messages >= 2
                                         and messages[#messages - 1].role == "tool"
-                                        and not messages[#messages - 1].opts.visible
+                                        and not messages[#messages].opts.visible
                                     )
                                     or (#messages >= 1 and messages[#messages].role == "tool")
                                 then
