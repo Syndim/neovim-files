@@ -316,10 +316,10 @@ require("lazy").setup({
     -- Nvim Treesitter configurations and abstraction layer
     {
         "nvim-treesitter/nvim-treesitter",
-        run = ":TSUpdate",
+        build = ":TSUpdate",
         config = require("plugins._treesitter").config,
-        version = false,
-        event = "VeryLazy",
+        branch = "main",
+        lazy = false,
     },
 
     -- treesitter to auto close and auto rename html tag
@@ -536,7 +536,7 @@ require("lazy").setup({
     -- 🌸 A command-line fuzzy finder
     {
         "junegunn/fzf",
-        run = function()
+        build = function()
             vim.fn["fzf#install"]()
         end,
         cond = is_not_embedded,
