@@ -534,13 +534,13 @@ require("lazy").setup({
     },
 
     -- 🌸 A command-line fuzzy finder
-    {
-        "junegunn/fzf",
-        build = function()
-            vim.fn["fzf#install"]()
-        end,
-        cond = is_not_embedded,
-    },
+    -- {
+    --     "junegunn/fzf",
+    --     build = function()
+    --         vim.fn["fzf#install"]()
+    --     end,
+    --     cond = is_not_embedded,
+    -- },
 
     -- Better quickfix window in Neovim, polish old quickfix window.
     {
