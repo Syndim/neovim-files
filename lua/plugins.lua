@@ -559,15 +559,6 @@ require("lazy").setup({
         cond = is_not_embedded,
     },
 
-    -- C++ Helper Snippets Using Treesitter
-    {
-        "Badhi/nvim-treesitter-cpp-tools",
-        dependencies = { "nvim-treesitter/nvim-treesitter" },
-        config = require("plugins._cpp_tools").config,
-        ft = { "c", "cpp", "h", "hpp" },
-        cond = is_not_embedded,
-    },
-
     -- C#
     -- Roslyn LSP plugin for neovim
     {
