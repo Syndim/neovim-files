@@ -140,6 +140,11 @@ function M.create_config()
                 -- print(vim.inspect(context))
                 return
             end
+            -- Work around for invalid offset error
+            -- https://github.com/rust-lang/rust-analyzer/issues/17289
+            if err ~= nil and err.code == -32603 then
+                return
+            end
             return default_handler(err, result, context, conf)
         end
     end
