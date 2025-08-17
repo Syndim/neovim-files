@@ -564,7 +564,7 @@ require("lazy").setup({
     {
         "seblj/roslyn.nvim",
         dependencies = { "williamboman/mason-lspconfig.nvim" },
-        config = require("plugins._roslyn").config,
+        config = require("plugins._lsp_roslyn").config,
         ft = { "cs" },
         cond = is_not_embedded,
     },
