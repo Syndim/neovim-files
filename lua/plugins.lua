@@ -348,8 +348,11 @@ require("lazy").setup({
             { "aznhe21/actions-preview.nvim" },
         },
         config = require("plugins._mason_lspconfig").config,
-        event = { "BufReadPost", "BufNewFile" },
+        -- event = { "BufReadPost", "BufNewFile" },
         cond = is_not_embedded,
+        -- https://github.com/mason-org/mason-lspconfig.nvim/issues/590
+        -- https://github.com/folke/snacks.nvim/issues/2087
+        lazy = false,
     },
 
     -- Install and upgrade third party tools automatically

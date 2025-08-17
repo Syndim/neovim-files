@@ -1,6 +1,6 @@
 local M = {}
 
-function M.setup(lsp_config, config)
+function M.setup(config)
     local function on_attach(c, bufnr)
         config.on_attach(c, bufnr)
         local function semantic_tokens(client)

@@ -1,6 +1,6 @@
 local M = {}
 
-function M.setup(lsp_config, config)
+function M.setup(config)
     local util = require("lspconfig.util")
     local sourcekit_config = vim.tbl_deep_extend("force", config, {
         root_dir = function(filename, _)
@@ -11,7 +11,8 @@ function M.setup(lsp_config, config)
         end,
         filetypes = { "swift" },
     })
-    lsp_config.sourcekit.setup(sourcekit_config)
+    vim.lsp.config("sourcekit", sourcekit_config)
+    vim.lsp.enable("sourcekit")
 end
 
 return M

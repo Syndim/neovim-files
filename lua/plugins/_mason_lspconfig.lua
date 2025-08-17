@@ -7,7 +7,6 @@ function M.config()
     local mason = require("mason")
     local mason_lsp_config = require("mason-lspconfig")
     local lsp = require("plugins._lsp")
-    local lsp_config = require("lspconfig")
     local common_servers = {
         "neocmake",
         "cssls",
@@ -81,14 +80,15 @@ function M.config()
 
     -- Common LSP
     for _, name in ipairs(common_servers) do
-        lsp_config[name].setup(config)
+        vim.lsp.config(name, config)
+        vim.lsp.enable(name)
     end
 
     -- Custom settings
-    require("plugins._lsp_lua").setup(lsp_config, config)
-    require("plugins._lsp_clang").setup(lsp_config, config)
-    require("plugins._lsp_python").setup(lsp_config, config)
-    require("plugins._lsp_roslyn").setup(lsp_config, config)
+    require("plugins._lsp_lua").setup(config)
+    require("plugins._lsp_clang").setup(config)
+    require("plugins._lsp_python").setup(config)
+    require("plugins._lsp_roslyn").setup(config)
     -- require("plugins._lsp_typescript").setup(lsp_config, config)
 
     if global:which("flutter") == 0 or global:which("fvm") == 0 then
@@ -96,13 +96,14 @@ function M.config()
     end
 
     if global:which("swift") == 0 then
-        require("plugins._lsp_sourcekit").setup(lsp_config, config)
+        require("plugins._lsp_sourcekit").setup(config)
     end
 
     -- Optional LSP
     for name, condition in pairs(optional_servers) do
         if global:which(condition) == 0 then
-            lsp_config[name].setup(config)
+            vim.lsp.config(name, config)
+            vim.lsp.enable(name)
         end
     end
 end

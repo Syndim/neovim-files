@@ -1,6 +1,6 @@
 local M = {}
 
-function M.setup(lsp_config, config)
+function M.setup(config)
     -- lsp_config['pylsp'].setup(config)
 
     -- Below config are for pyright
@@ -86,8 +86,10 @@ function M.setup(lsp_config, config)
         end,
     })
 
-    lsp_config["basedpyright"].setup(python_config)
-    lsp_config["ruff"].setup(python_config)
+    vim.lsp.config("basedpyright", python_config)
+    vim.lsp.config("ruff", python_config)
+    vim.lsp.enable("basedpyright")
+    vim.lsp.enable("ruff")
 end
 
 return M

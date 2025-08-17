@@ -1,6 +1,6 @@
 local M = {}
 
-function M.setup(lsp_config, config)
+function M.setup(config)
     local lua_config = vim.tbl_deep_extend("force", config, {
         settings = {
             Lua = {
@@ -19,7 +19,8 @@ function M.setup(lsp_config, config)
             },
         },
     })
-    lsp_config.lua_ls.setup(lua_config)
+    vim.lsp.config("lua_ls", lua_config)
+    vim.lsp.enable("lua_ls")
 end
 
 return M
