@@ -407,6 +407,21 @@ require("lazy").setup({
         cond = is_not_embedded,
     },
 
+    -- This plugin provides an API to insert the inlay-hint under the cursor into the buffer.
+    {
+        "Davidyz/inlayhint-filler.nvim",
+        keys = {
+            {
+                "<Leader>I", -- Use whatever keymap you want.
+                function()
+                    require("inlayhint-filler").fill()
+                end,
+                desc = "Insert the inlay-hint under cursor into the buffer.",
+                mode = { "n", "v" }, -- include 'v' if you want to use it in visual selection mode
+            },
+        },
+    },
+
     -- Bring enjoyment to your auto completion.
     {
         "xzbdmw/colorful-menu.nvim",
