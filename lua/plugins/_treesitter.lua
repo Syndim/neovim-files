@@ -51,7 +51,7 @@ function M.config()
         "swift",
     })
     vim.api.nvim_create_autocmd("FileType", {
-        pattern = { "python", "fish", "ruby", "javascript", "typescript", "typescriptreact", "just", "swift" },
+        pattern = { "fish", "ruby", "javascript", "typescript", "typescriptreact", "just", "swift" },
         callback = function()
             vim.treesitter.start()
         end,
