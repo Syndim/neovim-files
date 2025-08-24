@@ -407,6 +407,14 @@ require("lazy").setup({
         cond = is_not_embedded,
     },
 
+    -- Bring enjoyment to your auto completion.
+    {
+        "xzbdmw/colorful-menu.nvim",
+        config = require("plugins._colorful_menu").config,
+        event = "VeryLazy",
+        cond = is_not_embedded,
+    },
+
     -- performant, batteries-included completion plugin for neovim
     {
         "saghen/blink.cmp",
@@ -414,6 +422,7 @@ require("lazy").setup({
         init = require("plugins._blink").setup,
         config = require("plugins._blink").config,
         dependencies = {
+            "xzbdmw/colorful-menu.nvim",
             "rafamadriz/friendly-snippets",
             -- Compatibility layer for using nvim-cmp sources on blink.cmp
             {
