@@ -93,12 +93,12 @@ function M.config()
         strategies = vim.tbl_deep_extend("force", strategies, features.strategies)
     end
     if features.adapters then
-        adapters = {}
+        adapters = { http = {} }
         for k, v in pairs(features.adapters) do
             if type(v) == "function" then
-                adapters[k] = v
+                adapters.http[k] = v
             else
-                adapters[k] = function()
+                adapters.http[k] = function()
                     local extra_config = {
                         schema = {
                             model = {
@@ -108,7 +108,7 @@ function M.config()
                     }
 
                     if k == "copilot" then
-                        local copilot = require("codecompanion.adapters.copilot")
+                        local copilot = require("codecompanion.adapters.http.copilot")
                         extra_config.handlers = {
                             form_messages = function(self, messages)
                                 if
@@ -128,7 +128,7 @@ function M.config()
                             end,
                         }
                     end
-                    return require("codecompanion.adapters").extend(k, extra_config)
+                    return require("codecompanion.adapters.http").extend(k, extra_config)
                 end
             end
         end
@@ -136,7 +136,8 @@ function M.config()
 
     if features.proxy then
         adapters = adapters or {}
-        adapters.opts = {
+        adapters.http = adapters.http or {}
+        adapters.http.opts = {
             allow_insecure = true,
             proxy = features.proxy,
         }
