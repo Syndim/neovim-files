@@ -63,6 +63,7 @@ local function setup_fidget_integration()
 end
 
 function M.config()
+    local window_width = 60
     local features = require("features").plugin.code_companion
     local strategies = {
         chat = {
@@ -149,7 +150,7 @@ function M.config()
                 show_settings = true,
                 window = {
                     position = "right",
-                    width = 60,
+                    width = window_width,
                 },
             },
         },
@@ -186,6 +187,22 @@ function M.config()
     vim.keymap.set("n", "<Leader>cgc", function()
         vim.cmd.CodeCompanion("/commit")
     end, { remap = false, desc = "Generate commit message for staged change" })
+    vim.keymap.set("n", "<Leader>cw", function()
+        local function find_window_by_title(title_pattern)
+            for _, win in ipairs(vim.api.nvim_list_wins()) do
+                local buf = vim.api.nvim_win_get_buf(win)
+                local buf_name = vim.api.nvim_buf_get_name(buf)
+                if buf_name:match(title_pattern) then
+                    return win
+                end
+            end
+            return nil
+        end
+        local win = find_window_by_title("CodeCompanion")
+        if win then
+            vim.api.nvim_win_set_width(win, window_width)
+        end
+    end, { remap = false, desc = "Reset CodeCompanion window size" })
 
     setup_fidget_integration()
 end
