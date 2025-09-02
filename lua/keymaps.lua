@@ -75,6 +75,7 @@ if vim.fn.has("nvim-0.11") == 1 then
     vim.keymap.del({ "n", "x" }, "gra")
     vim.keymap.del({ "n" }, "gri")
     vim.keymap.del({ "n" }, "grr")
+    vim.keymap.del({ "n" }, "grt")
 end
 
 local function paste_from_register()
