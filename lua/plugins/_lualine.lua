@@ -20,6 +20,7 @@ function M.config()
                 { "filename", path = 1, file_status = true },
             },
             lualine_x = {
+                require("plugins._sidekick").status(),
                 { require("plugins._copilot").status },
                 { require("plugins._codeium").status },
                 { "lsp_status" },
