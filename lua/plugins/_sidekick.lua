@@ -57,24 +57,10 @@ function M.config()
 end
 
 function M.status()
-    local sidekick_status = require("sidekick.status")
-    return {
-        function()
-            if sidekick_initialized then
-                return ""
-            end
-            return ""
-        end,
-        color = function()
-            local status = sidekick_status.get()
-            if status then
-                return status.kind == "Error" and "DiagnosticError" or status.busy and "DiagnosticWarn" or ""
-            end
-        end,
-        cond = function()
-            return sidekick_status.get() ~= nil
-        end,
-    }
+    if sidekick_initialized then
+        return ""
+    end
+    return ""
 end
 
 return M
