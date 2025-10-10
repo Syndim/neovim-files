@@ -112,18 +112,6 @@ require("lazy").setup({
         cond = is_not_embedded,
     },
 
-    -- Clipboard manager neovim plugin with telescope integration
-    {
-        "AckslD/nvim-neoclip.lua",
-        dependencies = {
-            "nvim-telescope/telescope.nvim",
-            "kkharji/sqlite.lua",
-        },
-        config = require("plugins._neoclip").config,
-        event = "VeryLazy",
-        cond = is_not_embedded,
-    },
-
     -- A snazzy bufferline for Neovim
     {
         "akinsho/bufferline.nvim",
@@ -267,31 +255,31 @@ require("lazy").setup({
     },
 
     -- Improved fzf.vim written in lua
+    {
+        "ibhagwan/fzf-lua",
+        config = require("plugins._fzf").config,
+        event = "VeryLazy",
+        cond = is_not_embedded,
+    },
+
+    -- Find, Filter, Preview, Pick. All lua, all the time.
     -- {
-    -- 	"ibhagwan/fzf-lua",
-    -- 	config = require("plugins._fzf").config,
-    -- 	event = "VeryLazy",
-    -- 	cond = is_not_embedded,
+    --     "nvim-telescope/telescope.nvim",
+    --     config = require("plugins._telescope").config,
+    --     event = "VeryLazy",
+    --     -- TODO: Use proper version once telescope releases a new version
+    --     version = false,
+    --     cond = is_not_embedded,
     -- },
 
-    -- Find, Filter, Preview, Pick. All lua, all the time.
-    {
-        "nvim-telescope/telescope.nvim",
-        config = require("plugins._telescope").config,
-        event = "VeryLazy",
-        -- TODO: Use proper version once telescope releases a new version
-        version = false,
-        cond = is_not_embedded,
-    },
-
     -- It sets vim.ui.select to telescope. That means for example that neovim core stuff can fill the telescope picker. Example would be lua vim.lsp.buf.code_action().
-    {
-        "nvim-telescope/telescope-ui-select.nvim",
-        dependencies = "nvim-telescope/telescope.nvim",
-        config = require("plugins._telescope_ui_select").config,
-        event = "VeryLazy",
-        cond = is_not_embedded,
-    },
+    -- {
+    --     "nvim-telescope/telescope-ui-select.nvim",
+    --     dependencies = "nvim-telescope/telescope.nvim",
+    --     config = require("plugins._telescope_ui_select").config,
+    --     event = "VeryLazy",
+    --     cond = is_not_embedded,
+    -- },
 
     -- Find the enemy and replace them with dark power.
     {
@@ -455,7 +443,7 @@ require("lazy").setup({
     {
         "Bekaboo/dropbar.nvim",
         dependencies = {
-            "nvim-telescope/telescope-fzf-native.nvim",
+            -- "nvim-telescope/telescope-fzf-native.nvim",
         },
         event = "VeryLazy",
         config = require("plugins._dropbar").config,
@@ -586,7 +574,7 @@ require("lazy").setup({
     {
         "wojciech-kulik/xcodebuild.nvim",
         dependencies = {
-            "nvim-telescope/telescope.nvim",
+            -- "nvim-telescope/telescope.nvim",
             "MunifTanjim/nui.nvim",
         },
         config = require("plugins._xcode_build").config,
@@ -648,7 +636,7 @@ require("lazy").setup({
         "nvim-flutter/flutter-tools.nvim",
         dependencies = {
             "nvim-lua/plenary.nvim",
-            "nvim-telescope/telescope.nvim",
+            -- "nvim-telescope/telescope.nvim",
         },
         config = require("plugins._lsp_flutter").config,
         ft = "dart",

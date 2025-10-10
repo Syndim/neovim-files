@@ -11,6 +11,8 @@ function M.config()
         },
     })
 
+    fzf.register_ui_select()
+
     local opts = {
         noremap = true,
     }

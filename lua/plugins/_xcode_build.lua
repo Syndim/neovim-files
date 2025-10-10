@@ -6,6 +6,9 @@ function M.config()
             xcode_build_server = {
                 enabled = true,
             },
+            fzf_lua = {
+                enabled = true,
+            },
         },
     })
 
@@ -31,8 +34,8 @@ function M.config()
     vim.keymap.set("n", "<leader>ed", cmd.XcodebuildSelectDevice, { desc = "Select Device" })
     vim.keymap.set("n", "<leader>ep", cmd.XcodebuildSelectTestPlan, { desc = "Select Test Plan" })
     vim.keymap.set("n", "<leader>eq", function()
-        -- require("fzf-lua").quickfix()
-        cmd.Telescope({ "quickfix" })
+        require("fzf-lua").quickfix()
+        -- cmd.Telescope({ "quickfix" })
     end, { desc = "Show QuickFix List" })
 
     vim.keymap.set("n", "<leader>ex", cmd.XcodebuildQuickfixLine, { desc = "Quickfix Line" })

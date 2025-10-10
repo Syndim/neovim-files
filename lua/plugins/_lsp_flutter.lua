@@ -4,10 +4,10 @@ function M.setup(lsp, config)
     local function on_attach(client, bufnr)
         lsp.create_on_attach()(client, bufnr)
         local opts = { remap = false, buffer = bufnr }
-        opts.desc = "Flutter commands"
-        vim.keymap.set("n", "<Leader>cl", function()
-            vim.cmd.Telescope({ "flutter", "commands" })
-        end, opts)
+        -- opts.desc = "Flutter commands"
+        -- vim.keymap.set("n", "<Leader>cl", function()
+        --     vim.cmd.Telescope({ "flutter", "commands" })
+        -- end, opts)
     end
 
     M.flutter_config = vim.tbl_deep_extend("force", config, {
@@ -55,7 +55,7 @@ function M.config()
         lsp = M.flutter_config,
     })
 
-    require("telescope").load_extension("flutter")
+    -- require("telescope").load_extension("flutter")
 end
 
 return M
