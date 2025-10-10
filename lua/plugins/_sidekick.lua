@@ -25,7 +25,6 @@ function M.config()
 
     vim.keymap.set("n", "<C-f>", function()
         if not sidekick.nes_jump_or_apply() then
-            print("--true")
             local feed = vim.api.nvim_replace_termcodes("<Ignore><C-f>", true, true, true)
             vim.api.nvim_feedkeys(feed, "n", false)
         end
@@ -35,7 +34,7 @@ function M.config()
         cli.toggle()
     end, { remap = false, desc = "Sidekick Toggle CLI" })
     vim.keymap.set("n", "<leader>as", function()
-        require("sidekick.cli").select()
+        require("sidekick.cli").select({ filter = { insstalled = true } })
     end, { remap = false, desc = "Select CLI" })
     vim.keymap.set({ "x", "n" }, "<leader>at", function()
         require("sidekick.cli").send({ msg = "{this}" })
@@ -49,9 +48,12 @@ function M.config()
     vim.keymap.set({ "n", "x", "i", "t" }, "<c-.>", function()
         require("sidekick.cli").focus()
     end, { remap = false, desc = "Sidekick Switch Focus" })
+    vim.keymap.set("n", "<leader>ao", function()
+        require("sidekick.cli").toggle({ name = "opencode", focus = true })
+    end, { remap = false, desc = "Sidekick Toggle Opencode" })
     vim.keymap.set("n", "<leader>ac", function()
-        require("sidekick.cli").toggle({ name = "claude", focus = true })
-    end, { remap = false, desc = "Sidekick Toggle Claude" })
+        require("sidekick.cli").toggle({ name = "copilot", focus = true })
+    end, { remap = false, desc = "Sidekick Toggle Github Copilot" })
 
     sidekick_initialized = true
 end
