@@ -542,6 +542,7 @@ require("lazy").setup({
         dependencies = { "junegunn/fzf", "nvim-treesitter/nvim-treesitter" },
         ft = "qf",
         cond = is_not_embedded,
+        version = false,
     },
 
     -- C/C++
