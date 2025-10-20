@@ -17,6 +17,9 @@ function M.config()
                     width = 60,
                 },
             },
+            prompts = {
+                git_review = "Review the changes in the latest git commit",
+            },
         },
     }
 
