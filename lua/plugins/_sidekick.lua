@@ -18,7 +18,7 @@ function M.config()
                 },
             },
             prompts = {
-                git_review = "Review the changes in the latest git commit",
+                git_review = "Review the changes in the latest git commit in details? Provide suggestions about how to improve the code quality.",
             },
         },
     }
