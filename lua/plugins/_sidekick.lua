@@ -7,6 +7,9 @@ function M.config()
     local cli = require("sidekick.cli")
     local features = require("features").plugin.sidekick
     local config = {
+        nes = {
+            enabled = false,
+        },
         cli = {
             mux = {
                 backend = "tmux",
