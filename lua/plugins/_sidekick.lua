@@ -21,7 +21,7 @@ function M.config()
                 },
             },
             prompts = {
-                git_review = "Review the changes in the latest git commit in details? Provide suggestions about how to improve the code quality.",
+                git_review = "Review the changes in the latest git commit in details? Provide suggestions about how to improve the code quality. You should include the original code(including line number and the line) and pointing out the issue and provide suggestions about what change needs to be make to improvide the code.",
             },
         },
     }
