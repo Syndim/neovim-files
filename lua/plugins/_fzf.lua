@@ -9,6 +9,16 @@ function M.config()
                 ["<C-d>"] = "preview-page-down",
             },
         },
+        actions = {
+            files = {
+                true,
+                ["alt-i"] = fzf.actions.toggle_ignore,
+                ["alt-o"] = fzf.actions.toggle_hidden,
+            },
+        },
+        files = {
+            hidden = false,
+        },
     })
 
     fzf.register_ui_select()
