@@ -3,17 +3,26 @@ local M = {}
 function M.setup()
     local global = require("global")
 
-    local download = require("blink.cmp.fuzzy.download")
+    local cmp_download = require("blink.cmp.fuzzy.download")
+    local downloader = require("blink.download.downloader")
 
-    local function download_file(url, filename)
-        local download_config = require("blink.cmp.config").fuzzy.prebuilt_binaries
-        local async = require("blink.cmp.lib.async")
-        local files = require("blink.cmp.fuzzy.download.files")
+    local function download_file(async, config, files, url, filename)
         url = string.gsub(url, "https://github.com", global.github.url)
         url = string.gsub(url, "https://raw.githubusercontent.com", global.github.raw_url)
         return async.task.new(function(resolve, reject)
             local args = { "curl" }
-            vim.list_extend(args, download_config.extra_curl_args)
+
+            -- Use https proxy if available
+            if config.proxy.url ~= nil then
+                vim.list_extend(args, { "--proxy", config.proxy.url })
+            elseif config.proxy.from_env then
+                local proxy_url = os.getenv("HTTPS_PROXY")
+                if proxy_url ~= nil then
+                    vim.list_extend(args, { "--proxy", proxy_url })
+                end
+            end
+
+            vim.list_extend(args, config.extra_curl_args)
             vim.list_extend(args, {
                 "--fail", -- Fail on 4xx/5xx
                 "--location", -- Follow redirects
@@ -35,12 +44,27 @@ function M.setup()
         end)
     end
 
+    local function cmp_download_file(url, filename)
+        local download_config = require("blink.cmp.config").fuzzy.prebuilt_binaries
+        local async = require("blink.cmp.lib.async")
+        local files = require("blink.cmp.fuzzy.download.files")
+
+        return download_file(async, download_config, files, url, filename)
+    end
+
+    local function downloader_download_file(files, url, filename)
+        local async = require("blink.download.lib.async")
+        local config = require("blink.download.config")
+        return download_file(async, config, files, url, filename)
+    end
+
     if global.github.has_proxy then
-        download.download_file = download_file
+        cmp_download.download_file = cmp_download_file
+        downloader.download_file = downloader_download_file
     end
 end
 
-function M.config()
+function M.cmp_config()
     local features = require("features")
     require("blink.cmp").setup({
         keymap = {
@@ -132,6 +156,10 @@ function M.config()
             enabled = true,
         },
     })
+end
+
+function M.pair_config()
+    require("blink.pairs").setup({})
 end
 
 return M

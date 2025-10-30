@@ -319,12 +319,12 @@ require("lazy").setup({
     },
 
     -- autopairs for neovim written by lua
-    {
-        "windwp/nvim-autopairs",
-        dependencies = "nvim-treesitter/nvim-treesitter",
-        config = require("plugins._treesitter_autopair").config,
-        event = "VeryLazy",
-    },
+    -- {
+    --     "windwp/nvim-autopairs",
+    --     dependencies = "nvim-treesitter/nvim-treesitter",
+    --     config = require("plugins._treesitter_autopair").config,
+    --     event = "VeryLazy",
+    -- },
 
     -- LSP and auto completion
     -- Extension to mason.nvim that makes it easier to lspconfig with mason.nvim
@@ -408,7 +408,7 @@ require("lazy").setup({
         "saghen/blink.cmp",
         lazy = false,
         init = require("plugins._blink").setup,
-        config = require("plugins._blink").config,
+        config = require("plugins._blink").cmp_config,
         dependencies = {
             "xzbdmw/colorful-menu.nvim",
             "rafamadriz/friendly-snippets",
@@ -437,6 +437,16 @@ require("lazy").setup({
             },
         },
         cond = is_not_embedded,
+    },
+
+    -- Rainbow highlighting and intelligent auto-pairs for Neovim
+    {
+        "saghen/blink.pairs",
+        version = "*",
+        dependencies = "saghen/blink.download",
+        init = require("plugins._blink").setup,
+        config = require("plugins._blink").pair_config,
+        event = "VeryLazy",
     },
 
     -- IDE-like breadcrumbs, out of the box
