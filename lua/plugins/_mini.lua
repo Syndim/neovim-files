@@ -41,13 +41,13 @@ function M.config()
     end, opts)
 
     -- mini.pairs
-    require("mini.pairs").setup({
-        modes = {
-            insert = true,
-            command = true,
-            terminal = true,
-        },
-    })
+    -- require("mini.pairs").setup({
+    --     modes = {
+    --         insert = true,
+    --         command = true,
+    --         terminal = true,
+    --     },
+    -- })
 
     -- mini.diff
     require("mini.diff").setup({
