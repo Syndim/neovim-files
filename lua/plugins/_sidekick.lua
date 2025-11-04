@@ -29,12 +29,12 @@ function M.config()
     config = vim.tbl_deep_extend("force", config, features.config)
     sidekick.setup(config)
 
-    vim.keymap.set("n", "<C-f>", function()
-        if not sidekick.nes_jump_or_apply() then
-            local feed = vim.api.nvim_replace_termcodes("<Ignore><C-f>", true, true, true)
-            vim.api.nvim_feedkeys(feed, "n", false)
-        end
-    end, { noremap = true, expr = true, desc = "Goto/Apply Next Edit Suggestion" })
+    -- vim.keymap.set("n", "<C-f>", function()
+    --     if not sidekick.nes_jump_or_apply() then
+    --         local feed = vim.api.nvim_replace_termcodes("<Ignore><C-f>", true, true, true)
+    --         vim.api.nvim_feedkeys(feed, "n", false)
+    --     end
+    -- end, { noremap = true, expr = true, desc = "Goto/Apply Next Edit Suggestion" })
 
     vim.keymap.set("n", "<Leader>aa", function()
         cli.toggle()
