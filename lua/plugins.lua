@@ -447,6 +447,7 @@ require("lazy").setup({
         init = require("plugins._blink").setup,
         config = require("plugins._blink").pair_config,
         event = "VeryLazy",
+        cond = is_not_embedded,
     },
 
     -- IDE-like breadcrumbs, out of the box
