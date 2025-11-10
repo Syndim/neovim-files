@@ -1,9 +1,8 @@
-local g = vim.g
-if not g.neovide then
+if not vim.g.neovide then
     return
 end
 
-g.neovide_remember_window_size = true
+vim.g.neovide_remember_window_size = true
 
 local global = require("global")
 
@@ -18,7 +17,7 @@ local global = require("global")
 if global.is_mac then
     vim.g.neovide_input_macos_option_key_is_meta = "both"
 elseif global.is_wsl then
-    -- Neovide under wsl will fetch new set of environments and VIRTUAL_ENV
+    -- Neovide under WSL will fetch new set of environments and VIRTUAL_ENV
     -- environment variable somehow get lost
     -- So we reset it here
     local util = require("lspconfig/util")
@@ -44,4 +43,9 @@ elseif global.is_wsl then
             vim.api.nvim_cmd({ cmd = "runtime", args = { "autoload/provider/clipboard.vim" } }, {})
         end
     end
+
+    vim.api.nvim_create_user_command("Proxylc", function()
+        vim.env.HTTP_PROXY = "http://127.0.0.1:7890"
+        vim.env.HTTPS_PROXY = "http://127.0.0.1:7890"
+    end, { nargs = 0 })
 end
