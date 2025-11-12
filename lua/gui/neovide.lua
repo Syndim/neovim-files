@@ -14,6 +14,11 @@ local global = require("global")
 --     end
 -- })
 
+vim.api.nvim_create_user_command("Proxylc", function()
+    vim.env.HTTP_PROXY = "http://127.0.0.1:7890"
+    vim.env.HTTPS_PROXY = "http://127.0.0.1:7890"
+end, { nargs = 0 })
+
 if global.is_mac then
     vim.g.neovide_input_macos_option_key_is_meta = "both"
 elseif global.is_wsl then
@@ -43,9 +48,4 @@ elseif global.is_wsl then
             vim.api.nvim_cmd({ cmd = "runtime", args = { "autoload/provider/clipboard.vim" } }, {})
         end
     end
-
-    vim.api.nvim_create_user_command("Proxylc", function()
-        vim.env.HTTP_PROXY = "http://127.0.0.1:7890"
-        vim.env.HTTPS_PROXY = "http://127.0.0.1:7890"
-    end, { nargs = 0 })
 end
