@@ -40,16 +40,17 @@ function M.config()
         suggestion = {
             enabled = true,
             auto_trigger = true,
-            keymap = {
-                accept = "<C-f>",
-            },
+            -- keymap = {
+            --     accept = "<C-f>",
+            -- },
         },
     })
-    -- local opts = { expr = true, replace_keycodes = false }
-    -- opts.desc = "Accept copilot suggestion"
-    -- vim.keymap.set("i", "<C-f>", function()
-    -- 	return vim.fn["copilot#Accept"]("\\<CR>")
-    -- end, opts)
+
+    local opts = { expr = true, replace_keycodes = false }
+    opts.desc = "Accept copilot suggestion"
+    vim.keymap.set("i", "<C-f>", function()
+        require("copilot.suggestion").accept()
+    end, opts)
     copilot_initiazlied = true
 end
 
