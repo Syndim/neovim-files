@@ -87,20 +87,24 @@ if global.is_windows or global.is_linux then
     opts.desc = "Copy"
     vim.keymap.set("n", "<C-c>", '"+y', opts)
     vim.keymap.set("v", "<C-c>", '"+y', opts)
+    vim.keymap.set("t", "<C-c>", '"+y', opts)
 
     opts.desc = "Paste"
     vim.keymap.set("n", "<C-v>", '"+gP', opts)
     vim.keymap.set("i", "<C-v>", paste_from_register, opts)
+    vim.keymap.set("t", "<C-v>", paste_from_register, opts)
     vim.keymap.set("c", "<C-v>", "<C-r>+", opts)
     vim.keymap.set("v", "<C-v>", '"+gP', opts)
 elseif global.is_mac then
     opts.desc = "Copy"
     vim.keymap.set("n", "<D-c>", '"+y', opts)
     vim.keymap.set("v", "<D-c>", '"+y', opts)
+    vim.keymap.set("t", "<D-c>", '"+y', opts)
 
     opts.desc = "Paste"
     vim.keymap.set("n", "<D-v>", '"+gP', opts)
     vim.keymap.set("i", "<D-v>", paste_from_register, opts)
+    vim.keymap.set("t", "<D-v>", paste_from_register, opts)
     vim.keymap.set("c", "<D-v>", "<C-r>+", opts)
     vim.keymap.set("v", "<D-v>", '"+gP', opts)
 end
