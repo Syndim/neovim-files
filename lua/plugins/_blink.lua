@@ -93,9 +93,9 @@ function M.cmp_config()
                 end
 
                 local sources = { "lsp", "buffer", "snippets", "path" }
-                if features.plugin.code_companion.enabled then
-                    table.insert(sources, "codecompanion")
-                end
+                -- if features.plugin.code_companion.enabled then
+                --     table.insert(sources, "codecompanion")
+                -- end
 
                 if vim.bo.filetype == "toml" then
                     table.insert(sources, "crates")
