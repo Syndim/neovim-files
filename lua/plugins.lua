@@ -468,31 +468,31 @@ require("lazy").setup({
         cond = is_not_embedded,
     },
 
-    {
-        "ravitemer/mcphub.nvim",
-        dependencies = {
-            "nvim-lua/plenary.nvim", -- Required for Job and HTTP requests
-        },
-        -- uncomment the following line to load hub lazily
-        cmd = "MCPHub", -- lazy load
-        build = "bundled_build.lua",
-        config = require("plugins._mcphub").config,
-        cond = is_not_embedded,
-    },
+    -- {
+    --     "ravitemer/mcphub.nvim",
+    --     dependencies = {
+    --         "nvim-lua/plenary.nvim", -- Required for Job and HTTP requests
+    --     },
+    --     -- uncomment the following line to load hub lazily
+    --     cmd = "MCPHub", -- lazy load
+    --     build = "bundled_build.lua",
+    --     config = require("plugins._mcphub").config,
+    --     cond = is_not_embedded,
+    -- },
 
     -- ✨ AI-powered coding, seamlessly in Neovim
-    {
-        "olimorris/codecompanion.nvim",
-        dependencies = {
-            { "nvim-lua/plenary.nvim", version = false },
-            "nvim-treesitter/nvim-treesitter",
-            "zbirenbaum/copilot.lua",
-            "ravitemer/mcphub.nvim",
-            "j-hui/fidget.nvim",
-        },
-        config = require("plugins._code_companion").config,
-        cond = is_not_embedded,
-    },
+    -- {
+    --     "olimorris/codecompanion.nvim",
+    --     dependencies = {
+    --         { "nvim-lua/plenary.nvim", version = false },
+    --         "nvim-treesitter/nvim-treesitter",
+    --         "zbirenbaum/copilot.lua",
+    --         "ravitemer/mcphub.nvim",
+    --         "j-hui/fidget.nvim",
+    --     },
+    --     config = require("plugins._code_companion").config,
+    --     cond = is_not_embedded,
+    -- },
 
     -- Your Neovim AI sidekick
     {

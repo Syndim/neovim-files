@@ -48,9 +48,9 @@ function M.setup(opts)
             load_plugins({ "copilot.lua", "sidekick.nvim" })
         end
 
-        if plugin_config.code_companion.enabled then
-            load_plugins({ "copilot.lua", "codecompanion.nvim", "mcphub.nvim" })
-        end
+        -- if plugin_config.code_companion.enabled then
+        --     load_plugins({ "copilot.lua", "codecompanion.nvim", "mcphub.nvim" })
+        -- end
 
         if plugin_config.copilot.enabled then
             load_plugins({ "copilot.lua" })
