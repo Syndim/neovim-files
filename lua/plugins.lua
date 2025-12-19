@@ -71,6 +71,14 @@ require("lazy").setup({
         cond = is_not_embedded,
     },
 
+    --  Neovim file explorer: edit your filesystem like a buffer
+    {
+        "stevearc/oil.nvim",
+        config = require("plugins._oil").config,
+        dependencies = { { "nvim-tree/nvim-web-devicons" } },
+        lazy = false,
+    },
+
     -- A Neovim plugin hiding your colorcolumn when unneeded.
     {
         "m4xshen/smartcolumn.nvim",
