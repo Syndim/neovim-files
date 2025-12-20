@@ -25,7 +25,7 @@ function M.config()
     set({ "n", "x" }, "<leader><down>", function()
         mc.lineSkipCursor(1)
     end, {
-        "Skip cursor below the main cursor",
+        desc = "Skip cursor below the main cursor",
     })
 
     -- Add or skip adding a new cursor by matching word/selection
