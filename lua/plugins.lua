@@ -168,16 +168,6 @@ require("lazy").setup({
         cond = is_not_embedded,
     },
 
-    --  Use the w, e, b motions like a spider. Move by subwords and skip insignificant punctuation.
-    -- {
-    -- 	"chrisgrieser/nvim-spider",
-    -- 	keys = {
-    -- 		{ "w", "<cmd>lua require('spider').motion('w')<CR>", mode = { "n", "o", "x" } },
-    -- 		{ "e", "<cmd>lua require('spider').motion('e')<CR>", mode = { "n", "o", "x" } },
-    -- 		{ "b", "<cmd>lua require('spider').motion('b')<CR>", mode = { "n", "o", "x" } },
-    -- 	},
-    -- },
-
     -- Navigate your code with search labels, enhanced character motions and Treesitter integration
     {
         "folke/flash.nvim",
@@ -220,11 +210,19 @@ require("lazy").setup({
     },
 
     -- Multiple cursors plugin for vim/neovim
+    -- {
+    --     "mg979/vim-visual-multi",
+    --     branch = "master",
+    --     config = require("plugins._vim_visual_multi").config,
+    --     init = require("plugins._vim_visual_multi").setup,
+    --     event = "VeryLazy",
+    -- },
+
+    --  multiple cursors in neovim
     {
-        "mg979/vim-visual-multi",
-        branch = "master",
-        config = require("plugins._vim_visual_multi").config,
-        init = require("plugins._vim_visual_multi").setup,
+        "jake-stewart/multicursor.nvim",
+        branch = "1.0",
+        config = require("plugins._multicursors").config,
         event = "VeryLazy",
     },
 
