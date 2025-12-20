@@ -20,7 +20,7 @@ function M.config()
     set({ "n", "x" }, "<leader><up>", function()
         mc.lineSkipCursor(-1)
     end, {
-        "Skip cursor above the main cursor",
+        desc = "Skip cursor above the main cursor",
     })
     set({ "n", "x" }, "<leader><down>", function()
         mc.lineSkipCursor(1)
