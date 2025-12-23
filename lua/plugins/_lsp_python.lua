@@ -86,10 +86,12 @@ function M.setup(config)
         end,
     })
 
-    vim.lsp.config("basedpyright", python_config)
+    -- vim.lsp.config("basedpyright", python_config)
+    vim.lsp.config("ty", python_config)
     vim.lsp.config("ruff", python_config)
-    vim.lsp.enable("basedpyright")
+    -- vim.lsp.enable("basedpyright")
     vim.lsp.enable("ruff")
+    vim.lsp.enable("ty")
 end
 
 return M
