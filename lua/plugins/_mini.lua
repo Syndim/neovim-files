@@ -50,12 +50,12 @@ function M.config()
     -- })
 
     -- mini.diff
-    require("mini.diff").setup({
-        mappings = {
-            apply = "ga",
-            reset = "gs",
-        },
-    })
+    -- require("mini.diff").setup({
+    --     mappings = {
+    --         apply = "ga",
+    --         reset = "gs",
+    --     },
+    -- })
 
     -- mini.move
     -- Alt+h/l/j/k to move line in normal mode or block in visual mode
