@@ -63,7 +63,7 @@ function M.config()
         end,
     })
     vim.treesitter.language.register("javascript", "typescript")
-    vim.treesitter.language.register("typescriptreact", "typescript")
+    -- vim.treesitter.language.register("typescriptreact", "typescript")
 end
 
 return M
