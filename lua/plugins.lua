@@ -209,15 +209,6 @@ require("lazy").setup({
         },
     },
 
-    -- Multiple cursors plugin for vim/neovim
-    -- {
-    --     "mg979/vim-visual-multi",
-    --     branch = "master",
-    --     config = require("plugins._vim_visual_multi").config,
-    --     init = require("plugins._vim_visual_multi").setup,
-    --     event = "VeryLazy",
-    -- },
-
     --  multiple cursors in neovim
     {
         "jake-stewart/multicursor.nvim",
@@ -268,25 +259,6 @@ require("lazy").setup({
         cond = is_not_embedded,
     },
 
-    -- Find, Filter, Preview, Pick. All lua, all the time.
-    -- {
-    --     "nvim-telescope/telescope.nvim",
-    --     config = require("plugins._telescope").config,
-    --     event = "VeryLazy",
-    --     -- TODO: Use proper version once telescope releases a new version
-    --     version = false,
-    --     cond = is_not_embedded,
-    -- },
-
-    -- It sets vim.ui.select to telescope. That means for example that neovim core stuff can fill the telescope picker. Example would be lua vim.lsp.buf.code_action().
-    -- {
-    --     "nvim-telescope/telescope-ui-select.nvim",
-    --     dependencies = "nvim-telescope/telescope.nvim",
-    --     config = require("plugins._telescope_ui_select").config,
-    --     event = "VeryLazy",
-    --     cond = is_not_embedded,
-    -- },
-
     -- Find the enemy and replace them with dark power.
     {
         "windwp/nvim-spectre",
@@ -324,14 +296,6 @@ require("lazy").setup({
         config = require("plugins._treesitter_autotag").config,
         ft = { "html", "javascriptreact", "typescriptreact" },
     },
-
-    -- autopairs for neovim written by lua
-    -- {
-    --     "windwp/nvim-autopairs",
-    --     dependencies = "nvim-treesitter/nvim-treesitter",
-    --     config = require("plugins._treesitter_autopair").config,
-    --     event = "VeryLazy",
-    -- },
 
     -- LSP and auto completion
     -- Extension to mason.nvim that makes it easier to lspconfig with mason.nvim
@@ -544,15 +508,6 @@ require("lazy").setup({
         event = "VeryLazy",
         conf = is_not_embedded,
     },
-
-    -- 🌸 A command-line fuzzy finder
-    -- {
-    --     "junegunn/fzf",
-    --     build = function()
-    --         vim.fn["fzf#install"]()
-    --     end,
-    --     cond = is_not_embedded,
-    -- },
 
     -- Better quickfix window in Neovim, polish old quickfix window.
     {

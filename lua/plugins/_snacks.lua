@@ -85,26 +85,26 @@ function M.config()
     vim.api.nvim_create_user_command("Notifications", function()
         Snacks.notifier.show_history({})
     end, { nargs = 0 })
-    local explorer = nil
-    options.desc = "Toggle file tree"
-    vim.keymap.set("", "<F2>", function()
-        explorer = Snacks.explorer({
-            follow_file = true,
-            watch = not global.is_windows,
-        })
-    end, options)
-    options.desc = "Reveal current file"
-    vim.keymap.set("", "<F3>", function()
-        if not explorer then
-            return
-        end
-        Snacks.explorer.reveal()
-    end, options)
-    vim.api.nvim_create_user_command("SnacksExplorerClose", function()
-        if explorer and not explorer.is_closed then
-            explorer:close()
-        end
-    end, { nargs = 0 })
+    -- local explorer = nil
+    -- options.desc = "Toggle file tree"
+    -- vim.keymap.set("", "<F2>", function()
+    --     explorer = Snacks.explorer({
+    --         follow_file = true,
+    --         watch = not global.is_windows,
+    --     })
+    -- end, options)
+    -- options.desc = "Reveal current file"
+    -- vim.keymap.set("", "<F3>", function()
+    --     if not explorer then
+    --         return
+    --     end
+    --     Snacks.explorer.reveal()
+    -- end, options)
+    -- vim.api.nvim_create_user_command("SnacksExplorerClose", function()
+    --     if explorer and not explorer.is_closed then
+    --         explorer:close()
+    --     end
+    -- end, { nargs = 0 })
 end
 
 return M
