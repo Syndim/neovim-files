@@ -6,6 +6,10 @@ function M.config()
         keymaps = {
             show_help = "<f1>",
         },
+        integrations = {
+            grep_in_directory = "fzf-lua",
+            grep_in_selected_files = "fzf-lua",
+        },
     })
 end
 
