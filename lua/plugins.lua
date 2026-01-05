@@ -33,6 +33,14 @@ require("lazy").setup({
         cond = is_not_embedded,
     },
 
+    -- Easily create and manage predefined window layouts, bringing a new edge to your workflow
+    {
+        "folke/edgy.nvim",
+        event = "VeryLazy",
+        config = require("plugins._edgy").config,
+        cond = is_not_embedded,
+    },
+
     -- Library of 40+ independent Lua modules improving overall Neovim (version 0.8 and higher) experience with minimal effort
     {
         "echasnovski/mini.nvim",
@@ -57,13 +65,21 @@ require("lazy").setup({
                 "<cmd>Yazi<cr>",
                 desc = "Open yazi at the current file",
             },
-            {
-                "<F2>",
-                "<cmd>Yazi cwd<cr>",
-                desc = "Open the file manager in nvim's working directory",
-            },
         },
         config = require("plugins._yazi").config,
+    },
+
+    -- Neovim plugin to manage the file system and other tree like structures.
+    {
+        "nvim-neo-tree/neo-tree.nvim",
+        branch = "v3.x",
+        dependencies = {
+            "nvim-lua/plenary.nvim",
+            "MunifTanjim/nui.nvim",
+            "nvim-tree/nvim-web-devicons", -- optional, but recommended
+        },
+        config = require("plugins._neo_tree").config,
+        lazy = false, -- neo-tree will lazily load itself
     },
 
     -- Editor interface
