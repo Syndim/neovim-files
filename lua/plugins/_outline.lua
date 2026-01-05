@@ -8,8 +8,11 @@ function M.config()
             show_relative_numbers = true,
             width = 20,
         },
+        preview_window = {
+            auto_preview = true,
+        },
     })
-    vim.keymap.set("n", "<F4>", vim.cmd.Outline, {})
+    vim.keymap.set("n", "<F4>", vim.cmd.OutlineFocus, {})
 end
 
 return M
