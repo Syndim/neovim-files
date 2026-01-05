@@ -3,6 +3,11 @@ local M = {}
 function M.config()
     local edgy = require("edgy")
     edgy.setup({
+        options = {
+            left = {
+                size = 35,
+            },
+        },
         left = {
             {
                 title = "Neo-Tree",
