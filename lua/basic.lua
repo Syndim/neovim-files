@@ -83,3 +83,6 @@ g.loaded_netrwPlugin = 1
 -- global status bar
 -- o.cmdheight = 0
 o.laststatus = 3
+
+-- split config
+o.splitkeep = "screen"
