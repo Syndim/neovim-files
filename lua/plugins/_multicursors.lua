@@ -34,11 +34,6 @@ function M.config()
     end, {
         desc = "Add a new cursor below by matching word/selection",
     })
-    set({ "n", "x" }, "<leader>n", function()
-        mc.matchAddCursor(1)
-    end, {
-        desc = "Add a new cursor below by matching word/selection",
-    })
     set({ "n", "x" }, "<leader>m", function()
         mc.matchSkipCursor(1)
     end, {
