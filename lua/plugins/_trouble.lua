@@ -1,7 +1,18 @@
 local M = {}
 
 function M.config()
-    require("trouble").setup({})
+    require("trouble").setup({
+        preview = {
+            type = "main",
+        },
+        modes = {
+            symbols = {
+                win = {
+                    position = "left",
+                },
+            },
+        },
+    })
 
     local opts = { remap = false }
 
@@ -25,6 +36,10 @@ function M.config()
     opts.desc = "Quick fix"
     vim.keymap.set("n", "<leader>qf", function()
         vim.cmd.Trouble("quickfix", "toggle")
+    end, opts)
+    opts.desc = "Focus symbols"
+    vim.keymap.set("n", "<F4>", function()
+        vim.cmd.Trouble("symbols", "focus=true")
     end, opts)
 end
 
