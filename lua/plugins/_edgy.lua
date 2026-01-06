@@ -3,6 +3,9 @@ local M = {}
 function M.config()
     local edgy = require("edgy")
     edgy.setup({
+        animate = {
+            enabled = false,
+        },
         options = {
             left = {
                 size = 35,
