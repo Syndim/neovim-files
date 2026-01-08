@@ -6,7 +6,7 @@ function M.config()
             type = "main",
         },
         modes = {
-            symbols = {
+            lsp_document_symbols = {
                 win = {
                     position = "left",
                 },
@@ -37,10 +37,10 @@ function M.config()
     vim.keymap.set("n", "<leader>qf", function()
         vim.cmd.Trouble("quickfix", "toggle")
     end, opts)
-    opts.desc = "Focus symbols"
-    vim.keymap.set("n", "<F4>", function()
-        vim.cmd.Trouble("symbols", "focus=true")
-    end, opts)
+    -- opts.desc = "Focus symbols"
+    -- vim.keymap.set("n", "<F4>", function()
+    --     vim.cmd.Trouble("symbols", "focus=true")
+    -- end, opts)
 end
 
 return M

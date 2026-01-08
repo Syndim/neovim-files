@@ -22,20 +22,16 @@ function M.config()
             },
             {
                 title = function()
-                    local buf_name = vim.api.nvim_buf_get_name(0) or "[No Name]"
-                    return vim.fn.fnamemodify(buf_name, ":t")
+                    local buf_name = vim.api.nvim_buf_get_name(0) or "Outline: [No Name]"
+                    return "Outline: " .. vim.fn.fnamemodify(buf_name, ":t")
                 end,
-                ft = "trouble",
+                ft = "Outline",
                 pinned = true,
-                open = function()
-                    vim.cmd.Trouble("symbols")
-                end,
+                open = "OutlineOpen!",
                 filter = function(buf, win)
-                    return vim.w[win].trouble
-                        and vim.w[win].trouble.position == "left"
-                        and vim.w[win].trouble.type == "split"
-                        and vim.w[win].trouble.relative == "editor"
-                        and not vim.w[win].trouble_preview
+                    -- Extra safety: only consider true editor splits (ignore floats)
+                    local is_editor_split = vim.api.nvim_win_get_config(win).relative == ""
+                    return is_editor_split and vim.bo[buf].filetype == "Outline"
                 end,
             },
         },

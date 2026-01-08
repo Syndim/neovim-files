@@ -312,12 +312,12 @@ require("lazy").setup({
     -- Language support
     -- Generic
     -- A tree like view for symbols in Neovim using the Language Server Protocol. Supports all your favourite languages.
-    -- {
-    --     "hedyhli/outline.nvim",
-    --     config = require("plugins._outline").config,
-    --     event = { "VeryLazy" },
-    --     cond = is_not_embedded,
-    -- },
+    {
+        "hedyhli/outline.nvim",
+        config = require("plugins._outline").config,
+        event = { "VeryLazy" },
+        cond = is_not_embedded,
+    },
 
     -- Nvim Treesitter configurations and abstraction layer
     {
