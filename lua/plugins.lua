@@ -283,6 +283,14 @@ require("lazy").setup({
         cond = is_not_embedded,
     },
 
+    --  A Neovim plugin that provides VSCode-style side-by-side diff rendering with two-tier highlighting (line + character level) using VSCode's algorithm implemented in C.
+    {
+        "esmuellert/codediff.nvim",
+        dependencies = { "MunifTanjim/nui.nvim" },
+        cmd = "CodeDiff",
+        cond = is_not_embedded,
+    },
+
     -- Treesitter based structural search and replace plugin for Neovim.
     {
         "cshuaimin/ssr.nvim",
