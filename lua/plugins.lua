@@ -276,12 +276,12 @@ require("lazy").setup({
     },
 
     -- A plugin to visualise and resolve merge conflicts in neovim
-    {
-        "akinsho/git-conflict.nvim",
-        config = true,
-        event = "VeryLazy",
-        cond = is_not_embedded,
-    },
+    -- {
+    --     "akinsho/git-conflict.nvim",
+    --     config = true,
+    --     event = "VeryLazy",
+    --     cond = is_not_embedded,
+    -- },
 
     --  A Neovim plugin that provides VSCode-style side-by-side diff rendering with two-tier highlighting (line + character level) using VSCode's algorithm implemented in C.
     {
