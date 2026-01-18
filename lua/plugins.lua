@@ -426,7 +426,7 @@ require("lazy").setup({
     {
         "saghen/blink.cmp",
         lazy = false,
-        init = require("plugins._blink").setup,
+        -- init = require("plugins._blink").setup,
         config = require("plugins._blink").cmp_config,
         dependencies = {
             "xzbdmw/colorful-menu.nvim",
