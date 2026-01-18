@@ -6,6 +6,7 @@ function M.config()
     local sidekick = require("sidekick")
     local cli = require("sidekick.cli")
     local features = require("features").plugin.sidekick
+    -- @type sidekick.Config
     local config = {
         nes = {
             enabled = false,
@@ -18,6 +19,9 @@ function M.config()
             win = {
                 split = {
                     width = 60,
+                },
+                keys = {
+                    files = { "<c-o>", "files", mode = "nt", desc = "open file picker" },
                 },
             },
             prompts = {
