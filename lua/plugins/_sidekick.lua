@@ -65,6 +65,9 @@ function M.config()
     vim.keymap.set("n", "<leader>ac", function()
         require("sidekick.cli").toggle({ name = "copilot", focus = true })
     end, { remap = false, desc = "Sidekick Toggle Github Copilot" })
+    vim.keymap.set("n", "<leader>al", function()
+        require("sidekick.cli").toggle({ name = "claude", focus = true })
+    end, { remap = false, desc = "Sidekick Toggle Claude Code" })
 
     sidekick_initialized = true
 end
