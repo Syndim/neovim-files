@@ -160,7 +160,13 @@ function M.cmp_config()
 end
 
 function M.pair_config()
-    require("blink.pairs").setup({})
+    require("blink.pairs").setup({
+        mappings = {
+            disabled_filetypes = {
+                "text",
+            },
+        },
+    })
 end
 
 return M
