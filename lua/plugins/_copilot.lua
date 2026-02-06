@@ -51,6 +51,9 @@ function M.config()
     vim.keymap.set("i", "<C-f>", function()
         require("copilot.suggestion").accept()
     end, opts)
+    vim.keymap.set("i", "<A-f>", function()
+        require("copilot.suggestion").accept_word()
+    end, opts)
     copilot_initiazlied = true
 end
 
