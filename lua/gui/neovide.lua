@@ -36,7 +36,8 @@ elseif global.is_wsl then
         vim.env.PATH = path.join(venv, "bin") .. ":" .. vim.env.PATH
     end
 
-    local node_path = fn.trim(vim.fn.system("volta which node"))
+    vim.env.PATH = path.join(vim.env.HOME, ".local", "share", "mise", "shims") .. ":" .. vim.env.PATH
+    local node_path = fn.trim(vim.fn.system("mise which node"))
     vim.env.PATH = vim.fs.dirname(node_path) .. ":" .. vim.env.PATH
     local dotnet_root = fn.trim(fn.system("brew --prefix dotnet"))
     vim.env.DOTNET_ROOT = path.join(dotnet_root, "libexec")
