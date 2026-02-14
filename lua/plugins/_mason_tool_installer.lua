@@ -8,7 +8,7 @@ function M.config()
             "yamlfmt",
             "roslyn",
             "stylua",
-            "csharpier",
+            -- "csharpier",
             "vale",
         },
     })

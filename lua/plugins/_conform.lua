@@ -22,7 +22,7 @@ function M.config()
             typescript = { "prettierd" },
             typescriptreact = { "prettierd" },
             cpp = { "clang_format" },
-            cs = { "csharpier" },
+            -- cs = { "csharpier" },
             just = { "just" },
             yaml = { "yamlfmt" },
         },

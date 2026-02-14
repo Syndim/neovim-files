@@ -577,13 +577,13 @@ require("lazy").setup({
 
     -- C#
     -- Roslyn LSP plugin for neovim
-    {
-        "seblj/roslyn.nvim",
-        dependencies = { "williamboman/mason-lspconfig.nvim" },
-        config = require("plugins._lsp_roslyn").config,
-        ft = { "cs" },
-        cond = is_not_embedded,
-    },
+    -- {
+    --     "seblj/roslyn.nvim",
+    --     dependencies = { "williamboman/mason-lspconfig.nvim" },
+    --     config = require("plugins._lsp_roslyn").config,
+    --     ft = { "cs" },
+    --     cond = is_not_embedded,
+    -- },
 
     -- Swift (for ShadowVim)
     -- Vim runtime files for Swift
