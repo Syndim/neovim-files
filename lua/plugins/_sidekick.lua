@@ -6,6 +6,7 @@ function M.config()
     local sidekick = require("sidekick")
     local cli = require("sidekick.cli")
     local features = require("features").plugin.sidekick
+    local global = require("global")
     -- @type sidekick.Config
     local config = {
         nes = {
@@ -14,7 +15,7 @@ function M.config()
         cli = {
             mux = {
                 backend = "zellij",
-                enabled = true,
+                enabled = not global.is_windows,
             },
             win = {
                 split = {
