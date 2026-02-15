@@ -13,8 +13,8 @@ function M.config()
         },
         cli = {
             mux = {
-                backend = "tmux",
-                enabled = false,
+                backend = "zellij",
+                enabled = true,
             },
             win = {
                 split = {
@@ -68,6 +68,20 @@ function M.config()
     vim.keymap.set("n", "<leader>al", function()
         require("sidekick.cli").toggle({ name = "claude", focus = true })
     end, { remap = false, desc = "Sidekick Toggle Claude Code" })
+
+    vim.api.nvim_create_autocmd("VimLeavePre", {
+        callback = function()
+            local Terminal = require("sidekick.cli.terminal")
+            for _, t in pairs(Terminal.terminals) do
+                if t.mux_backend == "zellij" then
+                    local session = t.mux_session or t.id:match("^terminal: (.+)$")
+                    if session then
+                        os.execute("zellij kill-session '" .. session .. "'")
+                    end
+                end
+            end
+        end,
+    })
 
     sidekick_initialized = true
 end
