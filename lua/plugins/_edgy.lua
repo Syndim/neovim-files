@@ -41,6 +41,10 @@ function M.config()
         vim.cmd.Neotree("toggle")
         edgy.toggle("left")
     end)
+    vim.keymap.set({ "n" }, "<leader>fe", function()
+        vim.cmd.Neotree("toggle")
+        edgy.toggle("left")
+    end)
 end
 
 return M
