@@ -25,6 +25,9 @@ function M.config()
                     files = { "<c-o>", "files", mode = "nt", desc = "open file picker" },
                 },
             },
+            tools = {
+                pi = { cmd = { "pi" } },
+            },
             prompts = {
                 git_review = "Review the changes in the latest git commit in details. Provide suggestions about how to improve the code quality. You should include the original code(including line number and the line) and pointing out the issue and provide suggestions about what change needs to be make to improvide the code.",
                 add_tests = "Review the changes in the latest git commit in details. Figure out what test casess need to be added or updated to validate the changed logic and prevent regression. Make the code change to add or update those test cases. Keep the test count minimum and do not add replicated test cases.",
@@ -69,6 +72,9 @@ function M.config()
     vim.keymap.set("n", "<leader>al", function()
         require("sidekick.cli").toggle({ name = "claude", focus = true })
     end, { remap = false, desc = "Sidekick Toggle Claude Code" })
+    vim.keymap.set("n", "<leader>ai", function()
+        require("sidekick.cli").toggle({ name = "pi", focus = true })
+    end, { remap = false, desc = "Sidekick Toggle Pi" })
 
     vim.api.nvim_create_autocmd("VimLeavePre", {
         callback = function()
