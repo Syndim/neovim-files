@@ -22,7 +22,6 @@ function M.config()
             lualine_x = {
                 { require("plugins._sidekick").status },
                 { require("plugins._copilot").status },
-                { require("plugins._codeium").status },
                 { "lsp_status" },
                 { "filetype", colored = true },
                 "encoding",

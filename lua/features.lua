@@ -10,15 +10,7 @@ local global = require("global")
 local M = {
     lsp = {},
     plugin = {
-        codeium = {
-            enabled = false,
-            strategies = nil,
-            adapters = nil,
-        },
         copilot = {
-            enabled = false,
-        },
-        code_companion = {
             enabled = false,
         },
         sidekick = {
@@ -48,16 +40,8 @@ function M.setup(opts)
             load_plugins({ "copilot.lua", "sidekick.nvim" })
         end
 
-        -- if plugin_config.code_companion.enabled then
-        --     load_plugins({ "copilot.lua", "codecompanion.nvim", "mcphub.nvim" })
-        -- end
-
         if plugin_config.copilot.enabled then
             load_plugins({ "copilot.lua" })
-        end
-
-        if plugin_config.codeium.enabled then
-            load_plugins({ "codeium.nvim" })
         end
 
         if plugin_config.xcode_build.enabled then
@@ -65,7 +49,6 @@ function M.setup(opts)
         end
     else
         config.plugin.sidekick.enabled = false
-        config.plugin.code_companion.enabled = false
         config.plugin.copilot.enabled = false
         config.plugin.xcode_build.enabled = false
     end

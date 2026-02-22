@@ -291,14 +291,6 @@ require("lazy").setup({
         cond = is_not_embedded,
     },
 
-    -- Treesitter based structural search and replace plugin for Neovim.
-    {
-        "cshuaimin/ssr.nvim",
-        config = require("plugins._ssr").config,
-        event = "VeryLazy",
-        cond = is_not_embedded,
-    },
-
     -- Improved fzf.vim written in lua
     {
         "ibhagwan/fzf-lua",
@@ -487,32 +479,6 @@ require("lazy").setup({
         cond = is_not_embedded,
     },
 
-    -- {
-    --     "ravitemer/mcphub.nvim",
-    --     dependencies = {
-    --         "nvim-lua/plenary.nvim", -- Required for Job and HTTP requests
-    --     },
-    --     -- uncomment the following line to load hub lazily
-    --     cmd = "MCPHub", -- lazy load
-    --     build = "bundled_build.lua",
-    --     config = require("plugins._mcphub").config,
-    --     cond = is_not_embedded,
-    -- },
-
-    -- ✨ AI-powered coding, seamlessly in Neovim
-    -- {
-    --     "olimorris/codecompanion.nvim",
-    --     dependencies = {
-    --         { "nvim-lua/plenary.nvim", version = false },
-    --         "nvim-treesitter/nvim-treesitter",
-    --         "zbirenbaum/copilot.lua",
-    --         "ravitemer/mcphub.nvim",
-    --         "j-hui/fidget.nvim",
-    --     },
-    --     config = require("plugins._code_companion").config,
-    --     cond = is_not_embedded,
-    -- },
-
     -- Your Neovim AI sidekick
     {
         "folke/sidekick.nvim",
@@ -529,14 +495,6 @@ require("lazy").setup({
         "MeanderingProgrammer/render-markdown.nvim",
         ft = { "markdown", "codecompanion" },
         config = require("plugins._render_markdown").config,
-        cond = is_not_embedded,
-    },
-
-    -- Free, ultrafast Copilot alternative for Vim and Neovim
-    {
-        "Exafunction/codeium.nvim",
-        cmd = "Codeium",
-        config = require("plugins._codeium").config,
         cond = is_not_embedded,
     },
 
@@ -574,16 +532,6 @@ require("lazy").setup({
         ft = { "c", "cpp", "h", "hpp" },
         cond = is_not_embedded,
     },
-
-    -- C#
-    -- Roslyn LSP plugin for neovim
-    -- {
-    --     "seblj/roslyn.nvim",
-    --     dependencies = { "williamboman/mason-lspconfig.nvim" },
-    --     config = require("plugins._lsp_roslyn").config,
-    --     ft = { "cs" },
-    --     cond = is_not_embedded,
-    -- },
 
     -- Swift (for ShadowVim)
     -- Vim runtime files for Swift
