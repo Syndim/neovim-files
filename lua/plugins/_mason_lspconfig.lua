@@ -32,7 +32,6 @@ function M.config()
         log_level = vim.log.levels.DEBUG,
         registries = {
             "github:mason-org/mason-registry",
-            "github:Crashdummyy/mason-registry",
         },
         -- github = {
         --     download_url_template = global.github.url .. "/%s/releases/download/%s/%s",
@@ -89,7 +88,6 @@ function M.config()
     require("plugins._lsp_lua").setup(config)
     require("plugins._lsp_clang").setup(config)
     require("plugins._lsp_python").setup(config)
-    require("plugins._lsp_roslyn").setup(config)
     -- require("plugins._lsp_typescript").setup(lsp_config, config)
 
     if global:which("flutter") == 0 or global:which("fvm") == 0 then
