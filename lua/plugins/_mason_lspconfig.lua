@@ -44,7 +44,7 @@ function M.config()
         "ts_ls",
         "lua_ls",
         "clangd",
-        -- "basedpyright",
+        "basedpyright",
         "ty",
         "ruff",
     })
