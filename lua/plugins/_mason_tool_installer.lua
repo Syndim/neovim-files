@@ -6,7 +6,6 @@ function M.config()
         ensure_installed = {
             "prettierd",
             "yamlfmt",
-            "roslyn",
             "stylua",
             -- "csharpier",
             "vale",
