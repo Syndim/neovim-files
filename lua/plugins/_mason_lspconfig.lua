@@ -18,7 +18,6 @@ function M.config()
         "bashls",
         "yamlls",
         "kotlin_language_server",
-        -- "typos_lsp",
         "harper_ls",
         "slint_lsp",
     }
@@ -44,7 +43,7 @@ function M.config()
         "ts_ls",
         "lua_ls",
         "clangd",
-        "basedpyright",
+        -- "basedpyright",
         "ty",
         "ruff",
     })
