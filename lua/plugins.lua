@@ -296,6 +296,7 @@ require("lazy").setup({
         "ibhagwan/fzf-lua",
         config = require("plugins._fzf").config,
         version = false,
+        branch = "main",
         event = "VeryLazy",
         cond = is_not_embedded,
     },
