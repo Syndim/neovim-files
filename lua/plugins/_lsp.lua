@@ -152,4 +152,15 @@ function M.create_config()
     return config
 end
 
+vim.api.nvim_create_user_command("LspRestart", function()
+    local clients = vim.lsp.get_clients({ bufnr = 0 })
+    for _, client in ipairs(clients) do
+        local config = client.config
+        client:stop()
+        vim.defer_fn(function()
+            vim.lsp.start(config)
+        end, 200)
+    end
+end, {})
+
 return M
