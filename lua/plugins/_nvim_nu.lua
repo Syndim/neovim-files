@@ -6,7 +6,7 @@ function M.config()
     })
 
     require("nu.tree_sitter_config")
-    require("nvim-treesitter.install").ensure_installed({ "nu" })
+    require("tree-sitter-manager")._install_single("nu", true)
 end
 
 return M

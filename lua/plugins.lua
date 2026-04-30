@@ -321,12 +321,10 @@ require("lazy").setup({
         cond = is_not_embedded,
     },
 
-    -- Nvim Treesitter configurations and abstraction layer
+    -- Tree-sitter parser management
     {
-        "nvim-treesitter/nvim-treesitter",
-        build = ":TSUpdate",
+        "romus204/tree-sitter-manager.nvim",
         config = require("plugins._treesitter").config,
-        init = require("plugins._treesitter").setup,
         branch = "main",
         lazy = false,
     },
@@ -334,7 +332,7 @@ require("lazy").setup({
     -- treesitter to auto close and auto rename html tag
     {
         "windwp/nvim-ts-autotag",
-        dependencies = "nvim-treesitter/nvim-treesitter",
+        dependencies = "romus204/tree-sitter-manager.nvim",
         config = require("plugins._treesitter_autotag").config,
         ft = { "html", "javascriptreact", "typescriptreact" },
     },
@@ -627,7 +625,7 @@ require("lazy").setup({
     -- nu-shell
     {
         "LhKipp/nvim-nu",
-        dependencies = { "nvim-treesitter/nvim-treesitter" },
+        dependencies = { "romus204/tree-sitter-manager.nvim" },
         config = require("plugins._nvim_nu").config,
         ft = "nu",
         cond = is_not_embedded,

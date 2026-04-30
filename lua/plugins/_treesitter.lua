@@ -1,69 +1,72 @@
 local M = {}
 
-function M.setup()
-    vim.api.nvim_create_autocmd("User", {
-        pattern = "TSUpdate",
-        callback = function()
-            local global = require("global")
-            for _, config in pairs(require("nvim-treesitter.parsers")) do
-                if config.install_info then
-                    config.install_info.url = config.install_info.url:gsub("https://github.com", global.github.url)
-                end
-            end
-            local proxy = os.getenv("HTTPS_PROXY") or ""
-            if proxy then
-                require("nvim-treesitter.install").command_extra_args = {
-                    curl = { "--proxy", proxy },
-                }
-            end
-        end,
-    })
+local ensure_installed = {
+    "cpp",
+    "c_sharp",
+    "css",
+    "dart",
+    "java",
+    "javascript",
+    "json",
+    "kotlin",
+    "lua",
+    "python",
+    "regex",
+    "ruby",
+    "rust",
+    "scss",
+    "toml",
+    "typescript",
+    "yaml",
+    "fish",
+    "vim",
+    "slint",
+    "html",
+    "tsx",
+    "vimdoc",
+    "just",
+    "markdown",
+    "swift",
+}
+
+local function language_overrides()
+    local global = require("global")
+    if global.github.url == "https://github.com" then
+        return {}
+    end
+
+    local overrides = {}
+    for lang, config in pairs(require("tree-sitter-manager.repos")) do
+        local install_info = config.install_info
+        if install_info and install_info.url then
+            overrides[lang] = {
+                install_info = vim.tbl_deep_extend("force", {}, install_info, {
+                    url = install_info.url:gsub("^https://github%.com", global.github.url),
+                }),
+            }
+        end
+    end
+
+    return overrides
 end
 
 function M.config()
     local treesitter_path = vim.fn.stdpath("data") .. "/treesitter"
-    vim.opt.runtimepath:prepend(treesitter_path)
 
-    local treesitter = require("nvim-treesitter")
-    treesitter.setup({
-        install_dir = treesitter_path,
+    require("tree-sitter-manager").setup({
+        parser_dir = treesitter_path .. "/parser",
+        query_dir = treesitter_path .. "/queries",
+        ensure_installed = ensure_installed,
+        languages = language_overrides(),
     })
-    treesitter.install({
-        "cpp",
-        "c_sharp",
-        "css",
-        "dart",
-        "java",
-        "javascript",
-        "json",
-        "kotlin",
-        "lua",
-        "python",
-        "regex",
-        "ruby",
-        "rust",
-        "scss",
-        "toml",
-        "typescript",
-        "yaml",
-        "fish",
-        "vim",
-        "slint",
-        "html",
-        "tsx",
-        "vimdoc",
-        "just",
-        "markdown",
-        "swift",
-    })
+
     vim.api.nvim_create_autocmd("FileType", {
-        pattern = { "fish", "ruby", "javascript", "typescript", "typescriptreact", "just", "swift" },
+        pattern = { "typescript", "javascriptreact", "typescriptreact" },
         callback = function()
             vim.treesitter.start()
         end,
+        desc = "Enable Tree-sitter for filetypes whose parser name differs",
     })
-    vim.treesitter.language.register("javascript", "typescript")
-    -- vim.treesitter.language.register("typescriptreact", "typescript")
 end
 
 return M
