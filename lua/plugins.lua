@@ -483,7 +483,7 @@ require("lazy").setup({
     {
         "folke/sidekick.nvim",
         dependencies = {
-            "nvim-treesitter/nvim-treesitter",
+            "romus204/tree-sitter-manager.nvim",
             "zbirenbaum/copilot.lua",
         },
         config = require("plugins._sidekick").config,
@@ -518,7 +518,7 @@ require("lazy").setup({
     -- Better quickfix window in Neovim, polish old quickfix window.
     {
         "kevinhwang91/nvim-bqf",
-        dependencies = { "junegunn/fzf", "nvim-treesitter/nvim-treesitter" },
+        dependencies = { "junegunn/fzf", "romus204/tree-sitter-manager.nvim" },
         ft = "qf",
         cond = is_not_embedded,
         version = false,
