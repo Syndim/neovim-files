@@ -27,6 +27,7 @@ local ensure_installed = {
     "just",
     "markdown",
     "swift",
+    "vue",
 }
 
 local function language_overrides()
@@ -61,7 +62,7 @@ function M.config()
     })
 
     vim.api.nvim_create_autocmd("FileType", {
-        pattern = { "typescript", "javascriptreact", "typescriptreact" },
+        pattern = { "typescript", "javascriptreact", "typescriptreact", "vue" },
         callback = function()
             vim.treesitter.start()
         end,

@@ -9,6 +9,8 @@ function M.config()
             "stylua",
             -- "csharpier",
             "vale",
+            "google-java-format",
+            "vscode-spring-boot-tools",
         },
     })
 

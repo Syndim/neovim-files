@@ -21,6 +21,8 @@ function M.config()
             javascriptreact = { "prettierd" },
             typescript = { "prettierd" },
             typescriptreact = { "prettierd" },
+            vue = { "prettierd" },
+            java = { "google_java_format", lsp_format = "fallback" },
             cpp = { "clang_format" },
             -- cs = { "csharpier" },
             just = { "just" },

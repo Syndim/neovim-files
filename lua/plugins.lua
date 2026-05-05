@@ -334,7 +334,7 @@ require("lazy").setup({
         "windwp/nvim-ts-autotag",
         dependencies = "romus204/tree-sitter-manager.nvim",
         config = require("plugins._treesitter_autotag").config,
-        ft = { "html", "javascriptreact", "typescriptreact" },
+        ft = { "html", "javascriptreact", "typescriptreact", "vue" },
     },
 
     -- LSP and auto completion
@@ -556,7 +556,7 @@ require("lazy").setup({
         "pmizio/typescript-tools.nvim",
         dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
         config = require("plugins._lsp_typescript").config,
-        ft = { "typescript", "javascript", "typescriptreact", "javascriptreact" },
+        ft = { "typescript", "javascript", "typescriptreact", "javascriptreact", "vue" },
         cond = is_not_embedded,
     },
 
@@ -588,7 +588,7 @@ require("lazy").setup({
     -- emmet for vim: http://emmet.io/
     {
         "mattn/emmet-vim",
-        ft = { "html", "javascriptreact", "typescriptreact" },
+        ft = { "html", "javascriptreact", "typescriptreact", "vue" },
         cond = is_not_embedded,
     },
 
