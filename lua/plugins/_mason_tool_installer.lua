@@ -10,7 +10,6 @@ function M.config()
             -- "csharpier",
             "vale",
             "google-java-format",
-            "vscode-spring-boot-tools",
         },
     })
 

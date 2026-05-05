@@ -54,7 +54,6 @@ function M.config()
         -- "basedpyright",
         "ty",
         "ruff",
-        "jdtls",
     })
 
     for name, condition in pairs(optional_servers) do
@@ -96,7 +95,6 @@ function M.config()
     require("plugins._lsp_lua").setup(config)
     require("plugins._lsp_clang").setup(config)
     require("plugins._lsp_python").setup(config)
-    require("plugins._lsp_java").setup(config)
     -- require("plugins._lsp_typescript").setup(lsp_config, config)
 
     if global:which("flutter") == 0 or global:which("fvm") == 0 then

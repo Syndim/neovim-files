@@ -550,6 +550,23 @@ require("lazy").setup({
         config = require("plugins._xcode_build").config,
     },
 
+    -- Java
+    -- Java development with JDTLS, Spring Boot, DAP, tests, and runners.
+    {
+        "nvim-java/nvim-java",
+        dependencies = {
+            {
+                "JavaHello/spring-boot.nvim",
+                version = false,
+            },
+            "MunifTanjim/nui.nvim",
+            "mfussenegger/nvim-dap",
+        },
+        config = require("plugins._java").config,
+        ft = "java",
+        cond = is_not_embedded,
+    },
+
     -- Typescript
     -- ⚡ TypeScript integration NeoVim deserves ⚡
     {
