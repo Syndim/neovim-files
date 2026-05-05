@@ -28,6 +28,8 @@ function M.config()
         -- solargraph    = 'ruby',
     }
 
+    vim.env.NPM_CONFIG_MIN_RELEASE_AGE = "0"
+
     mason.setup({
         log_level = vim.log.levels.DEBUG,
         registries = {
@@ -35,6 +37,11 @@ function M.config()
         },
         github = {
             download_url_template = global.github.url .. "/%s/releases/download/%s/%s",
+        },
+        npm = {
+            install_args = {
+                "--min-release-age=0",
+            },
         },
     })
 
