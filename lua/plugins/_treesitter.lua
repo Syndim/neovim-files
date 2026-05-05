@@ -5,7 +5,6 @@ local ensure_installed = {
     "c_sharp",
     "css",
     "dart",
-    "java",
     "javascript",
     "json",
     "kotlin",

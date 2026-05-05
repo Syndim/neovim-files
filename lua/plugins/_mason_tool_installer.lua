@@ -9,7 +9,6 @@ function M.config()
             "stylua",
             -- "csharpier",
             "vale",
-            "google-java-format",
         },
     })
 
