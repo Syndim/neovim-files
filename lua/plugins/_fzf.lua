@@ -1,18 +1,36 @@
 local M = {}
 
 function M.config()
-    local function resolve_fzf_bin()
-        local out = vim.fn.system({ "mise", "which", "fzf" })
+    -- Work around mise's `.cmd` shim being broken when fzf-lua spawns a child
+    -- via `cmd.exe /e:off ...` (extensions off makes `%*` literal, so the shim
+    -- ends up calling `<tool> *`). Resolve each tool to its real binary path
+    -- and pass that to fzf-lua, bypassing the shim entirely.
+    local function mise_which(tool)
+        local out = vim.fn.system({ "mise", "which", tool })
         if vim.v.shell_error == 0 then
             return (out:gsub("%s+$", ""))
         end
 
-        return "fzf"
+        return nil
     end
 
+    local function build_cmd(bin, opts_string)
+        if bin and opts_string then
+            return bin .. " " .. opts_string
+        end
+
+        return nil
+    end
+
+    local defaults = require("fzf-lua.defaults").defaults
+    local fzf_bin = mise_which("fzf") or "fzf"
+    local files_cmd = build_cmd(mise_which("fd"), (defaults.files or {}).fd_opts)
+    local grep_cmd = build_cmd(mise_which("rg"), (defaults.grep or {}).rg_opts)
+
     local fzf = require("fzf-lua")
-    fzf.setup({
-        fzf_bin = resolve_fzf_bin(),
+
+    local setup_config = {
+        fzf_bin = fzf_bin,
         keymap = {
             builtin = {
                 ["<C-u>"] = "preview-page-up",
@@ -29,7 +47,17 @@ function M.config()
         files = {
             hidden = false,
         },
-    })
+        grep = {},
+    }
+
+    if files_cmd then
+        setup_config.files.cmd = files_cmd
+    end
+    if grep_cmd then
+        setup_config.grep.cmd = grep_cmd
+    end
+
+    fzf.setup(setup_config)
 
     fzf.register_ui_select()
 
