@@ -6,7 +6,7 @@ function M.config()
     })
 
     require("nu.tree_sitter_config")
-    require("tree-sitter-manager")._install_single("nu", true)
+    require("arborist").install("nu")
 end
 
 return M
