@@ -1,8 +1,18 @@
 local M = {}
 
 function M.config()
+    local function resolve_fzf_bin()
+        local out = vim.fn.system({ "mise", "which", "fzf" })
+        if vim.v.shell_error == 0 then
+            return (out:gsub("%s+$", ""))
+        end
+
+        return "fzf"
+    end
+
     local fzf = require("fzf-lua")
     fzf.setup({
+        fzf_bin = resolve_fzf_bin(),
         keymap = {
             builtin = {
                 ["<C-u>"] = "preview-page-up",
