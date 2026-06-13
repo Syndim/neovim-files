@@ -423,6 +423,7 @@ require("lazy").setup({
         dependencies = {
             "xzbdmw/colorful-menu.nvim",
             "rafamadriz/friendly-snippets",
+            "saghen/blink.lib",
             -- Compatibility layer for using nvim-cmp sources on blink.cmp
             {
                 "saghen/blink.compat",
@@ -436,6 +437,7 @@ require("lazy").setup({
                 dependencies = { "nvim-lua/plenary.nvim" },
                 config = require("plugins._crates").config,
                 ft = "toml",
+                cond = is_not_embedded,
             },
             --  an additional source for nvim-cmp to autocomplete packages and its versions
             {
@@ -445,6 +447,7 @@ require("lazy").setup({
                     require("cmp-npm").setup({})
                 end,
                 ft = "json",
+                cond = is_not_embedded,
             },
         },
         cond = is_not_embedded,
