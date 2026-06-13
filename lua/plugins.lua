@@ -454,8 +454,11 @@ require("lazy").setup({
     {
         "saghen/blink.pairs",
         version = "*",
-        dependencies = "saghen/blink.download",
-        init = require("plugins._blink").setup,
+        dependencies = "saghen/blink.lib",
+        build = function()
+            require("blink.pairs").build():pwait(60000)
+        end,
+        -- init = require("plugins._blink").setup,
         config = require("plugins._blink").pair_config,
         event = "VeryLazy",
         cond = is_not_embedded,
