@@ -323,16 +323,19 @@ require("lazy").setup({
 
     -- Tree-sitter parser management
     {
-        "arborist-ts/arborist.nvim",
-        config = require("plugins._treesitter").config,
+        "nvim-treesitter/nvim-treesitter",
         branch = "main",
+        version = false,
+        config = require("plugins._treesitter").config,
+        build = ":TSUpdate",
+        init = require("plugins._treesitter").setup,
         lazy = false,
     },
 
     -- treesitter to auto close and auto rename html tag
     {
         "windwp/nvim-ts-autotag",
-        dependencies = "arborist-ts/arborist.nvim",
+        dependencies = "nvim-treesitter/nvim-treesitter",
         config = require("plugins._treesitter_autotag").config,
         ft = { "html", "javascriptreact", "typescriptreact", "vue" },
     },
@@ -489,7 +492,7 @@ require("lazy").setup({
     {
         "folke/sidekick.nvim",
         dependencies = {
-            "arborist-ts/arborist.nvim",
+            "nvim-treesitter/nvim-treesitter",
             "zbirenbaum/copilot.lua",
         },
         config = require("plugins._sidekick").config,
@@ -524,7 +527,7 @@ require("lazy").setup({
     -- Better quickfix window in Neovim, polish old quickfix window.
     {
         "kevinhwang91/nvim-bqf",
-        dependencies = { "junegunn/fzf", "arborist-ts/arborist.nvim" },
+        dependencies = { "junegunn/fzf", "nvim-treesitter/nvim-treesitter" },
         ft = "qf",
         cond = is_not_embedded,
         version = false,
@@ -631,7 +634,7 @@ require("lazy").setup({
     -- nu-shell
     {
         "LhKipp/nvim-nu",
-        dependencies = { "arborist-ts/arborist.nvim" },
+        dependencies = { "nvim-treesitter/nvim-treesitter" },
         config = require("plugins._nvim_nu").config,
         ft = "nu",
         cond = is_not_embedded,

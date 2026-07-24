@@ -5,8 +5,7 @@ function M.config()
         complete_cmd_names = false, -- requires https://github.com/jose-elias-alvarez/null-ls.nvim
     })
 
-    require("nu.tree_sitter_config")
-    require("arborist").install("nu")
+    require("nvim-treesitter").install({ "nu" })
 end
 
 return M
