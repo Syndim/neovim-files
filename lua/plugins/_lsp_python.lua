@@ -27,6 +27,15 @@ function M.setup(config)
         end
     end
 
+    local function get_git_root(workspace)
+        local result = vim.fn.system({ "git", "-C", workspace, "rev-parse", "--show-toplevel" })
+        if vim.v.shell_error ~= 0 then
+            return nil
+        end
+
+        return vim.fn.trim(result)
+    end
+
     local function get_python_path(workspace)
         -- Use activated virtualenv.
         if vim.env.VIRTUAL_ENV then
@@ -34,38 +43,21 @@ function M.setup(config)
             return format_python_path(vim.env.VIRTUAL_ENV)
         end
 
-        local workspace_path = Path:new(workspace)
+        -- Find .venv folder. The workspace root (e.g. a package inside a
+        -- monorepo such as Monty) may not be the git root, so search the
+        -- package root first, then fall back to the git root.
+        local search_roots = { workspace }
+        local git_root = get_git_root(workspace)
+        if git_root and git_root ~= workspace then
+            table.insert(search_roots, git_root)
+        end
 
-        -- Find and use venv from poetry
-        -- local match = vim.fn.glob(tostring(workspace_path / "poetry.lock"))
-        -- if match ~= "" then
-        -- 	local venv = vim.fn.trim(vim.fn.system("poetry env info -p"))
-        -- 	update_venv_path(venv)
-        -- 	return format_python_path(venv)
-        -- end
-
-        -- match = vim.fn.glob(tostring(workspace_path / "pyproject.toml"))
-        -- if match ~= "" then
-        -- 	local rye_show_output = vim.fn.trim(vim.fn.system("rye show"))
-        -- 	local _, venv_start_index = string.find(rye_show_output, "venv: ")
-        -- 	local venv_end_index = string.find(rye_show_output, "\n", venv_start_index + 1)
-        -- 	local venv = vim.fn.trim(string.sub(rye_show_output, venv_start_index, venv_end_index))
-        -- 	update_venv_path(venv)
-        -- 	return format_python_path(venv)
-        -- end
-
-        -- Find and use virtualenv from pipenv in workspace directory.
-        -- match = vim.fn.glob(tostring(workspace_path / "Pipfile"))
-        -- if match ~= "" then
-        -- 	local venv = vim.fn.trim(vim.fn.system("PIPENV_PIPFILE=" .. match .. " pipenv --venv"))
-        -- 	return format_python_path(venv)
-        -- end
-
-        -- Find .venv folder
-        local dot_venv_path = tostring(workspace_path / ".venv")
-        if vim.fn.isdirectory(dot_venv_path) == 1 then
-            update_venv_path(dot_venv_path)
-            return format_python_path(dot_venv_path)
+        for _, root in ipairs(search_roots) do
+            local dot_venv_path = tostring(Path:new(root) / ".venv")
+            if vim.fn.isdirectory(dot_venv_path) == 1 then
+                update_venv_path(dot_venv_path)
+                return format_python_path(dot_venv_path)
+            end
         end
 
         -- Fallback to system Python.
