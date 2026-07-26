@@ -75,6 +75,9 @@ function M.config()
     vim.keymap.set("n", "<leader>ai", function()
         require("sidekick.cli").toggle({ name = "pi", focus = true })
     end, { remap = false, desc = "Sidekick Toggle Pi" })
+    vim.keymap.set("n", "<leader>ax", function()
+        require("sidekick.cli").toggle({ name = "codex", focus = true })
+    end, { remap = false, desc = "Sidekick Toggle Codex" })
 
     vim.api.nvim_create_autocmd("VimLeavePre", {
         callback = function()
