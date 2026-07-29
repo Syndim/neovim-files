@@ -640,6 +640,7 @@ require("lazy").setup({
         cond = is_not_embedded,
     },
 }, {
+    concurrency = 4,
     defaults = {
         lazy = true,
         version = "*",
