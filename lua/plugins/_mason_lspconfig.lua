@@ -29,6 +29,12 @@ function M.config()
     }
 
     vim.env.NPM_CONFIG_MIN_RELEASE_AGE = "0"
+    -- npm 12 defaults allow-remote to "none", which rejects registry-mediated
+    -- tarballs whenever the configured registry (proxy/mirror) origin differs
+    -- from the resolved tarball host (e.g. Azure Artifacts feeding from
+    -- ms-feed-*.pkgs.visualstudio.com) -- npm/cli#9548. Restore "all" so Mason's
+    -- npm-based installs (css-lsp, html, jsonls, ...) can still fetch.
+    vim.env.NPM_CONFIG_ALLOW_REMOTE = "all"
 
     mason.setup({
         log_level = vim.log.levels.DEBUG,
