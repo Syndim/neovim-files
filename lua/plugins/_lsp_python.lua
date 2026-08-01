@@ -3,28 +3,13 @@ local M = {}
 function M.setup(config)
     -- lsp_config['pylsp'].setup(config)
 
-    -- Below config are for pyright
+    -- Below config are for ty/ruff (basedpyright is disabled, see below).
     local global = require("global")
     local Path = require("plenary.path")
-    -- print(vim.env.VIRTUAL_ENV)
 
-    local function update_venv_path(venv)
-        vim.env.VIRTUAL_ENV = venv
+    local function venv_bin_dir(venv)
         local venv_path = Path:new(venv)
-        if global.is_windows then
-            vim.env.PATH = tostring(venv_path / "Scripts") .. ";" .. vim.env.PATH
-        else
-            vim.env.PATH = tostring(venv_path / "bin") .. ":" .. vim.env.PATH
-        end
-    end
-
-    local function format_python_path(venv)
-        local venv_path = Path:new(venv)
-        if global.is_windows then
-            return tostring(venv_path / "Scripts" / "python")
-        else
-            return tostring(venv_path / "bin" / "python")
-        end
+        return tostring(global.is_windows and (venv_path / "Scripts") or (venv_path / "bin"))
     end
 
     local function get_git_root(workspace)
@@ -36,16 +21,18 @@ function M.setup(config)
         return vim.fn.trim(result)
     end
 
-    local function get_python_path(workspace)
-        -- Use activated virtualenv.
-        if vim.env.VIRTUAL_ENV then
-            update_venv_path(vim.env.VIRTUAL_ENV)
-            return format_python_path(vim.env.VIRTUAL_ENV)
+    -- Find the project's virtualenv. Checked in order:
+    -- 1. An already-active VIRTUAL_ENV (e.g. nvim launched from an
+    --    activated shell).
+    -- 2. A `.venv` directory in the LSP workspace root.
+    -- 3. A `.venv` directory at the git root. The workspace root for a
+    --    package inside a monorepo (e.g. Monty) may not be the git root,
+    --    so the git root is checked as a fallback.
+    local function find_venv(workspace)
+        if vim.env.VIRTUAL_ENV and vim.fn.isdirectory(vim.env.VIRTUAL_ENV) == 1 then
+            return vim.env.VIRTUAL_ENV
         end
 
-        -- Find .venv folder. The workspace root (e.g. a package inside a
-        -- monorepo such as Monty) may not be the git root, so search the
-        -- package root first, then fall back to the git root.
         local search_roots = { workspace }
         local git_root = get_git_root(workspace)
         if git_root and git_root ~= workspace then
@@ -53,23 +40,51 @@ function M.setup(config)
         end
 
         for _, root in ipairs(search_roots) do
-            local dot_venv_path = tostring(Path:new(root) / ".venv")
-            if vim.fn.isdirectory(dot_venv_path) == 1 then
-                update_venv_path(dot_venv_path)
-                return format_python_path(dot_venv_path)
+            local dot_venv = tostring(Path:new(root) / ".venv")
+            if vim.fn.isdirectory(dot_venv) == 1 then
+                return dot_venv
             end
         end
 
-        -- Fallback to system Python.
-        return vim.fn.exepath("python3") or vim.fn.exepath("python") or "python"
+        return nil
+    end
+
+    -- Wrap `base_cmd` so the venv is resolved and injected into the
+    -- spawned process's environment (VIRTUAL_ENV/PATH) *before* the
+    -- server starts, which is what ty and ruff use to discover the
+    -- project's virtualenv.
+    --
+    -- This must happen at spawn time: Neovim spawns the LSP process
+    -- before running `before_init`/`on_init` (see vim.lsp.client.lua,
+    -- `Client:new()` starts `config.cmd` before `Client:initialize()`
+    -- ever runs a callback), so mutating `vim.env` from `on_init` is one
+    -- launch too late -- the server already inherited the old
+    -- environment. That's why restarting the LSP after opening a file
+    -- used to be required: only the *next* spawn would see the env
+    -- update from the previous attempt's `on_init`.
+    local function make_cmd(base_cmd)
+        return function(dispatchers, client_config)
+            local workspace = client_config.root_dir or vim.fn.getcwd()
+            local venv = find_venv(workspace)
+            local env
+
+            if venv then
+                local sep = global.is_windows and ";" or ":"
+                env = {
+                    VIRTUAL_ENV = venv,
+                    PATH = venv_bin_dir(venv) .. sep .. (vim.env.PATH or ""),
+                }
+            end
+
+            return vim.lsp.rpc.start(base_cmd, dispatchers, {
+                cwd = client_config.cmd_cwd,
+                env = env,
+                detached = client_config.detached,
+            })
+        end
     end
 
     local python_config = vim.tbl_deep_extend("force", config, {
-        on_init = function(client)
-            client.config.settings = client.config.settings or {}
-            client.config.settings.python = client.config.settings.python or {}
-            client.config.settings.python.pythonPath = get_python_path(client.config.root_dir)
-        end,
         on_attach = function(client, bufnr)
             config.on_attach(client, bufnr)
             if client.name == "ruff" then
@@ -79,12 +94,15 @@ function M.setup(config)
         end,
     })
 
-    -- vim.lsp.config("basedpyright", python_config)
-    vim.lsp.config("ty", python_config)
-    vim.lsp.config("ruff", python_config)
+    local function enable(name)
+        local base_cmd = vim.lsp.config[name].cmd
+        vim.lsp.config(name, vim.tbl_deep_extend("force", python_config, { cmd = make_cmd(base_cmd) }))
+        vim.lsp.enable(name)
+    end
+
     -- vim.lsp.enable("basedpyright")
-    vim.lsp.enable("ruff")
-    vim.lsp.enable("ty")
+    enable("ruff")
+    enable("ty")
 end
 
 return M
